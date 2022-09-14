@@ -18,7 +18,7 @@ public class Bag {
     @Column(name="bag_id")
     private long id;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="user_id")
     private User userId;
 
