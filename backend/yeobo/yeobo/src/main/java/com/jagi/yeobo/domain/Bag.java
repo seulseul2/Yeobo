@@ -36,4 +36,7 @@ public class Bag {
     @JsonIgnore
     List<Pick> bagPickList = new ArrayList<>();
 
+    @OneToMany(orphanRemoval = true, mappedBy = "bagId" , cascade = CascadeType.ALL)
+    @JsonIgnore
+    List<BagAttraction> bagAttractionList = new ArrayList<>();
 }
