@@ -1,5 +1,6 @@
 package com.jagi.yeobo.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 
 import javax.persistence.*;
@@ -36,11 +37,14 @@ public class User {
     private String role;
 
     @OneToMany(mappedBy = "userId",cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonIgnore
     private List<Pick> userPickList = new ArrayList<>();
 
     @OneToMany(mappedBy = "userId",cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonIgnore
     private List<Score> userScoreList = new ArrayList<>();
 
     @OneToMany(mappedBy = "userId",cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonIgnore
     private List<Bag> bagList = new ArrayList<>();
 }

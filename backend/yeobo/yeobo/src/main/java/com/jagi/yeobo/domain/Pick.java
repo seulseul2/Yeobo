@@ -16,7 +16,7 @@ import static javax.persistence.FetchType.*;
 public class Pick {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "like_id")
+    @Column(name = "pick_id")
     private long id;
 
     @ManyToOne(fetch = LAZY)

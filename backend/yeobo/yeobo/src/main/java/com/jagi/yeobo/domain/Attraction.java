@@ -41,6 +41,10 @@ public class Attraction {
     @JsonIgnore
     List<Score> scoreList = new ArrayList<>();
 
+    @OneToMany(orphanRemoval = true, mappedBy = "attractionId" , cascade = CascadeType.ALL)
+    @JsonIgnore
+    List<BagAttraction> bagAttractionList = new ArrayList<>();
+
     @Builder
     public Attraction(String name, String description, String address, String image, double score) {
         this.name = name;
