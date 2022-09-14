@@ -26,6 +26,7 @@ public class User {
 
     private String gender;
 
+    @Column(nullable = true)
     private int age;
 
     private String refresh_token;
