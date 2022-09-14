@@ -8,7 +8,7 @@ import javax.persistence.*;
 @Builder
 @Getter
 @Setter
-@NoArgsConstructor
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor
 @Table(name = "keyword")
 public class Keyword {
