@@ -40,4 +40,7 @@ public class User {
 
     @OneToMany(mappedBy = "userId",cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Score> userscoreList = new ArrayList<>();
+
+    @OneToMany(mappedBy = "userId",cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Bag> bagList = new ArrayList<>();
 }
