@@ -22,4 +22,5 @@ public class Atoasim {
     @JoinColumn(name = "attraction2_id")
     private Attraction attraction2;
 
+    private double similarity;
 }
