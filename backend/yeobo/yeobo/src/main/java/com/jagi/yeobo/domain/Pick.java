@@ -23,7 +23,7 @@ public class Pick {
     @JoinColumn(name = "user_id")
     private User userId;
 
-//    @ManyToOne(fetch = FetchType.LAZY)
-//    @JoinColumn(name = "bag_id")
-//    private Bag bagId;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "bag_id")
+    private Bag bagId;
 }

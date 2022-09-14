@@ -16,11 +16,11 @@ public class Atoasim {
 
     @ManyToOne(fetch = LAZY)
     @JoinColumn(name = "attraction_id")
-    private Attraction attraction;
+    private Attraction attractionId;
 
     @ManyToOne(fetch = LAZY)
     @JoinColumn(name = "attraction2_id")
-    private Attraction attraction2;
+    private Attraction attraction2Id;
 
     private double similarity;
 }

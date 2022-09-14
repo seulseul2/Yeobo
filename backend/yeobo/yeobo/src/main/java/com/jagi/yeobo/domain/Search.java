@@ -17,7 +17,7 @@ public class Search {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "search_id")
     private long id;
-    
+
     private String keyword;
 
     @Column
