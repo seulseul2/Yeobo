@@ -3,6 +3,8 @@ package com.jagi.yeobo.domain;
 import lombok.*;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Getter @Setter
@@ -32,4 +34,10 @@ public class User {
     private String refresh_token;
 
     private String role;
+
+    @OneToMany(mappedBy = "userId",cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Pick> pickList = new ArrayList<>();
+
+    @OneToMany(mappedBy = "userId",cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Score> userscoreList = new ArrayList<>();
 }
