@@ -36,10 +36,10 @@ public class User {
     private String role;
 
     @OneToMany(mappedBy = "userId",cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Pick> pickList = new ArrayList<>();
+    private List<Pick> userPickList = new ArrayList<>();
 
     @OneToMany(mappedBy = "userId",cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Score> userscoreList = new ArrayList<>();
+    private List<Score> userScoreList = new ArrayList<>();
 
     @OneToMany(mappedBy = "userId",cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Bag> bagList = new ArrayList<>();

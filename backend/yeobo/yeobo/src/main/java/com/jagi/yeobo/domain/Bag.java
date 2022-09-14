@@ -1,9 +1,12 @@
 package com.jagi.yeobo.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Getter
@@ -29,5 +32,8 @@ public class Bag {
 
     private String memo;
 
+    @OneToMany(orphanRemoval = true, mappedBy = "bagId" , cascade = CascadeType.ALL)
+    @JsonIgnore
+    List<Pick> bagPickList = new ArrayList<>();
 
 }
