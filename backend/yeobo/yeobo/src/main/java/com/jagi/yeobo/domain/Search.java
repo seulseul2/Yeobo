@@ -17,19 +17,9 @@ public class Search {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "search_id")
     private long id;
+    
+    private String keyword;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "keyword_id")
-    private Keyword keywordId;
-
-    @Column(nullable = true)
+    @Column
     private int count;
-//    @ManyToOne(fetch = FetchType.LAZY)
-//    @JoinColumn(name = "user_id")
-//    private long userId;
-//
-//    @ManyToOne(fetch = FetchType.LAZY)
-//    @JoinColumn(name = "bag_id")
-//    private long bagId;
-
 }
