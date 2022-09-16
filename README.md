@@ -63,8 +63,12 @@
 | <div align="center">2</div>    | [DB ERD(Notion) /](https://www.notion.so/DB-ERD-4ed5d7103112497eb9bf57e08fe27203)[ ERD Cloud)](https://www.erdcloud.com/d/sZ7ZDJMnDDeyLub72) |
 | <div align="center">3</div>    | [API명세서(Notion)](https://www.notion.so/API-0d962ac1435a426ba2b461a6e5673d49) |
 | <div align="center">4</div>    | [기능명세서(Google Spread Sheet)](https://docs.google.com/spreadsheets/d/14tzzPntFf9SQqBN4ywvbg-0EeXIYm-n6PrEhyNLO8Vw/edit#gid=0)</div> |
-| <div align="center">5</div>    | [발표자료](https://github.com/junojam/ssafy_offline/files/9580239/default.pptx)</div> |
-| <div align="center">6</div>    | [Jira](https://jira.ssafy.com/projects/S07P22C103)</div> |
+| <div align="center">5</div>    | [발표자료(PPT)](https://github.com/junojam/ssafy_offline/files/9580239/default.pptx)</div> |
+| <div align="center">6</div> | [Sprint 내용, Burndown Chart, 회고(Notion)](https://www.notion.so/Sprint-aea0892070ee4621a5682078c9299cbd)</div> |
+| <div align="center">7</div> | [TimeLine(Notion)](https://www.notion.so/TimeLine-d54711846c5a447d900f39d1feb0c1c2)</div> |
+| <div align="center">8</div> | [Git Branch 전략(Notion)](https://www.notion.so/Git-Branch-326d4db8757648c080209788d92523f4)</div> |
+| <div align="center">9</div> | [Commit Message 양식(Notion)](https://www.notion.so/Commit-Message-4b748900b5f44fcf937313d3b8fcbfa2)</div> |
+| <div align="center">10</div> | [Color Palette(Notion)](https://www.notion.so/424a2806164a46d6b04d6e335e1d9d75)</div> |
 
 <br/>
 
@@ -78,7 +82,7 @@
 
 - ### [Figma](https://www.figma.com/file/73DvPv5QBgrfGDQr7cU46N/Yeobo?node-id=0%3A1)
 
-- ### [BackLog](https://docs.google.com/spreadsheets/d/14tzzPntFf9SQqBN4ywvbg-0EeXIYm-n6PrEhyNLO8Vw/edit#gid=1161331260)
+- ### ~~[BackLog]()~~
 
 - ### ~~[UCC]()~~
 
