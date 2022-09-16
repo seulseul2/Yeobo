@@ -1,11 +1,14 @@
 <div align="center">
 <img src="https://user-images.githubusercontent.com/97590478/190550693-bd355b98-2015-474b-a2ad-760a42914d09.png" width="800px">
-<h1>광주 특화1반 자기(C103)팀 </h1>
-<h3>빅데이터(추천 시스템)</h3>
+<h3>나와 너의 취향을 담은 여행 보따리, 내 소중한 추억을 더 가치있게 </h1>
+</div>
+<div align="center">
+<h5>빅데이터(추천 시스템)</h5> 
 </div>
 
 <div align="right">
-##### `#여행보따리` `#여보` `#자기` `#SSAFY-7th` 
+<h3>C103(자기)팀 </h3>
+##### `#여행보따리` `#여보` `#자기` `#SSAFY-7th` `빅데이터` `추천`
 </div>
 <br/>
 
