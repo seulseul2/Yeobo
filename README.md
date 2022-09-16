@@ -64,8 +64,8 @@
 | <div align="center">3</div>    | [API명세서(Notion)](https://www.notion.so/API-0d962ac1435a426ba2b461a6e5673d49) |
 | <div align="center">4</div>    | [기능명세서(Google Spread Sheet)](https://docs.google.com/spreadsheets/d/14tzzPntFf9SQqBN4ywvbg-0EeXIYm-n6PrEhyNLO8Vw/edit#gid=0)</div> |
 | <div align="center">5</div>    | [발표자료(PPT)](https://github.com/junojam/ssafy_offline/files/9580239/default.pptx)</div> |
-| <div align="center">6</div> | [Sprint 내용, Burndown Chart, 회고(Notion)](https://www.notion.so/Sprint-aea0892070ee4621a5682078c9299cbd)</div> |
 | <div align="center">7</div> | [TimeLine(Notion)](https://www.notion.so/TimeLine-d54711846c5a447d900f39d1feb0c1c2)</div> |
+| <div align="center">6</div> | [Sprint 내용, Burndown Chart, 회고(Notion)](https://www.notion.so/Sprint-aea0892070ee4621a5682078c9299cbd)</div> |
 | <div align="center">8</div> | [Git Branch 전략(Notion)](https://www.notion.so/Git-Branch-326d4db8757648c080209788d92523f4)</div> |
 | <div align="center">9</div> | [Commit Message 양식(Notion)](https://www.notion.so/Commit-Message-4b748900b5f44fcf937313d3b8fcbfa2)</div> |
 | <div align="center">10</div> | [Color Palette(Notion)](https://www.notion.so/424a2806164a46d6b04d6e335e1d9d75)</div> |
@@ -90,6 +90,27 @@
 
 ## 💻프로젝트 소개
 
+- **📚빅데이터(추천 시스템) 프로젝트**
+
+  ![Bigdata](https://user-images.githubusercontent.com/97590478/190598553-841f465b-426a-4902-81ed-97f88b64b1a7.png)
+
+  - 사용자 리뷰 기반의 추천 서비스
+  - 개인별 맞춤 추천 서비스를 구현하는 것을 목표로 한다.(사용자 리뷰 기반의 추천 서비스)
+  - Python으로 데이터를 가공, 분석, 후처리하여 사용자에게 알맞은 데이터를 제공한다.
+  - 여러 라이브러리를 사용하여 데이터를 이해하기 쉽도록 시각화한다.
+
+
+
+- **프로젝트 기간(2022.08.29 ~ 10.06, 6주)**
+  - 기획 및 환경 설정 : 08.29 ~ 09.09(2주)
+  - 서비스 주요 기능 구현 : 09.12 ~ 09.30(3주)
+  - 기능 보완 및 버그 수정 : 10.03 ~ 10.07(1주)
+
+
+
+- **서비스 아키텍쳐**
+- **API 명세서(Swagger)**
+
 <br/>
 
 ## 🧑팀원 소개👩
@@ -98,17 +119,29 @@
 
 | <img title="" src="https://user-images.githubusercontent.com/97590478/187514533-43924ea8-a3fa-4d94-95f6-baa6d97b0d3c.jpeg" alt="">**<div align="center">백한나(팀장)😀</div>** | <img title="" src="https://user-images.githubusercontent.com/97590478/187514542-49a62b50-b1b9-439f-896f-8535b461579b.jpeg" alt="">**<div align="center">나장엽😏</div>** | <img title="" src="https://user-images.githubusercontent.com/97590478/187514521-02903d44-4264-4a31-abc2-0072a1bf03f4.jpg" alt="">**<div align="center">이준호😎</div>** |
 | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| FE_Leader                                                    |                                                              |                                                              |
+| FE_Leader                                                    |                                                              | Data                                                         |
 
 ### Back-end
 
 | <img title="" src="https://user-images.githubusercontent.com/97590478/190547913-59300b5d-d3e7-4027-a1c9-3cae7e6bfd3e.jpg" alt="">**<div align="center">조영훈(BE_Leader)😙</div>** | <img title="" src="https://user-images.githubusercontent.com/97590478/187514544-e64e1654-d1d7-4f42-9e39-8a3602b852e2.png" alt="">**<div align="center">이지은😝</div>** | <img title="" src="https://user-images.githubusercontent.com/97590478/187514529-c13d6cf8-37a9-4526-a7d5-9631562b7307.jpg" alt="">**<div align="center">안다슬😁</div>** |
 | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| BE_Leader                                                    |                                                              |                                                              |
+| BE_Leader & Data                                             |                                                              |                                                              |
 
 <br/>
 
 ## 🔍서비스 소개
+
+### 당신만의 취향저격 맞춤형 여행지! 여러 사람과 함께라도 모두가 만족할만한 여행지를 추천해드립니다!
+
+> 코로나로 인한 여행지 제한으로 외국에 나가지 못하니, 국내 여행지를 찾고 싶은 사람들!
+>
+> 연인,  가족, 친구 단위의 공통 취향을 찾기 어려워서 미루고 있는 사람들!
+>
+> 어디를 여행할 지 몰라 고민하여 맞춤형 여행지를 추천받고 싶은 사람들!
+>
+> 
+>
+> **여보(여행보따리)는 그런 사용자들을 위해 만들어졌습니다.**
 
 <br/>
 
