@@ -63,7 +63,7 @@
 | <div align="center">2</div>    | [DB ERD(Notion) /](https://www.notion.so/DB-ERD-4ed5d7103112497eb9bf57e08fe27203)[ ERD Cloud)](https://www.erdcloud.com/d/sZ7ZDJMnDDeyLub72) |
 | <div align="center">3</div>    | [API명세서(Notion)](https://www.notion.so/API-0d962ac1435a426ba2b461a6e5673d49) |
 | <div align="center">4</div>    | [기능명세서(Google Spread Sheet)](https://docs.google.com/spreadsheets/d/14tzzPntFf9SQqBN4ywvbg-0EeXIYm-n6PrEhyNLO8Vw/edit#gid=0)</div> |
-| <div align="center">5</div>    | [발표자료(PPT)](https://github.com/junojam/ssafy_offline/files/9580239/default.pptx)</div> |
+| <div align="center">5</div>    | [발표자료(PPT)](https://github.com/junojam/ssafy_offline/files/9595312/SSAFY_7._._.1._C103_.pptx)</div> |
 | <div align="center">7</div> | [TimeLine(Notion)](https://www.notion.so/TimeLine-d54711846c5a447d900f39d1feb0c1c2)</div> |
 | <div align="center">6</div> | [Sprint 내용, Burndown Chart, 회고(Notion)](https://www.notion.so/Sprint-aea0892070ee4621a5682078c9299cbd)</div> |
 | <div align="center">8</div> | [Git Branch 전략(Notion)](https://www.notion.so/Git-Branch-326d4db8757648c080209788d92523f4)</div> |
