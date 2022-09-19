@@ -1,10 +1,11 @@
 import './Main.scss';
-import './Main.scss';
+import MainTop from './MainTop';
 
 const Main = () => {
   return (
-    <div className="Main">
-      <h2>Main Page</h2>
+    <div className="Main back">
+      {/* <h2>Main Page</h2> */}
+      <MainTop />
     </div>
   );
 };
