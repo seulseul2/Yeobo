@@ -2,6 +2,8 @@ package com.jagi.yeobo.controller;
 
 import com.jagi.yeobo.dto.Message;
 import com.jagi.yeobo.dto.StatusEnum;
+import com.jagi.yeobo.dto.UserDto;
+import com.jagi.yeobo.service.UserService;
 import io.swagger.annotations.ApiOperation;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpHeaders;
@@ -17,19 +19,22 @@ import java.nio.charset.Charset;
 @RestController
 @RequiredArgsConstructor
 public class UserController {
+
+    private final UserService userService;
+
     /* 회원가입 */
 
     @ApiOperation(value = "회원정보를 얻어온다.",notes = "memberId로 해당하는 회원 정보를 얻어온다.")
     @GetMapping("/api/user/{userId}")
-    public ResponseEntity<?> memberGet(@PathVariable("userId") int userId){
+    public ResponseEntity<?> searchUser(@PathVariable("userId") int userId){
         Message message = new Message();
         HttpHeaders headers= new HttpHeaders();
         headers.setContentType(new MediaType("application", "json", Charset.forName("UTF-8")));
         try {
-//            MemberLoginResponseDto member = memberService.memberGet(memberId);
-//            message.setStatus(StatusEnum.OK);
-//            message.setMessage("회원정보 불러오기 성공");
-//            message.setData(member);
+            UserDto user = userService.searchUser(userId);
+            message.setStatus(StatusEnum.OK);
+            message.setMessage("회원정보 불러오기 성공");
+            message.setData(user);
             return new ResponseEntity<>(message, headers, HttpStatus.OK);
         } catch (IllegalArgumentException | IllegalStateException e){
             e.printStackTrace();
