@@ -4,6 +4,15 @@ plugins {
 	id 'java'
 }
 
+jar {
+	enabled = false
+}
+
+bootJar {
+	archivesBaseName = 'app'
+	archiveFileName = 'app.jar'
+}
+
 group = 'com.jagi.yeobo'
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '11'
