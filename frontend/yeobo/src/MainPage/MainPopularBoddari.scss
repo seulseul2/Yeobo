@@ -1,24 +1,27 @@
+.MainPopularBoddari {
+  margin-bottom: 10px;
+  border-radius: 15px;
+  background-color: white;
+}
+
 .titleModule {
   // font-family: 'Pretendard-Regular';
   font-family: 'Bazzi';
   color: #454545;
 
   .mainTitle{
-    font-size: 32px;
+    font-size: 24px;
     padding-top: 24px;
     font-weight: 800;
   }
   .subTitle{
+    font-size: 14px;
     font-weight: 200;
     padding: 10px 0;
     color: #454545;
   }
 }
-.MainPopularBoddari {
-  margin-bottom: 10px;
-  border-radius: 15px;
-  background-color: white;
-}
+
 
 .monthSection {
   padding: 30px 40px;
@@ -26,18 +29,19 @@
   align-items: center;
 }
 
+// Images
 .profile-img-wrapper {
   width: 60px;
   height: 60px;
   overflow:hidden;
   border-radius: 50%;
 }
-/* .img-wrapper:hover + img {display: block;} */
 .profile-img {
   width:100%;
   height:100%;
   object-fit:cover;
 }
+
 
 .boddariRank {
   border-bottom: 2px solid #F5F5F5;
@@ -58,19 +62,24 @@
       padding-bottom: 4px;
 
       .boddari-name {
-        font-size: 19px;
+        font-size: 16px;
         font-weight: 800;
   
       }
       .boddari-username {
-        font-size: 14px;
+        font-size: 13px;
       }
     }
   
     .boddari-desc {
       .boddari-desc-text {
         color: #606060;
-        font-size: 14px;
+        font-size: 12px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-line-clamp: 2; // 문장 길이가 지정된 라인을 넘어가면 말줄임처리
+        -webkit-box-orient: vertical;
       }
     }
   }

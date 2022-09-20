@@ -6,8 +6,8 @@ import './MainThisMonth.scss';
 const MainThisMonth = () => {
   return <div class="MainThisMonth">
     <div className='titleModule'>
-      <p className='mainTitle'>맞춤형 추천 여행지</p>
-      <p className='subTitle'>여행지 평점을 많이 메길수록,<br/>더 정확한 추천을 받을 수 있습니다</p>
+      <p className='mainTitle'>이번달 추천 여행지</p>
+      <p className='subTitle'>네비게이션 인기 방문지</p>
     </div>
     <div className='imageRecom'>
       <ul className='imageLists'>
