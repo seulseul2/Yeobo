@@ -5,6 +5,7 @@ import Main from './MainPage/Main';
 import Boddari from './Boddari';
 
 import './App.css';
+import BottomNavBar from './BottomNavBar';
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
         <Route path='/' element={<Main />} />
         <Route path="/Boddari" element={<Boddari />}></Route>
       </Routes>
+      <BottomNavBar/>
     </div>
   );
 }
