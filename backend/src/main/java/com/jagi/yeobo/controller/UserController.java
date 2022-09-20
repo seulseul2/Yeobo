@@ -108,6 +108,35 @@ public class UserController {
         }
     }
 
+    @ApiOperation(value = "회원정보를 조회한다.",notes = "닉네임에 해당하는 회원 정보를 조회한다.")
+    @DeleteMapping("/api/user/search/{nickname}/{page}")
+    public ResponseEntity<?> searchUserByNick(@PathVariable("userId") int userId){
+        Message message = new Message();
+        HttpHeaders headers= new HttpHeaders();
+        headers.setContentType(new MediaType("application", "json", Charset.forName("UTF-8")));
+        try {
+            int result = userService.deleteUser(userId);
+            if(result==1){
+                message.setStatus(StatusEnum.OK);
+                message.setMessage("회원정보 삭제 성공");
+                return new ResponseEntity<>(message, headers, HttpStatus.OK);
+            }else{
+                message.setStatus(StatusEnum.BAD_REQUEST);
+                message.setMessage("회원정보 삭제 실패");
+                return new ResponseEntity<>(message, headers, HttpStatus.OK);
+            }
 
+        } catch (IllegalArgumentException | IllegalStateException e){
+            e.printStackTrace();
+            message.setStatus(StatusEnum.BAD_REQUEST);
+            message.setMessage("회원 정보가 없습니다.");
+            return new ResponseEntity<>(message, headers, HttpStatus.BAD_REQUEST);
+        } catch (Exception e){
+            e.printStackTrace();
+            message.setStatus(StatusEnum.INTERNAL_SERVER_ERROR);
+            message.setMessage("서버 에러 발생");
+            return new ResponseEntity<>(message, headers,  HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
 
 }
