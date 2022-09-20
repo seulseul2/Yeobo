@@ -1,0 +1,46 @@
+.mainBoddari {
+  background-color: #FFF7F4;
+  padding: 30px 40px;
+
+  .titleModule {
+    // font-family: 'Pretendard-Regular';
+    font-family: 'Bazzi';
+    color: #454545;
+
+    .mainTitle{
+      font-size: 24px;
+      padding-top: 24px;
+      font-weight: 800;
+      text-align: center;
+    }
+    .subTitle{
+      font-weight: 200;
+      padding: 10px 0;
+      text-align: right;
+    }
+  }
+
+  .buttons {
+    font-family: 'Bazzi';
+    font-size: 18px;
+    font-weight: 800;
+    padding: 20px;
+    display: flex;
+    justify-content: space-around;
+    color: white;
+
+    .makeBoddari {
+      border-radius: 50px;
+      height: 50px;
+      width: 150px;
+      background-color: #F49B9B;
+    }
+    .mergeBoddari {
+      border-radius: 50px;
+      height: 50px;
+      width: 150px;
+      background-color: #ECB2B2;
+    }
+  }
+
+}
