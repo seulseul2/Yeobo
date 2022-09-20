@@ -1,0 +1,59 @@
+.maintop {
+  background-color: #F49B9B;
+  color: white;
+  padding: 0 40px;
+  font-family: 'GongGothicMedium';
+
+  .mainTitle{
+    font-size: 40px;
+    padding-top: 24px;
+    font-family: 'Bazzi';
+  }
+  .subTitle{
+    // font-family: 'Pretendard-Regular';
+    font-family: 'Bazzi';
+    font-weight: 500;
+    padding: 16px 0;
+  }
+  .searchBar {
+    border-radius: 10px;
+    color: #454545;
+    display: flex;
+    background-color: #F5F5F5;
+    height: 42px;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.419);
+    align-items: center;
+  }
+  .searchItem {
+    flex: none;
+    margin: 0 10px;
+  }
+  .searchDelete {
+    padding-right: 0px;
+  }
+  .searchText {
+    background-color: #F5F5F5;
+    border: none;
+    flex-grow: 1;
+  }
+  .popularSearchTermsTitle {
+    padding: 24px 0 12px 0;
+    text-align: center;
+    font-size: 20px;
+  }
+  .popularSearchTerms {
+    padding-bottom: 24px;
+    font-size: 15px;
+    font-family: 'Pretendard-Regular';
+    display: flex;
+    justify-content: center;
+    
+    .rankIndex {
+      color: white;
+      padding-right: 10px;
+    }
+    .rankText {
+      color: #F5F5F5
+    }
+  }
+}
