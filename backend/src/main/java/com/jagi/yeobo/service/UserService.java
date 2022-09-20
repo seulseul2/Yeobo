@@ -12,4 +12,10 @@ public class UserService {
     public UserDto searchUser(int userId) {
         return userRepository.searchUser(userId);
     }
+    public int updateUserNick(int userId, String nick){
+        return userRepository.updateUserNick(userId,nick);
+    }
+    public int deleteUser(int userId) {
+        return userRepository.deleteById(userId);
+    }
 }
