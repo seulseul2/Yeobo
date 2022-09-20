@@ -1,17 +1,20 @@
+import React from 'react';
+import { Route, Routes, Link } from 'react-router-dom';
 // import { BrowserView, MobileView } from 'react-device-detect';
-import { Route, Routes } from 'react-router-dom';
 import Main from './MainPage/Main';
-import Location from './location';
+import Boddari from './Boddari';
+
 import './App.css';
 import BottomNavBar from './BottomNavBar';
 
 function App() {
   return (
     <div className='App'>
-      <h2>App.js</h2>
+      <Link to="/">Main</Link>
+      <Link to="/Boddari">보따리만들기</Link>
       <Routes>
         <Route path='/' element={<Main />} />
-        <Route path='location' element={<Location />} />
+        <Route path="/Boddari" element={<Boddari />}></Route>
       </Routes>
       <BottomNavBar/>
     </div>
