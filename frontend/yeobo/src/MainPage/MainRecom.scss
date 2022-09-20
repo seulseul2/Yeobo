@@ -1,0 +1,64 @@
+.mainRecom {
+  background-color: white;
+  padding: 30px 40px;
+
+  .titleModule {
+    // font-family: 'Pretendard-Regular';
+    font-family: 'Bazzi';
+    color: #454545;
+
+    .mainTitle{
+      font-size: 24px;
+      padding-top: 24px;
+      font-weight: 800;
+    }
+    .subTitle{
+      font-weight: 200;
+      padding: 10px 0;
+    }
+  }
+  .imageRecom {
+    ul, li {
+      list-style: none;
+    }
+    .imageLists {
+      display: flex;
+      flex-wrap: wrap;
+      padding-top: 20px;
+      margin: 0 0 0 -10px;
+
+      .imageList {
+        position: relative;
+        width: calc(50% - 10px);
+        margin: 0 0 15px 10px;
+        
+        .imageAtag {
+          border-radius: 10px;
+          height: 140px;
+          box-shadow: 3px 4px 16px 0px #6564641a;
+          position: relative;
+          display: block;
+          overflow: hidden;
+
+          .imageWrap {
+            height: 100%;
+            border-radius: 10px 10px 0 0;
+            background-size: cover;
+            background-position: 50% 50%;
+            background-repeat: no-repeat;
+            transition: all .7s;
+          }
+        }
+
+        .imageText {
+          text-align: center;
+          font-family: 'Pretendard-Regular';
+          font-weight: 800;
+          padding: 10px 0 20px 0;
+        }
+      }
+    }
+    
+  }
+
+}
