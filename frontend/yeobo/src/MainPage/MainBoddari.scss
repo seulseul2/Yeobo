@@ -1,14 +1,16 @@
 .mainBoddari {
-  background-color: #FFF7F4;
+  background-color: #7470AA;
   padding: 30px 40px;
+  margin-bottom: 10px;
+  border-radius: 15px;
 
   .titleModule {
     // font-family: 'Pretendard-Regular';
     font-family: 'Bazzi';
-    color: #454545;
+    color: #FFEDEC;
 
     .mainTitle{
-      font-size: 24px;
+      ont-size: 32px;
       padding-top: 24px;
       font-weight: 800;
       text-align: center;
@@ -16,30 +18,31 @@
     .subTitle{
       font-weight: 200;
       padding: 10px 0;
+      color: #FFF7F4;
       text-align: right;
     }
   }
 
   .buttons {
     font-family: 'Bazzi';
-    font-size: 18px;
+    font-size: 22px;
     font-weight: 800;
     padding: 20px;
     display: flex;
     justify-content: space-around;
-    color: white;
+    color: #7470AA;
 
     .makeBoddari {
       border-radius: 50px;
       height: 50px;
       width: 150px;
-      background-color: #F49B9B;
+      background-color: #FFEDEC;
     }
     .mergeBoddari {
       border-radius: 50px;
       height: 50px;
       width: 150px;
-      background-color: #ECB2B2;
+      background-color: #FFF7F4;
     }
   }
 

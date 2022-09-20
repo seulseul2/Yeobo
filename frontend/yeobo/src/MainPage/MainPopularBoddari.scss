@@ -1,0 +1,78 @@
+.titleModule {
+  // font-family: 'Pretendard-Regular';
+  font-family: 'Bazzi';
+  color: #454545;
+
+  .mainTitle{
+    font-size: 32px;
+    padding-top: 24px;
+    font-weight: 800;
+  }
+  .subTitle{
+    font-weight: 200;
+    padding: 10px 0;
+    color: #454545;
+  }
+}
+.MainPopularBoddari {
+  margin-bottom: 10px;
+  border-radius: 15px;
+  background-color: white;
+}
+
+.monthSection {
+  padding: 30px 40px;
+  border-bottom: 2px solid #F5F5F5;
+  align-items: center;
+}
+
+.profile-img-wrapper {
+  width: 60px;
+  height: 60px;
+  overflow:hidden;
+  border-radius: 50%;
+}
+/* .img-wrapper:hover + img {display: block;} */
+.profile-img {
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+
+.boddariRank {
+  border-bottom: 2px solid #F5F5F5;
+  display: flex;
+  padding: 15px 40px;
+  align-items: center;
+  justify-content: space-between;
+
+  .boddari-info {
+    font-family: 'Pretendard-Regular';
+    line-height: 120%;
+    width: 80%;
+    padding: 0 20px;
+  
+    .boddari-title {
+      display: flex;
+      justify-content: space-between;
+      padding-bottom: 4px;
+
+      .boddari-name {
+        font-size: 19px;
+        font-weight: 800;
+  
+      }
+      .boddari-username {
+        font-size: 14px;
+      }
+    }
+  
+    .boddari-desc {
+      .boddari-desc-text {
+        color: #606060;
+        font-size: 14px;
+      }
+    }
+  }
+}
+
