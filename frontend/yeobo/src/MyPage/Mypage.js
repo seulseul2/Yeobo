@@ -5,6 +5,7 @@ import purple from '../images/icons/purpleCircle.png';
 import mint from '../images/icons/mintCircle.png';
 import info from '../images/icons/info.png';
 import { Link } from 'react-router-dom';
+import BoddariBox from './BoddariBox';
 
 const Mypage = () => {
   return (
@@ -36,6 +37,21 @@ const Mypage = () => {
           <p className='mypageTitleText'>보따리 리스트</p>
           <img className='mypageTitleIcon' src={info} alt=''/>
         </div>
+        <BoddariBox />
+      </div>
+      <div className='mypageBox'>
+        <div className='mypageTitle'>
+          <p className='mypageTitleText'>좋아요한 보따리</p>
+          <img className='mypageTitleIcon' src={info} alt=''/>
+        </div>
+        <BoddariBox />
+      </div>
+      <div className='mypageBox'>
+        <div className='mypageTitle'>
+          <p className='mypageTitleText'>방문 여행지</p>
+          <img className='mypageTitleIcon' src={info} alt=''/>
+        </div>
+        <BoddariBox />
       </div>
       <div className='bottomback'>
       </div>
