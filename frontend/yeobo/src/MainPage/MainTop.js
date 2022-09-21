@@ -3,7 +3,7 @@ import './MainTop.scss';
 const MainTop = () => {
   return <div className="maintop">
     <div className='titleModule'>
-      <p className='mainTitle'>여보</p>
+      <p className='title'>여보</p>
       <p className='subTitle'>나와 너의 취향을 담은 여행 보따리<br/>
     내 소중한 추억을 더 가치있게</p>
     </div>

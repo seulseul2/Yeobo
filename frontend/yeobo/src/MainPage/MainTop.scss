@@ -3,18 +3,27 @@
   color: white;
   padding: 0 40px;
   font-family: 'GongGothicMedium';
+  margin-bottom: 10px;
+  border-radius: 15px;
 
-  .mainTitle{
-    font-size: 48px;
-    padding-top: 24px;
-    font-family: 'Bazzi';
+  .titleModule {
+    color: white;
+    .title{
+      font-size: 44px;
+      padding-top: 24px;
+      font-family: 'Bazzi';
+      text-shadow: #a1a0a0 2px 2px 2px;
+    }
+    .subTitle{
+      // font-family: 'Pretendard-Regular';
+      font-family: 'Bazzi';
+      font-weight: 500;
+      padding: 0 0 24px 0;
+      color: white;
+      text-shadow: #a1a0a0 2px 2px 2px;
+    }
   }
-  .subTitle{
-    // font-family: 'Pretendard-Regular';
-    font-family: 'Bazzi';
-    font-weight: 500;
-    padding: 0 0 24px 0;
-  }
+  
   .searchBar {
     border-radius: 10px;
     color: #454545;

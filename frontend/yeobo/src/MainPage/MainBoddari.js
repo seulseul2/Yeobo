@@ -13,13 +13,6 @@ const MainBoddari = () => {
       <button className='makeBoddari' type="">보따리 만들기</button>
       <button className='mergeBoddari' type="">보따리 합치기</button>
     </div>
-    <div>
-      <p>adaf</p>
-      <p>adaf</p>
-      <p>adaf</p>
-      <p>adaf</p>
-      <p>adaf</p>
-    </div>
   </div>
 }
 export default MainBoddari;

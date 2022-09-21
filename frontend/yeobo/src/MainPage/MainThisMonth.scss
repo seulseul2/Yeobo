@@ -1,5 +1,5 @@
-.mainRecom {
-  background-color: white;
+.MainThisMonth {
+  background-color: #FFF7F4;
   padding: 30px 40px;
   margin-bottom: 10px;
   border-radius: 15px;
@@ -10,12 +10,11 @@
     color: #454545;
 
     .mainTitle{
-      font-size: 24px;
+      ont-size: 32px;
       padding-top: 24px;
       font-weight: 800;
     }
     .subTitle{
-      font-size: 14px;
       font-weight: 200;
       padding: 10px 0;
     }
@@ -29,6 +28,7 @@
       flex-wrap: wrap;
       padding-top: 20px;
       margin: 0 0 0 -10px;
+      overflow: auto;
 
       .imageList {
         position: relative;
