@@ -1,13 +1,17 @@
 import './BottomNavBar.scss';
 import { Link } from 'react-router-dom';
-import bag from './images/icons/shopping-bag36.png';
+import bag from './images/icons/bag1.png';
+import bags from './images/icons/bags.png';
+import user from './images/icons/user.png';
+import homeWhite from './images/icons/home-white.png';
+// import homePink from './images/icons/home-pink.png';
 
 const BottomNavBar = () => {
   return <div className='bottom'>
     <div className='bottomBox'>
       <div className='iconTab'>
         <Link to='/'>
-          <svg className='homeIcon' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="36" height="36"><path fill="none" d="M0 0h24v24H0z"/><path d="M21 20a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V9.49a1 1 0 0 1 .386-.79l8-6.222a1 1 0 0 1 1.228 0l8 6.222a1 1 0 0 1 .386.79V20zm-2-1V9.978l-7-5.444-7 5.444V19h14z" fill="rgba(255,255,255,1)"/></svg>
+          <img className='homeIcon' src={homeWhite} alt="" />
           <p className='iconText'>홈</p>
         </Link>
       </div>
@@ -18,14 +22,20 @@ const BottomNavBar = () => {
         </Link>
       </div>
       <div className='iconTab'>
-        <Link to='/'>
-          <svg className='homeIcon' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="36" height="36"><path fill="none" d="M0 0h24v24H0z"/><path d="M21 20a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V9.49a1 1 0 0 1 .386-.79l8-6.222a1 1 0 0 1 1.228 0l8 6.222a1 1 0 0 1 .386.79V20zm-2-1V9.978l-7-5.444-7 5.444V19h14z" fill="rgba(255,255,255,1)"/></svg>
-          <p className='iconText'>홈</p>
+        <Link to='/Boddari'>
+          <img className='homeIcon' src={bags} alt=""/>
+          <p className='iconText'>보따리 합치기</p>
+        </Link>
+      </div>
+      <div className='iconTab'>
+        <Link to='/Mypage'>
+          <img className='homeIcon' src={user} alt=""/>
+          <p className='iconText'>마이페이지</p>
         </Link>
       </div>
       <div className='iconTab'>
         <Link to='/Login'>
-          <svg className='homeIcon' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="36" height="36"><path fill="none" d="M0 0h24v24H0z"/><path d="M21 20a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V9.49a1 1 0 0 1 .386-.79l8-6.222a1 1 0 0 1 1.228 0l8 6.222a1 1 0 0 1 .386.79V20zm-2-1V9.978l-7-5.444-7 5.444V19h14z" fill="rgba(255,255,255,1)"/></svg>
+          <img className='homeIcon' src={user} alt=""/>
           <p className='iconText'>로그인</p>
         </Link>
       </div>
