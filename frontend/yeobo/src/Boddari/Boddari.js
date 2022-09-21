@@ -1,7 +1,8 @@
 import React from 'react';
 import Destination from './Destination';
 import './Boddari.scss';
-import luggage from './images/luggage.png';
+import luggage from '../images/luggage.png';
+import {Link} from 'react-router-dom';
 
 function Boddari() {
   return (
@@ -9,7 +10,7 @@ function Boddari() {
       <div className="header">
         <button>이전</button>
         <p>보따리 만들기</p>
-        <button>다음</button>
+        <Link to='/saveboddari'>다음</Link>
       </div>
 
       <div className="recoList">

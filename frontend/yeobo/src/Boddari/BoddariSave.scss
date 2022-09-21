@@ -1,0 +1,44 @@
+body {
+    height: 100%;
+    background-color: #FFc7c7;
+}
+
+.header img {
+    width: 150px;
+    height: 150px;
+}
+
+.inputForm {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    label {
+        font-size: 20px;
+        display: block;
+        margin-top: 20px;
+        margin-bottom: 10px;
+    }
+    input {
+        width: 300px;
+        border-radius: 15px;
+
+    }
+    textarea {
+        width: 300px;
+        height: 150px;
+        border-radius: 15px;
+    }
+    .boddariBtn {
+        display: flex;
+        width: 80%;
+        justify-content: space-around;
+    }
+    .btn {
+        background-color: white;
+        border-radius: 20px;
+        text-align: center;
+        height: 25px;
+        
+    }
+}

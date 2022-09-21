@@ -1,5 +1,5 @@
 import React from "react";
-import image from './images/daejeon.jpeg';
+import image from '../images/daejeon.jpeg';
 import './Destination.scss';
 
 function Destination() {

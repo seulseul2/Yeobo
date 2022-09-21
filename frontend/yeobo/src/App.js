@@ -1,10 +1,10 @@
 import React from 'react';
+import './App.css';
 import { Route, Routes, Link } from 'react-router-dom';
 // import { BrowserView, MobileView } from 'react-device-detect';
 import Main from './MainPage/Main';
-import Boddari from './Boddari';
-
-import './App.css';
+import Boddari from './Boddari/Boddari';
+import BoddariSave from './Boddari/BoddariSave';
 import BottomNavBar from './BottomNavBar';
 
 function App() {
@@ -15,6 +15,7 @@ function App() {
       <Routes>
         <Route path='/' element={<Main />} />
         <Route path="/Boddari" element={<Boddari />}></Route>
+        <Route path="/saveboddari" element={<BoddariSave />}></Route>
       </Routes>
       <BottomNavBar/>
     </div>
