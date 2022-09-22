@@ -8,6 +8,12 @@ group = 'com.jagi.yeobo'
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '11'
 
+bootJar {
+	archivesBaseName = 'app'
+	archiveFileName = 'app.jar'
+}
+
+
 configurations {
 	compileOnly {
 		extendsFrom annotationProcessor
@@ -36,3 +42,8 @@ dependencies {
 tasks.named('test') {
 	useJUnitPlatform()
 }
+
+jar {
+	enabled = false
+}
+
