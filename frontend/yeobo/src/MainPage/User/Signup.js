@@ -20,16 +20,30 @@ const Signup = () => {
       </div>
       <div className='login-inputs'>
         <div className='login-input' >
-          <p className='login-input-name' >이메일</p>
+          <p className='login-input-name' >이메일<span className='color-red'> *</span></p>
           <input className='login-input-text' />
         </div>
         <div className='login-input'>
-          <p className='login-input-name'>비밀번호</p>
+          <p className='login-input-name'>비밀번호<span className='color-red'> *</span></p>
           <input className='login-input-text' />
         </div>
         <div className='login-input'>
-          <p className='login-input-name'>비밀번호 확인</p>
+          <p className='login-input-name'>비밀번호 확인<span className='color-red'> *</span></p>
           <input className='login-input-text' />
+        </div>
+        <div className='login-input'>
+          <p className='login-input-name'>닉네임</p>
+          <input className='login-input-text' />
+        </div>
+        <div className='display-flex'>
+          <div className='login-input'>
+            <p className='login-input-name'>나이</p>
+            <input className='login-input-text' />
+          </div>
+          <div className='login-input'>
+            <p className='login-input-name'>성별</p>
+            <input className='login-input-text' />
+          </div>
         </div>
         <button className='login-button'>Signup</button>
       </div>
