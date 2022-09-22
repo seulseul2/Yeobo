@@ -1,6 +1,7 @@
 package com.jagi.yeobo.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.jagi.yeobo.dto.BagDto;
 import lombok.*;
 
 import javax.persistence.*;
@@ -13,6 +14,7 @@ import java.util.List;
 @Setter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor
+@Builder
 @Table(name = "bag")
 public class Bag {
 
@@ -32,6 +34,9 @@ public class Bag {
 
     private String memo;
 
+    @Column(name="link_cnt")
+    private int likeCnt;
+
     @OneToMany(orphanRemoval = true, mappedBy = "bagId" , cascade = CascadeType.ALL)
     @JsonIgnore
     List<Pick> bagPickList = new ArrayList<>();
@@ -39,4 +44,10 @@ public class Bag {
     @OneToMany(orphanRemoval = true, mappedBy = "bagId" , cascade = CascadeType.ALL)
     @JsonIgnore
     List<BagAttraction> bagAttractionList = new ArrayList<>();
+
+    public void updateBag(BagDto bagDto){
+        this.name = name;
+        this.memo = memo;
+    }
+
 }
