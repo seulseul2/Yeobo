@@ -22,7 +22,7 @@ public class BagController {
     private final BagService bagService;
 
     @PutMapping("api/bag/update/name/{bagId}")
-    public ResponseEntity<?> updateBag(@PathVariable("userId") int userId, @RequestBody BagDto bagDto){
+    public ResponseEntity<?> updateBag(@PathVariable("userId") long userId, @RequestBody BagDto bagDto){
         Message message = new Message();
         HttpHeaders headers= new HttpHeaders();
         headers.setContentType(new MediaType("application", "json", Charset.forName("UTF-8")));
@@ -35,7 +35,7 @@ public class BagController {
     }
 
     @GetMapping("api/bag/list/{userId}")
-    public ResponseEntity<?> searchBagList(@PathVariable("userId") int userId){
+    public ResponseEntity<?> searchBagList(@PathVariable("userId") long userId){
         Message message = new Message();
         HttpHeaders headers= new HttpHeaders();
         headers.setContentType(new MediaType("application", "json", Charset.forName("UTF-8")));
@@ -50,7 +50,7 @@ public class BagController {
     }
 
     @PostMapping("api/bag/like/{userId}/{bagId}")
-    public ResponseEntity<?> likeBag(@PathVariable("userId") int userId, @PathVariable("bagId") int bagId){
+    public ResponseEntity<?> likeBag(@PathVariable("userId") long userId, @PathVariable("bagId") int bagId){
         Message message = new Message();
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(new MediaType("application", "json", Charset.forName("UTF-8")));
@@ -64,7 +64,7 @@ public class BagController {
     }
 
     @GetMapping("api/bag/likelist/{userId}")
-    public ResponseEntity<?> searchLikeBagList(@PathVariable("userId") int userId){
+    public ResponseEntity<?> searchLikeBagList(@PathVariable("userId") long userId){
         Message message = new Message();
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(new MediaType("application", "json", Charset.forName("UTF-8")));
@@ -78,7 +78,7 @@ public class BagController {
     }
 
     @GetMapping("api/bag/list/popular")
-    public ResponseEntity<?> searchPopularBagList(@PathVariable("bagId") int bagId){
+    public ResponseEntity<?> searchPopularBagList(@PathVariable("bagId") long bagId){
         Message message = new Message();
         HttpHeaders headers= new HttpHeaders();
         headers.setContentType(new MediaType("application", "json", Charset.forName("UTF-8")));
@@ -89,6 +89,16 @@ public class BagController {
         message.setData(bagDtoList);
 
         return new ResponseEntity<>(message, headers, HttpStatus.OK);
+    }
+
+    @GetMapping("api/bag/detail/{bagId}")
+    public ResponseEntity<?> searchDetailBag(@PathVariable("bagId") long bagId){
+        Message message = new Message();
+        HttpHeaders headers= new HttpHeaders();
+        headers.setContentType(new MediaType("application", "json", Charset.forName("UTF-8")));
+
+
+
     }
 
 

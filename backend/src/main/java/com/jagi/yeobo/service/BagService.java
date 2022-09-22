@@ -15,22 +15,22 @@ public class BagService {
     private final BagRepository bagRepository;
 
     @Transactional
-    public void updateBag(int userId, BagDto bagDto){
+    public void updateBag(long userId, BagDto bagDto){
         bagRepository.updateBag(userId, bagDto);
     }
 
     @Transactional
-    public List<BagDto> searchBagList(int userId){
+    public List<BagDto> searchBagList(long userId){
         return bagRepository.searchBagList(userId);
     }
 
     @Transactional
-    public void likeBag(int userId, int bagId){
+    public void likeBag(long userId, long bagId){
         bagRepository.likeBag(userId, bagId);
     }
 
     @Transactional
-    public List<BagDto> searchLikeBagList(int userId){
+    public List<BagDto> searchLikeBagList(long userId){
         return bagRepository.searchLikeBagList(userId);
     }
 
