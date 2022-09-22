@@ -27,7 +27,7 @@ public class Attraction {
     private String image;
 
     @Column(nullable = true)
-    private double score;
+    private Double score;
 
     @OneToMany(orphanRemoval = true, mappedBy = "attractionId" , cascade = CascadeType.ALL)
     @JsonIgnore
