@@ -8,7 +8,7 @@ import pandas as pd
 # import numpy as np
 
 BASE_URL = "http://apis.data.go.kr/B551011/KorService"
-API_AUTH_KEY = "7Zy0RLAtwkmNz5fgIDJdIV/QcSk8GhikA7PThgnjDRcQijSM6GNOiLuO40OpE+nSLslQhz8NWklurVTJdQeykA=="
+API_AUTH_KEY = "wlWf/ScYRE2EgX56o0YFoqwUkO9oD82OUH1LnvlPE8w9cuI/6IYvSBuQaFi7t5+QXHcYo2tgZ/uIeiuGq67YLw=="
 API_AUTH_KEY = unquote(API_AUTH_KEY)
 
 # areaBasedList, 카테고리로 지역 조회
@@ -57,15 +57,15 @@ for item in data_area["response"]["body"]["items"]["item"]:
         continue
     
     i += 1
-    # print("contentid : "+ item["contentid"])
-    # print("제목 : " + item["title"])
-    # print("주소 : " + item["addr1"], item["areacode"])
-    # print("위도, 경도 : " + item["mapy"], item["mapx"])
-    # print("이미지1 : " + item["firstimage"])
-    # print("이미지2 : " + item["firstimage2"])
-    # print("언급횟수 : " + str(item["readcount"]))
-    # print("요약 : " + item_overview[0]["overview"])
-    # print('-------------------------------------')
+    print("contentid : "+ item["contentid"])
+    print("제목 : " + item["title"])
+    print("주소 : " + item["addr1"], item["areacode"])
+    print("위도, 경도 : " + item["mapy"], item["mapx"])
+    print("이미지1 : " + item["firstimage"])
+    print("이미지2 : " + item["firstimage2"])
+    print("언급횟수 : " + str(item["readcount"]))
+    print("요약 : " + item_overview[0]["overview"])
+    print('-------------------------------------')
     
     attraction_id = int(item["contentid"])
     name = item["title"]
@@ -79,9 +79,9 @@ for item in data_area["response"]["body"]["items"]["item"]:
     readcount = item["readcount"]
     score = 0.0
     attraction_list.append(tuple([attraction_id, name, description, address, areacode, image, image2, mapx, mapy, score, readcount]))
-    for x in attraction_list:
-        for y in x:
-            print(type(y))
+    # for x in attraction_list:
+    #     for y in x:
+    #         print(type(y))
     if i == 5:
         break
     
@@ -93,12 +93,19 @@ for item in data_area["response"]["body"]["items"]["item"]:
 df = pd.DataFrame(attraction_list, columns=['attraction_id', 'name', 'description', 'address', 'areacode', 'image', 'iamge2', 'mapx', 'mapy', 'score', 'readcount'])
 df.to_csv("atteraction.csv")
 
-import pymysql
-def mysql_save(lst):
-    conn=pymysql.connect(host='localhost', port=3307, user='root', password='yeobo', db='yeobo', charset='utf8')
-    cursor=conn.cursor()
-    sql="INSERT INTO ATTRACTION(attraction_id,name,description,address,areacode,image,image2,mapx,mapy, score, readcount) values(%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)"
-    cursor.executemany(sql,lst)
-    conn.commit()
-    conn.close()
-mysql_save(attraction_list)
+# import pymysql
+# def mysql_save(lst):
+#     conn=pymysql.connect(
+#         host='localhost', 
+#         port=3307, 
+#         user='root', 
+#         password='yeobo', 
+#         db='yeobo', 
+#         charset='utf8'
+#         )
+#     cursor=conn.cursor()
+#     sql="INSERT INTO ATTRACTION(attraction_id,name,description,address,areacode,image,image2,mapx,mapy, score, readcount) values(%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)"
+#     cursor.executemany(sql,lst)
+#     conn.commit()
+#     conn.close()
+# mysql_save(attraction_list)
