@@ -41,7 +41,6 @@ public class BagRepository {
                 bagDtoList.add(new BagDto(b.getName(), b.getMemo()));
             }
         }
-
         return bagDtoList;
      }
 
@@ -87,7 +86,6 @@ public class BagRepository {
                  bagDtoList.add(new BagDto(b.getName(), b.getMemo()));
              }
          }
-
          return bagDtoList;
      }
 
