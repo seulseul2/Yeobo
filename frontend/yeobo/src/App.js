@@ -1,8 +1,9 @@
 import React from 'react';
 import { Route, Routes, Link } from 'react-router-dom';
 // import { BrowserView, MobileView } from 'react-device-detect';
+import Boddari from './Boddari/Boddari';
+import BoddariSave from './Boddari/BoddariSave';
 import Main from './MainPage/Main';
-import Boddari from './boddari';
 import Signup from './MainPage/User/Signup';
 import Login from './MainPage/User/Login';
 import Mypage from './MyPage/Mypage';
@@ -25,6 +26,7 @@ function App() {
           <Route path="/Login" element={<Login />}></Route>
           <Route path="/Signup" element={<Signup />}></Route>
           <Route path="/Mypage" element={<Mypage />}></Route>
+          <Route path="/saveboddari" element={<BoddariSave/>}></Route>
         </Routes>
       </div>
       {/* <div style="height: 80px;">.</div> */}
