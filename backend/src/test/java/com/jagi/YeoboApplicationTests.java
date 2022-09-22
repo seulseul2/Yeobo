@@ -10,4 +10,9 @@ class YeoboApplicationTests {
 	void contextLoads() {
 	}
 
+	@Test
+	void test(){
+
+	}
+
 }

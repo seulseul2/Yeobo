@@ -1,34 +1,13 @@
 package com.jagi.yeobo.domain.repository;
 
+import com.jagi.yeobo.domain.Attraction;
+import com.jagi.yeobo.domain.Score;
 import com.jagi.yeobo.domain.User;
-import com.jagi.yeobo.dto.UserDto;
-import lombok.RequiredArgsConstructor;
-import org.springframework.stereotype.Repository;
+import org.springframework.data.jpa.repository.JpaRepository;
 
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
+import java.util.Optional;
 
-@Repository
-@RequiredArgsConstructor
-public class UserRepository {
-    @PersistenceContext
-    private final EntityManager em;
+public interface UserRepository extends JpaRepository<User,Long> {
 
-    public User searchOne(int id){
-        User findUser = em.find(User.class, id);
-        return findUser;
-    }
-
-    public UserDto searchUser(int id){
-        User user = searchOne(id);
-
-        UserDto userDto = UserDto.builder()
-                .email(user.getEmail())
-                .password(user.getPassword())
-                .nickname(user.getNickname())
-                .gender(user.getGender())
-                .age(user.getAge())
-                .build();
-        return userDto;
-    }
+    Optional<User> findByEmail(String email);
 }

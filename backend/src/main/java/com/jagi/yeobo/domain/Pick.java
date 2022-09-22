@@ -10,7 +10,8 @@ import static javax.persistence.FetchType.*;
 @Builder
 @Getter
 @Setter
-@NoArgsConstructor(access = AccessLevel.PROTECTED)
+//@NoArgsConstructor(access = AccessLevel.PROTECTED)
+@NoArgsConstructor
 @AllArgsConstructor
 @Table(name = "pick")
 public class Pick {

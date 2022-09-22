@@ -20,9 +20,9 @@ public class UserDto {
     @ApiModelProperty(example="lgeun123@naver.com")
     @ApiParam(value = "사용자 email")
     private String email;
-    @ApiModelProperty(example="1234")
-    @ApiParam(value = "사용자 password")
-    private String password;
+//    @ApiModelProperty(example="1234")
+//    @ApiParam(value = "사용자 password")
+//    private String password;
     @ApiModelProperty(example="유저 닉네임")
     @ApiParam(value = "사용자 nickname", type = "String")
     private String nickname;
