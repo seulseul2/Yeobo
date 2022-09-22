@@ -10,6 +10,7 @@ import org.springframework.stereotype.Repository;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
+import javax.persistence.TypedQuery;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -44,19 +45,6 @@ public class BagRepository {
         return bagDtoList;
      }
 
-//     public List<BagDto> searchPopularBagList(){
-//        List<Bag> bagList = em.createQuery("SELECT b FROM bag as b ORDER BY b.like_cnt", Bag.class).getResultList();
-//        List<BagDto> bagDtoList = new ArrayList<>();
-//
-//         if(!bagList.isEmpty()){
-//             for(Bag b : bagList){
-//                 bagDtoList.add(new BagDto(b.getName(), b.getMemo()));
-//             }
-//         }
-//
-//         return bagDtoList;
-//     }
-
     public void likeBag(int userId, int bagId){
         Bag findBag = em.find(Bag.class, bagId);
 
@@ -85,6 +73,23 @@ public class BagRepository {
 
         return bagDtoList;
     }
+
+    public List<BagDto> searchPopularBagList(){
+
+        TypedQuery<Bag> query = em.createQuery("SELECT b FROM bag as b ORDER BY b.like_cnt DESC", Bag.class);
+        query.setMaxResults(4);
+        List<Bag> bagList = query.getResultList();
+
+        List<BagDto> bagDtoList = new ArrayList<>();
+
+         if(!bagList.isEmpty()){
+             for(Bag b : bagList){
+                 bagDtoList.add(new BagDto(b.getName(), b.getMemo()));
+             }
+         }
+
+         return bagDtoList;
+     }
 
 
 

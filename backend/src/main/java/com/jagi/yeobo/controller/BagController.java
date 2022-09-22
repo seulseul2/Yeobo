@@ -49,19 +49,6 @@ public class BagController {
         return new ResponseEntity<>(message, headers, HttpStatus.OK);
     }
 
-//    @GetMapping("api/bag/list/popular")
-//    public ResponseEntity<?> searchPopularBagList(@PathVariable("bagId") int bagId){
-//        Message message = new Message();
-//        HttpHeaders headers= new HttpHeaders();
-//        headers.setContentType(new MediaType("application", "json", Charset.forName("UTF-8")));
-//
-//        List<BagDto> bagDtoList = bagService.searchPopularBagList();
-//
-//
-//
-//        return new ResponseEntity<>(message, headers, HttpStatus.OK);
-//    }
-
     @PostMapping("api/bag/like/{userId}/{bagId}")
     public ResponseEntity<?> likeBag(@PathVariable("userId") int userId, @PathVariable("bagId") int bagId){
         Message message = new Message();
@@ -85,6 +72,20 @@ public class BagController {
         List<BagDto> bagDtoList = bagService.searchLikeBagList(userId);
         message.setStatus(StatusEnum.OK);
         message.setMessage("좋아요한 보따리 리스트 조회 성공");
+        message.setData(bagDtoList);
+
+        return new ResponseEntity<>(message, headers, HttpStatus.OK);
+    }
+
+    @GetMapping("api/bag/list/popular")
+    public ResponseEntity<?> searchPopularBagList(@PathVariable("bagId") int bagId){
+        Message message = new Message();
+        HttpHeaders headers= new HttpHeaders();
+        headers.setContentType(new MediaType("application", "json", Charset.forName("UTF-8")));
+
+        List<BagDto> bagDtoList = bagService.searchPopularBagList();
+        message.setStatus(StatusEnum.OK);
+        message.setMessage("상위 4개 인기 보따리 리스트 조회 성공");
         message.setData(bagDtoList);
 
         return new ResponseEntity<>(message, headers, HttpStatus.OK);

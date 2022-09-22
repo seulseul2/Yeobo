@@ -12,6 +12,6 @@ public interface AttractionRepository extends JpaRepository<Attraction,Long> {
 
     Optional<Attraction> findById(Long id);
 
-    @Query(value = "SELECT * FROM Attraction a WHERE a.name LIKE :name")
+//    @Query(value = "SELECT * FROM Attraction a WHERE a.name LIKE :name")
     List<Attraction> findAllByName(String name);
 }

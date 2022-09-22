@@ -24,11 +24,6 @@ public class BagService {
         return bagRepository.searchBagList(userId);
     }
 
-//    @Transactional
-//    public List<BagDto> searchPopularBagList(){
-//        return bagRepository.serarchPopularBagList();
-//    }
-
     @Transactional
     public void likeBag(int userId, int bagId){
         bagRepository.likeBag(userId, bagId);
@@ -37,5 +32,10 @@ public class BagService {
     @Transactional
     public List<BagDto> searchLikeBagList(int userId){
         return bagRepository.searchLikeBagList(userId);
+    }
+
+    @Transactional
+    public List<BagDto> searchPopularBagList(){
+        return bagRepository.searchPopularBagList();
     }
 }
