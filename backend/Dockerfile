@@ -1,4 +1,5 @@
 FROM openjdk:11-jdk
+WORKDIR /var/jenkins_home/workspace/yeobo/backend
 EXPOSE 8080
 CMD ["./gradlew", "clean", "build"]
 VOLUME /tmp
