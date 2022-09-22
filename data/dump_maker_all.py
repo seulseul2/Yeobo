@@ -70,14 +70,14 @@ categories_all = [
 
 # 전체 카테고리 리스트를 우리가 원하는 숫자로 변환
 categories_all_list = [
-    1, 1, 1, 1, 1,                              # 공원, 수목원
-    2, 2, 2,                                    # 산, 자연휴양림
-    3, 3, 3,                                    # 섬, 해수욕장, 해안절경
-    4, 4,                                       # 유원지
-    5, 5,                                       # 휴식
-    6, 6,                                       # 이색 놀거리
-    7, 7, 7,                                    # 관광명소
-    8, 8, 8, 8                                  # 문화시설
+    1, 1, 1, 1, 1,                              # 공원, 수목원, 803개
+    2, 2, 2,                                    # 산, 자연휴양림, 1078개
+    3, 3, 3,                                    # 섬, 해수욕장, 해안절경, 724개
+    4, 4,                                       # 유원지, 501개
+    5, 5,                                       # 휴식, 146개
+    6, 6,                                       # 이색 놀거리, 379개
+    7, 7, 7,                                    # 관광명소, 1031개
+    8, 8, 8, 8                                  # 문화시설, 1037개
     ]
 
 # categories_nature_1 = categories_all[0:5]
@@ -178,7 +178,7 @@ for category in categories_all:
     # categories_all_list의 카테고리(A01010100 ~ A02020200 등) -> 우리가 원하는 카테고리(1~8)로 값을 변경하기 위한 변수 
     category_idx += 1
 
-df = pd.DataFrame(attraction_list, columns=['attraction_id', 'name', 'description', 'address', 'areacode', 'image', 'iamge2', 'mapx', 'mapy', 'score', 'readcount'])
+df = pd.DataFrame(attraction_list, columns=['category', 'attraction_id', 'name', 'description', 'address', 'areacode', 'image', 'iamge2', 'mapx', 'mapy', 'score', 'readcount'])
 df.to_csv("atteraction.csv")
 
 import pymysql
