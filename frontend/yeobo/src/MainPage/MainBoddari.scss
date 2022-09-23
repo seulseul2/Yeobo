@@ -10,7 +10,7 @@
     color: #FFEDEC;
 
     .mainTitle{
-      ont-size: 32px;
+      font-size: 28px;
       padding-top: 24px;
       font-weight: 800;
       text-align: center;
@@ -31,20 +31,22 @@
     padding: 20px;
     display: flex;
     justify-content: space-around;
-    color: #7470AA;
-
-    .makeBoddari {
+    
+    button {
+      color: #7470AA;
+      border: 0px;
       border-radius: 50px;
-      margin-right: 10px;
       height: 50px;
       width: 150px;
+    }
+
+    .makeBoddari {
+      margin-right: 10px;
       background-color: #FFEDEC;
     }
     .mergeBoddari {
-      border-radius: 50px;
-      height: 50px;
-      width: 150px;
       background-color: #FFF7F4;
+
     }
   }
 
