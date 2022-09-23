@@ -1,0 +1,42 @@
+.Destination {
+  font-family: 'Bazzi';
+  display: flex;
+  width: 100%;
+  justify-content: space-around;
+  .Image {
+    width: 50%;
+    max-height: 150px;
+    margin-top: 20px;
+    padding-left: 15px;
+    padding-right: auto;
+    img {
+      border-radius: 15px;
+      border: 4px solid white;
+    }
+  }
+  .Name {
+    width: 50%;
+    padding-top: 60px;
+    text-align: center;
+    color: white;
+  }
+  .Name h1{
+    font-size: 30px;
+  }
+  .btnactive {
+    font-size: 20px;
+    border-radius: 15px;
+    border: 2px solid #f2a3a3;
+    width: 55px;
+    margin-top: 5px;
+    background-color: white;
+    color: #FFc7c7;
+  }
+  .btn { 
+    border-radius: 15px;
+    border: 2px solid white;
+    width: 55px;
+    margin-top: 5px;
+    font-size: 20px;
+  }
+}
