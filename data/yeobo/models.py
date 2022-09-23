@@ -4,6 +4,7 @@ from django.db import models
 
 class Attraction(models.Model):
     attraction_id = models.BigAutoField(primary_key=True) # contentid
+    category = models.IntegerField(null=True) # category
     name = models.CharField(max_length=255, blank=True, null=True) # title
     description = models.CharField(max_length=10000, blank=True, null=True) # overview
     address = models.CharField(max_length=255, blank=True, null=True) # addr1

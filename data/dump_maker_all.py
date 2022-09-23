@@ -23,14 +23,14 @@ mariaDB, MySQL 또한 최대 레코드 수에 미치지 않아 사용가능하�
 BASE_URL = "http://apis.data.go.kr/B551011/KorService"
 
 API_AUTH_KEY_LIST = [
+    "SRextBKpZ7AuNG4vlu1mOyq2/3dCXmWmdyIXDEnn58jvfXomqhiRAVxSvGCHxpHBiYwXaGmhTVtx9QqbadvKnA==",     # yeobo5 / junojam3652@gmail.com
+    "l7J/tYKQyIDPhvILVJCAYeUtNLSV5A2icjrQjdv/tPKyS8INCxMas0yvW41mAwaPwZ3tSvYkpm4TUAeFFofIEA==",     # yeobo4 / owo202202202@gmail.com
+    "WAlqT5QvzF6rGMxbDZoPmdmohvGhMecJFO4GjNt34DZ1j1uULWZfbQDVsDngctE8+EqlGlJHZ+g9QG6zkjj6wA==",     # yeobo3 / junojam0622@naver.com
     "CpszSPbwDkKnYx0BvDqy%2BvMtHpZ9JMozRWNbGvfNZ7vVhx7keYRyLAuyldTzHZ4QWvH4xj4DnASOakTS7kAqLg==",   # 영훈형
     "wlWf/ScYRE2EgX56o0YFoqwUkO9oD82OUH1LnvlPE8w9cuI/6IYvSBuQaFi7t5+QXHcYo2tgZ/uIeiuGq67YLw==",     # nak3652 / nak3652@naver.com
-    "7Zy0RLAtwkmNz5fgIDJdIV/QcSk8GhikA7PThgnjDRcQijSM6GNOiLuO40OpE+nSLslQhz8NWklurVTJdQeykA",       # junojam0622 / junojam0622@gmail.com
     "pn+PZBhNvRIOy6lvKKuVTJka19eNU08Yg/E4pgb0OT+zCKqbhBwHDhOfcIse6d/M2Pn3SUZWp7lTVtOmC2PRDw==",     # yeobo1 / yeobo103@gmail.com
     "yNNCPJRanMk5x96rL+DCEgPFqt1BmFmbYRpGSlDTva/1Z7D+IXzGSYEEhX0bieQbSlj5HpvF4QDSaVhy2ZdIdA==",     # yeobo2 / s3652@yonsei.ac.kr
-    "WAlqT5QvzF6rGMxbDZoPmdmohvGhMecJFO4GjNt34DZ1j1uULWZfbQDVsDngctE8+EqlGlJHZ+g9QG6zkjj6wA==",     # yeobo3 / junojam0622@naver.com
-    "l7J/tYKQyIDPhvILVJCAYeUtNLSV5A2icjrQjdv/tPKyS8INCxMas0yvW41mAwaPwZ3tSvYkpm4TUAeFFofIEA==",     # yeobo4 / owo202202202@gmail.com
-    "SRextBKpZ7AuNG4vlu1mOyq2/3dCXmWmdyIXDEnn58jvfXomqhiRAVxSvGCHxpHBiYwXaGmhTVtx9QqbadvKnA==",     # yeobo5 / junojam3652@gmail.com
+    # "7Zy0RLAtwkmNz5fgIDJdIV/QcSk8GhikA7PThgnjDRcQijSM6GNOiLuO40OpE+nSLslQhz8NWklurVTJdQeykA==",     # junojam0622 / junojam0622@gmail.com
 ]
 
 # 전체 카테고리 리스트
@@ -99,24 +99,25 @@ max_item_num = 820                              # 인문, 체험관광지, 이�
 
 attraction_list = []
 
-for category in categories_all:
+for category_one in categories_all:
+    print(f'{category_one} 카테고리 시작')
     
     # max_item_num 단위마다 API_AUTH_KEY를 갱신하기 위함
     API_AUTH_idx = API_AUTH_temp // max_item_num
-    
+    API_AUTH_KEY = unquote(API_AUTH_KEY_LIST[API_AUTH_idx])
     # area 쿼리문
-    queryString_area1 = "?" + urlencode(
+    queryString_area = "?" + urlencode(
         {
             "MobileOS" : "ETC",
             "MobileApp" : "Yeobo",
-            "serviceKey": API_AUTH_KEY_LIST[API_AUTH_idx],
+            "serviceKey": API_AUTH_KEY,
             "_type":"json",
             "numOfRows": max_item_num,
             "pageNo": "1",
-            "cat3": category,
+            "cat3": category_one,
         }
     )
-    queryURL_area = BASE_URL + path_area + queryString_area1
+    queryURL_area = BASE_URL + path_area + queryString_area
     response_area = requests.get(queryURL_area, verify=False)
     text_area = response_area.text
     data_area = json.loads(text_area)
@@ -125,25 +126,26 @@ for category in categories_all:
         
         # max_item_num 단위마다 API_AUTH_KEY를 갱신하기 위함
         API_AUTH_idx = API_AUTH_temp // max_item_num
+        API_AUTH_KEY = unquote(API_AUTH_KEY_LIST[API_AUTH_idx])
         
         # overview 쿼리문
-        queryString_overview1 = "?" + urlencode(
+        queryString_overview = "?" + urlencode(
             {
                 "MobileOS" : "ETC",
                 "MobileApp" : "Yeobo",
-                "serviceKey": API_AUTH_KEY_LIST[API_AUTH_idx],
+                "serviceKey": API_AUTH_KEY,
                 "_type":"json",
                 "contentId" : item["contentid"],
                 "overviewYN" : "Y",
             }
         )
-        queryURL_overview = BASE_URL + path_overview + queryString_overview1
+        queryURL_overview = BASE_URL + path_overview + queryString_overview
         response_overview = requests.get(queryURL_overview, verify=False)
         text_overview = response_overview.text
         data_overview = json.loads(text_overview)
         item_overview = data_overview["response"]["body"]["items"]["item"]
         
-        if (not item["firstimage"]) or (not item_overview[0]["overview"]):
+        if (not item["firstimage"]) or (not item_overview[0]["overview"]) or (not item["areacode"]) or (not item["mapx"]) or (not item["mapy"]):
             continue
         
         # print(f"카테고리 : {categories_all_list[category_idx]}")
@@ -157,8 +159,8 @@ for category in categories_all:
         # print("요약 : " + item_overview[0]["overview"])
         # print("-------------------------------------")
         
-        category = int(categories_all_list[category_idx])
         attraction_id = int(item["contentid"])
+        category = int(categories_all_list[category_idx])
         name = item["title"]
         description = item_overview[0]["overview"]
         address = item["addr1"]
@@ -170,15 +172,22 @@ for category in categories_all:
         readcount = item["readcount"]
         score = 0.0
         
-        attraction_list.append(tuple([category, attraction_id, name, description, address, areacode, image, image2, mapx, mapy, score, readcount]))
+        attraction_list.append(tuple([attraction_id, category, name, description, address, areacode, image, image2, mapx, mapy, score, readcount]))
         
         # API_AUTH_KEY를 전체 개수의 max_item_num마다 변경하기 위하여 API_AUTH_temp에 값을 추가한 후, 이를 API_AUTH_idx 로 변환하여 적용한다.
         API_AUTH_temp += 1
+        print(f'{API_AUTH_temp}번째 여행지 : {item["title"]}')
+        
         
     # categories_all_list의 카테고리(A01010100 ~ A02020200 등) -> 우리가 원하는 카테고리(1~8)로 값을 변경하기 위한 변수 
     category_idx += 1
+    print(f'{category_one} 카테고리({category_idx}/8) 끝!')
+    print('----------------------------------------')
+    
+    if API_AUTH_temp > 50:
+        break
 
-df = pd.DataFrame(attraction_list, columns=['category', 'attraction_id', 'name', 'description', 'address', 'areacode', 'image', 'iamge2', 'mapx', 'mapy', 'score', 'readcount'])
+df = pd.DataFrame(attraction_list, columns=['attraction_id', 'category', 'name', 'description', 'address', 'areacode', 'image', 'iamge2', 'mapx', 'mapy', 'score', 'readcount'])
 df.to_csv("atteraction.csv")
 
 import pymysql
@@ -189,10 +198,10 @@ def mysql_save(lst):
         user = 'root', 
         password = 'yeobo', 
         db = 'yeobo', 
-        charset = 'utf8'
+        charset = 'utf8mb4'
         )
     cursor = conn.cursor()
-    sql = "INSERT INTO ATTRACTION(category, attraction_id, name, description, address, areacode, image, image2, mapx, mapy, score, readcount) values(%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)"
+    sql = "INSERT INTO ATTRACTION(attraction_id, category, name, description, address, areacode, image, image2, mapx, mapy, score, readcount) values(%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)"
     cursor.executemany(sql, lst)
     conn.commit()
     conn.close()
