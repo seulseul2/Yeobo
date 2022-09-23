@@ -1,0 +1,119 @@
+package com.jagi.yeobo.controller;
+
+import com.jagi.yeobo.domain.Attraction;
+import com.jagi.yeobo.domain.Score;
+import com.jagi.yeobo.dto.Message;
+import com.jagi.yeobo.dto.ScoreDto;
+import com.jagi.yeobo.dto.StatusEnum;
+import com.jagi.yeobo.dto.UserDto;
+import com.jagi.yeobo.service.AttractionService;
+import com.jagi.yeobo.service.UserService;
+import io.swagger.annotations.ApiOperation;
+import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
+import java.nio.charset.Charset;
+import java.util.List;
+import java.util.Optional;
+
+@RestController
+@RequiredArgsConstructor
+public class AttractionController {
+
+    private final AttractionService attractionService;
+
+    @ApiOperation(value = "여행지 id로 세부정보 조회",notes = "여행지의 세부 정보를 id로 조회한다.")
+    @GetMapping("api/attraction/detail/{attractionId}") // /{page}
+    public ResponseEntity<?> searchAttractionById(@PathVariable("attractionId") Long  attractionId){
+        Message message = new Message();
+        HttpHeaders headers= new HttpHeaders();
+        headers.setContentType(new MediaType("application", "json", Charset.forName("UTF-8")));
+        try {
+
+            Optional<Attraction> attraction = attractionService.findById(attractionId);
+            message.setStatus(StatusEnum.OK);
+            message.setMessage("여행지 세부 정보 조회 성공");
+            message.setData(attraction);
+            return new ResponseEntity<>(message, headers, HttpStatus.OK);
+        } catch (IllegalArgumentException | IllegalStateException e){
+            e.printStackTrace();
+            message.setStatus(StatusEnum.BAD_REQUEST);
+            message.setMessage("여행지 정보가 없습니다.");
+            return new ResponseEntity<>(message, headers, HttpStatus.BAD_REQUEST);
+        } catch (Exception e){
+            e.printStackTrace();
+            message.setStatus(StatusEnum.INTERNAL_SERVER_ERROR);
+            message.setMessage("서버 에러 발생");
+            return new ResponseEntity<>(message, headers,  HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
+
+    @ApiOperation(value = "여행지 이름으로 리스트 조회",notes = "검색어를 포함하는 여행지 리스트를 조회한다.")
+    @GetMapping("api/attraction/search/{name}") // /{page}
+    public ResponseEntity<?> searchAttractionListByName(@PathVariable("name") String  name){
+        Message message = new Message();
+        HttpHeaders headers= new HttpHeaders();
+        headers.setContentType(new MediaType("application", "json", Charset.forName("UTF-8")));
+        try {
+            List<Attraction> attraction = attractionService.findAllByName(name);
+            if(!attraction.isEmpty()){
+                message.setStatus(StatusEnum.OK);
+                message.setMessage("여행지 세부 정보 조회 성공");
+                message.setData(attraction);
+                return new ResponseEntity<>(message, headers, HttpStatus.OK);
+            }else{
+                message.setStatus(StatusEnum.BAD_REQUEST);
+                message.setMessage("여행지 정보가 없습니다.");
+                return new ResponseEntity<>(message, headers, HttpStatus.BAD_REQUEST);
+            }
+
+
+        } catch (IllegalArgumentException | IllegalStateException e){
+            e.printStackTrace();
+            message.setStatus(StatusEnum.BAD_REQUEST);
+            message.setMessage("여행지 정보 혹은 사용자 정보가 없습니다.");
+            return new ResponseEntity<>(message, headers, HttpStatus.BAD_REQUEST);
+        } catch (Exception e){
+            e.printStackTrace();
+            message.setStatus(StatusEnum.INTERNAL_SERVER_ERROR);
+            message.setMessage("서버 에러 발생");
+            return new ResponseEntity<>(message, headers,  HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
+
+
+    @ApiOperation(value = "사용자의 여행지 평가",notes = "사용자 userId로 여행지 각각에 대해 평가한 점수를 저장한다.")
+    @PostMapping("api/attraction/score") ///{attractionId}/{userId}
+    public ResponseEntity<?> searchUserByNick(@RequestBody ScoreDto scoreDto){ //@PathVariable("attractionId") long attractionId, @PathVariable("userId") long userId,
+        Message message = new Message();
+        HttpHeaders headers= new HttpHeaders();
+        headers.setContentType(new MediaType("application", "json", Charset.forName("UTF-8")));
+        try {
+//            if (scoreDto.getScore()!=0){
+                Score score = attractionService.createScore(scoreDto);
+//            }else{
+//
+//            }
+            message.setStatus(StatusEnum.OK);
+            message.setMessage("사용자의 여행지 평가 저장 성공");
+            message.setData(score);
+            return new ResponseEntity<>(message, headers, HttpStatus.OK);
+        } catch (IllegalArgumentException | IllegalStateException e){
+            e.printStackTrace();
+            message.setStatus(StatusEnum.BAD_REQUEST);
+            message.setMessage("여행지 정보 혹은 사용자 정보가 없습니다.");
+            return new ResponseEntity<>(message, headers, HttpStatus.BAD_REQUEST);
+        } catch (Exception e){
+            e.printStackTrace();
+            message.setStatus(StatusEnum.INTERNAL_SERVER_ERROR);
+            message.setMessage("서버 에러 발생");
+            return new ResponseEntity<>(message, headers,  HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+}
