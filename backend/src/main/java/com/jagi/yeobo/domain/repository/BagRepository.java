@@ -91,6 +91,9 @@ public class BagRepository {
          return bagDtoList;
      }
 
+//     public Bag searchDetailBag(long bagId){
+//
+//     }
 
 
 }

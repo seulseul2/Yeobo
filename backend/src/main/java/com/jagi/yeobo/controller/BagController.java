@@ -1,6 +1,7 @@
 package com.jagi.yeobo.controller;
 
 import com.jagi.yeobo.domain.Bag;
+import com.jagi.yeobo.dto.BagDetailDto;
 import com.jagi.yeobo.dto.BagDto;
 import com.jagi.yeobo.dto.Message;
 import com.jagi.yeobo.dto.StatusEnum;
@@ -91,15 +92,16 @@ public class BagController {
         return new ResponseEntity<>(message, headers, HttpStatus.OK);
     }
 
-    @GetMapping("api/bag/detail/{bagId}")
-    public ResponseEntity<?> searchDetailBag(@PathVariable("bagId") long bagId){
-        Message message = new Message();
-        HttpHeaders headers= new HttpHeaders();
-        headers.setContentType(new MediaType("application", "json", Charset.forName("UTF-8")));
-
-
-
-    }
+//    @GetMapping("api/bag/detail/{bagId}")
+//    public ResponseEntity<?> searchDetailBag(@PathVariable("bagId") long bagId){
+//        Message message = new Message();
+//        HttpHeaders headers= new HttpHeaders();
+//        headers.setContentType(new MediaType("application", "json", Charset.forName("UTF-8")));
+//
+//        BagDetailDto bagDetailDto = bagService.searchDetailBag(bagId);
+//
+//
+//    }
 
 
 }

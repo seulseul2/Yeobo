@@ -4,6 +4,8 @@ import com.jagi.yeobo.domain.Attraction;
 import com.jagi.yeobo.domain.Bag;
 import lombok.*;
 
+import java.util.List;
+
 @Getter
 @Setter
 @RequiredArgsConstructor
@@ -11,8 +13,10 @@ import lombok.*;
 @AllArgsConstructor
 public class BagDetailDto {
 
-    private Bag bag;
+    private String name;
 
-    private Attraction attraction;
+    private String memo;
+
+    private List<AttractionDto> attraction;
 
 }
