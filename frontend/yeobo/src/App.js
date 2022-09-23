@@ -17,6 +17,7 @@ function App() {
       <div className='tempNavBar'>
         <Link to="/">Main</Link>
         <Link to="/Boddari">보따리만들기</Link>
+        <Link to="/Boddari">보따리만들기</Link>
         <Link to="/Login">로그인</Link>
       </div>
       <div>
