@@ -1,8 +1,8 @@
 package com.jagi.yeobo.domain.repository;
 
-import com.jagi.yeobo.domain.Bag;
-import com.jagi.yeobo.domain.Pick;
-import com.jagi.yeobo.domain.User;
+import com.jagi.yeobo.domain.*;
+import com.jagi.yeobo.dto.AttractionDto;
+import com.jagi.yeobo.dto.BagDetailDto;
 import com.jagi.yeobo.dto.BagDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
@@ -89,9 +89,29 @@ public class BagRepository {
          return bagDtoList;
      }
 
-//     public Bag searchDetailBag(long bagId){
-//
-//     }
+     public BagDetailDto searchDetailBag(long bagId){
+        BagDetailDto bagDetailDto = new BagDetailDto();
+
+        Bag findBag = em.find(Bag.class, bagId);
+        bagDetailDto.setName(findBag.getName());
+        bagDetailDto.setMemo(findBag.getMemo());
+
+        List<BagAttraction> bagAttractions = em.createQuery("SELECT a FROM BagAttraction as a WHERE a.bagId = :bagId", BagAttraction.class)
+                .setParameter("bagId", bagId).getResultList();
+
+        List<AttractionDto> list = new ArrayList<>();
+        if(!list.isEmpty()){
+           for(BagAttraction b : bagAttractions){
+              Attraction at = em.createQuery("SELECT k FROM Attraction as k WHERE k.attractionId = :attractionId", Attraction.class)
+                      .setParameter("attractionId", b.getAttractionId()).getSingleResult();
+              AttractionDto attractionDto = new AttractionDto(at.getId(),at.getName());
+              list.add(attractionDto);
+           }
+        }
+
+        bagDetailDto.setAttraction(list);
+        return bagDetailDto;
+     }
 
 
 }

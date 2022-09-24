@@ -41,8 +41,8 @@ public class BagService {
         return bagRepository.searchPopularBagList();
     }
 
-//    @Transactional
-//    public BagDetailDto searchDetailBag(long bagId){
-//        return bagRepository.searchDetailBag(bagId);
-//    }
+    @Transactional
+    public BagDetailDto searchDetailBag(long bagId){
+        return bagRepository.searchDetailBag(bagId);
+    }
 }
