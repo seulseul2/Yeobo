@@ -31,6 +31,13 @@ public class AttractionService {
 
     @Transactional
     public Score createScore(ScoreDto scoreDto){
+//        Score s = new Score();
+//        s.setAttractionId(scoreDto.getAttractionId());
         return scoreRepository.save(scoreDto);
+    }
+
+    @Transactional
+    public List<Score> findAllScoreByUserId(long userId){
+        return scoreRepository.findAllByUserId(userId);
     }
 }

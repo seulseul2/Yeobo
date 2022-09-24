@@ -95,15 +95,45 @@ public class AttractionController {
         HttpHeaders headers= new HttpHeaders();
         headers.setContentType(new MediaType("application", "json", Charset.forName("UTF-8")));
         try {
-//            if (scoreDto.getScore()!=0){
-                Score score = attractionService.createScore(scoreDto);
-//            }else{
-//
-//            }
+
+            Score score = attractionService.createScore(scoreDto);
+
             message.setStatus(StatusEnum.OK);
             message.setMessage("사용자의 여행지 평가 저장 성공");
             message.setData(score);
             return new ResponseEntity<>(message, headers, HttpStatus.OK);
+        } catch (IllegalArgumentException | IllegalStateException e){
+            e.printStackTrace();
+            message.setStatus(StatusEnum.BAD_REQUEST);
+            message.setMessage("여행지 정보 혹은 사용자 정보가 없습니다.");
+            return new ResponseEntity<>(message, headers, HttpStatus.BAD_REQUEST);
+        } catch (Exception e){
+            e.printStackTrace();
+            message.setStatus(StatusEnum.INTERNAL_SERVER_ERROR);
+            message.setMessage("서버 에러 발생");
+            return new ResponseEntity<>(message, headers,  HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
+    @ApiOperation(value = "사용자의 평점 매긴 여행지 리스트",notes = "사용자가 평점 매긴 여행지 리스트를 조회한다.")
+    @GetMapping("api/attraction/scorelist/{userId}") // /{page}
+    public ResponseEntity<?> searchAttractionListByUserScore(@PathVariable("userId") long userId){
+        Message message = new Message();
+        HttpHeaders headers= new HttpHeaders();
+        headers.setContentType(new MediaType("application", "json", Charset.forName("UTF-8")));
+        try {
+            List<Score> attraction = attractionService.findAllScoreByUserId(userId);
+            if(!attraction.isEmpty()){
+                message.setMessage("사용자가 평점 남긴 여행지 리스트 조회 성공");
+            }else{
+
+                message.setMessage("사용자가 평점 남긴 여행지 정보가 없습니다.");
+
+            }
+            message.setStatus(StatusEnum.OK);
+            message.setData(attraction);
+            return new ResponseEntity<>(message, headers, HttpStatus.OK);
+
         } catch (IllegalArgumentException | IllegalStateException e){
             e.printStackTrace();
             message.setStatus(StatusEnum.BAD_REQUEST);
