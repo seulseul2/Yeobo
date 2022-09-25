@@ -1,4 +1,5 @@
 from django.db import models
+from django.conf import settings
 
 # Create your models here.
 
@@ -18,3 +19,6 @@ class Attraction(models.Model):
     class Meta:
         # managed = False
         db_table = 'attraction'
+    
+    def __str__(self):
+        return self.name

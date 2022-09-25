@@ -79,9 +79,7 @@ for item in data_area["response"]["body"]["items"]["item"]:
     readcount = item["readcount"]
     score = 0.0
     attraction_list.append(tuple([attraction_id, name, description, address, areacode, image, image2, mapx, mapy, score, readcount]))
-    for x in attraction_list:
-        for y in x:
-            print(type(y))
+
     if i == 5:
         break
     
