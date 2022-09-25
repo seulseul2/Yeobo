@@ -1,7 +1,7 @@
 import './BottomNavBar.scss';
 import { Link } from 'react-router-dom';
 import bag from './images/icons/bag1.png';
-import bags from './images/icons/mergeboddari.png';
+import bags from './images/icons/bags.png';
 import user from './images/icons/user.png';
 import homeWhite from './images/icons/home-white.png';
 // import homePink from './images/icons/home-pink.png';
