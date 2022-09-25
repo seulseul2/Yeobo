@@ -1,12 +1,14 @@
 package com.jagi.yeobo.domain.repository;
 
 import com.jagi.yeobo.domain.Attraction;
+import com.jagi.yeobo.domain.Score;
 import com.jagi.yeobo.dto.ScoreDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import java.util.List;
 import java.util.Optional;
 
 @Repository
@@ -17,5 +19,7 @@ public class AttractionRepository2 {
 
     private final AttractionRepository attractionRepository;
 
-
+    public List<ScoreDto> findAllByUserId(long userId){
+        return ;
+    }
 }
