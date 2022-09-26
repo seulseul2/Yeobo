@@ -7,7 +7,7 @@ const MainRecom = () => {
   return <div class="mainRecom">
     <div className='titleModule'>
       <p className='mainTitle'>맞춤형 추천 여행지</p>
-      <p className='subTitle'>여행지 평점을 많이 메길수록,<br/>더 정확한 추천을 받을 수 있습니다</p>
+      <p className='subTitle'>여행지 평점을 많이 매길수록,<br/>더 정확한 추천을 받을 수 있습니다</p>
     </div>
     <div className='imageRecom'>
       <ul className='imageLists'>
