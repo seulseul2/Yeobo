@@ -8,7 +8,7 @@ import javax.persistence.*;
 @Builder
 @Getter
 @Setter
-@NoArgsConstructor(access = AccessLevel.PROTECTED)
+@NoArgsConstructor
 @AllArgsConstructor
 @Table(name = "score")
 public class Score {
