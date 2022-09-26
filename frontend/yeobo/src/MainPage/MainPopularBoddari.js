@@ -9,25 +9,77 @@ function Like(like) {
   }
 }
 
-function BoddariRankComponent(props) {
-  return<div className='boddariRank'>
-    <div className='profile-img-wrapper'>
-      <Link to={props.link}>
-        <img className='profile-img' src={props.src} alt="" />
-      </Link>
-    </div>
-    <div className='boddari-info'>
-      <div className='boddari-title'>
-        <p className='boddari-name'>{props.name}</p>
-        <p className='boddari-username'>{props.username}</p>
+const DUMMY_DATA = [
+  {
+    id: 1,
+    title: '보따리 1',
+    image_src: 'https://mblogthumb-phinf.pstatic.net/MjAyMDAyMDdfMTYw/MDAxNTgxMDg1NzUxMTUy.eV1iEw2gk2wt_YqPWe5F7SroOCkXJy2KFwmTDNzM0GQg.Z3Kd5MrDh07j86Vlb2OhAtcw0oVmGCMXtTDjoHyem9og.JPEG.7wayjeju/%EB%B0%B0%EC%9A%B0%ED%94%84%EB%A1%9C%ED%95%84%EC%82%AC%EC%A7%84_IMG7117.jpg?type=w800',
+    username: '이지은',
+    link: '/mypage',
+    like: 'True',
+    desc: '보따리입니다. 이것은 보따리야. 이것은 보따리야. 이것은 보따리야. 이것은 보따리야. 이것은 보따리야. 이것은 보따리야. 이것은 보따리야. '
+  },
+  {
+    id: 2,
+    title: '보따리 2',
+    image_src: 'https://mblogthumb-phinf.pstatic.net/MjAyMDAyMDdfMTYw/MDAxNTgxMDg1NzUxMTUy.eV1iEw2gk2wt_YqPWe5F7SroOCkXJy2KFwmTDNzM0GQg.Z3Kd5MrDh07j86Vlb2OhAtcw0oVmGCMXtTDjoHyem9og.JPEG.7wayjeju/%EB%B0%B0%EC%9A%B0%ED%94%84%EB%A1%9C%ED%95%84%EC%82%AC%EC%A7%84_IMG7117.jpg?type=w800',
+    username: '조영훈',
+    link: '/mypage',
+    like: 'True',
+    desc: '보따리입니다. 이것은 보따리야. 이것은 보따리야. 이것은 보따리야. 이것은 보따리야. 이것은 보따리야. 이것은 보따리야. 이것은 보따리야. '
+  },
+  {
+    id: 3,
+    title: '보따리 3',
+    image_src: 'https://mblogthumb-phinf.pstatic.net/MjAyMDAyMDdfMTYw/MDAxNTgxMDg1NzUxMTUy.eV1iEw2gk2wt_YqPWe5F7SroOCkXJy2KFwmTDNzM0GQg.Z3Kd5MrDh07j86Vlb2OhAtcw0oVmGCMXtTDjoHyem9og.JPEG.7wayjeju/%EB%B0%B0%EC%9A%B0%ED%94%84%EB%A1%9C%ED%95%84%EC%82%AC%EC%A7%84_IMG7117.jpg?type=w800',
+    username: '안다슬',
+    link: '/mypage',
+    like: 'False',
+    desc: '보따리입니다. 이것은 보따리야. 이것은 보따리야. 이것은 보따리야. 이것은 보따리야. 이것은 보따리야. 이것은 보따리야. 이것은 보따리야. '
+  },
+  {
+    id: 4,
+    title: '보따리 4',
+    image_src: 'https://mblogthumb-phinf.pstatic.net/MjAyMDAyMDdfMTYw/MDAxNTgxMDg1NzUxMTUy.eV1iEw2gk2wt_YqPWe5F7SroOCkXJy2KFwmTDNzM0GQg.Z3Kd5MrDh07j86Vlb2OhAtcw0oVmGCMXtTDjoHyem9og.JPEG.7wayjeju/%EB%B0%B0%EC%9A%B0%ED%94%84%EB%A1%9C%ED%95%84%EC%82%AC%EC%A7%84_IMG7117.jpg?type=w800',
+    username: '나장엽',
+    link: '/mypage',
+    like: 'True',
+    desc: '보따리입니다. 이것은 보따리야. 이것은 보따리야. 이것은 보따리야. 이것은 보따리야. 이것은 보따리야. 이것은 보따리야. 이것은 보따리야. '
+  },
+  {
+    id: 5,
+    title: '보따리 5',
+    image_src: 'https://mblogthumb-phinf.pstatic.net/MjAyMDAyMDdfMTYw/MDAxNTgxMDg1NzUxMTUy.eV1iEw2gk2wt_YqPWe5F7SroOCkXJy2KFwmTDNzM0GQg.Z3Kd5MrDh07j86Vlb2OhAtcw0oVmGCMXtTDjoHyem9og.JPEG.7wayjeju/%EB%B0%B0%EC%9A%B0%ED%94%84%EB%A1%9C%ED%95%84%EC%82%AC%EC%A7%84_IMG7117.jpg?type=w800',
+    username: '이준호',
+    link: '/mypage',
+    like: 'False',
+    desc: '보따리입니다. 이것은 보따리야. 이것은 보따리야. 이것은 보따리야. 이것은 보따리야. 이것은 보따리야. 이것은 보따리야. 이것은 보따리야. '
+  },
+];
+
+function BoddariRankComponent() {
+  return <div>
+    {DUMMY_DATA.map((data) => {
+      return <div className='boddariRank' key="data.id">
+        <div className='profile-img-wrapper'>
+          <Link to={data.link}>
+            <img className='profile-img' src={data.image_src} alt="" />
+          </Link>
+        </div>
+        <div className='boddari-info'>
+          <div className='boddari-title'>
+            <p className='boddari-name'>{data.title}</p>
+            <p className='boddari-username'>{data.username}</p>
+          </div>
+          <div className='boddari-desc'>
+            <p className='boddari-desc-text'>{data.desc}</p>
+          </div>
+        </div>
+        <div className='boddari-heart'>
+          {Like(data.like)}
+        </div>
       </div>
-      <div className='boddari-desc'>
-        <p className='boddari-desc-text'>{props.desc}</p>
-      </div>
-    </div>
-    <div className='boddari-heart'>
-      {Like(props.like)}
-    </div>
+    })}
   </div>
 }
 // <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18" height="18"><path fill="none" d="M0 0H24V24H0z"/><path d="M16.5 3C19.538 3 22 5.5 22 9c0 7-7.5 11-10 12.5C9.5 20 2 16 2 9c0-3.5 2.5-6 5.5-6C9.36 3 11 4 12 5c1-1 2.64-2 4.5-2z" fill="rgba(244,155,155,1)"/></svg>
@@ -41,11 +93,11 @@ const MainPopularBoddari = () => {
         <p className='subTitle'>매일 자정 갱신됩니다.</p>
       </div>
     </div>
-    <BoddariRankComponent name="보따리 이름" username="백한나" desc="보따리 설명입니당asdfasdfasdfadsfasdfasdf다디라다리다리다릳랃릳;릳; 하하 이 보따리가 최고입니다 라핳하ㅏ..." link="/mypage" src="https://mblogthumb-phinf.pstatic.net/MjAyMDAyMDdfMTYw/MDAxNTgxMDg1NzUxMTUy.eV1iEw2gk2wt_YqPWe5F7SroOCkXJy2KFwmTDNzM0GQg.Z3Kd5MrDh07j86Vlb2OhAtcw0oVmGCMXtTDjoHyem9og.JPEG.7wayjeju/%EB%B0%B0%EC%9A%B0%ED%94%84%EB%A1%9C%ED%95%84%EC%82%AC%EC%A7%84_IMG7117.jpg?type=w800" like="True"/>
-    <BoddariRankComponent name="보따리 이름" username="백한나" desc="보따리 설명입니당asdfasdfasdfadsfasdfasdf다디라다리다리다릳랃릳;릳; 하하 이 보따리가 최고입니다 라핳하ㅏ..." link="/mypage" src="https://mblogthumb-phinf.pstatic.net/MjAyMDAyMDdfMTYw/MDAxNTgxMDg1NzUxMTUy.eV1iEw2gk2wt_YqPWe5F7SroOCkXJy2KFwmTDNzM0GQg.Z3Kd5MrDh07j86Vlb2OhAtcw0oVmGCMXtTDjoHyem9og.JPEG.7wayjeju/%EB%B0%B0%EC%9A%B0%ED%94%84%EB%A1%9C%ED%95%84%EC%82%AC%EC%A7%84_IMG7117.jpg?type=w800" like="False"/>
-    <BoddariRankComponent name="보따리 이름" username="백한나" desc="보따리 설명입니당asdfasdfasdfadsfasdfasdf다디라다리다리다릳랃릳;릳; 하하 이 보따리가 최고입니다 라핳하ㅏ..." link="/mypage" src="https://mblogthumb-phinf.pstatic.net/MjAyMDAyMDdfMTYw/MDAxNTgxMDg1NzUxMTUy.eV1iEw2gk2wt_YqPWe5F7SroOCkXJy2KFwmTDNzM0GQg.Z3Kd5MrDh07j86Vlb2OhAtcw0oVmGCMXtTDjoHyem9og.JPEG.7wayjeju/%EB%B0%B0%EC%9A%B0%ED%94%84%EB%A1%9C%ED%95%84%EC%82%AC%EC%A7%84_IMG7117.jpg?type=w800" like="False"/>
-    <BoddariRankComponent name="보따리 이름" username="백한나" desc="보따리 설명입니당asdfasdfasdfadsfasdfasdf다디라다리다리다릳랃릳;릳; 하하 이 보따리가 최고입니다 라핳하ㅏ..." link="/mypage" src="https://mblogthumb-phinf.pstatic.net/MjAyMDAyMDdfMTYw/MDAxNTgxMDg1NzUxMTUy.eV1iEw2gk2wt_YqPWe5F7SroOCkXJy2KFwmTDNzM0GQg.Z3Kd5MrDh07j86Vlb2OhAtcw0oVmGCMXtTDjoHyem9og.JPEG.7wayjeju/%EB%B0%B0%EC%9A%B0%ED%94%84%EB%A1%9C%ED%95%84%EC%82%AC%EC%A7%84_IMG7117.jpg?type=w800" like="True"/>
-    <BoddariRankComponent name="보따리 이름" username="백한나" desc="보따리 설명입니당asdfasdfasdfadsfasdfasdf다디라다리다리다릳랃릳;릳; 하하 이 보따리가 최고입니다 라핳하ㅏ..." link="/mypage" src="https://mblogthumb-phinf.pstatic.net/MjAyMDAyMDdfMTYw/MDAxNTgxMDg1NzUxMTUy.eV1iEw2gk2wt_YqPWe5F7SroOCkXJy2KFwmTDNzM0GQg.Z3Kd5MrDh07j86Vlb2OhAtcw0oVmGCMXtTDjoHyem9og.JPEG.7wayjeju/%EB%B0%B0%EC%9A%B0%ED%94%84%EB%A1%9C%ED%95%84%EC%82%AC%EC%A7%84_IMG7117.jpg?type=w800" like="False"/>
+    <BoddariRankComponent />
+    {/* <BoddariRankComponent />
+    <BoddariRankComponent />
+    <BoddariRankComponent />
+    <BoddariRankComponent /> */}
   </div>
 }
 export default MainPopularBoddari;
