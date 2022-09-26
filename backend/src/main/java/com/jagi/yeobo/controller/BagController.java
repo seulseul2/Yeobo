@@ -1,10 +1,12 @@
 package com.jagi.yeobo.controller;
 
 import com.jagi.yeobo.domain.Bag;
+import com.jagi.yeobo.dto.BagDetailDto;
 import com.jagi.yeobo.dto.BagDto;
 import com.jagi.yeobo.dto.Message;
 import com.jagi.yeobo.dto.StatusEnum;
 import com.jagi.yeobo.service.BagService;
+import io.swagger.annotations.ApiOperation;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -21,8 +23,9 @@ public class BagController {
 
     private final BagService bagService;
 
+    @ApiOperation(value = "보따리 이름과 메모를 수정한다.",notes = "userId에 해당하는 회원의 보따리의 이름과 메모를 수정한다.")
     @PutMapping("api/bag/update/name/{bagId}")
-    public ResponseEntity<?> updateBag(@PathVariable("userId") int userId, @RequestBody BagDto bagDto){
+    public ResponseEntity<?> updateBag(@PathVariable("userId") long userId, @RequestBody BagDto bagDto){
         Message message = new Message();
         HttpHeaders headers= new HttpHeaders();
         headers.setContentType(new MediaType("application", "json", Charset.forName("UTF-8")));
@@ -34,8 +37,9 @@ public class BagController {
         return new ResponseEntity<>(message, headers, HttpStatus.OK);
     }
 
+    @ApiOperation(value = "보따리 리스트를 조회한다.",notes = "userId에 해당하는 회원의 보따리 리스트를 조횐한다.")
     @GetMapping("api/bag/list/{userId}")
-    public ResponseEntity<?> searchBagList(@PathVariable("userId") int userId){
+    public ResponseEntity<?> searchBagList(@PathVariable("userId") long userId){
         Message message = new Message();
         HttpHeaders headers= new HttpHeaders();
         headers.setContentType(new MediaType("application", "json", Charset.forName("UTF-8")));
@@ -49,8 +53,9 @@ public class BagController {
         return new ResponseEntity<>(message, headers, HttpStatus.OK);
     }
 
+    @ApiOperation(value = "보따리에 좋아요를 누른다.",notes = "좋아요를 누른 보따리에 좋아요 수를 증가시킨다.")
     @PostMapping("api/bag/like/{userId}/{bagId}")
-    public ResponseEntity<?> likeBag(@PathVariable("userId") int userId, @PathVariable("bagId") int bagId){
+    public ResponseEntity<?> likeBag(@PathVariable("userId") long userId, @PathVariable("bagId") int bagId){
         Message message = new Message();
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(new MediaType("application", "json", Charset.forName("UTF-8")));
@@ -63,8 +68,9 @@ public class BagController {
         return new ResponseEntity<>(message, headers, HttpStatus.OK);
     }
 
+    @ApiOperation(value = "좋아요한 보따리의 리스트를 조회한다.",notes = "userId에 해당하는 회원이 좋아요를 누른 보따리의 리스트를 출력한다.")
     @GetMapping("api/bag/likelist/{userId}")
-    public ResponseEntity<?> searchLikeBagList(@PathVariable("userId") int userId){
+    public ResponseEntity<?> searchLikeBagList(@PathVariable("userId") long userId){
         Message message = new Message();
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(new MediaType("application", "json", Charset.forName("UTF-8")));
@@ -77,8 +83,9 @@ public class BagController {
         return new ResponseEntity<>(message, headers, HttpStatus.OK);
     }
 
+    @ApiOperation(value = "인기 보따리의 리스트를 조회한다.",notes = "상위 4개 좋아요 순의 인기 보따리들의 리스트를 출력한다.")
     @GetMapping("api/bag/list/popular")
-    public ResponseEntity<?> searchPopularBagList(@PathVariable("bagId") int bagId){
+    public ResponseEntity<?> searchPopularBagList(@PathVariable("bagId") long bagId){
         Message message = new Message();
         HttpHeaders headers= new HttpHeaders();
         headers.setContentType(new MediaType("application", "json", Charset.forName("UTF-8")));
@@ -87,6 +94,21 @@ public class BagController {
         message.setStatus(StatusEnum.OK);
         message.setMessage("상위 4개 인기 보따리 리스트 조회 성공");
         message.setData(bagDtoList);
+
+        return new ResponseEntity<>(message, headers, HttpStatus.OK);
+    }
+
+    @ApiOperation(value = "보따리 상세보기를 한다.",notes = "해당 보따리의 이름, 메모, 보따리에 담겨있는 여행지 리스트를 출력한다.")
+    @GetMapping("api/bag/detail/{bagId}")
+    public ResponseEntity<?> searchDetailBag(@PathVariable("bagId") long bagId){
+        Message message = new Message();
+        HttpHeaders headers= new HttpHeaders();
+        headers.setContentType(new MediaType("application", "json", Charset.forName("UTF-8")));
+
+        BagDetailDto bagDetailDto = bagService.searchDetailBag(bagId);
+        message.setStatus(StatusEnum.OK);
+        message.setMessage("보따리 상세보기 성공");
+        message.setData(bagDetailDto);
 
         return new ResponseEntity<>(message, headers, HttpStatus.OK);
     }
