@@ -4,6 +4,7 @@ package com.jagi.yeobo.service;
 import com.jagi.yeobo.domain.Attraction;
 import com.jagi.yeobo.domain.Score;
 import com.jagi.yeobo.domain.repository.AttractionRepository;
+import com.jagi.yeobo.domain.repository.AttractionRepository2;
 import com.jagi.yeobo.domain.repository.ScoreRepository;
 import com.jagi.yeobo.dto.ScoreDto;
 import lombok.RequiredArgsConstructor;
@@ -17,6 +18,7 @@ import java.util.Optional;
 @RequiredArgsConstructor
 public class AttractionService {
     private final AttractionRepository attractionRepository;
+    private final AttractionRepository2 attractionRepository2;
     private final ScoreRepository scoreRepository;
 
     @Transactional
@@ -31,12 +33,11 @@ public class AttractionService {
 
     @Transactional
     public Score createScore(ScoreDto scoreDto){
-//        Score s = new Score();
-//        s.setAttractionId(scoreDto.getAttractionId());
-        return scoreRepository.save(scoreDto);
+        return attractionRepository2.saveScore(scoreDto);
+//        return scoreRepository.save(scoreDto);
     }
     @Transactional
-    public List<Score> findAllScoreByUserId(long userId){
-        return scoreRepository.findAllByUserId(userId);
+    public List<ScoreDto> findAllScoreByUserId(long userId){
+        return attractionRepository2.findAllByUserId(userId);
     }
 }
