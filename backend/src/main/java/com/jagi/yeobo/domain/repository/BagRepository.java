@@ -113,5 +113,20 @@ public class BagRepository {
         return bagDetailDto;
      }
 
+     public List<BagDto> searchBagByName(String name){
+        List<Bag> bagList = em.createQuery("SELECT b FROM Bag as b WHERE b.name LIKE :name", Bag.class)
+                .setParameter("name", name)
+                .getResultList();
+
+         List<BagDto> bagDtoList = new ArrayList<>();
+         if(!bagList.isEmpty()){
+             for(Bag b : bagList){
+                 bagDtoList.add(new BagDto(b.getName(), b.getMemo()));
+             }
+         }
+
+         return bagDtoList;
+     }
+
 
 }
