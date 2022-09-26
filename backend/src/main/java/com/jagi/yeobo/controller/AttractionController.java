@@ -2,10 +2,7 @@ package com.jagi.yeobo.controller;
 
 import com.jagi.yeobo.domain.Attraction;
 import com.jagi.yeobo.domain.Score;
-import com.jagi.yeobo.dto.Message;
-import com.jagi.yeobo.dto.ScoreDto;
-import com.jagi.yeobo.dto.StatusEnum;
-import com.jagi.yeobo.dto.UserDto;
+import com.jagi.yeobo.dto.*;
 import com.jagi.yeobo.service.AttractionService;
 import com.jagi.yeobo.service.UserService;
 import io.swagger.annotations.ApiOperation;
@@ -55,12 +52,12 @@ public class AttractionController {
 
     @ApiOperation(value = "여행지 이름으로 리스트 조회",notes = "검색어를 포함하는 여행지 리스트를 조회한다.")
     @GetMapping("api/attraction/search/{name}") // /{page}
-    public ResponseEntity<?> searchAttractionListByName(@PathVariable("name") String  name){
+    public ResponseEntity<?> searchAttractionListByName(@PathVariable("name") String name,@RequestParam("userId")long userId){
         Message message = new Message();
         HttpHeaders headers= new HttpHeaders();
         headers.setContentType(new MediaType("application", "json", Charset.forName("UTF-8")));
         try {
-            List<Attraction> attraction = attractionService.findAllByName(name);
+            List<AttractionResponseDto> attraction = attractionService.findAllByName(name,userId);
             if(!attraction.isEmpty()){
                 message.setStatus(StatusEnum.OK);
                 message.setMessage("여행지 세부 정보 조회 성공");
@@ -143,4 +140,6 @@ public class AttractionController {
             return new ResponseEntity<>(message, headers,  HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
+
+
 }

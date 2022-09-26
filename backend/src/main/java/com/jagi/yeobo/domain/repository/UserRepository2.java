@@ -2,6 +2,7 @@ package com.jagi.yeobo.domain.repository;
 
 import com.jagi.yeobo.domain.User;
 import com.jagi.yeobo.dto.UserDto;
+import com.jagi.yeobo.dto.UserResponseDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 
@@ -69,25 +70,27 @@ public class UserRepository2 {
         else return 0;//관련된 것도 지워야 하나 자동으로 지워지나
     }
 
-    public List<UserDto> searchByNick(String nickname){ // nickname으로 userId와 nickname 리스트 반환해주면 되나?
-        Query query = em.createQuery("SELECT u.id,u.nickname FROM User as u WHERE u.nickname LIKE :nickname " )//+
-//                        "ORDER BY CASE WHEN u.nickname = :nick0 THEN 0" +
-//                        " WHEN u.nickname = :nick1 THEN 1 " +
-//                        " WHEN u.nickname LIKE :nick2 THEN 2" +
-//                        " WHEN u.nickname LIKE :nick3 THEN 3 " +
-//                        "ELSE 4 " +
-//                        "END)")
-                .setParameter("nickname","%"+nickname+"%");
-//                .setParameter("nick0",nickname)
-//                .setParameter("nick1",nickname+"%")
-//                .setParameter("nick2","%"+nickname+"%")
-//                .setParameter("nick3","%"+nickname);
+    public List<UserResponseDto> searchByNick(String nickname){ // nickname으로 userId와 nickname 리스트 반환해주면 되나?
+        Query query = em.createNativeQuery("SELECT u.user_id,u.nickname FROM User as u WHERE u.nickname LIKE :nickname " +
+                        "ORDER BY CASE WHEN u.nickname = :nick0 THEN 0" +
+                        " WHEN u.nickname LIKE :nick1 THEN 1 " +
+                        " WHEN u.nickname LIKE :nick2 THEN 2" +
+                        " WHEN u.nickname LIKE :nick3 THEN 3 " +
+                        "ELSE 4 " +
+                        "END")
+                .setParameter("nickname","%"+nickname+"%")
+                .setParameter("nick0",nickname)
+                .setParameter("nick1",nickname+"%")
+                .setParameter("nick2","%"+nickname+"%")
+                .setParameter("nick3","%"+nickname);
         List<Object[]> list = query.getResultList();
-        List<UserDto> nickList = new ArrayList<>();
+//        System.out.println(">>>>"+list.get(0)[4]);
+//        System.out.println(">>>>"+list.get(1)[4]);
+        List<UserResponseDto> nickList = new ArrayList<>();
         for (Object[] l:list) {
-            UserDto userDto = UserDto.builder()
-                    .id((long)l[0])
-                    .nickname((String)l[1]).build();
+            UserResponseDto userDto = UserResponseDto.builder()
+                    .id(Long.valueOf(String.valueOf(l[0])))
+                    .nickname(String.valueOf(l[1])).build();
             nickList.add(userDto);
         }
 
