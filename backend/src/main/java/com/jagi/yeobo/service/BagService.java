@@ -45,4 +45,9 @@ public class BagService {
     public BagDetailDto searchDetailBag(long bagId){
         return bagRepository.searchDetailBag(bagId);
     }
+
+    @Transactional
+    public List<BagDto> searchBagByName(String name){
+        return bagRepository.searchBagByName(name);
+    }
 }
