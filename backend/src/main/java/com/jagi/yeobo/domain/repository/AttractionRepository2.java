@@ -3,6 +3,7 @@ package com.jagi.yeobo.domain.repository;
 import com.jagi.yeobo.domain.Attraction;
 import com.jagi.yeobo.domain.Score;
 import com.jagi.yeobo.domain.User;
+import com.jagi.yeobo.dto.AttractionResponseDto;
 import com.jagi.yeobo.dto.ScoreDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
@@ -20,8 +21,9 @@ public class AttractionRepository2 {
     private final EntityManager em;
 
     private final AttractionRepository attractionRepository;
+    private final UserRepository userRepository;
 
-
+    /* 여행지에 점수 매기기 */
     public Score saveScore(ScoreDto scoreDto){
         Score score = new Score();
 
@@ -44,7 +46,6 @@ public class AttractionRepository2 {
         List<ScoreDto> scoreDtoList = new ArrayList<>();
 
         for (Score s:scores) {
-//            System.out.println(s.);
             ScoreDto scoreSave = ScoreDto.builder()
                     .score(s.getScore())
                     .userId(s.getUserId().getId())
@@ -55,5 +56,35 @@ public class AttractionRepository2 {
         return scoreDtoList;
     }
 
+    /* 여행지 리스트 조회 */
+    public List<AttractionResponseDto> searchAttractionList(String name,long userId){ // score 다시 가져오기
+        //,IF(IS NULL(select s.score from score s where s.user_id = :userId and s.attraction_id = a.attraction_id),0,s.score)
+        String sql = "SELECT a.attraction_id,a.name FROM Attraction a WHERE a.name LIKE :name "+
+                "ORDER BY CASE WHEN a.name = :name0 THEN 0" +
+                " WHEN a.name LIKE :name1 THEN 1 " +
+                " WHEN a.name LIKE :name2 THEN 2" +
+                " WHEN a.name LIKE :name3 THEN 3 " +
+                "ELSE 4 " +
+                "END";
+        List<Object[]> attractions = em.createNativeQuery(sql)
+//                .setParameter("userId",userId)
+                .setParameter("name","%"+name+"%")
+                .setParameter("name0",name)
+                .setParameter("name1",name+"%")
+                .setParameter("name2","%"+name+"%")
+                .setParameter("name3","%"+name)
+                .getResultList();
 
+        List<AttractionResponseDto> attractionList = new ArrayList<>();
+        for (Object[] a:attractions) {
+            AttractionResponseDto attractionDto = AttractionResponseDto.builder()
+                    .id(Long.valueOf(String.valueOf(a[0])))
+                    .name(String.valueOf(a[1]))
+//                    .score(Double.valueOf(String.valueOf(a[2])))
+                    .build();
+            attractionList.add(attractionDto);
+        }
+
+        return attractionList;
+    }
 }

@@ -5,6 +5,7 @@ import com.jagi.yeobo.domain.repository.UserRepository;
 import com.jagi.yeobo.domain.repository.UserRepository2;
 import com.jagi.yeobo.dto.UserDto;
 import com.jagi.yeobo.dto.UserLoginDto;
+import com.jagi.yeobo.dto.UserResponseDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -31,7 +32,7 @@ public class UserService {
         return userRepository2.deleteById(userId);
     }
     @Transactional
-    public List<UserDto> searchByNick(String nickname){
+    public List<UserResponseDto> searchByNick(String nickname){
         return userRepository2.searchByNick(nickname);
     }
     @Transactional
