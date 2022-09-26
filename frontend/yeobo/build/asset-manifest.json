@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/static/css/main.88efc116.css",
+    "main.js": "/static/js/main.b2e2f904.js",
+    "static/media/daejeon.jpeg": "/static/media/daejeon.837ccd593942a8786427.jpeg",
+    "static/media/logo-border.png": "/static/media/logo-border.b97c3130c6c2a48c5118.png",
+    "static/media/luggage.png": "/static/media/luggage.1eda9185ce1341647048.png",
+    "index.html": "/index.html",
+    "main.88efc116.css.map": "/static/css/main.88efc116.css.map",
+    "main.b2e2f904.js.map": "/static/js/main.b2e2f904.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.88efc116.css",
+    "static/js/main.b2e2f904.js"
+  ]
+}

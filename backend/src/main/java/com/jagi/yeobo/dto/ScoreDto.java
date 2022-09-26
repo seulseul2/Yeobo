@@ -1,6 +1,7 @@
 package com.jagi.yeobo.dto;
 
 import com.jagi.yeobo.domain.Attraction;
+import com.jagi.yeobo.domain.Score;
 import com.jagi.yeobo.domain.User;
 import io.swagger.annotations.ApiModelProperty;
 import io.swagger.annotations.ApiParam;
@@ -19,13 +20,15 @@ import javax.persistence.ManyToOne;
 public class ScoreDto {
     @ApiModelProperty(example="1")
     @ApiParam(value = "사용자 userId")
-    private User userId;
+    private long userId;
 
     @ApiModelProperty(example="1")
     @ApiParam(value = "여행지 attractionId")
-    private Attraction attractionId;
+    private long attractionId;
 
     @ApiModelProperty(example="5")
     @ApiParam(value = "사용자의 여행지에 대한 점수", type = "double")
     private double score;
+
+
 }

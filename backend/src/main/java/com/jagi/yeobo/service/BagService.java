@@ -1,6 +1,8 @@
 package com.jagi.yeobo.service;
 
+import com.jagi.yeobo.domain.Bag;
 import com.jagi.yeobo.domain.repository.BagRepository;
+import com.jagi.yeobo.dto.BagDetailDto;
 import com.jagi.yeobo.dto.BagDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -15,27 +17,37 @@ public class BagService {
     private final BagRepository bagRepository;
 
     @Transactional
-    public void updateBag(int userId, BagDto bagDto){
+    public void updateBag(long userId, BagDto bagDto){
         bagRepository.updateBag(userId, bagDto);
     }
 
     @Transactional
-    public List<BagDto> searchBagList(int userId){
+    public List<BagDto> searchBagList(long userId){
         return bagRepository.searchBagList(userId);
     }
 
-//    @Transactional
-//    public List<BagDto> searchPopularBagList(){
-//        return bagRepository.serarchPopularBagList();
-//    }
-
     @Transactional
-    public void likeBag(int userId, int bagId){
+    public void likeBag(long userId, long bagId){
         bagRepository.likeBag(userId, bagId);
     }
 
     @Transactional
-    public List<BagDto> searchLikeBagList(int userId){
+    public List<BagDto> searchLikeBagList(long userId){
         return bagRepository.searchLikeBagList(userId);
+    }
+
+    @Transactional
+    public List<BagDto> searchPopularBagList(){
+        return bagRepository.searchPopularBagList();
+    }
+
+    @Transactional
+    public BagDetailDto searchDetailBag(long bagId){
+        return bagRepository.searchDetailBag(bagId);
+    }
+
+    @Transactional
+    public List<BagDto> searchBagByName(String name){
+        return bagRepository.searchBagByName(name);
     }
 }
