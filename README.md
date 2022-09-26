@@ -79,7 +79,10 @@
 | <div align="center">1</div>    | [여보(여행보따리)](http://j7c103.p.ssafy.io) |
 | <div align="center">2</div>  | [Notion](https://www.notion.so/0c174c0e035f4504baef1e07cf68d028)|
 
+- 모바일웹으로 구현
 
+모바일 웹을 기준으로 구현하였기에 PC의 경우 크롬 개발자도구의 Toggle device toolbar를 사용해주세요.
+화면비 20 : 9 (412 x 914), [**S20 Ultra**, S21, A51, S20+, S21U]를 기준으로 제작되었습니다. 
 
 <br/>
 
