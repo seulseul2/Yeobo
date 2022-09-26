@@ -38,10 +38,12 @@ public class Bag {
     private int likeCnt;
 
     @OneToMany(orphanRemoval = true, mappedBy = "bagId" , cascade = CascadeType.ALL)
+    @Builder.Default
     @JsonIgnore
     List<Pick> bagPickList = new ArrayList<>();
 
     @OneToMany(orphanRemoval = true, mappedBy = "bagId" , cascade = CascadeType.ALL)
+    @Builder.Default
     @JsonIgnore
     List<BagAttraction> bagAttractionList = new ArrayList<>();
 
