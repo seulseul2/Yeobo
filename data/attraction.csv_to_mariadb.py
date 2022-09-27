@@ -4,6 +4,8 @@ import pymysql
 df = pd.read_csv("attraction.csv")
 df = df.drop(columns=['Unnamed: 0'])
 df = df.where(pd.notnull(df), None) # dataframe 형식을 list로 변환하기 위한 전처리, Nan을 None으로 바꿔준다.
+
+# print(df[df['areacode'] == None])
 attraction_list = df.values.tolist()
 
 def mysql_save(lst):
