@@ -181,7 +181,7 @@ public class UserController {
         HttpHeaders headers= new HttpHeaders();
         headers.setContentType(new MediaType("application", "json", Charset.forName("UTF-8")));
         try {
-            List<UserDto> user = userService.searchByNick(nickname);
+            List<UserResponseDto> user = userService.searchByNick(nickname);
             message.setStatus(StatusEnum.OK);
             message.setMessage("닉네임 회원정보 조회 성공");
             message.setData(user);

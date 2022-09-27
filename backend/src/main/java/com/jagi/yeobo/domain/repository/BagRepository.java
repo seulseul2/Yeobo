@@ -114,24 +114,46 @@ public class BagRepository {
         return bagDetailDto;
      }
 
-//     public List<BagSearchDto> searchBagByName(String name, long userId){
+     public List<BagSearchDto> searchBagByName(String name, long userId){
 //        List<Bag> bagList = em.createQuery("SELECT b FROM Bag as b WHERE b.name LIKE :name", Bag.class)
 //                .setParameter("name", name)
 //                .getResultList();
-//
-//         List<BagDto> likeDtoList = searchLikeBagList(userId);
-//
-//
-//        List<BagSearchDto> bagDtoList = new ArrayList<>();
-//         if(!bagList.isEmpty()){
-//             for(Bag b : bagList){
-//
-//                 bagDtoList.add(new BagSearchDto(b.getName(), b.getMemo(), ));
-//             }
-//         }
-//
-//         return bagDtoList;
-//     }
+
+        String sql = "SELECT b FROM Bag as b WHERE b.name LIKE :name "+
+                 "ORDER BY CASE WHEN b.name = :name0 THEN 0" +
+                 " WHEN b.name LIKE :name1 THEN 1 " +
+                 " WHEN b.name LIKE :name2 THEN 2" +
+                 " WHEN b.name LIKE :name3 THEN 3 " +
+                 "ELSE 4 " +
+                 "END";
+
+         List<Bag> bagList = em.createNativeQuery(sql)
+                 .setParameter("name","%"+name+"%")
+                 .setParameter("name0",name)
+                 .setParameter("name1",name+"%")
+                 .setParameter("name2","%"+name+"%")
+                 .setParameter("name3","%"+name)
+                 .getResultList();
+
+        List<Pick> pickList = em.createQuery("SELECT p From pick as p WHERE p.user_id = :userId", Pick.class)
+                 .setParameter("userId", userId).getResultList();
+
+        List<BagSearchDto> bagDtoList = new ArrayList<>();
+         if(!bagList.isEmpty()){
+             for(Bag b : bagList){
+                 boolean check = false;
+                for(Pick p : pickList){
+                    if(b.getId() == p.getBagId().getId()) {
+                        check = true;
+                        break;
+                    }
+                }
+                 bagDtoList.add(new BagSearchDto(b.getName(), b.getMemo(), check));
+             }
+         }
+
+         return bagDtoList;
+     }
 
 
 

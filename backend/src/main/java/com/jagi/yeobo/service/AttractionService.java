@@ -6,6 +6,7 @@ import com.jagi.yeobo.domain.Score;
 import com.jagi.yeobo.domain.repository.AttractionRepository;
 import com.jagi.yeobo.domain.repository.AttractionRepository2;
 import com.jagi.yeobo.domain.repository.ScoreRepository;
+import com.jagi.yeobo.dto.AttractionResponseDto;
 import com.jagi.yeobo.dto.ScoreDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -27,8 +28,9 @@ public class AttractionService {
     }
 
     @Transactional
-    public List<Attraction> findAllByName(String name){
-        return attractionRepository.findAllByName(name);
+    public List<AttractionResponseDto> findAllByName(String name,long userId){
+        return attractionRepository2.searchAttractionList(name,userId);
+//        return attractionRepository.findAllByName(name);
     }
 
     @Transactional
@@ -40,4 +42,6 @@ public class AttractionService {
     public List<ScoreDto> findAllScoreByUserId(long userId){
         return attractionRepository2.findAllByUserId(userId);
     }
+
+
 }
