@@ -1,0 +1,27 @@
+.BoddariSearch {
+  font-family:'Bazzi';
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  .BoddariImg {
+    width: 45%;
+    margin-top: 20px;
+    img {
+      border-radius: 15px;
+      border: 4px solid white;
+    }
+  }
+  .BoddariName {
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: text;
+    color: white
+  }
+  .BoddariName h1 {
+    font-size: 25px;
+  }
+
+
+}

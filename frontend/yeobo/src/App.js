@@ -7,6 +7,7 @@ import Main from './MainPage/Main';
 import Signup from './MainPage/User/Signup';
 import Login from './MainPage/User/Login';
 import Mypage from './MyPage/Mypage';
+import Search from './Search/Search';
 
 import './App.scss';
 import BottomNavBar from './BottomNavBar';
@@ -17,7 +18,7 @@ function App() {
       <div className='tempNavBar'>
         <Link to="/">Main</Link>
         <Link to="/Boddari">보따리만들기</Link>
-        <Link to="/Boddari">보따리만들기</Link>
+        <Link to="/Search">Search</Link>
         <Link to="/Login">로그인</Link>
       </div>
       <div>
@@ -28,6 +29,7 @@ function App() {
           <Route path="/Signup" element={<Signup />}></Route>
           <Route path="/Mypage" element={<Mypage />}></Route>
           <Route path="/saveboddari" element={<BoddariSave/>}></Route>
+          <Route path='/Search' element={<Search/>}></Route>
         </Routes>
       </div>
       {/* <div style="height: 80px;">.</div> */}

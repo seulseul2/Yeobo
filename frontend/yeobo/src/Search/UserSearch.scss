@@ -1,0 +1,21 @@
+.userSearch {
+  font-family: "Bazzi";
+  display: flex;
+  justify-content: space-around;
+  height: 80px;
+  margin-top: 20px;
+  .UserImg {
+    width: 20%;
+  }
+  .userName {
+    width: 30%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: white;
+  }
+  .userName h1 {
+    font-size: 25px;
+  }
+}
