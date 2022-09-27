@@ -1,4 +1,3 @@
-from pickle import TRUE
 import pandas as pd
 
 new_data = None
@@ -21,7 +20,7 @@ for i in range(1, 9):
     if i == 1:
         new_data = data
     else:
-        new_data = new_data.append(data, ignore_index=TRUE)
+        new_data = new_data.append(data, ignore_index=True)
         
 new_data = pd.DataFrame(new_data)
         
