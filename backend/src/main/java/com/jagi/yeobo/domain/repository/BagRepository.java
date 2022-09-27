@@ -156,14 +156,16 @@ public class BagRepository {
      }
 
      public int deleteOneInBag(long bagId, long attractionId){
-
-        return em.createQuery("DELETE FROM BagAttraction ba WHERE ba.id :bagId and ba.attractionId.id = :attractionId")
+        return em.createQuery("DELETE FROM BagAttraction as ba WHERE ba.id :bagId and ba.attractionId.id = :attractionId")
                 .setParameter("bagId", bagId)
                 .setParameter("attractionId", attractionId)
                 .executeUpdate();
-
      }
 
-
-
+     public int likeBagCancel(long userId, long bagId){
+         return em.createQuery("DELETE FROM Pick as p WHERE p.userId.id = :userId and p.bagId.id = :bagId")
+                 .setParameter("userId", userId)
+                 .setParameter("bagId", bagId)
+                 .executeUpdate();
+     }
 }
