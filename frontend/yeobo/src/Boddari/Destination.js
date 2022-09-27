@@ -9,7 +9,6 @@ const Destination = () => {
   function changeText() {
    setText(prev => prev === "담기"? "빼기":"담기");
    setActive(prev => prev === "active"? "":"active");
-   console.log(active);
   }
 
   return (
