@@ -33,7 +33,7 @@ public class BagRepository {
     }
 
     public List<BagDto> searchBagList(long userId){
-        List<Bag> bagList = em.createQuery("SELECT b FROM bag as b WHERE b.user_id = :userId", Bag.class)
+        List<Bag> bagList = em.createQuery("SELECT b FROM bag as b WHERE b.userId.id = :userId", Bag.class)
                 .setParameter("userId", userId).getResultList();
         List<BagDto> bagDtoList = new ArrayList<>();
 
@@ -60,7 +60,7 @@ public class BagRepository {
     }
 
     public List<BagDto> searchLikeBagList(long userId){
-        List<Pick> pickList = em.createQuery("SELECT p From pick as p WHERE p.user_id = :userId", Pick.class)
+        List<Pick> pickList = em.createQuery("SELECT p From pick as p WHERE p.userId.id = :userId", Pick.class)
                 .setParameter("userId", userId).getResultList();
 
         List<BagDto> bagDtoList = new ArrayList<>();
@@ -97,13 +97,13 @@ public class BagRepository {
         bagDetailDto.setName(findBag.getName());
         bagDetailDto.setMemo(findBag.getMemo());
 
-        List<BagAttraction> bagAttractions = em.createQuery("SELECT a FROM BagAttraction as a WHERE a.bagId = :bagId", BagAttraction.class)
+        List<BagAttraction> bagAttractions = em.createQuery("SELECT a FROM BagAttraction as a WHERE a.bagId.bag_id = :bagId", BagAttraction.class)
                 .setParameter("bagId", bagId).getResultList();
 
         List<AttractionDto> list = new ArrayList<>();
         if(!list.isEmpty()){
            for(BagAttraction b : bagAttractions){
-              Attraction at = em.createQuery("SELECT k FROM Attraction as k WHERE k.attractionId = :attractionId", Attraction.class)
+              Attraction at = em.createQuery("SELECT k FROM Attraction as k WHERE k.attraction_id = :attractionId", Attraction.class)
                       .setParameter("attractionId", b.getAttractionId()).getSingleResult();
               AttractionDto attractionDto = new AttractionDto(at.getId(),at.getName());
               list.add(attractionDto);
@@ -135,7 +135,7 @@ public class BagRepository {
                  .setParameter("name3","%"+name)
                  .getResultList();
 
-        List<Pick> pickList = em.createQuery("SELECT p From pick as p WHERE p.user_id = :userId", Pick.class)
+        List<Pick> pickList = em.createQuery("SELECT p From pick as p WHERE p.userId.id = :userId", Pick.class)
                  .setParameter("userId", userId).getResultList();
 
         List<BagSearchDto> bagDtoList = new ArrayList<>();
@@ -153,6 +153,15 @@ public class BagRepository {
          }
 
          return bagDtoList;
+     }
+
+     public int deleteOneInBag(long bagId, long attractionId){
+
+        return em.createQuery("DELETE FROM BagAttraction ba WHERE ba.id :bagId and ba.attractionId.id = :attractionId")
+                .setParameter("bagId", bagId)
+                .setParameter("attractionId", attractionId)
+                .executeUpdate();
+
      }
 
 

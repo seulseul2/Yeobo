@@ -126,15 +126,23 @@ public class BagController {
         return new ResponseEntity<>(message, headers, HttpStatus.OK);
     }
 
-//    @ApiOperation(value = "보따리에서 여행지를 수정한다.",notes = "보따리에서 해당 하는 여행지를 수정(삭제)한다.")
-//    @DeleteMapping("api/bag/update/{bagId}/{attractionId}")
-//    public ResponseEntity<?> deleteOneInBag(@PathVariable("bagId") long bagId, @PathVariable("attractionId") long attractionId){
-//        Message message = new Message();
-//        HttpHeaders headers= new HttpHeaders();
-//        headers.setContentType(new MediaType("application", "json", Charset.forName("UTF-8")));
-//
-//
-//    }
+    @ApiOperation(value = "보따리에서 여행지를 수정한다.",notes = "보따리에서 해당 하는 여행지를 수정(삭제)한다.")
+    @DeleteMapping("api/bag/update/{bagId}/{attractionId}")
+    public ResponseEntity<?> deleteOneInBag(@PathVariable("bagId") long bagId, @PathVariable("attractionId") long attractionId){
+        Message message = new Message();
+        HttpHeaders headers= new HttpHeaders();
+        headers.setContentType(new MediaType("application", "json", Charset.forName("UTF-8")));
+
+        int result = bagService.deleteOneInBag(bagId, attractionId);
+        if(result==0){
+            message.setMessage("잘못된 요청. bagId나 attractionId가 존재하는 값인지 잘 맞는지 확인");
+            return new ResponseEntity<>(message, headers, HttpStatus.BAD_REQUEST);
+        }
+        message.setStatus(StatusEnum.OK);
+        message.setMessage("보따리 여행지 한개 삭제 성공");
+        return new ResponseEntity<>(message, headers, HttpStatus.OK);
+
+    }
 
 
 }

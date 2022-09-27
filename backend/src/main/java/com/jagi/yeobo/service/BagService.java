@@ -46,8 +46,14 @@ public class BagService {
     public BagDetailDto searchDetailBag(long bagId){
         return bagRepository.searchDetailBag(bagId);
     }
+
     @Transactional
     public List<BagSearchDto> searchBagByName(String name, long userId){
         return bagRepository.searchBagByName(name, userId);
+    }
+
+    @Transactional
+    public int deleteOneInBag(long bagId, long attractionId ){
+        return bagRepository.deleteOneInBag(bagId, attractionId);
     }
 }
