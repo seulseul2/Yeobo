@@ -75,12 +75,22 @@ WSGI_APPLICATION = 'server.wsgi.application'
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
 DATABASES = {
+    # 'default': {
+    #     'ENGINE': 'django.db.backends.mysql',
+    #     'NAME': 'yeobo',
+    #     'USER': 'root',
+    #     'PASSWORD': 'yeobo',
+    #     'HOST': 'localhost',
+    #     'PORT': '3307'
+    # }
+
+    # 원격 서버
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'yeobo',
-        'USER': 'root',
-        'PASSWORD': 'yeobo',
-        'HOST': 'localhost',
+        'USER': 'yeobo',
+        'PASSWORD': 'seulseul1004',
+        'HOST': 'j7c103.p.ssafy.io',
         'PORT': '3307'
     }
 }
