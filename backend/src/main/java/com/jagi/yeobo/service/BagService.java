@@ -4,6 +4,7 @@ import com.jagi.yeobo.domain.Bag;
 import com.jagi.yeobo.domain.repository.BagRepository;
 import com.jagi.yeobo.dto.BagDetailDto;
 import com.jagi.yeobo.dto.BagDto;
+import com.jagi.yeobo.dto.BagSearchDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -45,9 +46,8 @@ public class BagService {
     public BagDetailDto searchDetailBag(long bagId){
         return bagRepository.searchDetailBag(bagId);
     }
-
-    @Transactional
-    public List<BagDto> searchBagByName(String name){
-        return bagRepository.searchBagByName(name);
-    }
+//    @Transactional
+//    public List<BagSearchDto> searchBagByName(String name, long userId){
+//        return bagRepository.searchBagByName(name, userId);
+//    }
 }

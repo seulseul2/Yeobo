@@ -4,6 +4,7 @@ import com.jagi.yeobo.domain.*;
 import com.jagi.yeobo.dto.AttractionDto;
 import com.jagi.yeobo.dto.BagDetailDto;
 import com.jagi.yeobo.dto.BagDto;
+import com.jagi.yeobo.dto.BagSearchDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 
@@ -113,20 +114,25 @@ public class BagRepository {
         return bagDetailDto;
      }
 
-     public List<BagDto> searchBagByName(String name){
-        List<Bag> bagList = em.createQuery("SELECT b FROM Bag as b WHERE b.name LIKE :name", Bag.class)
-                .setParameter("name", name)
-                .getResultList();
+//     public List<BagSearchDto> searchBagByName(String name, long userId){
+//        List<Bag> bagList = em.createQuery("SELECT b FROM Bag as b WHERE b.name LIKE :name", Bag.class)
+//                .setParameter("name", name)
+//                .getResultList();
+//
+//         List<BagDto> likeDtoList = searchLikeBagList(userId);
+//
+//
+//        List<BagSearchDto> bagDtoList = new ArrayList<>();
+//         if(!bagList.isEmpty()){
+//             for(Bag b : bagList){
+//
+//                 bagDtoList.add(new BagSearchDto(b.getName(), b.getMemo(), ));
+//             }
+//         }
+//
+//         return bagDtoList;
+//     }
 
-         List<BagDto> bagDtoList = new ArrayList<>();
-         if(!bagList.isEmpty()){
-             for(Bag b : bagList){
-                 bagDtoList.add(new BagDto(b.getName(), b.getMemo()));
-             }
-         }
-
-         return bagDtoList;
-     }
 
 
 }
