@@ -23,8 +23,8 @@ mariaDB, MySQL 또한 최대 레코드 수에 미치지 않아 사용가능하�
 BASE_URL = "http://apis.data.go.kr/B551011/KorService"
 
 API_AUTH_KEY_LIST = [
-    "SRextBKpZ7AuNG4vlu1mOyq2/3dCXmWmdyIXDEnn58jvfXomqhiRAVxSvGCHxpHBiYwXaGmhTVtx9QqbadvKnA==",     # yeobo5 / junojam3652@gmail.com
     "l7J/tYKQyIDPhvILVJCAYeUtNLSV5A2icjrQjdv/tPKyS8INCxMas0yvW41mAwaPwZ3tSvYkpm4TUAeFFofIEA==",     # yeobo4 / owo202202202@gmail.com
+    "SRextBKpZ7AuNG4vlu1mOyq2/3dCXmWmdyIXDEnn58jvfXomqhiRAVxSvGCHxpHBiYwXaGmhTVtx9QqbadvKnA==",     # yeobo5 / junojam3652@gmail.com
     "WAlqT5QvzF6rGMxbDZoPmdmohvGhMecJFO4GjNt34DZ1j1uULWZfbQDVsDngctE8+EqlGlJHZ+g9QG6zkjj6wA==",     # yeobo3 / junojam0622@naver.com
     "CpszSPbwDkKnYx0BvDqy%2BvMtHpZ9JMozRWNbGvfNZ7vVhx7keYRyLAuyldTzHZ4QWvH4xj4DnASOakTS7kAqLg==",   # 영훈형
     "wlWf/ScYRE2EgX56o0YFoqwUkO9oD82OUH1LnvlPE8w9cuI/6IYvSBuQaFi7t5+QXHcYo2tgZ/uIeiuGq67YLw==",     # nak3652 / nak3652@naver.com
@@ -148,16 +148,16 @@ for category_one in categories_all:
         if (not item["firstimage"]) or (not item_overview[0]["overview"]) or (not item["areacode"]) or (not item["mapx"]) or (not item["mapy"]):
             continue
         
-        # print(f"카테고리 : {categories_all_list[category_idx]}")
-        # print("언급횟수 : " + str(item["readcount"]))
-        # print("contentid : "+ item["contentid"])
-        # print("제목 : " + item["title"])
-        # print("주소 : " + item["addr1"], item["areacode"])
-        # print("위도, 경도 : " + item["mapy"], item["mapx"])
-        # print("이미지1 : " + item["firstimage"])
-        # print("이미지2 : " + item["firstimage2"])
-        # print("요약 : " + item_overview[0]["overview"])
-        # print("-------------------------------------")
+        print(f"카테고리 : {categories_all_list[category_idx]}")
+        print("언급횟수 : " + str(item["readcount"]))
+        print("contentid : "+ item["contentid"])
+        print("제목 : " + item["title"])
+        print("주소 : " + item["addr1"], item["areacode"])
+        print("위도, 경도 : " + item["mapy"], item["mapx"])
+        print("이미지1 : " + item["firstimage"])
+        print("이미지2 : " + item["firstimage2"])
+        print("요약 : " + item_overview[0]["overview"])
+        print("-------------------------------------")
         
         attraction_id = int(item["contentid"])
         category = int(categories_all_list[category_idx])
