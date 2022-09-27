@@ -58,8 +58,7 @@ public class AttractionRepository2 {
 
     /* 여행지 리스트 조회 */
     public List<AttractionResponseDto> searchAttractionList(String name,long userId){ // score 다시 가져오기
-        //,IF(IS NULL(select s.score from score s where s.user_id = :userId and s.attraction_id = a.attraction_id),0,s.score)
-        String sql = "SELECT a.attraction_id,a.name FROM Attraction a WHERE a.name LIKE :name "+
+        String sql = "SELECT a.attraction_id,a.name,s.score FROM Attraction a left join Score s on s.user_id = :userId and a.attraction_id = s.attraction_id and a.name LIKE :name "+
                 "ORDER BY CASE WHEN a.name = :name0 THEN 0" +
                 " WHEN a.name LIKE :name1 THEN 1 " +
                 " WHEN a.name LIKE :name2 THEN 2" +
@@ -67,7 +66,7 @@ public class AttractionRepository2 {
                 "ELSE 4 " +
                 "END";
         List<Object[]> attractions = em.createNativeQuery(sql)
-//                .setParameter("userId",userId)
+                .setParameter("userId",userId)
                 .setParameter("name","%"+name+"%")
                 .setParameter("name0",name)
                 .setParameter("name1",name+"%")
@@ -80,7 +79,7 @@ public class AttractionRepository2 {
             AttractionResponseDto attractionDto = AttractionResponseDto.builder()
                     .id(Long.valueOf(String.valueOf(a[0])))
                     .name(String.valueOf(a[1]))
-//                    .score(Double.valueOf(String.valueOf(a[2])))
+                    .score(Double.valueOf(String.valueOf(a[2]==null?0:a[2]))) //null이면 0 넣어주기
                     .build();
             attractionList.add(attractionDto);
         }
