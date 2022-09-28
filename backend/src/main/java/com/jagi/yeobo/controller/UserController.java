@@ -205,7 +205,7 @@ public class UserController {
         }
     }
 
-    @ApiOperation(value = "사용자 프로필 사진 수정 요청" ,notes = "사용자의 프로필 사진을 수정 요청한다.")
+    @ApiOperation(value = "사용자 프로필 사진 수정(저장) 요청" ,notes = "사용자의 프로필 사진을 수정 요청한다.")
     @ApiImplicitParams(
             {
                     @ApiImplicitParam(name = "file",value = "사용자 이미지 파일"),
