@@ -144,5 +144,21 @@ public class BagController {
 
     }
 
+    @ApiOperation(value = "좋아요한 보따리를 취소한다.",notes = "해당 보따리의 좋아요를 취소한다.")
+    @DeleteMapping("api/bag/delete/like/{userId}/{bagId}")
+    public ResponseEntity<?> likeBagCancel(@PathVariable("userId") long userId, @PathVariable("bagId") long bagId){
+        Message message = new Message();
+        HttpHeaders headers= new HttpHeaders();
+        headers.setContentType(new MediaType("application", "json", Charset.forName("UTF-8")));
+
+        int result = bagService.likeBagCancel(userId, bagId);
+        if(result==0){
+            message.setMessage("잘못된 요청. bagId나 userId가 존재하는 값인지 잘 맞는지 확인");
+            return new ResponseEntity<>(message, headers, HttpStatus.BAD_REQUEST);
+        }
+        message.setStatus(StatusEnum.OK);
+        message.setMessage("좋아요 취소 성공");
+        return new ResponseEntity<>(message, headers, HttpStatus.OK);
+    }
 
 }
