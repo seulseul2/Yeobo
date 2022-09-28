@@ -58,7 +58,6 @@ public class UserService {
 
         findUser.get().setProfilePath(fileUrl);
         userRepository.save(findUser.get());
-//        return fileDto;
     }
 
     @Transactional
