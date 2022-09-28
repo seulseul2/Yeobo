@@ -1,6 +1,12 @@
+from urllib import response
 from django.shortcuts import render
-from .models import User
 
 # Create your views here.
-x = User.objects.all()
-print(x)
+
+def recommend(request, attraction_id):
+    
+    return response(data)
+
+# DB Table -> DataFrame
+# DF 상위 5개 보내주는 법
+# response(data 형태로 보내줌)

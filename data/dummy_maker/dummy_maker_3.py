@@ -29,7 +29,7 @@ def query_mariaDB(query):
 
 query = """
     SELECT *
-    FROM user
+    FROM attraction
 """
 
-query_mariaDB(query)
+print(query_mariaDB(query))
