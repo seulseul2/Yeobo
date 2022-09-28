@@ -27,7 +27,7 @@ public class UserDto {
     @ApiParam(value = "사용자 nickname", type = "String")
     private String nickname;
 
-//    private String profile_path;
+    private String profilePath;
     @ApiModelProperty(example="MALE")
     @ApiParam(value = "사용자 gender(MALE/FEMALE)", type = "String")
     private String gender;
