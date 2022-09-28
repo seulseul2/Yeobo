@@ -221,7 +221,8 @@ public class UserController {
             if (file != null) {
                 String fileOriName = file.getOriginalFilename();
                 String fileName = userId+"_"+fileOriName;
-                String savePath = System.getProperty("user.dir") +"upload";
+                String savePath = System.getProperty("user.home") +"/upload";
+//                String savePath = System.getProperty("user.dir") +"/upload";
 
                 if (!new File(savePath).exists()) {
                     try {
