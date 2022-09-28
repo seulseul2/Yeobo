@@ -2,7 +2,9 @@ from rest_framework.response import Response
 import pandas as pd
 import pymysql
 from sklearn.metrics.pairwise import cosine_similarity
-from django.views.decorators.http import require_http_methods, require_POST, require_GET
+from rest_framework.decorators import api_view
+from rest_framework import status
+from rest_framework.response import Response
 
 # Create your views here.
 
@@ -22,7 +24,7 @@ def query_mariaDB(query):
 
     return query_result
 
-@require_GET
+@api_view(['GET'])
 def recommend(request, attraction_id):
     query = """
     SELECT *
@@ -39,8 +41,7 @@ def recommend(request, attraction_id):
 
     for i in range(1, 5):
         data.append(lst.keys()[i])
-    print(data)
-    return Response(data)
+    return Response(data, status=status.HTTP_200_OK)
 
 # DB Table -> DataFrame
 # DF 상위 5개 보내주는 법
