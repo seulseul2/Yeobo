@@ -45,6 +45,11 @@
     border: none;
     flex-grow: 1;
   }
+  .searchText::placeholder {
+    font-size: 12px;
+    color:rgb(135, 128, 128);
+    font-weight: 100;
+  }
   .popularSearchTermsTitle {
     padding: 24px 0 12px 0;
     text-align: center;

@@ -10,7 +10,7 @@ function Boddari() {
       <div className="header">
         <Link to='/'>이전</Link>
         <p>보따리 만들기</p>
-        <Link to='/saveboddari'>다음</Link>
+        <Link to='/SaveBoddari'>다음</Link>
       </div>
       <div className="recoList">
           <Destination />
