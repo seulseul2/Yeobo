@@ -1,6 +1,5 @@
 import pandas as pd
 import pymysql
-from datetime import datetime
 
 def query_mariaDB(query):
     # DB 연결
@@ -12,17 +11,8 @@ def query_mariaDB(query):
         database = 'yeobo'
     )
 
-    start_tm = datetime.now()
-
     global query_result
-
     query_result = pd.read_sql(query, conn)
-
-    end_tm = datetime.now()
-
-    print('STATE TIME :', str(start_tm))
-    print('END TIME :', str(end_tm))
-    print('ELAP time:', str(end_tm - start_tm))
     conn.close()
 
     return query_result
