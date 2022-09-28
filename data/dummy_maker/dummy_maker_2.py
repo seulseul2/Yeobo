@@ -1,5 +1,12 @@
 import pandas as pd
 from sklearn.metrics.pairwise import cosine_similarity
+from sqlalchemy import create_engine
+
+# engine = create_engine('mysql://yeobo:seulseul1004@j7c103.p.ssafy.io/yeobo')
+# conn = engine.connect
+# data = pd.read_sql_table('score', conn)
+# data.head()
+# print(data)
 
 df = pd.read_csv('score.csv')
 df = df.drop(columns=['Unnamed: 0'])
