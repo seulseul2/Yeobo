@@ -1,6 +1,8 @@
-from urllib import response
+from rest_framework.response import Response
 import pandas as pd
 import pymysql
+from sklearn.metrics.pairwise import cosine_similarity
+from django.views.decorators.http import require_http_methods, require_POST, require_GET
 
 # Create your views here.
 
@@ -20,20 +22,25 @@ def query_mariaDB(query):
 
     return query_result
 
-query = """
+@require_GET
+def recommend(request, attraction_id):
+    query = """
     SELECT *
     FROM score
-"""
+    """
+    user_attraction_score_matrix = query_mariaDB(query).pivot_table('score', index='attraction_id', columns='user_id')
+    attraction_sim = pd.DataFrame(cosine_similarity(user_attraction_score_matrix, user_attraction_score_matrix), index=user_attraction_score_matrix.index, columns=user_attraction_score_matrix.index)
+    lst = attraction_sim[attraction_id].sort_values(ascending=False)
 
-print(query_mariaDB(query))
+    data = []
 
+    # for i in range(1, 5):
+    #     data.append((f'attraction_id = {lst.keys()[i]} / 유사도 = {lst.values[i]}'))
 
-# def recommend(request, attraction_id):
-#     query_mariaDB(query)
-
-#     return response(data)
-
-
+    for i in range(1, 5):
+        data.append(lst.keys()[i])
+    print(data)
+    return Response(data)
 
 # DB Table -> DataFrame
 # DF 상위 5개 보내주는 법
