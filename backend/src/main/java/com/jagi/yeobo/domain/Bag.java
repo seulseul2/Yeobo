@@ -52,4 +52,12 @@ public class Bag {
         this.memo = memo;
     }
 
+    public Bag(User user, String name, String memo){
+        this.userId = user;
+        this.name = name;
+        this.memo = memo;
+    }
+
+
+
 }
