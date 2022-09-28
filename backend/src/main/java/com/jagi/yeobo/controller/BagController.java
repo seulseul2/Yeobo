@@ -3,6 +3,7 @@ package com.jagi.yeobo.controller;
 import com.jagi.yeobo.domain.Bag;
 import com.jagi.yeobo.dto.*;
 import com.jagi.yeobo.service.BagService;
+import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiOperation;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpHeaders;
@@ -161,4 +162,18 @@ public class BagController {
         return new ResponseEntity<>(message, headers, HttpStatus.OK);
     }
 
+    @ApiOperation(value = "보따리를 생성한다.",notes = "user id와 여행지 리스트, 보따리 이름,메모를 사용하여 보따리를 생성한다.")
+    @PostMapping("api/bag/create/{userId}")
+    public ResponseEntity<?> createBag(@PathVariable("userId") long userId, @RequestBody BagResponseDto bagResponseDto){
+        Message message = new Message();
+        HttpHeaders headers= new HttpHeaders();
+        headers.setContentType(new MediaType("application", "json", Charset.forName("UTF-8")));
+
+        Bag bag = bagService.createBag(userId, bagResponseDto);
+        bagService.createAttractions(bag.getId(), bagResponseDto);
+
+        message.setStatus(StatusEnum.OK);
+        message.setMessage("보따리 생성 성공");
+        return new ResponseEntity<>(message, headers, HttpStatus.OK);
+    }
 }
