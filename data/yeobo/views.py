@@ -4,7 +4,6 @@ import pymysql
 from sklearn.metrics.pairwise import cosine_similarity
 from rest_framework.decorators import api_view
 from rest_framework import status
-from rest_framework.response import Response
 
 # Create your views here.
 
@@ -17,7 +16,7 @@ def query_mariaDB(query):
         password = 'seulseul1004',
         database = 'yeobo'
     )
-
+    
     global query_result
     query_result = pd.read_sql(query, conn)
     conn.close()
