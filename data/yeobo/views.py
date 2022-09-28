@@ -31,15 +31,24 @@ def recommend(request, attraction_id):
     """
     user_attraction_score_matrix = query_mariaDB(query).pivot_table('score', index='attraction_id', columns='user_id')
     attraction_sim = pd.DataFrame(cosine_similarity(user_attraction_score_matrix, user_attraction_score_matrix), index=user_attraction_score_matrix.index, columns=user_attraction_score_matrix.index)
-    lst = attraction_sim[attraction_id].sort_values(ascending=False)
+    lst = attraction_sim[attraction_id].sort_values(ascending=False)[0:5]
 
     data = []
+    
+    for i in range(1, 5):
+        data.append(query_mariaDB(f"""
+            SELECT *
+            FROM attraction
+            WHERE attraction_id = {lst.keys()[i]}
+        """))
+    
 
     # for i in range(1, 5):
     #     data.append((f'attraction_id = {lst.keys()[i]} / 유사도 = {lst.values[i]}'))
 
-    for i in range(1, 5):
-        data.append(lst.keys()[i])
+    # for i in range(1, 5):
+    #     data.append(lst.keys()[i])
+    
     return Response(data, status=status.HTTP_200_OK)
 
 # DB Table -> DataFrame
