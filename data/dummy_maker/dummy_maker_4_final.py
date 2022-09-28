@@ -33,4 +33,9 @@ j = 125266
 lst = attraction_sim[j].sort_values(ascending=False)
 
 for i in range(1, 5):
-    print(f'attraction_id = {lst.keys()[i]} / 유사도 = {lst.values[i]}')
+
+    print(query_mariaDB(f"""
+        SELECT *
+        FROM attraction
+        WHERE attraction_id = {lst.keys()[i]}
+    """))
