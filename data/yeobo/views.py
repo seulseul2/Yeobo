@@ -16,7 +16,7 @@ def query_mariaDB(query):
         password = 'seulseul1004',
         database = 'yeobo'
     )
-    
+
     global query_result
     query_result = pd.read_sql(query, conn)
     conn.close()
@@ -41,7 +41,6 @@ def recommend(request, attraction_id):
             FROM attraction
             WHERE attraction_id = {lst.keys()[i]}
         """))
-    
 
     # for i in range(1, 5):
     #     data.append((f'attraction_id = {lst.keys()[i]} / 유사도 = {lst.values[i]}'))
@@ -50,6 +49,18 @@ def recommend(request, attraction_id):
     #     data.append(lst.keys()[i])
     
     return Response(data, status=status.HTTP_200_OK)
+
+@api_view(['GET'])
+def select(request, category):
+    # data = []
+    query = f'''
+    SELECT *
+    FROM attraction
+    WHERE category = {category}
+    ORDER BY read_count desc limit 10
+    '''
+    # data.append()
+    return Response(query_mariaDB(query), status=status.HTTP_200_OK)
 
 # DB Table -> DataFrame
 # DF 상위 5개 보내주는 법
