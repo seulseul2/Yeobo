@@ -11,9 +11,9 @@ attraction_list = df.values.tolist()
 def mysql_save(lst):
     conn = pymysql.connect(
         host = 'j7c103.p.ssafy.io', 
-        port = 3307, 
-        user = 'yeobo', 
-        password = 'seulseul1004', 
+        port = 3307,
+        user = 'yeobo',
+        password = 'seulseul1004',
         db = 'yeobo',
         charset = 'utf8mb4'
         )

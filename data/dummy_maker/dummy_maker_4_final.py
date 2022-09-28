@@ -29,7 +29,7 @@ attraction_sim = pd.DataFrame(cosine_similarity(user_attraction_score_matrix, us
 
 print(attraction_sim)
 
-j = 125266
+j = 4285
 lst = attraction_sim[j].sort_values(ascending=False)
 
 for i in range(1, 5):
