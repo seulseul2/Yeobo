@@ -60,4 +60,11 @@ public class UserService {
         userRepository.save(findUser.get());
 //        return fileDto;
     }
+
+    @Transactional
+    public String getFile(long userId) throws IllegalStateException{
+        Optional<User> findUser = userRepository.findById(userId);
+        String img = findUser.get().getProfilePath();
+        return img;
+    }
 }

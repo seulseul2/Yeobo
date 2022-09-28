@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
+import java.io.IOException;
 import java.nio.charset.Charset;
 import java.util.List;
 
@@ -209,8 +210,8 @@ public class UserController {
                     @ApiImplicitParam(name = "file",value = "사용자 이미지 파일"),
                     @ApiImplicitParam(name = "userId",value = "사용자 userId"),
             })
-    @PostMapping("/api/user/img/{userId}")
-    public ResponseEntity<?> updateProfileImg(@RequestParam("file") MultipartFile file, @PathVariable("userId") int userId) {
+    @PostMapping("/api/user/profile/{userId}")
+    public ResponseEntity<?> updateProfileImg(@RequestParam("file") MultipartFile file, @PathVariable("userId") long userId) {
         Message message = new Message();
         HttpHeaders headers= new HttpHeaders();
         headers.setContentType(new MediaType("application", "json", Charset.forName("UTF-8")));
@@ -242,7 +243,23 @@ public class UserController {
             e.printStackTrace();
             return new ResponseEntity<String>("FAIL", HttpStatus.INTERNAL_SERVER_ERROR);
         }
+    }
 
+    @ApiOperation(value = "사용자 프로필 사진파일 요청" ,notes = "사용자의 프로필 사진파일을 요청한다.")
+    @ApiImplicitParam(name = "userId",value = "사용자 userId",dataType = "long",paramType = "path")
+    @GetMapping("/api/user/profile/{userId}")
+    public ResponseEntity<?> getProfileImg(@PathVariable("userId") long userId) throws IOException {
+        Message message = new Message();
+        HttpHeaders headers= new HttpHeaders();
+        headers.setContentType(new MediaType("application", "json", Charset.forName("UTF-8")));
+
+        String img = userService.getFile(userId);
+
+        message.setStatus(StatusEnum.OK);
+        message.setMessage("사용자의 프로필 사진 조회 성공");
+        message.setData(img);
+
+        return new ResponseEntity<>(message, headers, HttpStatus.OK);
     }
 
 }
