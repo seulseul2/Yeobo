@@ -4,6 +4,7 @@ import com.jagi.yeobo.domain.*;
 import com.jagi.yeobo.dto.AttractionDto;
 import com.jagi.yeobo.dto.BagDetailDto;
 import com.jagi.yeobo.dto.BagDto;
+import com.jagi.yeobo.dto.BagSearchDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 
@@ -32,7 +33,7 @@ public class BagRepository {
     }
 
     public List<BagDto> searchBagList(long userId){
-        List<Bag> bagList = em.createQuery("SELECT b FROM bag as b WHERE b.user_id = :userId", Bag.class)
+        List<Bag> bagList = em.createQuery("SELECT b FROM bag as b WHERE b.userId.id = :userId", Bag.class)
                 .setParameter("userId", userId).getResultList();
         List<BagDto> bagDtoList = new ArrayList<>();
 
@@ -59,7 +60,7 @@ public class BagRepository {
     }
 
     public List<BagDto> searchLikeBagList(long userId){
-        List<Pick> pickList = em.createQuery("SELECT p From pick as p WHERE p.user_id = :userId", Pick.class)
+        List<Pick> pickList = em.createQuery("SELECT p From pick as p WHERE p.userId.id = :userId", Pick.class)
                 .setParameter("userId", userId).getResultList();
 
         List<BagDto> bagDtoList = new ArrayList<>();
@@ -96,13 +97,13 @@ public class BagRepository {
         bagDetailDto.setName(findBag.getName());
         bagDetailDto.setMemo(findBag.getMemo());
 
-        List<BagAttraction> bagAttractions = em.createQuery("SELECT a FROM BagAttraction as a WHERE a.bagId = :bagId", BagAttraction.class)
+        List<BagAttraction> bagAttractions = em.createQuery("SELECT a FROM BagAttraction as a WHERE a.bagId.bag_id = :bagId", BagAttraction.class)
                 .setParameter("bagId", bagId).getResultList();
 
         List<AttractionDto> list = new ArrayList<>();
         if(!list.isEmpty()){
            for(BagAttraction b : bagAttractions){
-              Attraction at = em.createQuery("SELECT k FROM Attraction as k WHERE k.attractionId = :attractionId", Attraction.class)
+              Attraction at = em.createQuery("SELECT k FROM Attraction as k WHERE k.attraction_id = :attractionId", Attraction.class)
                       .setParameter("attractionId", b.getAttractionId()).getSingleResult();
               AttractionDto attractionDto = new AttractionDto(at.getId(),at.getName());
               list.add(attractionDto);
@@ -113,20 +114,58 @@ public class BagRepository {
         return bagDetailDto;
      }
 
-     public List<BagDto> searchBagByName(String name){
-        List<Bag> bagList = em.createQuery("SELECT b FROM Bag as b WHERE b.name LIKE :name", Bag.class)
-                .setParameter("name", name)
-                .getResultList();
+     public List<BagSearchDto> searchBagByName(String name, long userId){
+//        List<Bag> bagList = em.createQuery("SELECT b FROM Bag as b WHERE b.name LIKE :name", Bag.class)
+//                .setParameter("name", name)
+//                .getResultList();
 
-         List<BagDto> bagDtoList = new ArrayList<>();
+        String sql = "SELECT b FROM Bag as b WHERE b.name LIKE :name "+
+                 "ORDER BY CASE WHEN b.name = :name0 THEN 0" +
+                 " WHEN b.name LIKE :name1 THEN 1 " +
+                 " WHEN b.name LIKE :name2 THEN 2" +
+                 " WHEN b.name LIKE :name3 THEN 3 " +
+                 "ELSE 4 " +
+                 "END";
+
+         List<Bag> bagList = em.createNativeQuery(sql)
+                 .setParameter("name","%"+name+"%")
+                 .setParameter("name0",name)
+                 .setParameter("name1",name+"%")
+                 .setParameter("name2","%"+name+"%")
+                 .setParameter("name3","%"+name)
+                 .getResultList();
+
+        List<Pick> pickList = em.createQuery("SELECT p From pick as p WHERE p.userId.id = :userId", Pick.class)
+                 .setParameter("userId", userId).getResultList();
+
+        List<BagSearchDto> bagDtoList = new ArrayList<>();
          if(!bagList.isEmpty()){
              for(Bag b : bagList){
-                 bagDtoList.add(new BagDto(b.getName(), b.getMemo()));
+                 boolean check = false;
+                for(Pick p : pickList){
+                    if(b.getId() == p.getBagId().getId()) {
+                        check = true;
+                        break;
+                    }
+                }
+                 bagDtoList.add(new BagSearchDto(b.getName(), b.getMemo(), check));
              }
          }
 
          return bagDtoList;
      }
 
+     public int deleteOneInBag(long bagId, long attractionId){
+        return em.createQuery("DELETE FROM BagAttraction as ba WHERE ba.id :bagId and ba.attractionId.id = :attractionId")
+                .setParameter("bagId", bagId)
+                .setParameter("attractionId", attractionId)
+                .executeUpdate();
+     }
 
+     public int likeBagCancel(long userId, long bagId){
+         return em.createQuery("DELETE FROM Pick as p WHERE p.userId.id = :userId and p.bagId.id = :bagId")
+                 .setParameter("userId", userId)
+                 .setParameter("bagId", bagId)
+                 .executeUpdate();
+     }
 }
