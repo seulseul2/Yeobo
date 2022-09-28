@@ -22,13 +22,18 @@ def query_mariaDB(query):
 
 query = """
     SELECT *
-    FROM attraction
+    FROM score
 """
 
-def recommend(request, attraction_id):
-    query_mariaDB(query)
+print(query_mariaDB(query))
 
-    return response(data)
+
+# def recommend(request, attraction_id):
+#     query_mariaDB(query)
+
+#     return response(data)
+
+
 
 # DB Table -> DataFrame
 # DF 상위 5개 보내주는 법
