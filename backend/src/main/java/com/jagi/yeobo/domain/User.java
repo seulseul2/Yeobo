@@ -25,14 +25,16 @@ public class User {
 
     private String nickname;
 
-    private String profile_path;
+    @Column(name="profile_path")
+    private String profilePath;
 
     private String gender;
 
     @Column(nullable = true)
     private int age;
 
-    private String refresh_token;
+    @Column(name="refresh_token")
+    private String refreshToken;
 
     private String role;
 
