@@ -56,4 +56,9 @@ public class BagService {
     public int deleteOneInBag(long bagId, long attractionId ){
         return bagRepository.deleteOneInBag(bagId, attractionId);
     }
+
+    @Transactional
+    public int likeBagCancel(long userId, long bagId){
+        return bagRepository.likeBagCancel(userId, bagId);
+    }
 }
