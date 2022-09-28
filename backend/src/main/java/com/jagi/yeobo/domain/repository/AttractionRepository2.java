@@ -58,7 +58,7 @@ public class AttractionRepository2 {
 
     /* 여행지 리스트 조회 */
     public List<AttractionResponseDto> searchAttractionList(String name,long userId){ // score 다시 가져오기
-        String sql = "SELECT a.attraction_id,a.name,s.score FROM Attraction a left join Score s on s.user_id = :userId and a.attraction_id = s.attraction_id and a.name LIKE :name "+
+        String sql = "SELECT a.attraction_id,a.name,s.score FROM attraction a left join score s on s.user_id = :userId and a.attraction_id = s.attraction_id and a.name LIKE :name "+
                 "ORDER BY CASE WHEN a.name = :name0 THEN 0" +
                 " WHEN a.name LIKE :name1 THEN 1 " +
                 " WHEN a.name LIKE :name2 THEN 2" +
