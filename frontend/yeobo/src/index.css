@@ -22,12 +22,12 @@
   font-style: normal;
 }
 
-/* 브라우저 사이즈 767px 이하일때*/
+/* 브라우저 사이즈 360px 이하일때*/
 @media (max-width: 360px){
   
 }
 
-/* 브라우저 사이즈 768px이상, 1023px이하 일때,*/
+/* 브라우저 사이즈 360px이상일 때,*/
 @media (min-width: 360px){
   
 }

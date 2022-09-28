@@ -1,10 +1,11 @@
 import './BottomNavBar.scss';
 import { Link } from 'react-router-dom';
-import bag from './images/icons/bag1.png';
+import bag from './images/icons/onebag.png';
 import bags from './images/icons/mergeboddari.png';
 import user from './images/icons/user.png';
-import homeWhite from './images/icons/home-white.png';
+import homeWhite from './images/icons/homewhite.png';
 // import homePink from './images/icons/home-pink.png';
+import search from './images/icons/searchicon.png';
 
 const BottomNavBar = () => {
   return <div className='bottom'>
@@ -16,27 +17,27 @@ const BottomNavBar = () => {
         </Link>
       </div>
       <div className='iconTab'>
-        <Link to='/Boddari'>
-          <img className='homeIcon' src={bag} alt=""/>
-          <p className='iconText'>보따리 만들기</p>
+        <Link to='/Search'>
+          <img className='homeIcon' src={search} alt=""/>
+          <p className='iconText'>검색</p>
         </Link>
       </div>
       <div className='iconTab'>
         <Link to='/Boddari'>
+          <img className='homeIcon' src={bag} alt=""/>
+          <p className='iconText'>만들기</p>
+        </Link>
+      </div>
+      <div className='iconTab'>
+        <Link to='/Login'>
           <img className='homeIcon' src={bags} alt=""/>
-          <p className='iconText'>보따리 합치기</p>
+          <p className='iconText'>합치기</p>
         </Link>
       </div>
       <div className='iconTab'>
         <Link to='/Mypage'>
           <img className='homeIcon' src={user} alt=""/>
           <p className='iconText'>마이페이지</p>
-        </Link>
-      </div>
-      <div className='iconTab'>
-        <Link to='/Login'>
-          <img className='homeIcon' src={user} alt=""/>
-          <p className='iconText'>로그인</p>
         </Link>
       </div>
     </div>
