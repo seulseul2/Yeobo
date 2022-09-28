@@ -1,10 +1,7 @@
 package com.jagi.yeobo.domain.repository;
 
 import com.jagi.yeobo.domain.*;
-import com.jagi.yeobo.dto.AttractionDto;
-import com.jagi.yeobo.dto.BagDetailDto;
-import com.jagi.yeobo.dto.BagDto;
-import com.jagi.yeobo.dto.BagSearchDto;
+import com.jagi.yeobo.dto.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 
@@ -168,4 +165,26 @@ public class BagRepository {
                  .setParameter("bagId", bagId)
                  .executeUpdate();
      }
+
+     public Bag createBag(long userId, BagResponseDto bagResponseDto){
+        User findMember = em.find(User.class, userId);
+        Bag bag = new Bag(findMember, bagResponseDto.getName(), bagResponseDto.getMemo());
+
+        em.persist(bag);
+        em.flush();
+        return bag;
+     }
+
+     public void createAttractions(long bagId, BagResponseDto bagResponseDto){
+        Bag findBag = em.find(Bag.class, bagId);
+
+        List<Long> attLists = bagResponseDto.getAttractionId();
+        for(long attId : attLists){
+            Attraction findAtt = em.find(Attraction.class, attId);
+            BagAttraction bagAttraction = new BagAttraction(findBag, findAtt);
+            em.persist(bagAttraction);
+        }
+     }
+
+
 }
