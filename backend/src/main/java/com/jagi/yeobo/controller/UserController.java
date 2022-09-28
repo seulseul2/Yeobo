@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.*;
 import java.nio.charset.Charset;
 import java.util.List;
 
+@CrossOrigin(originPatterns = "http://localhost:3000")
 @RestController
 @RequiredArgsConstructor
 public class UserController {
