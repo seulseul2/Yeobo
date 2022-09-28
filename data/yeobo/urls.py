@@ -3,6 +3,6 @@ from . import views
 
 app_name = ''
 urlpatterns = [
-    path('makeBoddari/recommend/<int:attraction_id>/', views.recommend, name='recommend'),
-    path('makeBoddari/select/<int:category>', views.select, name='select'),
+    path('MakeBoddari/Recommend/<int:attraction_id>/', views.recommend),
+    path('MakeBoddari/PickCategory/<int:category>/', views.pick_category),
 ]

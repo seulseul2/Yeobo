@@ -2,11 +2,10 @@ import pandas as pd
 import pprint
 import pymysql
 
-df = pd.read_csv("score.csv")
+df = pd.read_csv("S07P22C103\score.csv")
 df = df.drop(columns=['Unnamed: 0'])
 
 df = df.where(pd.notnull(df), None) # dataframe 형식을 list로 변환하기 위한 전처리, Nan을 None으로 바꿔준다.
-df = df.drop(columns=['index'])
 
 
 score_list = df.values.tolist()

@@ -1,6 +1,7 @@
 from rest_framework.response import Response
 import pandas as pd
 import pymysql
+import json
 from sklearn.metrics.pairwise import cosine_similarity
 from rest_framework.decorators import api_view
 from rest_framework import status
@@ -23,45 +24,47 @@ def query_mariaDB(query):
 
     return query_result
 
+def query_mariaDB_category(query):
+    # DB 연결
+    conn = pymysql.connect(
+        host = 'j7c103.p.ssafy.io',
+        port = 3307,
+        user = 'yeobo',
+        password = 'seulseul1004',
+        database = 'yeobo'
+    )
+    
+    global query_result
+    query_result = pd.read_sql(query, conn)
+    query_result = json.loads(query_result.to_json(orient='records'))
+    conn.close()
+
+    return query_result
+
 @api_view(['GET'])
 def recommend(request, attraction_id):
     query = """
     SELECT *
     FROM score
     """
+    data = []
     user_attraction_score_matrix = query_mariaDB(query).pivot_table('score', index='attraction_id', columns='user_id')
     attraction_sim = pd.DataFrame(cosine_similarity(user_attraction_score_matrix, user_attraction_score_matrix), index=user_attraction_score_matrix.index, columns=user_attraction_score_matrix.index)
     lst = attraction_sim[attraction_id].sort_values(ascending=False)[0:5]
-
-    data = []
-    
     for i in range(1, 5):
         data.append(query_mariaDB(f"""
             SELECT *
             FROM attraction
             WHERE attraction_id = {lst.keys()[i]}
         """))
-
-    # for i in range(1, 5):
-    #     data.append((f'attraction_id = {lst.keys()[i]} / 유사도 = {lst.values[i]}'))
-
-    # for i in range(1, 5):
-    #     data.append(lst.keys()[i])
-    
     return Response(data, status=status.HTTP_200_OK)
 
 @api_view(['GET'])
-def select(request, category):
-    # data = []
-    query = f'''
+def pick_category(request, category):
+    
+    return Response(query_mariaDB_category(f"""
     SELECT *
     FROM attraction
     WHERE category = {category}
-    ORDER BY read_count desc limit 10
-    '''
-    # data.append()
-    return Response(query_mariaDB(query), status=status.HTTP_200_OK)
-
-# DB Table -> DataFrame
-# DF 상위 5개 보내주는 법
-# response(data 형태로 보내줌)
+    LIMIT 100
+    """), status=status.HTTP_200_OK)
