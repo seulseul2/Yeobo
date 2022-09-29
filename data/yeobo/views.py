@@ -65,6 +65,21 @@ def pick_category(request, category):
     return Response(query_mariaDB_category(f"""
     SELECT *
     FROM attraction
-    WHERE category = {category}
-    LIMIT 100
+    WHERE category = {category} AND read_count >= 10000
+    ORDER BY rand()
+    LIMIT 30
     """), status=status.HTTP_200_OK)
+
+
+@api_view(['GET'])
+def main_recommend(request, user_id):
+    result_temp = query_mariaDB(f"""
+    SELECT attraction_id
+    FROM score
+    WHERE user_id = {user_id}
+    ORDER BY score DESC, score_id DESC
+    LIMIT 1
+    """)['attraction_id']
+    print(result_temp)
+    # result = recommend(None, result_temp)
+    return Response(result_temp, status=status.HTTP_200_OK)
