@@ -49,7 +49,7 @@ public class AttractionRepository2 {
             ScoreDto scoreSave = ScoreDto.builder()
                     .score(s.getScore())
                     .userId(s.getUserId().getId())
-                    .attractionId(s.getAttractionId().getId())
+                    .attractionId(s.getAttractionId() !=null ? s.getAttractionId().getId():0)
                     .build();
             scoreDtoList.add(scoreSave);
         }
