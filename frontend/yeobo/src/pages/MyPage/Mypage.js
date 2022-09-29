@@ -1,9 +1,9 @@
 import './Mypage.scss';
-import settings from '../images/icons/settings.png';
-import pink from '../images/icons/pinkCircle.png';
-import purple from '../images/icons/purpleCircle.png';
-import mint from '../images/icons/mintCircle.png';
-import info from '../images/icons/info.png';
+import settings from '../../assets/images/icons/settings.png';
+import pink from '../../assets/images/icons/pinkCircle.png';
+import purple from '../../assets/images/icons/purpleCircle.png';
+import mint from '../../assets/images/icons/mintCircle.png';
+import info from '../../assets/images/icons/info.png';
 // import { Link } from 'react-router-dom';
 import BoddariBox from './BoddariBox';
 import VisitedBox from './VisitedBox';

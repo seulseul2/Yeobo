@@ -1,4 +1,4 @@
-import image from '../images/user.png';
+import image from '../../assets/images/user.png';
 import './UserSearch.scss';
 
 const UserSearch = () => {

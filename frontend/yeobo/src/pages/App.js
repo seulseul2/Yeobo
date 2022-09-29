@@ -10,7 +10,7 @@ import Mypage from './MyPage/Mypage';
 import Search from './Search/Search';
 import DestinationDetail from './Destination/DestinationDetail';
 
-import './App.scss';
+import '../assets/styles/App.scss';
 import BottomNavBar from './BottomNavBar';
 
 function App() {
