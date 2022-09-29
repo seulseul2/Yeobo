@@ -9,7 +9,7 @@ import Login from './MainPage/User/Login';
 import Mypage from './MyPage/Mypage';
 import Search from './Search/Search';
 import DestinationDetail from './Destination/DestinationDetail';
-
+import TestAPI from './TestAPI';
 import '../assets/styles/App.scss';
 import BottomNavBar from './BottomNavBar';
 
@@ -32,6 +32,7 @@ function App() {
           <Route path="/SaveBoddari" element={<BoddariSave/>}></Route>
           <Route path='/Search' element={<Search/>}></Route>
           <Route path='/DestinationDetail' element={<DestinationDetail/>}></Route>
+          <Route path='/testapi' element={<TestAPI/>}></Route>
         </Routes>
       </div>
       {/* <div style="height: 80px;">.</div> */}
