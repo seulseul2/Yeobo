@@ -3,6 +3,7 @@ import Destination from './Destination';
 import './Boddari.scss';
 // import luggage from '../images/luggage.png';
 import {Link} from 'react-router-dom';
+import {searchAttraction} from '../api/bag/bag';
 
 function Boddari() {
   return (
@@ -13,6 +14,7 @@ function Boddari() {
         <Link to='/SaveBoddari'>다음</Link>
       </div>
       <div className="recoList">
+          <button onClick={() => { searchAttraction('해수욕장')}}>api</button>
           <Destination />
           <Destination />
           <Destination />
