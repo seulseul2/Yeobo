@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import React, { useState } from 'react';
-import axios from 'axios';
+import { login } from '../../../api/user/login';
+
 
 import './User.scss';
 import logo from '../../../assets/images/logos/logo-border.png';
@@ -16,28 +17,31 @@ const Login = () => {
     email: '',
     password: '',
   })
-  // const { email, password } = inputs;
+  const { email, password } = inputs;
   const onChange = (e) => {
-    // console.log(e.target.value)
     const { name, value } = e.target;
     setInputs({
       ...inputs,
       [name]: value,
     });
-    console.log(inputs)
-    // console.log(process.env.REACT_APP_API_URL)
   };
 
+  // 조건 1. 이메일 검사 (이메일 형식으로 했는지 검사해주기)
+  const isValidEmail = email.includes('@') && email.includes('.');
+  // 조건 2. 입력값 모두 작성 여부 검사
+  const isValidInput = email.length >= 1 && password.length >= 1;
+  // 조건 만족 여부
+  const getIsActive = isValidEmail && isValidInput === true;
+
   const handleSubmit = () => {
-    axios.post('http://j7c103.p.ssafy.io:8080/api/user/login', inputs)
-      .then((res) => {
-        const response = res.data;
-        alert(response.message);
-        console.log(response.data)
-      })
-      .catch((err) => {
-        console.log(err.response);
-    })
+    if (!isValidEmail) {
+      alert('이메일 형식으로 입력해 주세요.')
+    } else if (!isValidInput) {
+      alert('모든 내용을 입력해 주세요.')
+    }
+    if (getIsActive) {
+      login(inputs)
+    }
   };
   
 

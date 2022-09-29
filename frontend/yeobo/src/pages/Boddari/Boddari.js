@@ -3,7 +3,7 @@ import Destination from './Destination';
 import './Boddari.scss';
 // import luggage from '../images/luggage.png';
 import {Link} from 'react-router-dom';
-import {searchAttraction} from '../api/bag/bag';
+import {searchAttraction} from '../../api/bag/bag';
 
 function Boddari() {
   return (
