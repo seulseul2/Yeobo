@@ -1,5 +1,5 @@
 import './User.scss';
-import axios from 'axios';
+import { signUp } from '../../../api/user/signup';
 
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
@@ -33,34 +33,40 @@ const Signup = () => {
     setRePasswordInput({
       re_password: e.target.value,
     })
-    console.log(inputs)
-  };
-  const onReset = () => {
-    setInputs({
-      email: '',
-      password: '',
-      re_password: '',
-      nickname: '',
-      age: '',
-      gender: '',
-    });
   };
 
-  // 이메일 검사: '@', '.' 이 둘다 포함될것.
+  // 사용자가 넣은 값 다 초기화 해주는 버튼 나중에 추가
+  // const onReset = () => {
+  //   setInputs({
+  //     email: '',
+  //     password: '',
+  //     re_password: '',
+  //     nickname: '',
+  //     age: '',
+  //     gender: '',
+  //   });
+  // };
+
+  // 조건 1. 이메일 검사: '@', '.' 이 둘다 포함될것.
   const isValidEmail = email.includes('@') && email.includes('.');
-  // 비밀번호 특수문자 검사를 위한 정규식표현.
+  // 조건 2. 비밀번호 특수문자 검사를 위한 정규식표현.
   const specialLetter = password.search(/[`~!@@#$%^&*|₩₩₩'₩";:₩/?]/gi);
-  // 특수문자 1자 이상, 전체 8자 이상일것.
+  // 조건 2. 특수문자 1자 이상, 전체 8자 이상일것.
   const isValidPassword = password.length >= 8 && specialLetter >= 1;
-  // 모든 input의 value가 1자 이상이 되어야 한다
+  // 조건 3. 모든 input의 value가 1자 이상이 되어야 한다
   const isValidInput = email.length >= 1 && password.length >= 1 && re_password.length >= 1;
-  // 검사한 모든 로직의 유효성 검사가 true가 될때 getIsActive함수가 작동한다. 버튼 클릭 이벤트가 발생할때 넣어줄 함수.
-  const getIsActive = isValidEmail && isValidPassword && isValidInput === true;
-  // 유효성 검사 중 하나라도 만족하지못할때 즉, 버튼이 비활성화 될 때 버튼을 클릭하면 아래와 같은 경고창이 뜬다.
+  
   
   const handleSubmit = (e) => {
     e.preventDefault();
+
+    // 비밀번호 입력, 재입력 일치 여부 검사
     const re_pass = password === re_password
+
+    // 검사한 모든 로직의 유효성 검사가 true가 될때 getIsActive함수가 작동한다. 버튼 클릭 이벤트가 발생할때 넣어줄 함수.
+    const getIsActive = isValidEmail && isValidPassword && isValidInput && re_pass === true;
+    
+    // 유효성 검사 중 하나라도 만족하지못할때 즉, 버튼이 비활성화 될 때 버튼을 클릭하면 아래와 같은 경고창이 뜬다.
     if (!isValidEmail) {
       alert('이메일 형식으로 입력해 주세요.');
     } else if (!isValidInput) {
@@ -78,15 +84,10 @@ const Signup = () => {
         nickname: email_nick,
       });
     }
-    axios.post('http://j7c103.p.ssafy.io:8080/api/user/signUp', inputs)
-      .then((res) => {
-        const response = res.data;
-        alert(response.message);
-        console.log(response)
-      })
-      .catch((err) => {
-        console.log(err.response);
-      })
+    // 모든 조건을 통과하면 회원가입 성공
+    if (getIsActive) {
+      signUp(inputs);
+    }
   }
 
     return <div className="user-box">
