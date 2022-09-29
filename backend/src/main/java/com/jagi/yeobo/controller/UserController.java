@@ -232,8 +232,9 @@ public class UserController {
                     }
                 }
                 String fileUrl = savePath +  File.separator + fileName;
-                System.out.println(fileUrl);
+
                 file.transferTo(new File(fileUrl));
+                System.out.println(">>>>"+fileUrl);
                 userService.saveFile(userId,fileUrl);
                 return new ResponseEntity<String>("SUCCESS", HttpStatus.OK);
             } else {
