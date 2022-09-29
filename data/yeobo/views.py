@@ -61,6 +61,21 @@ def recommend(request, attraction_id):
     return Response(data, status=status.HTTP_200_OK)
 
 @api_view(['GET'])
+def area_code(request, attraction_id):
+    query_area_code = f"""
+    SELECT area_code
+    FROM attraction
+    WHERE attraction_id = {attraction_id}
+    """
+    return Response(query_mariaDB_category(f"""
+    SELECT *
+    FROM attraction
+    WHERE area_code = {query_mariaDB(query_area_code)['area_code'][0]} AND read_count >= 10000
+    ORDER BY rand()
+    LIMIT 30
+    """), status=status.HTTP_200_OK)
+    
+@api_view(['GET'])
 def pick_category(request, category):
     
     return Response(query_mariaDB_category(f"""
@@ -78,9 +93,7 @@ def main_recommend(request, user_id):
     SELECT *
     FROM score
     """
-    
     data = []
-    
     attraction_main_recommend = int(query_mariaDB(f"""
     SELECT attraction_id
     FROM score
@@ -88,16 +101,13 @@ def main_recommend(request, user_id):
     ORDER BY score DESC, score_id DESC
     LIMIT 1
     """)['attraction_id'][0])
-    
     user_attraction_score_matrix = query_mariaDB(query).pivot_table('score', index='attraction_id', columns='user_id')
     attraction_sim = pd.DataFrame(cosine_similarity(user_attraction_score_matrix, user_attraction_score_matrix), index=user_attraction_score_matrix.index, columns=user_attraction_score_matrix.index)
     lst = attraction_sim[attraction_main_recommend].sort_values(ascending=False)[0:5]
-    
     for i in range(1, 5):
         data.append(query_mariaDB(f"""
             SELECT *
             FROM attraction
             WHERE attraction_id = {lst.keys()[i]}
         """))
-        
     return Response(data, status=status.HTTP_200_OK)
