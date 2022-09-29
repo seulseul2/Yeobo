@@ -3,10 +3,10 @@ import axios from 'axios';
 
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import logo from '../../images/logos/logo-border.png';
-import naver from '../../images/icons/social-naver.png';
-import kakao from '../../images/icons/social-kakao.png';
-import google from '../../images/icons/social-google.png';
+import logo from '../../../assets/images/logos/logo-border.png';
+import naver from '../../../assets/images/icons/social-naver.png';
+import kakao from '../../../assets/images/icons/social-kakao.png';
+import google from '../../../assets/images/icons/social-google.png';
 
 const Signup = () => {
 

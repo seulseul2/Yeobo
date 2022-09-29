@@ -1,11 +1,11 @@
 import './BottomNavBar.scss';
 import { Link } from 'react-router-dom';
-import bag from './images/icons/onebag.png';
-import bags from './images/icons/mergeboddari.png';
-import user from './images/icons/user.png';
-import homeWhite from './images/icons/homewhite.png';
-// import homePink from './images/icons/home-pink.png';
-import search from './images/icons/searchicon.png';
+import bag from '../assets/images/icons/onebag.png';
+import bags from '../assets/images/icons/mergeboddari.png';
+import user from '../assets/images/icons/user.png';
+import homeWhite from '../assets/images/icons/homewhite.png';
+// import homePink from '../assets/images/icons/home-pink.png';
+import search from '../assets/images/icons/searchicon.png';
 
 const BottomNavBar = () => {
   return <div className='bottom'>

@@ -1,4 +1,4 @@
-import image from '../images/daejeon.jpeg';
+import image from '../../assets/images/daejeon.jpeg';
 import './DestinationSearch.scss';
 import Rating from '@mui/material/Rating';
 import {useState} from 'react';

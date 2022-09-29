@@ -3,10 +3,10 @@ import React, { useState } from 'react';
 import axios from 'axios';
 
 import './User.scss';
-import logo from '../../images/logos/logo-border.png';
-import naver from '../../images/icons/social-naver.png';
-import kakao from '../../images/icons/social-kakao.png';
-import google from '../../images/icons/social-google.png';
+import logo from '../../../assets/images/logos/logo-border.png';
+import naver from '../../../assets/images/icons/social-naver.png';
+import kakao from '../../../assets/images/icons/social-kakao.png';
+import google from '../../../assets/images/icons/social-google.png';
 
 // const testImage = 'https://cdn.visitkorea.or.kr/img/call?cmd=VIEW&id=552b48fc-ce4a-43dc-adf2-1f854e4abd8f&mode=progress';
 

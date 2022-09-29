@@ -1,5 +1,5 @@
 import React from "react";
-import luggage from '../images/luggage.png';
+import luggage from '../../assets/images/luggage.png';
 import './BoddariSave.scss';
 function BoddariSave() {
   return (
