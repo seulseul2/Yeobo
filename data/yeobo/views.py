@@ -1,5 +1,6 @@
 from rest_framework.response import Response
 import pandas as pd
+import requests
 import pymysql
 import json
 from sklearn.metrics.pairwise import cosine_similarity
@@ -73,13 +74,30 @@ def pick_category(request, category):
 
 @api_view(['GET'])
 def main_recommend(request, user_id):
-    result_temp = query_mariaDB(f"""
+    query = """
+    SELECT *
+    FROM score
+    """
+    
+    data = []
+    
+    attraction_main_recommend = int(query_mariaDB(f"""
     SELECT attraction_id
     FROM score
     WHERE user_id = {user_id}
     ORDER BY score DESC, score_id DESC
     LIMIT 1
-    """)['attraction_id']
-    print(result_temp)
-    # result = recommend(None, result_temp)
-    return Response(result_temp, status=status.HTTP_200_OK)
+    """)['attraction_id'][0])
+    
+    user_attraction_score_matrix = query_mariaDB(query).pivot_table('score', index='attraction_id', columns='user_id')
+    attraction_sim = pd.DataFrame(cosine_similarity(user_attraction_score_matrix, user_attraction_score_matrix), index=user_attraction_score_matrix.index, columns=user_attraction_score_matrix.index)
+    lst = attraction_sim[attraction_main_recommend].sort_values(ascending=False)[0:5]
+    
+    for i in range(1, 5):
+        data.append(query_mariaDB(f"""
+            SELECT *
+            FROM attraction
+            WHERE attraction_id = {lst.keys()[i]}
+        """))
+        
+    return Response(data, status=status.HTTP_200_OK)
