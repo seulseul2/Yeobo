@@ -24,12 +24,12 @@ public class BagController {
 
     @ApiOperation(value = "보따리 이름과 메모를 수정한다.",notes = "userId에 해당하는 회원의 보따리의 이름과 메모를 수정한다.")
     @PutMapping("api/bag/update/name/{bagId}")
-    public ResponseEntity<?> updateBag(@PathVariable("userId") long userId, @RequestBody BagDto bagDto){
+    public ResponseEntity<?> updateBag(@PathVariable("bagId") long bagId, @RequestBody BagDto bagDto){
         Message message = new Message();
         HttpHeaders headers= new HttpHeaders();
         headers.setContentType(new MediaType("application", "json", Charset.forName("UTF-8")));
 
-        bagService.updateBag(userId, bagDto);
+        bagService.updateBag(bagId, bagDto);
         message.setStatus(StatusEnum.OK);
         message.setMessage("보따리 수정 성공");
 
