@@ -10,7 +10,6 @@ import lombok.*;
 @AllArgsConstructor
 public class BagDto {
     private String name;
-
     private String memo;
 
     public Bag toEntity(){
