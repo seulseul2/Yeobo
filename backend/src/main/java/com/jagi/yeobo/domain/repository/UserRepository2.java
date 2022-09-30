@@ -43,6 +43,7 @@ public class UserRepository2 {
                 .email(user.getEmail())
 //                .password(user.getPassword())
                 .nickname(user.getNickname())
+                .profilePath(user.getProfilePath())
                 .gender(user.getGender())
                 .age(user.getAge())
                 .build();

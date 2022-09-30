@@ -17,4 +17,8 @@ public class UserResponseDto {
     @ApiModelProperty(example="유저 닉네임")
     @ApiParam(value = "사용자 nickname", type = "String")
     private String nickname;
+
+    @ApiModelProperty(example="")
+    @ApiParam(value = "사용자 프로필 이미지 경로", type = "String")
+    private String profilePath;
 }

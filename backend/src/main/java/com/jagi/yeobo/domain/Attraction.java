@@ -27,6 +27,7 @@ public class Attraction {
     private String address;
 
     private int areaCode;
+
     private String image;
 
     private String image2;

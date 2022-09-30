@@ -49,7 +49,7 @@ public class AttractionRepository2 {
             ScoreDto scoreSave = ScoreDto.builder()
                     .score(s.getScore())
                     .userId(s.getUserId().getId())
-                    .attractionId(s.getAttractionId().getId())
+                    .attractionId(s.getAttractionId() !=null ? s.getAttractionId().getId():0)
                     .build();
             scoreDtoList.add(scoreSave);
         }
@@ -58,7 +58,7 @@ public class AttractionRepository2 {
 
     /* 여행지 리스트 조회 */
     public List<AttractionResponseDto> searchAttractionList(String name,long userId){ // score 다시 가져오기
-        String sql = "SELECT a.attraction_id,a.name,s.score FROM attraction a left join score s on s.user_id = :userId and a.attraction_id = s.attraction_id and a.name LIKE :name "+
+        String sql = "SELECT a.attraction_id,a.name,s.score,a.image FROM attraction a left join score s on s.user_id = :userId and a.attraction_id = s.attraction_id where a.name LIKE :name "+
                 "ORDER BY CASE WHEN a.name = :name0 THEN 0" +
                 " WHEN a.name LIKE :name1 THEN 1 " +
                 " WHEN a.name LIKE :name2 THEN 2" +
@@ -80,6 +80,7 @@ public class AttractionRepository2 {
                     .id(Long.valueOf(String.valueOf(a[0])))
                     .name(String.valueOf(a[1]))
                     .score(Double.valueOf(String.valueOf(a[2]==null?0:a[2]))) //null이면 0 넣어주기
+                    .img(String.valueOf(a[3]))
                     .build();
             attractionList.add(attractionDto);
         }
