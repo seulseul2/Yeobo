@@ -84,7 +84,7 @@ public class BagController {
 
     @ApiOperation(value = "인기 보따리의 리스트를 조회한다.",notes = "상위 4개 좋아요 순의 인기 보따리들의 리스트를 출력한다.")
     @GetMapping("api/bag/list/popular")
-    public ResponseEntity<?> searchPopularBagList(@PathVariable("bagId") long bagId){
+    public ResponseEntity<?> searchPopularBagList(){
         Message message = new Message();
         HttpHeaders headers= new HttpHeaders();
         headers.setContentType(new MediaType("application", "json", Charset.forName("UTF-8")));

@@ -116,7 +116,7 @@ public class BagRepository {
 //                .setParameter("name", name)
 //                .getResultList();
 
-        String sql = "SELECT b FROM Bag as b WHERE b.name LIKE :name "+
+        String sql = "SELECT b FROM bag as b WHERE b.name LIKE :name "+
                  "ORDER BY CASE WHEN b.name = :name0 THEN 0" +
                  " WHEN b.name LIKE :name1 THEN 1 " +
                  " WHEN b.name LIKE :name2 THEN 2" +
