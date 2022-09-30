@@ -3,6 +3,8 @@ package com.jagi.yeobo.controller;
 import com.jagi.yeobo.domain.User;
 import com.jagi.yeobo.dto.*;
 import com.jagi.yeobo.service.UserService;
+import io.swagger.annotations.ApiImplicitParam;
+import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpHeaders;
@@ -10,10 +12,14 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.File;
+import java.io.IOException;
 import java.nio.charset.Charset;
 import java.util.List;
 
+@CrossOrigin(originPatterns = "http://localhost:3000")
 @RestController
 @RequiredArgsConstructor
 public class UserController {
@@ -197,6 +203,67 @@ public class UserController {
             message.setMessage("서버 에러 발생");
             return new ResponseEntity<>(message, headers,  HttpStatus.INTERNAL_SERVER_ERROR);
         }
+    }
+
+    @ApiOperation(value = "사용자 프로필 사진 수정(저장) 요청" ,notes = "사용자의 프로필 사진을 수정 요청한다.")
+    @ApiImplicitParams(
+            {
+                    @ApiImplicitParam(name = "file",value = "사용자 이미지 파일"),
+                    @ApiImplicitParam(name = "userId",value = "사용자 userId"),
+            })
+    @PostMapping("/api/user/profile/{userId}")
+    public ResponseEntity<?> updateProfileImg(@RequestParam("file") MultipartFile file, @PathVariable("userId") long userId) {
+        Message message = new Message();
+        HttpHeaders headers= new HttpHeaders();
+        headers.setContentType(new MediaType("application", "json", Charset.forName("UTF-8")));
+
+        try {
+            if (file != null) {
+                String fileOriName = file.getOriginalFilename();
+                String fileName = userId+"_"+fileOriName;
+//                String savePath = System.getProperty("user.home") +"/upload";
+                String savePath = System.getProperty("user.dir") +"/upload";
+
+                if (!new File(savePath).exists()) {
+                    try {
+                        new File(savePath).mkdir();
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                }
+                String fileUrl = savePath +  File.separator + fileName;
+
+                file.transferTo(new File(fileUrl));
+                System.out.println(">>>>"+fileUrl);
+                userService.saveFile(userId,fileUrl);
+                return new ResponseEntity<String>("SUCCESS", HttpStatus.OK);
+            } else {
+                return new ResponseEntity<String>("CHECK FILE", HttpStatus.BAD_REQUEST);
+            }
+        } catch (IllegalStateException e){
+            e.printStackTrace();
+            return new ResponseEntity<String>("CHECK EMAIL", HttpStatus.BAD_REQUEST);
+        } catch (Exception e){
+            e.printStackTrace();
+            return new ResponseEntity<String>("FAIL", HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
+    @ApiOperation(value = "사용자 프로필 사진파일 요청" ,notes = "사용자의 프로필 사진파일을 요청한다.")
+    @ApiImplicitParam(name = "userId",value = "사용자 userId",dataType = "long",paramType = "path")
+    @GetMapping("/api/user/profile/{userId}")
+    public ResponseEntity<?> getProfileImg(@PathVariable("userId") long userId) throws IOException {
+        Message message = new Message();
+        HttpHeaders headers= new HttpHeaders();
+        headers.setContentType(new MediaType("application", "json", Charset.forName("UTF-8")));
+
+        String img = userService.getFile(userId);
+
+        message.setStatus(StatusEnum.OK);
+        message.setMessage("사용자의 프로필 사진 조회 성공");
+        message.setData(img);
+
+        return new ResponseEntity<>(message, headers, HttpStatus.OK);
     }
 
 }

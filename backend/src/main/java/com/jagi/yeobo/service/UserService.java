@@ -51,4 +51,19 @@ public class UserService {
         //나중에 토큰이나 다른 정보들 넘겨줌
         return user.get();
     }
+
+    @Transactional
+    public void saveFile(long userId,String fileUrl) throws IllegalStateException {
+        Optional<User> findUser = userRepository.findById(userId);
+
+        findUser.get().setProfilePath(fileUrl);
+        userRepository.save(findUser.get());
+    }
+
+    @Transactional
+    public String getFile(long userId) throws IllegalStateException{
+        Optional<User> findUser = userRepository.findById(userId);
+        String img = findUser.get().getProfilePath();
+        return img;
+    }
 }

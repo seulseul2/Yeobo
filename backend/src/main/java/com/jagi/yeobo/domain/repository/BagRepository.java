@@ -1,10 +1,7 @@
 package com.jagi.yeobo.domain.repository;
 
 import com.jagi.yeobo.domain.*;
-import com.jagi.yeobo.dto.AttractionDto;
-import com.jagi.yeobo.dto.BagDetailDto;
-import com.jagi.yeobo.dto.BagDto;
-import com.jagi.yeobo.dto.BagSearchDto;
+import com.jagi.yeobo.dto.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 
@@ -33,7 +30,7 @@ public class BagRepository {
     }
 
     public List<BagDto> searchBagList(long userId){
-        List<Bag> bagList = em.createQuery("SELECT b FROM bag as b WHERE b.userId.id = :userId", Bag.class)
+        List<Bag> bagList = em.createQuery("SELECT b FROM Bag as b WHERE b.userId.id = :userId", Bag.class)
                 .setParameter("userId", userId).getResultList();
         List<BagDto> bagDtoList = new ArrayList<>();
 
@@ -60,7 +57,7 @@ public class BagRepository {
     }
 
     public List<BagDto> searchLikeBagList(long userId){
-        List<Pick> pickList = em.createQuery("SELECT p From pick as p WHERE p.userId.id = :userId", Pick.class)
+        List<Pick> pickList = em.createQuery("SELECT p From Pick as p WHERE p.userId.id = :userId", Pick.class)
                 .setParameter("userId", userId).getResultList();
 
         List<BagDto> bagDtoList = new ArrayList<>();
@@ -76,7 +73,7 @@ public class BagRepository {
 
     public List<BagDto> searchPopularBagList(){
 
-        TypedQuery<Bag> query = em.createQuery("SELECT b FROM bag as b ORDER BY b.like_cnt DESC", Bag.class);
+        TypedQuery<Bag> query = em.createQuery("SELECT b FROM Bag as b ORDER BY b.like_cnt DESC", Bag.class);
         query.setMaxResults(4);
         List<Bag> bagList = query.getResultList();
 
@@ -135,7 +132,7 @@ public class BagRepository {
                  .setParameter("name3","%"+name)
                  .getResultList();
 
-        List<Pick> pickList = em.createQuery("SELECT p From pick as p WHERE p.userId.id = :userId", Pick.class)
+        List<Pick> pickList = em.createQuery("SELECT p From Pick as p WHERE p.userId.id = :userId", Pick.class)
                  .setParameter("userId", userId).getResultList();
 
         List<BagSearchDto> bagDtoList = new ArrayList<>();
@@ -168,4 +165,26 @@ public class BagRepository {
                  .setParameter("bagId", bagId)
                  .executeUpdate();
      }
+
+     public Bag createBag(long userId, BagResponseDto bagResponseDto){
+        User findMember = em.find(User.class, userId);
+        Bag bag = new Bag(findMember, bagResponseDto.getName(), bagResponseDto.getMemo());
+
+        em.persist(bag);
+        em.flush();
+        return bag;
+     }
+
+     public void createAttractions(long bagId, BagResponseDto bagResponseDto){
+        Bag findBag = em.find(Bag.class, bagId);
+
+        List<Long> attLists = bagResponseDto.getAttractionId();
+        for(long attId : attLists){
+            Attraction findAtt = em.find(Attraction.class, attId);
+            BagAttraction bagAttraction = new BagAttraction(findBag, findAtt);
+            em.persist(bagAttraction);
+        }
+     }
+
+
 }

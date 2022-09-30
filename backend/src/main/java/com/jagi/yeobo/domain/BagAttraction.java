@@ -23,4 +23,9 @@ public class BagAttraction {
     @ManyToOne(fetch = LAZY)
     @JoinColumn(name = "attraction_id")
     private Attraction attractionId;
+
+    public BagAttraction(Bag bagId, Attraction attractionId){
+        this.bagId = bagId;
+        this.attractionId = attractionId;
+    }
 }
