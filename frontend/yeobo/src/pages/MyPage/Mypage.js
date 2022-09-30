@@ -1,15 +1,20 @@
+// import React, { useState } from 'react';
+// import { Link } from 'react-router-dom';
 import './Mypage.scss';
-import settings from '../../assets/images/icons/settings.png';
+import NickDialog from './NickDialog';
+import axios from 'axios';
+
+// images
 import pink from '../../assets/images/icons/pinkCircle.png';
 import purple from '../../assets/images/icons/purpleCircle.png';
 import mint from '../../assets/images/icons/mintCircle.png';
 import info from '../../assets/images/icons/info.png';
-// import { Link } from 'react-router-dom';
+
+// modules
 import BoddariBox from './BoddariBox';
 import VisitedBox from './VisitedBox';
 import LikedBoddariBox from './LikedBoddariBox';
 import AdminModule from './AdminModule';
-import axios from 'axios';
 
 const Mypage = () => {
 
@@ -31,7 +36,8 @@ const Mypage = () => {
       <div className='mypageBox'>
         <div className='mypageTop'>
           <p className='mypageTopName'>My Page</p>
-          <img className='mypageTopIcon' src={settings} alt="" />
+          {/* <img className='mypageTopIcon' src={settings} alt="" /> */}
+          <NickDialog/>
         </div>
         <div className='mypageProfileBox'>
           <div className='mypageProfileText'>
