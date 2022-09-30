@@ -9,7 +9,7 @@ mariaDB, MySQL 또한 최대 레코드 수에 미치지 않아 사용가능하�
 """
 
 BASE_URL = "http://apis.data.go.kr/B551011/KorService"
-API_AUTH_KEY = "WAlqT5QvzF6rGMxbDZoPmdmohvGhMecJFO4GjNt34DZ1j1uULWZfbQDVsDngctE8+EqlGlJHZ+g9QG6zkjj6wA=="     # yeobo3 / junojam0622@naver.com
+API_AUTH_KEY = "wlWf/ScYRE2EgX56o0YFoqwUkO9oD82OUH1LnvlPE8w9cuI/6IYvSBuQaFi7t5+QXHcYo2tgZ/uIeiuGq67YLw=="     # yeobo3 / junojam0622@naver.com
 API_AUTH_KEY = unquote(API_AUTH_KEY)
 
 # 전체 카테고리 리스트
@@ -59,7 +59,7 @@ categories_all_list = [
     8, 8, 8, 8                                  # 문화시설, 1037개
     ]
 
-# categories_all = categories_all[5:8]
+categories_all = categories_all[5:8]
 
 # categories_nature_1 = categories_all[0:5]
 # categories_nature_2 = categories_all[5:8]
@@ -132,7 +132,7 @@ for category_one in categories_all:
         # print("-------------------------------------")
         
         attraction_id = int(item["contentid"])
-        category = int(1)
+        category = int(2)
         # category = int(categories_all_list[category_idx])
         name = item["title"]
         description = item_overview[0]["overview"]
