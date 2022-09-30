@@ -26,7 +26,9 @@ public class BagRepository {
 
     public void updateBag(long bagId, BagDto bagDto){
         Bag findBag = findByBag(bagId);
-        findBag.updateBag(bagDto);
+        findBag.setName(bagDto.getName());
+        findBag.setMemo(bagDto.getMemo());
+        em.persist(findBag);
     }
 
     public List<BagDto> searchBagList(long userId){

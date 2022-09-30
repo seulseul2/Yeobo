@@ -19,8 +19,8 @@ public class BagService {
     private final BagRepository bagRepository;
 
     @Transactional
-    public void updateBag(long userId, BagDto bagDto){
-        bagRepository.updateBag(userId, bagDto);
+    public void updateBag(long bagId, BagDto bagDto){
+        bagRepository.updateBag(bagId, bagDto);
     }
 
     @Transactional
