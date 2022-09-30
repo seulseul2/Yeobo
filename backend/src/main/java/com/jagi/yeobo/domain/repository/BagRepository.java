@@ -63,7 +63,7 @@ public class BagRepository {
         List<BagDto> bagDtoList = new ArrayList<>();
         if(!pickList.isEmpty()){
             for(Pick p : pickList){
-                Bag b = em.find(Bag.class, p.getBagId());
+                Bag b = em.find(Bag.class, p.getBagId().getId());
                 bagDtoList.add(new BagDto(b.getName(), b.getMemo()));
             }
         }
