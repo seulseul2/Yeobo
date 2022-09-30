@@ -118,10 +118,8 @@ def main_recommend(request, user_id):
     ORDER BY score DESC, score_id DESC
     LIMIT 1
     """)['attraction_id'][0])
-    print(query_mariaDB(query))
-    user_attraction_score_matrix = query_mariaDB(query).pivot_table('score', index='attraction_id', columns='user_id')
+    
     attraction_sim = pd.DataFrame(cosine_similarity(user_attraction_score_matrix, user_attraction_score_matrix), index=user_attraction_score_matrix.index, columns=user_attraction_score_matrix.index)
-    # print(attraction_sim)
     lst = attraction_sim[attraction_main_recommend].sort_values(ascending=False)[0:5]
     for i in range(1, 5):
         data.append(query_mariaDB(f"""
