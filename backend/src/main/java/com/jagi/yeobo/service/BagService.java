@@ -72,4 +72,9 @@ public class BagService {
     public void createAttractions(long bagId, BagResponseDto bagResponseDto){
         bagRepository.createAttractions(bagId, bagResponseDto);
     }
+
+    @Transactional
+    public void createOneAttInBag(long bagId, long attractionId){
+        bagRepository.createOneAttInBag(bagId, attractionId);
+    }
 }

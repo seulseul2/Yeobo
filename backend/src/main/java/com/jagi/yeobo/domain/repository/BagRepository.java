@@ -188,5 +188,14 @@ public class BagRepository {
         }
      }
 
+     public void createOneAttInBag(long bagId, long attractionId){
+        Bag findBag = em.find(Bag.class, bagId);
+        Attraction findAtt = em.find(Attraction.class, attractionId);
+
+        BagAttraction ba = new BagAttraction(findBag, findAtt);
+        em.persist(ba);
+        em.flush();
+     }
+
 
 }
