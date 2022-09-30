@@ -176,4 +176,19 @@ public class BagController {
         message.setMessage("보따리 생성 성공");
         return new ResponseEntity<>(message, headers, HttpStatus.OK);
     }
+
+    @ApiOperation(value = "보따리에 여행지를 담는다.",notes = "보따리에 여행지 한개를 담는다. (수정)")
+    @PostMapping("api/bag/{bagId}/{attractionId}")
+    public ResponseEntity<?> createOneAttInBag(@PathVariable("bagId") long bagId, @PathVariable("attractionId") long attractionId){
+        Message message = new Message();
+        HttpHeaders headers= new HttpHeaders();
+        headers.setContentType(new MediaType("application", "json", Charset.forName("UTF-8")));
+
+        bagService.createOneAttInBag(bagId, attractionId);
+
+        message.setStatus(StatusEnum.OK);
+        message.setMessage("보따리에 여행지 담기 성공");
+        return new ResponseEntity<>(message, headers, HttpStatus.OK);
+    }
+
 }
