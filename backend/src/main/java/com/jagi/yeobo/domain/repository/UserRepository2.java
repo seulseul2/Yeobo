@@ -98,5 +98,26 @@ public class UserRepository2 {
         return nickList;
     }
 
+    public boolean existsByEmail(String email){
+        List<User> userList = em.createQuery("select u from User u where u.email = :email", User.class)
+                .setParameter("email", email)
+                .getResultList();
+        if(userList.size() == 0) return false;
+        return true;
+    }
+
+    public User findByEmail(String email) throws IllegalStateException {
+        List<User> memberList = em.createQuery("select m from User m where m.email = :email", User.class)
+                .setParameter("email", email)
+                .getResultList();
+        if(memberList.size() == 0) throw new IllegalStateException("해당 이메일을 가진 사용자가 없습니다.");
+        return memberList.get(0);
+    }
+    public void socialLogin(String email, String refreshToken){
+        User user = findByEmail(email);
+        user.changeRefreshToken(refreshToken);
+
+    }
+
 
 }

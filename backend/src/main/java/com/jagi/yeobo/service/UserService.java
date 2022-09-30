@@ -67,4 +67,22 @@ public class UserService {
         String img = findUser.get().getProfilePath();
         return img;
     }
+
+    @Transactional
+    public void joinSocial(UserDto user){
+        User us = new User();
+        us.setEmail(user.getEmail());
+        us.setNickname(user.getNickname());
+        us.setPassword("social");
+        //us.setEnable(true);
+        userRepository2.save(us);
+    }
+
+    @Transactional
+    public void socialLogin(String email, String refreshToken){
+        userRepository2.socialLogin(email, refreshToken);
+    }
+
+
+
 }
