@@ -94,7 +94,7 @@ public class BagRepository {
         bagDetailDto.setName(findBag.getName());
         bagDetailDto.setMemo(findBag.getMemo());
 
-        List<BagAttraction> bagAttractions = em.createQuery("SELECT a FROM BagAttraction as a WHERE a.bagId.bag_id = :bagId", BagAttraction.class)
+        List<BagAttraction> bagAttractions = em.createQuery("SELECT a FROM BagAttraction as a WHERE a.bagId.id = :bagId", BagAttraction.class)
                 .setParameter("bagId", bagId).getResultList();
 
         List<AttractionDto> list = new ArrayList<>();
