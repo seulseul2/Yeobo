@@ -118,9 +118,8 @@ def main_recommend(request, user_id):
     ORDER BY score DESC, score_id DESC
     LIMIT 1
     """)['attraction_id'][0])
-    # print(attraction_main_recommend)
+    
     attraction_sim = pd.DataFrame(cosine_similarity(user_attraction_score_matrix, user_attraction_score_matrix), index=user_attraction_score_matrix.index, columns=user_attraction_score_matrix.index)
-    # print(attraction_sim)
     lst = attraction_sim[attraction_main_recommend].sort_values(ascending=False)[0:5]
     for i in range(1, 5):
         data.append(query_mariaDB(f"""
@@ -129,3 +128,19 @@ def main_recommend(request, user_id):
             WHERE attraction_id = {lst.keys()[i]}
         """))
     return Response(data, status=status.HTTP_200_OK)
+
+@api_view(['GET'])
+def main_area_based_recommend(request, user_id):
+    return Response(query_mariaDB_category(f"""
+    SELECT *
+        FROM attraction
+        WHERE area_code = (SELECT area_code
+            FROM attraction a LEFT JOIN score s
+            ON a.attraction_id = s.attraction_id
+            WHERE user_id = 1
+            GROUP BY area_code
+            ORDER BY COUNT(area_code) DESC
+            LIMIT 1) AND read_count >= 10000
+        ORDER BY rand()
+        LIMIT 30
+    """), status=status.HTTP_200_OK)
