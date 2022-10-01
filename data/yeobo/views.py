@@ -128,3 +128,19 @@ def main_recommend(request, user_id):
             WHERE attraction_id = {lst.keys()[i]}
         """))
     return Response(data, status=status.HTTP_200_OK)
+
+@api_view(['GET'])
+def main_area_based_recommend(request, user_id):
+    return Response(query_mariaDB_category(f"""
+    SELECT *
+        FROM attraction
+        WHERE area_code = (SELECT area_code
+            FROM attraction a LEFT JOIN score s
+            ON a.attraction_id = s.attraction_id
+            WHERE user_id = 1
+            GROUP BY area_code
+            ORDER BY COUNT(area_code) DESC
+            LIMIT 1) AND read_count >= 10000
+        ORDER BY rand()
+        LIMIT 30
+    """), status=status.HTTP_200_OK)
