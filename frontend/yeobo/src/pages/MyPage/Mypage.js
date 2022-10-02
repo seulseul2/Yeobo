@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 // import { Link } from 'react-router-dom';
 import "./Mypage.scss";
 import NickDialog from "./NickDialog";
@@ -16,9 +17,18 @@ import VisitedBox from "./VisitedBox";
 import LikedBoddariBox from "./LikedBoddariBox";
 import AdminModule from "./AdminModule";
 
+// mui delete
+import DeleteIcon from "@mui/icons-material/Delete";
+import IconButton from "@mui/material/IconButton";
+import Tooltip from "@mui/material/Tooltip";
+
 const Mypage = () => {
-  const userId = 15;
+  // 임시 유저 아이디 15 = 6, 20 = 7
+  const userId = 20;
+  // 유저 닉네임, 나이, 성별 프레젠트
   const [userNick, setUserNick] = useState();
+  const [userAge, setUserAge] = useState();
+  const [userGender, setUserGender] = useState();
   // const { email, password } = inputs;
   useEffect(() => {
     console.log("rendering~");
@@ -30,6 +40,13 @@ const Mypage = () => {
         console.log(response.data);
         console.log(response.data.nickname);
         setUserNick(response.data.nickname);
+        setUserAge(response.data.age);
+        const gen = response.data.gender;
+        if (gen === "FEMALE") {
+          setUserGender("여성");
+        } else if (gen === "MALE") {
+          setUserGender("남성");
+        }
       })
       .catch((err) => {
         console.log(err.response);
@@ -61,9 +78,21 @@ const Mypage = () => {
         <div className="mypageProfileBox">
           <div className="mypageProfileText">
             <p className="mypageNickname">{userNick}</p>
-            <div className="mypageLogoutBtn" to="/login" onclick={logout}>
+            <div className="mypageSideInfo" to="/login" onclick={logout}>
+              {userAge}세, {userGender}
+            </div>
+            <div
+              className="mypageSideInfo mypageLogoutBtn"
+              to="/login"
+              onclick={logout}
+            >
               로그아웃
             </div>
+            <Tooltip title="Delete">
+              <IconButton>
+                <DeleteIcon />
+              </IconButton>
+            </Tooltip>
           </div>
           <div className="mypage-profile-img-wrapper">
             <img
