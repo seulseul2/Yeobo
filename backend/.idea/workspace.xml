@@ -5,89 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="762a9a3c-28ef-4d5a-81d7-e18ab351898c" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/../.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../attraction.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.gradle/7.5/checksums/checksums.lock" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.gradle/7.5/checksums/md5-checksums.bin" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.gradle/7.5/checksums/sha1-checksums.bin" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.gradle/7.5/dependencies-accessors/dependencies-accessors.lock" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.gradle/7.5/dependencies-accessors/gc.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.gradle/7.5/executionHistory/executionHistory.bin" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.gradle/7.5/executionHistory/executionHistory.lock" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.gradle/7.5/fileChanges/last-build.bin" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.gradle/7.5/fileHashes/fileHashes.bin" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.gradle/7.5/fileHashes/fileHashes.lock" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.gradle/7.5/fileHashes/resourceHashesCache.bin" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.gradle/7.5/gc.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/cache.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.gradle/file-system.probe" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.gradle/vcs-1/gc.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/.name" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/HELP.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/resources/main/keystore.p12" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/keystore.p12" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../data/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../data/Dockerfile" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../data/README.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../data/attraction.csv_to_mariadb.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../data/dbmodel.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../data/dummy_maker/dummy_maker_1_score.csv.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../data/dummy_maker/dummy_maker_2_score.scv_attraction_sim.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../data/dummy_maker/dummy_maker_3_score.csv_to_mariaDB.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../data/dummy_maker/dummy_maker_4_final.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../data/dump_maker/attraction_1.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../data/dump_maker/attraction_2.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../data/dump_maker/attraction_3.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../data/dump_maker/attraction_4.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../data/dump_maker/attraction_5.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../data/dump_maker/attraction_6.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../data/dump_maker/attraction_7.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../data/dump_maker/attraction_8.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../data/dump_maker/attraction_temp.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../data/dump_maker/attraction_temp_no_index.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../data/dump_maker/dump_maker_1.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../data/dump_maker/dump_maker_2_all.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../data/dump_maker/dump_maker_3_apiCheckTool.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../data/dump_maker/dump_maker_4_one_key.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../data/dump_maker/dump_maker_5_attraction_sum.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../data/dump_maker/dump_maker_6_attraction.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../data/manage.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../data/practice.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../data/requirements.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../data/server/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../data/server/asgi.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../data/server/settings.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../data/server/urls.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../data/server/wsgi.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../data/yeobo/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../data/yeobo/admin.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../data/yeobo/apps.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../data/yeobo/migrations/0001_yeobo2.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../data/yeobo/migrations/0002_user_rename_areacode_attraction_area_code_and_more.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../data/yeobo/migrations/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../data/yeobo/models.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../data/yeobo/tests.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../data/yeobo/urls.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../data/yeobo/views.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../desktop.ini" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../score.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../README.md" beforeDir="false" afterPath="$PROJECT_DIR$/../README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/jagi/yeobo/controller/AttractionController.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/jagi/yeobo/controller/AttractionController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/jagi/yeobo/controller/BagController.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/jagi/yeobo/controller/BagController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/jagi/yeobo/controller/UserController.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/jagi/yeobo/controller/UserController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/libs/app.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/resources/main/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/previous-compilation-data.bin" beforeDir="false" afterPath="$PROJECT_DIR$/build/tmp/compileJava/previous-compilation-data.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/jagi/yeobo/controller/AttractionController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/jagi/yeobo/controller/AttractionController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/jagi/yeobo/controller/BagController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/jagi/yeobo/controller/BagController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/jagi/yeobo/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/jagi/yeobo/controller/UserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/jagi/yeobo/domain/repository/BagRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/jagi/yeobo/domain/repository/BagRepository.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -103,6 +22,9 @@
     <system id="GRADLE">
       <state>
         <task path="$PROJECT_DIR$">
+          <activation />
+        </task>
+        <task path="$PROJECT_DIR$/yeobo/yeobo">
           <activation />
         </task>
         <projects_view>
@@ -176,30 +98,30 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
-    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
-    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
-    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/multicampus/soldsolve/S07P12C110/Back-end/build.gradle&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;project.propVCSSupport.DirectoryMappings&quot;,
-    &quot;spring.configuration.checksum&quot;: &quot;9304651b3b9f485ca5c1127b7369e1e0&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RequestMappingsPanelOrder0": "0",
+    "RequestMappingsPanelOrder1": "1",
+    "RequestMappingsPanelWidth0": "75",
+    "RequestMappingsPanelWidth1": "75",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "C:/Users/multicampus/Desktop/honey/S07P22C103/backend",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "project.propVCSSupport.DirectoryMappings",
+    "spring.configuration.checksum": "9304651b3b9f485ca5c1127b7369e1e0"
   },
-  &quot;keyToStringList&quot;: {
-    &quot;DatabaseDriversLRU&quot;: [
-      &quot;mariadb&quot;
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "mariadb"
     ]
   }
-}</component>
+}]]></component>
   <component name="RunDashboard">
     <option name="configurationTypes">
       <set>
@@ -258,7 +180,7 @@
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="애플리케이션 수준" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="디폴트 작업">
-      <changelist id="e995ccdb-c89b-4726-8d25-f9038c7282e2" name="변경" comment="" />
+      <changelist id="762a9a3c-28ef-4d5a-81d7-e18ab351898c" name="Changes" comment="" />
       <created>1663051024083</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
