@@ -85,8 +85,7 @@ public class UserRepository2 {
                 .setParameter("nick2","%"+nickname+"%")
                 .setParameter("nick3","%"+nickname);
         List<Object[]> list = query.getResultList();
-//        System.out.println(">>>>"+list.get(0)[4]);
-//        System.out.println(">>>>"+list.get(1)[4]);
+
         List<UserResponseDto> nickList = new ArrayList<>();
         for (Object[] l:list) {
             UserResponseDto userDto = UserResponseDto.builder()
