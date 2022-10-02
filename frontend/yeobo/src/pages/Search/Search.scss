@@ -2,3 +2,39 @@ button {
   width: 30%;
   margin: 5px;
 }
+.searchTop {
+  background-color: #F49B9B;
+  color: white;
+  padding: 0 40px;
+  font-family: 'GongGothicMedium';
+  margin-bottom: 10px;
+  border-radius: 15px;
+  text-align: center;
+  height: 250px;
+  padding-top: 100px;
+  p {
+    padding-bottom: 50px;
+  }
+}
+.searchBar {
+  border-radius: 10px;
+  color: #454545;
+  display: flex;
+  background-color: #F5F5F5;
+  height: 42px;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.419);
+  align-items: center;
+  justify-content: center;
+}
+.searchItem {
+  flex: none;
+  margin: 0 10px;
+}
+.searchDelete {
+  padding-right: 0px;
+}
+.searchText {
+  background-color: #F5F5F5;
+  border: none;
+  flex-grow: 1;
+}
