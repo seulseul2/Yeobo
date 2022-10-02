@@ -34,6 +34,9 @@ public class Bag {
 
     private String memo;
 
+    @Column(name="bag_image")
+    private String bagImage;
+
     @Column(name="link_cnt")
     private int likeCnt;
 
