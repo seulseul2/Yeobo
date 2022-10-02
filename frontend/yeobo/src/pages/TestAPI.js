@@ -4,9 +4,9 @@ const testAPI = () => {
   // const [score, setScore] = useState(0);
   const payload = {
     userId: 1,
-    attractionId: 1,
-    name: '해수욕장',
-    score: 5,
+    attractionId: 127484,
+    name: '산',
+    score: 4.0,
   }
   return (
     <div>
