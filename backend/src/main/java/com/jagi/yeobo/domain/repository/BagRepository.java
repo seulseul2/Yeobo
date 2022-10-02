@@ -113,43 +113,70 @@ public class BagRepository {
         return bagDetailDto;
      }
 
-     public List<BagSearchDto> searchBagByName(String name, long userId){
+//     public List<BagSearchDto> searchBagByName(String name, long userId){
+//
+//        String sql = "SELECT b.bag_id,b.name FROM bag as b WHERE b.name LIKE :name "+
+//                 "ORDER BY CASE WHEN b.name = :name0 THEN 0" +
+//                 " WHEN b.name LIKE :name1 THEN 1 " +
+//                 " WHEN b.name LIKE :name2 THEN 2" +
+//                 " WHEN b.name LIKE :name3 THEN 3 " +
+//                 "ELSE 4 " +
+//                 "END";
+//
+//         List<Bag> bagList = em.createNativeQuery(sql)
+//                 .setParameter("name","%"+name+"%")
+//                 .setParameter("name0",name)
+//                 .setParameter("name1",name+"%")
+//                 .setParameter("name2","%"+name+"%")
+//                 .setParameter("name3","%"+name)
+//                 .getResultList();
+//
+//        List<Pick> pickList = em.createQuery("SELECT p From Pick as p WHERE p.userId.id = :userId", Pick.class)
+//                 .setParameter("userId", userId).getResultList();
+//
+//        List<BagSearchDto> bagDtoList = new ArrayList<>();
+//         if(!bagList.isEmpty()){
+//             for(Bag b : bagList){
+//                 boolean check = false;
+//                for(Pick p : pickList){
+//                    if(b.getId() == p.getBagId().getId()) {
+//                        check = true;
+//                        break;
+//                    }
+//                }
+//                 bagDtoList.add(new BagSearchDto(b.getId(), b.getName(), check));
+//             }
+//         }
+//
+//         return bagDtoList;
+//     }
+    public List<BagSearchDto> searchBagByName(String name, long userId){
 
-        String sql = "SELECT b.bag_id,b.name FROM bag as b WHERE b.name LIKE :name "+
-                 "ORDER BY CASE WHEN b.name = :name0 THEN 0" +
-                 " WHEN b.name LIKE :name1 THEN 1 " +
-                 " WHEN b.name LIKE :name2 THEN 2" +
-                 " WHEN b.name LIKE :name3 THEN 3 " +
-                 "ELSE 4 " +
-                 "END";
+        String sql = "SELECT b.bag_id,b.name FROM bag as b WHERE b.name LIKE :name ";
 
-         List<Bag> bagList = em.createNativeQuery(sql)
-                 .setParameter("name","%"+name+"%")
-                 .setParameter("name0",name)
-                 .setParameter("name1",name+"%")
-                 .setParameter("name2","%"+name+"%")
-                 .setParameter("name3","%"+name)
-                 .getResultList();
+        List<Bag> bagList = em.createNativeQuery(sql)
+                .setParameter("name","%"+name+"%")
+                .getResultList();
 
         List<Pick> pickList = em.createQuery("SELECT p From Pick as p WHERE p.userId.id = :userId", Pick.class)
-                 .setParameter("userId", userId).getResultList();
+                .setParameter("userId", userId).getResultList();
 
         List<BagSearchDto> bagDtoList = new ArrayList<>();
-         if(!bagList.isEmpty()){
-             for(Bag b : bagList){
-                 boolean check = false;
+        if(!bagList.isEmpty()){
+            for(Bag b : bagList){
+                boolean check = false;
                 for(Pick p : pickList){
                     if(b.getId() == p.getBagId().getId()) {
                         check = true;
                         break;
                     }
                 }
-                 bagDtoList.add(new BagSearchDto(b.getId(), b.getName(), check));
-             }
-         }
+                bagDtoList.add(new BagSearchDto(b.getId(), b.getName(), check));
+            }
+        }
 
-         return bagDtoList;
-     }
+        return bagDtoList;
+    }
 
 //    public List<BagSearchDto> searchBagByName(String name, long userId){
 //        String sql = "SELECT b.bag_id,b.name,p.bag_id,p.user_id FROM bag b left join pick p on p.user_id = :userId and b.bag_id = p.bag_id where b.name LIKE :name "+
