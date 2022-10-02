@@ -18,7 +18,7 @@ import LikedBoddariBox from "./LikedBoddariBox";
 import AdminModule from "./AdminModule";
 
 // mui delete
-import DeleteIcon from "@mui/icons-material/Delete";
+// import DeleteIcon from "@mui/icons-material/Delete";
 import IconButton from "@mui/material/IconButton";
 import Tooltip from "@mui/material/Tooltip";
 
@@ -91,7 +91,7 @@ const Mypage = () => {
             </div>
             <Tooltip title="Delete">
               <IconButton>
-                <DeleteIcon />
+                {/* <DeleteIcon /> */}
               </IconButton>
             </Tooltip>
           </div>

@@ -1,6 +1,7 @@
 import './DestinationSearch.scss';
 import Rating from '@mui/material/Rating';
 import { useState } from 'react';
+
 const DestinationSearch = (props) => {
   const [value, setValue] = useState(0);
   const attrList = props.attrList;
