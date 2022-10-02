@@ -6,9 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="762a9a3c-28ef-4d5a-81d7-e18ab351898c" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/jagi/yeobo/domain/Bag.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/jagi/yeobo/domain/Bag.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/jagi/yeobo/domain/repository/BagRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/jagi/yeobo/domain/repository/BagRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/jagi/yeobo/dto/BagSearchDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/jagi/yeobo/dto/BagSearchDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/jagi/yeobo/dto/BagDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/jagi/yeobo/dto/BagDto.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
