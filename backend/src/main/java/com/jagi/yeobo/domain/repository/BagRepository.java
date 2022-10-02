@@ -115,7 +115,7 @@ public class BagRepository {
 
      public List<BagSearchDto> searchBagByName(String name, long userId){
 
-        String sql = "SELECT b FROM bag as b WHERE b.name LIKE :name "+
+        String sql = "SELECT b.bag_id,b.name FROM bag as b WHERE b.name LIKE :name "+
                  "ORDER BY CASE WHEN b.name = :name0 THEN 0" +
                  " WHEN b.name LIKE :name1 THEN 1 " +
                  " WHEN b.name LIKE :name2 THEN 2" +
