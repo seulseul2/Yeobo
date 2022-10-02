@@ -20,7 +20,7 @@ import java.nio.charset.Charset;
 import java.nio.file.AccessDeniedException;
 import java.util.List;
 
-@CrossOrigin(originPatterns = "http://localhost:3000")
+//@CrossOrigin(originPatterns = "https://localhost:3000, http://localhost:3000")
 @RestController
 @RequiredArgsConstructor
 public class UserController {
