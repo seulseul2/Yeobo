@@ -6,6 +6,7 @@ import com.jagi.yeobo.domain.repository.UserRepository;
 import com.jagi.yeobo.domain.repository.UserRepository2;
 import com.jagi.yeobo.dto.UserDto;
 import com.jagi.yeobo.dto.UserLoginDto;
+import com.jagi.yeobo.dto.UserLoginRequestDto;
 import com.jagi.yeobo.dto.UserResponseDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -46,14 +47,23 @@ public class UserService {
     }
 
     @Transactional
-    public User login(UserLoginDto userLoginDto){
-        Optional<User> user = userRepository.findByEmail(userLoginDto.getEmail());
-        if(user.isEmpty()) throw new IllegalStateException("해당 이메일을 가진 사용자가 없습니다.");
-        if(!user.get().getPassword().equals(userLoginDto.getPassword())) {
+    public UserLoginDto login(UserLoginRequestDto userLoginDto){
+        String email = userLoginDto.getEmail();
+        String password = userLoginDto.getPassword();
+        User user = userRepository2.findByEmail(email);
+
+       if(!user.getPassword().equals(password)) {
             throw new IllegalStateException("잘못된 비밀번호 입니다.");
         }
-        //나중에 토큰이나 다른 정보들 넘겨줌
-        return user.get();
+        // 리프레쉬 토큰 발급
+        user.changeRefreshToken(jwtTokenProvider.createRefreshToken(email, user.getRoles()));
+        UserLoginDto userDto = UserLoginDto.builder()
+                .email(email)
+                .accessToken(jwtTokenProvider.createToken(email, user.getRoles()))
+                .refreshToken(user.getRefreshToken())
+                .build();
+
+        return userDto;
     }
 
     @Transactional

@@ -28,7 +28,7 @@ public class UserController {
     private final UserService userService;
 
     @ApiOperation(value = "회원가입",notes = "email과 password를 받아서 회원가입한다.")
-    @PostMapping("/api/user/signUp")
+    @PostMapping("/api/auth/user/signUp")
     public ResponseEntity<?> signUp(@RequestBody UserSaveDto userSaveDto){
         Message message = new Message();
         HttpHeaders headers= new HttpHeaders();
@@ -54,12 +54,12 @@ public class UserController {
 
     @ApiOperation(value = "로그인 요청",notes = "email과 password로 로그인을 요청한다.")
     @PostMapping("/api/auth/user/login")
-    public ResponseEntity<?> login(@RequestBody UserLoginDto userLoginDto){
+    public ResponseEntity<?> login(@RequestBody UserLoginRequestDto userLoginDto){
         Message message = new Message();
         HttpHeaders headers= new HttpHeaders();
         headers.setContentType(new MediaType("application", "json", Charset.forName("UTF-8")));
         try {
-            User user = userService.login(userLoginDto);
+            UserLoginDto user = userService.login(userLoginDto);
             message.setStatus(StatusEnum.OK);
             message.setMessage("로그인 성공");
             message.setData(user);
