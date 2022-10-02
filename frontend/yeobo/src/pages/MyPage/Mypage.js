@@ -23,6 +23,7 @@ import IconButton from "@mui/material/IconButton";
 import Tooltip from "@mui/material/Tooltip";
 
 const Mypage = () => {
+  // git test
   // 임시 유저 아이디 15 = 6, 20 = 7
   const userId = 20;
   // 유저 닉네임, 나이, 성별 프레젠트
