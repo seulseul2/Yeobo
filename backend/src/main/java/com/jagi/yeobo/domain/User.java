@@ -86,4 +86,8 @@ public class User implements UserDetails {
     public boolean isEnabled() {
         return false;
     }
+
+    @ElementCollection(fetch = FetchType.EAGER)
+    @Builder.Default
+    private List<String> roles = new ArrayList<>();
 }

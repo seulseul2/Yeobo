@@ -26,11 +26,13 @@ public class BagRepository {
 
     public void updateBag(long bagId, BagDto bagDto){
         Bag findBag = findByBag(bagId);
-        findBag.updateBag(bagDto);
+        findBag.setName(bagDto.getName());
+        findBag.setMemo(bagDto.getMemo());
+        em.persist(findBag);
     }
 
     public List<BagDto> searchBagList(long userId){
-        List<Bag> bagList = em.createQuery("SELECT b FROM bag as b WHERE b.userId.id = :userId", Bag.class)
+        List<Bag> bagList = em.createQuery("SELECT b FROM Bag as b WHERE b.userId.id = :userId", Bag.class)
                 .setParameter("userId", userId).getResultList();
         List<BagDto> bagDtoList = new ArrayList<>();
 
@@ -57,13 +59,13 @@ public class BagRepository {
     }
 
     public List<BagDto> searchLikeBagList(long userId){
-        List<Pick> pickList = em.createQuery("SELECT p From pick as p WHERE p.userId.id = :userId", Pick.class)
+        List<Pick> pickList = em.createQuery("SELECT p From Pick as p WHERE p.userId.id = :userId", Pick.class)
                 .setParameter("userId", userId).getResultList();
 
         List<BagDto> bagDtoList = new ArrayList<>();
         if(!pickList.isEmpty()){
             for(Pick p : pickList){
-                Bag b = em.find(Bag.class, p.getBagId());
+                Bag b = em.find(Bag.class, p.getBagId().getId());
                 bagDtoList.add(new BagDto(b.getName(), b.getMemo()));
             }
         }
@@ -73,7 +75,7 @@ public class BagRepository {
 
     public List<BagDto> searchPopularBagList(){
 
-        TypedQuery<Bag> query = em.createQuery("SELECT b FROM bag as b ORDER BY b.like_cnt DESC", Bag.class);
+        TypedQuery<Bag> query = em.createQuery("SELECT b FROM Bag as b ORDER BY b.like_cnt DESC", Bag.class);
         query.setMaxResults(4);
         List<Bag> bagList = query.getResultList();
 
@@ -94,7 +96,7 @@ public class BagRepository {
         bagDetailDto.setName(findBag.getName());
         bagDetailDto.setMemo(findBag.getMemo());
 
-        List<BagAttraction> bagAttractions = em.createQuery("SELECT a FROM BagAttraction as a WHERE a.bagId.bag_id = :bagId", BagAttraction.class)
+        List<BagAttraction> bagAttractions = em.createQuery("SELECT a FROM BagAttraction as a WHERE a.bagId.id = :bagId", BagAttraction.class)
                 .setParameter("bagId", bagId).getResultList();
 
         List<AttractionDto> list = new ArrayList<>();
@@ -116,7 +118,7 @@ public class BagRepository {
 //                .setParameter("name", name)
 //                .getResultList();
 
-        String sql = "SELECT b FROM Bag as b WHERE b.name LIKE :name "+
+        String sql = "SELECT b FROM bag as b WHERE b.name LIKE :name "+
                  "ORDER BY CASE WHEN b.name = :name0 THEN 0" +
                  " WHEN b.name LIKE :name1 THEN 1 " +
                  " WHEN b.name LIKE :name2 THEN 2" +
@@ -132,7 +134,7 @@ public class BagRepository {
                  .setParameter("name3","%"+name)
                  .getResultList();
 
-        List<Pick> pickList = em.createQuery("SELECT p From pick as p WHERE p.userId.id = :userId", Pick.class)
+        List<Pick> pickList = em.createQuery("SELECT p From Pick as p WHERE p.userId.id = :userId", Pick.class)
                  .setParameter("userId", userId).getResultList();
 
         List<BagSearchDto> bagDtoList = new ArrayList<>();
@@ -184,6 +186,15 @@ public class BagRepository {
             BagAttraction bagAttraction = new BagAttraction(findBag, findAtt);
             em.persist(bagAttraction);
         }
+     }
+
+     public void createOneAttInBag(long bagId, long attractionId){
+        Bag findBag = em.find(Bag.class, bagId);
+        Attraction findAtt = em.find(Attraction.class, attractionId);
+
+        BagAttraction ba = new BagAttraction(findBag, findAtt);
+        em.persist(ba);
+        em.flush();
      }
 
 

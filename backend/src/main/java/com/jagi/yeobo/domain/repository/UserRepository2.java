@@ -72,7 +72,7 @@ public class UserRepository2 {
     }
 
     public List<UserResponseDto> searchByNick(String nickname){ // nickname으로 userId와 nickname 리스트 반환해주면 되나?
-        Query query = em.createNativeQuery("SELECT u.user_id,u.nickname FROM User as u WHERE u.nickname LIKE :nickname " +
+        Query query = em.createNativeQuery("SELECT u.user_id,u.nickname FROM user as u WHERE u.nickname LIKE :nickname " +
                         "ORDER BY CASE WHEN u.nickname = :nick0 THEN 0" +
                         " WHEN u.nickname LIKE :nick1 THEN 1 " +
                         " WHEN u.nickname LIKE :nick2 THEN 2" +

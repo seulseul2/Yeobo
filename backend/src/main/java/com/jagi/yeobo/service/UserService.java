@@ -1,5 +1,6 @@
 package com.jagi.yeobo.service;
 
+import com.jagi.yeobo.config.security.JwtTokenProvider;
 import com.jagi.yeobo.domain.User;
 import com.jagi.yeobo.domain.repository.UserRepository;
 import com.jagi.yeobo.domain.repository.UserRepository2;
@@ -10,6 +11,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.nio.file.AccessDeniedException;
 import java.util.List;
 import java.util.Optional;
 
@@ -18,6 +20,8 @@ import java.util.Optional;
 public class UserService {
     private final UserRepository2 userRepository2;
     private final UserRepository userRepository;
+
+    private final JwtTokenProvider jwtTokenProvider;
 
     @Transactional
     public UserDto searchUser(long userId) {
@@ -58,7 +62,6 @@ public class UserService {
 
         findUser.get().setProfilePath(fileUrl);
         userRepository.save(findUser.get());
-//        return fileDto;
     }
 
     @Transactional
@@ -66,6 +69,21 @@ public class UserService {
         Optional<User> findUser = userRepository.findById(userId);
         String img = findUser.get().getProfilePath();
         return img;
+    }
+
+    @Transactional
+    public UserLoginDto getMember(String accessToken) throws Exception {
+        String email = jwtTokenProvider.getUserPk(accessToken);
+        User member = userRepository2.findByEmail(email);
+//        if(member == null) throw new SomethingNotFoundException("member(email:"+email+")");
+        // 리프레쉬 토큰 발급
+        UserLoginDto memberDto = UserLoginDto.builder()
+                .email(email)
+                .accessToken(accessToken)
+                .refreshToken(member.getRefreshToken())
+                .build();
+
+        return memberDto;
     }
 
     @Transactional
@@ -83,6 +101,27 @@ public class UserService {
         userRepository2.socialLogin(email, refreshToken);
     }
 
+    @Transactional
+    public UserLoginDto refreshToken(String token, String refreshToken) throws Exception {
 
+       if(jwtTokenProvider.validateToken(token)) throw new AccessDeniedException("token이 만료되지 않음");
+
+        User member = userRepository2.findByEmail(jwtTokenProvider.getUserPk(refreshToken));
+        System.out.println(member.getRefreshToken());
+        if(!refreshToken.equals(member.getRefreshToken())) throw new AccessDeniedException("해당 멤버가 존재하지 않습니다.");
+
+        if(!jwtTokenProvider.validateToken(member.getRefreshToken()))
+            throw new IllegalStateException("다시 로그인 해주세요.");
+
+        member.changeRefreshToken(jwtTokenProvider.createRefreshToken(member.getEmail(), member.getRoles()));
+
+        UserLoginDto memberDto = UserLoginDto.builder()
+                .email(member.getEmail())
+                .accessToken(jwtTokenProvider.createToken(member.getEmail(), member.getRoles()))
+                .refreshToken(member.getRefreshToken())
+                .build();
+
+        return memberDto;
+    }
 
 }
