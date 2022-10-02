@@ -16,5 +16,5 @@ Including another URLconf
 from django.urls import path, include
 
 urlpatterns = [
-    path('/', include('yeobo.urls')),
+    path('', include('yeobo.urls')),
 ]
