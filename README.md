@@ -74,7 +74,23 @@
 
 ## 3차 평가
 
+| <div align="center">No.</div> | <div align="center">Content</div>                            |
+| ------------------------------ | ------------------------------------------------------------ |
+| <div align="center">1</div>    | [여보(여행보따리)](http://j7c103.p.ssafy.io) |
+| <div align="center">2</div>  | [Notion](https://www.notion.so/0c174c0e035f4504baef1e07cf68d028)|
+
+- 모바일웹으로 구현
+
+PC의 경우 chrome 개발자도구의 **Toggle device toolbar**를 사용해주세요. <br/>
+화면비 20 : 9 (412 x 914, 412 x 915), [**S20 Ultra**, S21, A51, S20+, S21U]를 기준으로 제작되었습니다. 
+
+Toggle device toolbar에서도 비율이 맞지 않다면 Toggle device toolbar를 다시 ON/OFF 해주시면 정상적으로 보여집니다.
+
 <br/>
+
+
+
+
 
 ## 📌바로가기
 

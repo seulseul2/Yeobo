@@ -19,8 +19,8 @@ public class BagService {
     private final BagRepository bagRepository;
 
     @Transactional
-    public void updateBag(long userId, BagDto bagDto){
-        bagRepository.updateBag(userId, bagDto);
+    public void updateBag(long bagId, BagDto bagDto){
+        bagRepository.updateBag(bagId, bagDto);
     }
 
     @Transactional
@@ -71,5 +71,10 @@ public class BagService {
     @Transactional
     public void createAttractions(long bagId, BagResponseDto bagResponseDto){
         bagRepository.createAttractions(bagId, bagResponseDto);
+    }
+
+    @Transactional
+    public void createOneAttInBag(long bagId, long attractionId){
+        bagRepository.createOneAttInBag(bagId, attractionId);
     }
 }
