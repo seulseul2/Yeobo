@@ -1,33 +1,44 @@
 import { useEffect, useState } from 'react';
 import './UserSearch.scss';
 import axios from 'axios';
+import Loading from '../component/Loading';
+
 
 const UserSearch = (props) => {
   const searchText = props.searchText;
   const [userList, setUserList] = useState(null);
+  const [loading, setLoading] = useState(true);
+
+  const getResult = async () => {
+    setLoading(true);
+    try {
+      if (searchText !== '')
+      { 
+      const response = await axios({
+        url: `https://j7c103.p.ssafy.io:8080/api/user/search/${searchText}`,
+        method: 'get',
+      })
+      setUserList(response.data.data)
+      setLoading(false);
+      if (Object.keys(response.data.data).length === 0) {
+        setUserList(null);
+      }
+      } else {
+        setLoading(false);
+      }
+    } catch(err) {
+      console.log(err);
+    }
+  }
 
   useEffect(() => {
-    axios({
-      url: `http://j7c103.p.ssafy.io:8080/api/user/search/${searchText}`,
-      method: 'get',
-    })
-      .then((res) => {
-        setUserList(res.data.data);
-        console.log('user검색', res.data.data);
-      })
-      .catch((err) => {
-        console.log(err)
-      })
-    return () => {
-      console.log('컴포넌트가 화면에서 사라짐');
-      setUserList(null);
-      console.log(userList);
-    }
-  }, []);
+    getResult();
+    }, []);
 
   return (
     <div className='userSearch'>
       <div className='userResult'>
+      {loading ? <Loading/> : null}
         {userList ? (
           userList.map((el, index) => {
             return (
