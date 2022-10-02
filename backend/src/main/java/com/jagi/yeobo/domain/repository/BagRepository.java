@@ -38,7 +38,7 @@ public class BagRepository {
 
         if(!bagList.isEmpty()){
             for(Bag b : bagList){
-                bagDtoList.add(new BagDto(b.getName(), b.getMemo()));
+                bagDtoList.add(new BagDto(b.getName(), b.getMemo(),b.getBagImage()));
             }
         }
         return bagDtoList;
@@ -66,7 +66,7 @@ public class BagRepository {
         if(!pickList.isEmpty()){
             for(Pick p : pickList){
                 Bag b = em.find(Bag.class, p.getBagId().getId());
-                bagDtoList.add(new BagDto(b.getName(), b.getMemo()));
+                bagDtoList.add(new BagDto(b.getName(), b.getMemo(),b.getBagImage()));
             }
         }
 
@@ -75,7 +75,7 @@ public class BagRepository {
 
     public List<BagDto> searchPopularBagList(){
 
-        TypedQuery<Bag> query = em.createQuery("SELECT b FROM Bag as b ORDER BY b.like_cnt DESC", Bag.class);
+        TypedQuery<Bag> query = em.createQuery("SELECT b FROM Bag as b ORDER BY b.likeCnt DESC", Bag.class);
         query.setMaxResults(4);
         List<Bag> bagList = query.getResultList();
 
@@ -83,7 +83,7 @@ public class BagRepository {
 
          if(!bagList.isEmpty()){
              for(Bag b : bagList){
-                 bagDtoList.add(new BagDto(b.getName(), b.getMemo()));
+                 bagDtoList.add(new BagDto(b.getName(), b.getMemo(),b.getBagImage()));
              }
          }
          return bagDtoList;
@@ -102,7 +102,7 @@ public class BagRepository {
         List<AttractionDto> list = new ArrayList<>();
         if(!list.isEmpty()){
            for(BagAttraction b : bagAttractions){
-              Attraction at = em.createQuery("SELECT k FROM Attraction as k WHERE k.attraction_id = :attractionId", Attraction.class)
+              Attraction at = em.createQuery("SELECT k FROM Attraction as k WHERE k.id = :attractionId", Attraction.class)
                       .setParameter("attractionId", b.getAttractionId()).getSingleResult();
               AttractionDto attractionDto = new AttractionDto(at.getId(),at.getName());
               list.add(attractionDto);
@@ -150,7 +150,21 @@ public class BagRepository {
     }
 
      public int deleteOneInBag(long bagId, long attractionId){
-        return em.createQuery("DELETE FROM BagAttraction as ba WHERE ba.id :bagId and ba.attractionId.id = :attractionId")
+         List<BagAttraction> bagAttractionList = em.createQuery("select ba from BagAttraction as ba where ba.bagId = :bagId",BagAttraction.class).setParameter("bagId",bagId).getResultList();
+        if(bagAttractionList.size()==1){ //보따리 길이가 1일 때 삭제될 이미지를 위해 보따리이미지 아예 삭제하기
+            Bag bag = em.find(Bag.class,bagId);
+            bag.setBagImage(null);
+            em.persist(bag);
+        }else{ //보따리 길이가 2이상일 때
+            if(bagAttractionList.get(0).getAttractionId().getId() == attractionId){ //첫 번째에 저장된 여행지를 지운다면 2번째 이미지로 보따리이미지 변경
+                Bag bag = em.find(Bag.class,bagId);
+                bag.setBagImage(bagAttractionList.get(1).getAttractionId().getImage());
+                em.persist(bag);
+            }
+        }
+
+
+        return em.createQuery("DELETE FROM BagAttraction as ba WHERE ba.bagId = :bagId and ba.attractionId.id = :attractionId")
                 .setParameter("bagId", bagId)
                 .setParameter("attractionId", attractionId)
                 .executeUpdate();
