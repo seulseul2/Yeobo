@@ -1,26 +1,27 @@
 .MainThisMonth {
-  background-color: #FFF7F4;
+  background-color: #fff7f4;
   padding: 30px 40px;
   margin-bottom: 10px;
   border-radius: 15px;
 
   .titleModule {
     // font-family: 'Pretendard-Regular';
-    font-family: 'Bazzi';
+    font-family: "Bazzi";
     color: #454545;
 
-    .mainTitle{
+    .mainTitle {
       ont-size: 32px;
       padding-top: 24px;
       font-weight: 800;
     }
-    .subTitle{
+    .subTitle {
       font-weight: 200;
       padding: 10px 0;
     }
   }
   .imageRecom {
-    ul, li {
+    ul,
+    li {
       list-style: none;
     }
     .imageLists {
@@ -34,7 +35,7 @@
         position: relative;
         width: calc(50% - 10px);
         margin: 0 0 15px 10px;
-        
+
         .imageAtag {
           border-radius: 10px;
           height: 140px;
@@ -49,19 +50,21 @@
             background-size: cover;
             background-position: 50% 50%;
             background-repeat: no-repeat;
-            transition: all .7s;
+            transition: all 0.7s;
           }
         }
 
         .imageText {
           text-align: center;
-          font-family: 'Pretendard-Regular';
+          font-family: "Pretendard-Regular";
           font-weight: 800;
           padding: 10px 0 20px 0;
         }
       }
     }
-    
   }
-
+}
+.bottomback {
+  background-color: rgb(22, 249, 72);
+  height: 300px;
 }
