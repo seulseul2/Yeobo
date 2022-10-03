@@ -30,7 +30,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
             "/swagger-ui/**",
             "/v3/api-docs",
             "/webjars/**",
-            "/api/auth"
+            "/api/auth/**"
     };
 
     // 암호화에 필요한 PasswordEncoder를 Bean으로 등록
