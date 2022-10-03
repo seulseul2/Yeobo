@@ -34,7 +34,7 @@ const Mypage = () => {
   useEffect(() => {
     console.log("rendering~");
     axios
-      .get(`http://j7c103.p.ssafy.io:8080/api/user/${userId}`)
+      .get(`https://j7c103.p.ssafy.io:8080/api/user/${userId}`)
       .then((res) => {
         const response = res.data;
         // alert(response.message);
@@ -57,7 +57,7 @@ const Mypage = () => {
   const logout = () => {
     console.log("로그아웃 시도");
     axios
-      .get("http://j7c103.p.ssafy.io:8080/api/logout")
+      .get("https://j7c103.p.ssafy.io:8080/api/logout")
       .then((res) => {
         const response = res.data;
         alert(response.message);

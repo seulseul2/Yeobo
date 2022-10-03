@@ -1,4 +1,4 @@
-.bottom {
+.bottomnav {
   position: fixed;
   left: 0;
   bottom: 0;
@@ -32,12 +32,11 @@
       display: flex;
       margin: 0 auto;
       height: 30px;
-      
     }
     .iconText {
       color: white;
       font-size: 12px;
-      font-family: 'Pretendard-Regular';
+      font-family: "Pretendard-Regular";
       line-height: 14px;
       padding-top: 5px;
     }
