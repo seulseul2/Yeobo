@@ -18,6 +18,4 @@ public interface UserRepository extends JpaRepository<User,Long> {
     void saveProfilePath(@Param("profile")String profile);
 
 
-//    void updateProfilePath(String profile);
-//    sa
 }
