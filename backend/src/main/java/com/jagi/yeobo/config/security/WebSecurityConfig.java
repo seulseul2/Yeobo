@@ -68,6 +68,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .requestMatchers(CorsUtils::isPreFlightRequest).permitAll() // 추가
                 .antMatchers(AUTH_WHITELIST).permitAll()
                 .antMatchers("/api/user/**").authenticated()
+                .antMatchers("/api/bag/**").authenticated()
+                .antMatchers("/api/attraction/**").authenticated()
                 .anyRequest().permitAll()  // 그 외 나머지 요청은 누구나 접근 가능
                 .and()
                 .cors()
