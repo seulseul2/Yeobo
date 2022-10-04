@@ -7,8 +7,7 @@
     <list default="true" id="762a9a3c-28ef-4d5a-81d7-e18ab351898c" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/libs/app.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/jagi/yeobo/configuration/WebMvcConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/jagi/yeobo/configuration/WebMvcConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/jagi/yeobo/domain/repository/BagRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/jagi/yeobo/domain/repository/BagRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/jagi/yeobo/config/security/WebSecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/jagi/yeobo/config/security/WebSecurityConfig.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -24,6 +23,9 @@
     <system id="GRADLE">
       <state>
         <task path="$PROJECT_DIR$">
+          <activation />
+        </task>
+        <task path="$PROJECT_DIR$/yeobo/yeobo">
           <activation />
         </task>
         <projects_view>
@@ -106,7 +108,7 @@
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/multicampus/soldsolve/S07P12C110/Back-end/build.gradle&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/multicampus/Desktop/honey/S07P22C103/backend&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -173,14 +175,13 @@
     <recent_temporary>
       <list>
         <item itemvalue="Gradle.backend [bootJar]" />
-        <item itemvalue="Spring Boot.YeoboApplication (1)" />
       </list>
     </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="애플리케이션 수준" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="디폴트 작업">
-      <changelist id="e995ccdb-c89b-4726-8d25-f9038c7282e2" name="변경" comment="" />
+      <changelist id="762a9a3c-28ef-4d5a-81d7-e18ab351898c" name="Changes" comment="" />
       <created>1663051024083</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
