@@ -14,5 +14,6 @@ public interface ScoreRepository extends JpaRepository<Score,Long> {
     @Override
     void delete(Score entity);
 
+    public Score findByUserIdAndAttractionId(long userId, long attractionId);
 //    List<Score> findAllByUserId(long userId);
 }
