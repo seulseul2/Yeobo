@@ -150,8 +150,9 @@ public class BagRepository {
     }
 
      public int deleteOneInBag(long bagId, long attractionId){
-         List<BagAttraction> bagAttractionList = em.createQuery("select ba from BagAttraction as ba where ba.bagId = :bagId",BagAttraction.class).setParameter("bagId",bagId).getResultList();
-        if(bagAttractionList.size()==1){ //보따리 길이가 1일 때 삭제될 이미지를 위해 보따리이미지 아예 삭제하기
+         List<BagAttraction> bagAttractionList = em.createQuery("select ba from BagAttraction as ba where ba.bagId.id = :bagId",BagAttraction.class)
+                 .setParameter("bagId",bagId).getResultList();
+        if(bagAttractionList.size()==1){ //보따리 길이가 1일 때 삭제될 이미지로인해 보따리이미지 업데이트 위해 보따리이미지 아예 삭제하기
             Bag bag = em.find(Bag.class,bagId);
             bag.setBagImage(null);
             em.persist(bag);
@@ -163,8 +164,7 @@ public class BagRepository {
             }
         }
 
-
-        return em.createQuery("DELETE FROM BagAttraction as ba WHERE ba.bagId = :bagId and ba.attractionId.id = :attractionId")
+        return em.createQuery("DELETE FROM BagAttraction as ba WHERE ba.bagId.id = :bagId and ba.attractionId.id = :attractionId")
                 .setParameter("bagId", bagId)
                 .setParameter("attractionId", attractionId)
                 .executeUpdate();
