@@ -22,20 +22,30 @@ public class AttractionRepository2 {
 
     private final AttractionRepository attractionRepository;
     private final UserRepository userRepository;
+    private final ScoreRepository scoreRepository;
 
     /* 여행지에 점수 매기기 */
     public Score saveScore(ScoreDto scoreDto){
-        Score score = new Score();
+        Score originScore = scoreRepository.findByUserIdAndAttractionId(scoreDto.getUserId(),scoreDto.getAttractionId());
+        if(originScore==null){
+            System.out.println(">>>새로운 score");
+            Score score = new Score();
 
-        User user = em.find(User.class,scoreDto.getUserId());
-        score.setUserId(user);
+            User user = em.find(User.class,scoreDto.getUserId());
+            score.setUserId(user);
 
-        Attraction attraction = em.find(Attraction.class,scoreDto.getAttractionId());
-        score.setAttractionId(attraction);
-        score.setScore(scoreDto.getScore());
-        em.persist(score);
-
-        return score;
+            Attraction attraction = em.find(Attraction.class,scoreDto.getAttractionId());
+            score.setAttractionId(attraction);
+            score.setScore(scoreDto.getScore());
+            em.persist(score);
+            return score;
+        }else{
+            System.out.println(">>>기존 score");
+            Score score = em.find(Score.class,originScore.getId());
+            score.setScore(scoreDto.getScore());
+            em.persist(score);
+            return score;
+        }
     }
 
 
