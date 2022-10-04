@@ -182,7 +182,7 @@ public class UserController {
     }
 
     @ApiOperation(value = "닉네임으로 회원 리스트를 조회한다.",notes = "닉네임으로 회원들의 리스트를 조회한다.")
-    @GetMapping("/api/user/search/{nickname}") // /{page}
+    @GetMapping("/api/temp/user/search/{nickname}") // /{page}
     public ResponseEntity<?> searchUserByNick(@PathVariable("nickname") String nickname){
         Message message = new Message();
         HttpHeaders headers= new HttpHeaders();
@@ -212,7 +212,7 @@ public class UserController {
                     @ApiImplicitParam(name = "file",value = "사용자 이미지 파일"),
                     @ApiImplicitParam(name = "userId",value = "사용자 userId"),
             })
-    @PostMapping("/api/profile/{userId}")
+    @PostMapping("/api/temp/profile/{userId}")
     public ResponseEntity<?> updateProfileImg(@RequestParam("file") MultipartFile file, @PathVariable("userId") long userId) {
         Message message = new Message();
         HttpHeaders headers= new HttpHeaders();
@@ -223,7 +223,7 @@ public class UserController {
                 String fileOriName = file.getOriginalFilename();
                 String fileName = userId+"_"+fileOriName;
 //                String savePath = System.getProperty("user.home") +"/upload";
-                String savePath = System.getProperty("user.dir") +"/upload";
+                String savePath = System.getProperty("user.dir") +"upload";
 
                 if (!new File(savePath).exists()) {
                     try {
@@ -252,7 +252,7 @@ public class UserController {
 
     @ApiOperation(value = "사용자 프로필 사진파일 요청" ,notes = "사용자의 프로필 사진파일을 요청한다.")
     @ApiImplicitParam(name = "userId",value = "사용자 userId",dataType = "long",paramType = "path")
-    @GetMapping("/api/profile/{userId}")
+    @GetMapping("/api/temp/profile/{userId}")
     public ResponseEntity<?> getProfileImg(@PathVariable("userId") long userId) throws IOException {
         Message message = new Message();
         HttpHeaders headers= new HttpHeaders();
