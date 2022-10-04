@@ -1,14 +1,11 @@
-from unicodedata import category
+
 from rest_framework.response import Response
 import pandas as pd
-import requests
 import pymysql
 import json
 from sklearn.metrics.pairwise import cosine_similarity
 from rest_framework.decorators import api_view
 from rest_framework import status
-
-# Create your views here.
 
 def query_mariaDB(query):
     # DB 연결
@@ -27,7 +24,6 @@ def query_mariaDB(query):
 
 
 def query_mariaDB_transpose(query):
-    # DB 연결
     conn = pymysql.connect(
         host = 'j7c103.p.ssafy.io',
         port = 3307,
@@ -68,12 +64,12 @@ def bag_to_attraction(bag_id):
 
 
 @api_view(['GET'])
-def make_boddari_pick_category(request, category):
+def make_boddari_pick_category(request, category_id):
     
     result = query_mariaDB_transpose(f"""
         SELECT attraction_id, name, image
             FROM attraction
-            WHERE category = {category} AND read_count >= 10000
+            WHERE category = {category_id} AND read_count >= 10000
             ORDER BY rand()
             LIMIT 30
         """)
