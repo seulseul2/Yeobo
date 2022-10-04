@@ -20,10 +20,10 @@ public class WebMvcConfig implements WebMvcConfigurer {
                         HttpMethod.DELETE.name());
     }
 
-//    @Override
-//    public void addResourceHandlers(ResourceHandlerRegistry registry) {
-//        registry.addResourceHandler("/upload/**")
-////                .addResourceLocations("file:///opt/upload/");
-//                .addResourceLocations("file:///upload/");
-//    }
+    @Override
+    public void addResourceHandlers(ResourceHandlerRegistry registry) {
+        registry.addResourceHandler("/upload/**")
+//                .addResourceLocations("file:///opt/upload/");
+                .addResourceLocations("file:///upload/");
+    }
 }
