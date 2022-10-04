@@ -13,8 +13,7 @@ const AdminModule = () => {
   const userId = 20;
 
   // store에 저장된 Access Token 정보를 받아 온다
-  const { accessToken } = useSelector((state) => state.token);
-
+  const accessToken = useSelector((state) => state.authToken.accessToken);
   const refreshToken = getCookieToken();
 
   const dispatch = useDispatch();
@@ -31,17 +30,23 @@ const AdminModule = () => {
   }
 
   function logOutClick() {
+    console.log("로그아웃시도");
+    console.log(refreshToken);
+    console.log(accessToken);
     axios({
       url: "https://j7c103.p.ssafy.io:8080/api/logout",
       method: "get",
+      headers: {
+        "X-AUTH-TOKEN": accessToken,
+      },
     })
       .then((res) => {
         dispatch(DELETE_TOKEN()); // store에 저장된 액세스 토큰 삭제
         removeCookieToken(); // cookie에 저장된 refresh token 삭제
-        navigate("/"); // 홈으로 이동
         const response = res.data;
         alert(response.message); // 로그아웃 백요청 완료
         console.log(response.data);
+        navigate("/"); // 홈으로 이동
       })
       .catch((err) => {
         console.log(err);
@@ -51,9 +56,13 @@ const AdminModule = () => {
 
   return (
     <div>
-      <div class="box">
-        <p onClick={userDeleteClick}>회원 탈퇴하기</p>
-        <p onClick={logOutClick}>로그아웃</p>
+      <div className="box">
+        <p className="boxIn" onClick={userDeleteClick}>
+          회원 탈퇴하기
+        </p>
+        <p className="boxIn" onClick={logOutClick}>
+          로그아웃
+        </p>
       </div>
     </div>
   );

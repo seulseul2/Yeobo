@@ -27,7 +27,7 @@ function MypageList(props) {
 const Mypage = () => {
   return (
     <div>
-      <div class="box">
+      <div className="box">
         <div id="tab">
           <ul>
             <MypageList

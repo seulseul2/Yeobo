@@ -5,7 +5,7 @@ import "./MainThisMonth.scss";
 
 const MainThisMonth = () => {
   return (
-    <div class="MainThisMonth">
+    <div className="MainThisMonth">
       <div className="titleModule">
         <p className="mainTitle">이번달 추천 여행지</p>
         <p className="subTitle">네비게이션 인기 방문지</p>

@@ -2,13 +2,21 @@ import "./User.scss";
 import { signUp } from "../../../api/user/signup";
 
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import logo from "../../../assets/images/logos/logo-border.png";
 import naver from "../../../assets/images/icons/social-naver.png";
 import kakao from "../../../assets/images/icons/social-kakao.png";
 import google from "../../../assets/images/icons/social-google.png";
 
+import { useDispatch, useSelector } from "react-redux";
+import { setRefreshToken } from "../../../storage/Cookie";
+import { SET_TOKEN } from "../../../store/Auth";
+import axios from "axios";
+
 const Signup = () => {
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+
   const [inputs, setInputs] = useState({
     email: "",
     password: "",
@@ -33,18 +41,6 @@ const Signup = () => {
       re_password: e.target.value,
     });
   };
-
-  // 사용자가 넣은 값 다 초기화 해주는 버튼 나중에 추가
-  // const onReset = () => {
-  //   setInputs({
-  //     email: '',
-  //     password: '',
-  //     re_password: '',
-  //     nickname: '',
-  //     age: '',
-  //     gender: '',
-  //   });
-  // };
 
   // 조건 1. 이메일 검사: '@', '.' 이 둘다 포함될것.
   const isValidEmail = email.includes("@") && email.includes(".");
@@ -86,7 +82,27 @@ const Signup = () => {
     }
     // 모든 조건을 통과하면 회원가입 성공
     if (getIsActive) {
-      signUp(inputs);
+      // signUp(inputs);
+      axios({
+        url: "https://j7c103.p.ssafy.io:8080/api/auth/user/signUp",
+        method: "post",
+        data: inputs,
+      })
+        .then((res) => {
+          const response = res.data.data;
+          // console.log(response);
+          alert(res.data.message);
+          const accessToken = response.accessToken;
+          const refreshToken = response.refreshToken;
+          console.log(accessToken);
+          console.log(refreshToken);
+          setRefreshToken(refreshToken);
+          dispatch(SET_TOKEN(accessToken));
+          navigate("/");
+        })
+        .catch((err) => {
+          console.log(err);
+        });
     }
   };
 
@@ -209,7 +225,7 @@ const Signup = () => {
           </a>
         </div>
       </div>
-      <div className="bottomback"></div>
+      <div className="bottomBack"></div>
     </div>
   );
 };

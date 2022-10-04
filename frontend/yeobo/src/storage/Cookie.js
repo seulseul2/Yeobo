@@ -34,5 +34,5 @@ export const getCookieToken = () => {
 
 // 쿠키 삭제 함수. 로그아웃 시 사용
 export const removeCookieToken = () => {
-  return cookies.remove("refreshToken", { sameSite: "stric", path: "/" });
+  return cookies.remove("refreshToken", { sameSite: "strict", path: "/" });
 };
