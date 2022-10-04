@@ -1,16 +1,38 @@
 import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router";
+
+import { useDispatch, useSelector } from "react-redux";
+import { SET_TOKEN } from "../../../store/Auth";
+import axios from "axios";
+
 import jwt_decode from "jwt-decode";
 // import { GoogleLogin } from "@react-oauth/google";
 // import { GoogleOAuthProvider } from "@react-oauth/google";
 
 const GoogleLogIn = () => {
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
   const [user, setUser] = useState({});
 
-  function handleCallbackResponse(res) {
-    console.log("encoded JWT ID Token: " + res.credential);
-    var userObject = jwt_decode(res.credential);
-    console.log("decode", userObject);
-    setUser(userObject);
+  async function handleCallbackResponse(res) {
+    try {
+      console.log("encoded JWT ID Token: " + res.credential);
+      var userObject = jwt_decode(res.credential);
+      console.log("decode", userObject);
+      setUser(userObject);
+      await dispatch(
+        SET_TOKEN({
+          accessToken: res.credential,
+          pictureUrl: userObject.picture,
+          nickname: userObject.name,
+          google: true,
+        })
+      );
+      alert("회원가입에 성공했습니다!");
+      navigate("/");
+    } catch (err) {
+      alert(err);
+    }
   }
   useEffect(() => {
     /* global google */
@@ -28,9 +50,7 @@ const GoogleLogIn = () => {
 
   const clientId = process.env.REACT_APP_GOOGLE_KEY;
   const clientSecret = process.env.REACT_APP_GOOGLE_SECRET;
-  const resGoogle = (res) => {
-    console.log(res);
-  };
+
   return (
     <React.Fragment>
       <div id="signInDiv"></div>

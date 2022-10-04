@@ -18,27 +18,28 @@ import Page404 from "./Page404";
 function App() {
   return (
     <div className="App">
-      {/* <div className="tempNavBar">
-        <Link to="/">Main</Link>
-        <Link to="/Boddari">보따리만들기</Link>
-        <Link to="/Search">Search</Link>
-        <Link to="/Login">로그인</Link>
-      </div> */}
       <div>
         <Routes>
+          {/* 로그인+비로그인 */}
           <Route path="/" element={<Main />} />
-          <Route path="/Boddari" element={<Boddari />}></Route>
+          <Route path="/Search" element={<Search />}></Route>
+          <Route path="/Google" element={<GoogleLogin />}></Route>
+
+          {/* 비로그인 */}
           <Route path="/Login" element={<Login />}></Route>
           <Route path="/Signup" element={<Signup />}></Route>
-          <Route path="/Mypage" element={<Mypage />}></Route>
-          <Route path="/SaveBoddari" element={<BoddariSave />}></Route>
-          <Route path="/Search" element={<Search />}></Route>
           <Route
             path="/DestinationDetail"
             element={<DestinationDetail />}
           ></Route>
+
+          {/* 로그인 */}
+          <Route path="/Mypage" element={<Mypage />}></Route>
+          <Route path="/Boddari" element={<Boddari />}></Route>
+          <Route path="/SaveBoddari" element={<BoddariSave />}></Route>
           <Route path="/testapi" element={<TestAPI />}></Route>
-          <Route path="/Google" element={<GoogleLogin />}></Route>
+
+          {/* 그 외 404 */}
           <Route
             path="*"
             element={
@@ -46,10 +47,9 @@ function App() {
                 <Page404 />
               </main>
             }
-          ></Route>
+          />
         </Routes>
       </div>
-      {/* <div style={{ height: "80px;" }}>.</div> */}
       <BottomNavBar />
     </div>
   );

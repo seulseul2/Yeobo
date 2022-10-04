@@ -19,9 +19,6 @@ import GoogleLogIn from "./GoogleLogin";
 const Login = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const goToMain = () => {
-    navigate("/");
-  };
   const [inputs, setInputs] = useState({
     email: "",
     password: "",
@@ -33,7 +30,7 @@ const Login = () => {
       ...inputs,
       [name]: value,
     });
-    console.log(inputs);
+    // console.log(inputs);
   };
 
   // 조건 1. 이메일 검사 (이메일 형식으로 했는지 검사해주기)
@@ -57,16 +54,17 @@ const Login = () => {
         data: inputs,
       })
         .then((res) => {
-          console.log("b");
           const response = res.data.data;
           // console.log(response);
           alert(res.data.message);
           const accessToken = response.accessToken;
           const refreshToken = response.refreshToken;
-          console.log(accessToken);
-          console.log(refreshToken);
+          console.log("access", accessToken);
+          console.log("refresh", refreshToken);
           setRefreshToken(refreshToken);
-          dispatch(SET_TOKEN(accessToken));
+          dispatch(
+            SET_TOKEN({ accessToken: accessToken, email: response.email })
+          );
           navigate("/");
         })
         .catch((err) => {
@@ -77,7 +75,7 @@ const Login = () => {
   };
 
   return (
-    <div class="user-box">
+    <div className="user-box">
       <div className="login-title">
         <img className="login-logo" src={logo} alt="" />
         <div className="title-box">
@@ -130,15 +128,6 @@ const Login = () => {
       <div className="login-page">
         <p className="social-title">소셜로그인</p>
         <div className="social-btns">
-          {/* <a className="social-btn" href="naver.com">
-            <img src={naver} alt="" />
-          </a>
-          <a className="social-btn" href="naver.com">
-            <img src={kakao} alt="" />
-          </a>
-          <Link className="social-btn" to="/google">
-            <img src={google} alt="" />
-          </Link> */}
           <GoogleLogIn />
         </div>
       </div>
