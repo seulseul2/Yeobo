@@ -7,6 +7,7 @@ import logo from "../../../assets/images/logos/logo-border.png";
 import naver from "../../../assets/images/icons/social-naver.png";
 import kakao from "../../../assets/images/icons/social-kakao.png";
 import google from "../../../assets/images/icons/social-google.png";
+import GoogleLogIn from "./GoogleLogin";
 
 import { useDispatch, useSelector } from "react-redux";
 import { setRefreshToken } from "../../../storage/Cookie";
@@ -212,9 +213,9 @@ const Signup = () => {
         </div>
       </div>
       <div className="login-page">
-        <p className="social-title">소셜로그인</p>
+        <p className="social-title">소셜회원가입</p>
         <div className="social-btns">
-          <a className="social-btn" href="naver.com">
+          {/* <a className="social-btn" href="naver.com">
             <img src={naver} alt="" />
           </a>
           <a className="social-btn" href="naver.com">
@@ -222,7 +223,8 @@ const Signup = () => {
           </a>
           <a className="social-btn" href="google.com">
             <img src={google} alt="" />
-          </a>
+          </a> */}
+          <GoogleLogIn />
         </div>
       </div>
       <div className="bottomBack"></div>

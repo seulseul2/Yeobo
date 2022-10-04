@@ -25,8 +25,10 @@ const GoogleLogIn = () => {
           accessToken: res.credential,
           pictureUrl: userObject.picture,
           nickname: userObject.name,
+          google: true,
         })
       );
+      alert("회원가입에 성공했습니다!");
       navigate("/");
     } catch (err) {
       alert(err);

@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 // import { Link } from 'react-router-dom';
 import "./Mypage.scss";
 import { useNavigate } from "react-router";
+import profile from "../../assets/images/bag_image/boddari.png";
 
 import NickDialog from "./NickDialog";
 import axios from "axios";
@@ -41,19 +42,18 @@ const Mypage = () => {
   const [userNick, setUserNick] = useState();
   const [userAge, setUserAge] = useState();
   const [userGender, setUserGender] = useState();
-  const [profileImg, setProfileImg] = useState(
-    "https://mblogthumb-phinf.pstatic.net/MjAyMDAyMDdfMTYw/MDAxNTgxMDg1NzUxMTUy.eV1iEw2gk2wt_YqPWe5F7SroOCkXJy2KFwmTDNzM0GQg.Z3Kd5MrDh07j86Vlb2OhAtcw0oVmGCMXtTDjoHyem9og.JPEG.7wayjeju/%EB%B0%B0%EC%9A%B0%ED%94%84%EB%A1%9C%ED%95%84%EC%82%AC%EC%A7%84_IMG7117.jpg?type=w800"
-  );
+  const [profileImg, setProfileImg] = useState(profile);
   // const { email, password } = inputs;
   useEffect(() => {
+    setProfileImg(profile);
     console.log("mypage rendering~");
-    console.log(userNick);
     if (pictureUrl !== "") {
       setProfileImg(pictureUrl);
     }
     if (nickname !== "") {
       setUserNick(nickname);
     }
+    console.log(userNick);
     axios({
       url: `https://j7c103.p.ssafy.io:8080/api/user/${userId}`,
       method: "get",
@@ -75,6 +75,9 @@ const Mypage = () => {
       .catch((err) => {
         console.log(err.response);
       });
+    if (!profileImg) {
+      setProfileImg(profile);
+    }
   }, []);
 
   const logout = () => {
@@ -105,7 +108,7 @@ const Mypage = () => {
       <div className="mypageBox">
         <div className="mypageTop">
           <p className="mypageTopName">My Page</p>
-          <NickDialog />
+          <NickDialog name={nickname} />
         </div>
         <div className="mypageProfileBox">
           <div className="mypageProfileText">

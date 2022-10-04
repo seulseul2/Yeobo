@@ -128,15 +128,6 @@ const Login = () => {
       <div className="login-page">
         <p className="social-title">소셜로그인</p>
         <div className="social-btns">
-          {/* <a className="social-btn" href="naver.com">
-            <img src={naver} alt="" />
-          </a>
-          <a className="social-btn" href="naver.com">
-            <img src={kakao} alt="" />
-          </a>
-          <Link className="social-btn" to="/google">
-            <img src={google} alt="" />
-          </Link> */}
           <GoogleLogIn />
         </div>
       </div>

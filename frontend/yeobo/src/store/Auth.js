@@ -16,6 +16,7 @@ export const tokenSlice = createSlice({
     nickname: "",
     age: null,
     gender: null,
+    google: false,
   },
   reducers: {
     // 액세스 토큰 정보 저장
@@ -28,6 +29,7 @@ export const tokenSlice = createSlice({
       state.nickname = action.payload.nickname;
       state.age = action.payload.age;
       state.gender = action.payload.gender;
+      state.google = action.payload.google;
       console.log(state);
     },
     //  값을 모두 초기화하여 액세스 토큰에 대한 정보도 삭제함
@@ -40,6 +42,7 @@ export const tokenSlice = createSlice({
       state.nickname = "";
       state.age = null;
       state.gender = null;
+      state.google = false;
     },
   },
 });

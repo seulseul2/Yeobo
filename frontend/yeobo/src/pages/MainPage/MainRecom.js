@@ -1,9 +1,24 @@
+import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import "./MainRecom.scss";
+import axios from "axios";
 
 // const testImage = 'https://cdn.visitkorea.or.kr/img/call?cmd=VIEW&id=552b48fc-ce4a-43dc-adf2-1f854e4abd8f&mode=progress';
 
 const MainRecom = () => {
+  const userId = 2;
+  useEffect(() => {
+    axios({
+      url: `https://j7c103.p.ssafy.io:443/django/MainPage/RecentHighScoreBasedRecommend/${userId}`,
+      method: "get",
+    })
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
   return (
     <div className="mainRecom">
       <div className="titleModule">
