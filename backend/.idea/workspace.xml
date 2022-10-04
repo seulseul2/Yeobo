@@ -21,6 +21,9 @@
         <task path="$PROJECT_DIR$">
           <activation />
         </task>
+        <task path="$PROJECT_DIR$/yeobo/yeobo">
+          <activation />
+        </task>
         <projects_view>
           <tree_state>
             <expand>
@@ -101,7 +104,7 @@
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/multicampus/soldsolve/S07P12C110/Back-end/build.gradle&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/multicampus/Desktop/honey/S07P22C103/backend&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -128,7 +131,7 @@
       </set>
     </option>
   </component>
-  <component name="RunManager" selected="Gradle.backend [bootJar]">
+  <component name="RunManager" selected="Spring Boot.YeoboApplication (1)">
     <configuration name="backend [bootJar]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -172,6 +175,7 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Spring Boot.YeoboApplication (1)" />
         <item itemvalue="Gradle.backend [bootJar]" />
       </list>
     </recent_temporary>
@@ -179,7 +183,7 @@
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="애플리케이션 수준" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="디폴트 작업">
-      <changelist id="e995ccdb-c89b-4726-8d25-f9038c7282e2" name="변경" comment="" />
+      <changelist id="762a9a3c-28ef-4d5a-81d7-e18ab351898c" name="Changes" comment="" />
       <created>1663051024083</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />

@@ -17,6 +17,7 @@ import org.springframework.web.multipart.MultipartFile;
 import java.io.File;
 import java.io.IOException;
 import java.nio.charset.Charset;
+import java.nio.file.AccessDeniedException;
 import java.util.List;
 
 //@CrossOrigin(originPatterns = "https://localhost:3000, http://localhost:3000")
@@ -27,7 +28,7 @@ public class UserController {
     private final UserService userService;
 
     @ApiOperation(value = "회원가입",notes = "email과 password를 받아서 회원가입한다.")
-    @PostMapping("/api/user/signUp")
+    @PostMapping("/api/auth/user/signUp")
     public ResponseEntity<?> signUp(@RequestBody UserSaveDto userSaveDto){
         Message message = new Message();
         HttpHeaders headers= new HttpHeaders();
@@ -52,13 +53,13 @@ public class UserController {
     }
 
     @ApiOperation(value = "로그인 요청",notes = "email과 password로 로그인을 요청한다.")
-    @PostMapping("/api/user/login")
-    public ResponseEntity<?> login(@RequestBody UserLoginDto userLoginDto){
+    @PostMapping("/api/auth/user/login")
+    public ResponseEntity<?> login(@RequestBody UserLoginRequestDto userLoginDto){
         Message message = new Message();
         HttpHeaders headers= new HttpHeaders();
         headers.setContentType(new MediaType("application", "json", Charset.forName("UTF-8")));
         try {
-            User user = userService.login(userLoginDto);
+            UserLoginDto user = userService.login(userLoginDto);
             message.setStatus(StatusEnum.OK);
             message.setMessage("로그인 성공");
             message.setData(user);
@@ -181,7 +182,7 @@ public class UserController {
     }
 
     @ApiOperation(value = "닉네임으로 회원 리스트를 조회한다.",notes = "닉네임으로 회원들의 리스트를 조회한다.")
-    @GetMapping("/api/user/search/{nickname}") // /{page}
+    @GetMapping("/api/temp/user/search/{nickname}") // /{page}
     public ResponseEntity<?> searchUserByNick(@PathVariable("nickname") String nickname){
         Message message = new Message();
         HttpHeaders headers= new HttpHeaders();
@@ -211,7 +212,7 @@ public class UserController {
                     @ApiImplicitParam(name = "file",value = "사용자 이미지 파일"),
                     @ApiImplicitParam(name = "userId",value = "사용자 userId"),
             })
-    @PostMapping("/api/user/profile/{userId}")
+    @PostMapping("/api/temp/profile/{userId}")
     public ResponseEntity<?> updateProfileImg(@RequestParam("file") MultipartFile file, @PathVariable("userId") long userId) {
         Message message = new Message();
         HttpHeaders headers= new HttpHeaders();
@@ -222,7 +223,7 @@ public class UserController {
                 String fileOriName = file.getOriginalFilename();
                 String fileName = userId+"_"+fileOriName;
 //                String savePath = System.getProperty("user.home") +"/upload";
-                String savePath = System.getProperty("user.dir") +"/upload";
+                String savePath = System.getProperty("user.dir") +"upload";
 
                 if (!new File(savePath).exists()) {
                     try {
@@ -251,7 +252,7 @@ public class UserController {
 
     @ApiOperation(value = "사용자 프로필 사진파일 요청" ,notes = "사용자의 프로필 사진파일을 요청한다.")
     @ApiImplicitParam(name = "userId",value = "사용자 userId",dataType = "long",paramType = "path")
-    @GetMapping("/api/user/profile/{userId}")
+    @GetMapping("/api/temp/profile/{userId}")
     public ResponseEntity<?> getProfileImg(@PathVariable("userId") long userId) throws IOException {
         Message message = new Message();
         HttpHeaders headers= new HttpHeaders();
@@ -264,6 +265,52 @@ public class UserController {
         message.setData(img);
 
         return new ResponseEntity<>(message, headers, HttpStatus.OK);
+    }
+
+    @ApiOperation(value = "소셜로그인 - 멤버정보 요청",notes = "발급받은 accessToken으로 멤버정보를 요청한다.")
+    @GetMapping("/api/social")
+    public ResponseEntity<?> getMember(
+            @RequestHeader(value="X-AUTH-TOKEN") String token) throws Exception {
+        Message message = new Message();
+        HttpHeaders headers= new HttpHeaders();
+        headers.setContentType(new MediaType("application", "json", Charset.forName("UTF-8")));
+
+        message.setStatus(StatusEnum.OK);
+        message.setMessage("access token으로 정보 불러오기 성공");
+        message.setData(userService.getMember(token));
+        return new ResponseEntity<>(message, headers, HttpStatus.OK);
+
+    }
+
+    @ApiOperation(value = "access token 재발급 요청",notes = "refresh 토큰으로 access 토큰을 재발급 신청한다.")
+    @PostMapping(value = "/api/refresh")
+    public ResponseEntity<?> refreshToken(
+            @RequestHeader(value="X-AUTH-TOKEN") String token,
+            @RequestHeader(value="REFRESH-TOKEN") String refreshToken ) {
+        Message message = new Message();
+        HttpHeaders headers= new HttpHeaders();
+        headers.setContentType(new MediaType("application", "json", Charset.forName("UTF-8")));
+
+        try {
+            message.setStatus(StatusEnum.OK);
+            message.setMessage("ACCESS TOKEN 재발급 성공");
+            message.setData(userService.refreshToken(token, refreshToken));
+            return new ResponseEntity<>(message, headers, HttpStatus.OK);
+        } catch (AccessDeniedException e){
+            e.printStackTrace();
+            message.setStatus(StatusEnum.UNAUTHORIZED);
+            message.setMessage("REFRESH TOKEN이 일치하지 않습니다.");
+            return new ResponseEntity<>(message, headers, HttpStatus.OK);
+        } catch (IllegalStateException e){
+            e.printStackTrace();
+            return new ResponseEntity<String>("RE LOGIN", HttpStatus.PAYMENT_REQUIRED);
+        } catch (Exception e){
+            e.printStackTrace();
+            message.setStatus(StatusEnum.INTERNAL_SERVER_ERROR);
+            message.setMessage("서버 에러 발생");
+            return new ResponseEntity<>(message, headers,  HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+
     }
 
 }

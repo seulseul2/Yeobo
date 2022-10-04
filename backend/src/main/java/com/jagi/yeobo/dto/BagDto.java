@@ -11,8 +11,9 @@ import lombok.*;
 public class BagDto {
     private String name;
     private String memo;
+    private String image;
 
     public Bag toEntity(){
-        return Bag.builder().name(name).memo(memo).build();
+        return Bag.builder().name(name).memo(memo).bagImage(image).build();
     }
 }
