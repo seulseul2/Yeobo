@@ -87,13 +87,12 @@ public class AttractionController {
 
 
     @ApiOperation(value = "사용자의 여행지 평가",notes = "사용자 userId로 여행지 각각에 대해 평가한 점수를 저장한다.")
-    @PostMapping("api/attraction/score") ///{attractionId}/{userId}
-    public ResponseEntity<?> searchUserByNick(@RequestBody ScoreDto scoreDto){ //@PathVariable("attractionId") long attractionId, @PathVariable("userId") long userId,
+    @PostMapping("api/temp/attraction/score")
+    public ResponseEntity<?> createAttractionScore(@RequestBody ScoreDto scoreDto){
         Message message = new Message();
         HttpHeaders headers= new HttpHeaders();
         headers.setContentType(new MediaType("application", "json", Charset.forName("UTF-8")));
         try {
-
             Score score = attractionService.createScore(scoreDto);
 
             message.setStatus(StatusEnum.OK);
