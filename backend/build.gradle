@@ -51,7 +51,7 @@ dependencies {
 	// Social login
 	implementation 'org.springframework.boot:spring-boot-starter-oauth2-client'
 	implementation 'org.springframework.boot:spring-boot-starter-mustache'
-//	implementation 'org.springframework.session:spring-session-jdbc'
+	implementation 'org.springframework.session:spring-session-jdbc'
 }
 
 tasks.named('test') {
