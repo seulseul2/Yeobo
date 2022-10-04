@@ -1,17 +1,24 @@
 import { Link, useNavigate } from "react-router-dom";
-import React, { useState } from "react";
-import { login } from "../../../api/user/login";
+import React, { useEffect, useState } from "react";
+// import { LoginApi } from "../../../api/user/login";
+// import { useNavigate } from "react-router";
+import { useDispatch, useSelector } from "react-redux";
+import { setRefreshToken } from "../../../storage/Cookie";
+import { SET_TOKEN } from "../../../store/Auth";
+import axios from "axios";
 
 import "./User.scss";
 import logo from "../../../assets/images/logos/logo-border.png";
 import naver from "../../../assets/images/icons/social-naver.png";
 import kakao from "../../../assets/images/icons/social-kakao.png";
 import google from "../../../assets/images/icons/social-google.png";
+import GoogleLogIn from "./GoogleLogin";
 
 // const testImage = 'https://cdn.visitkorea.or.kr/img/call?cmd=VIEW&id=552b48fc-ce4a-43dc-adf2-1f854e4abd8f&mode=progress';
 
 const Login = () => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
   const goToMain = () => {
     navigate("/");
   };
@@ -26,6 +33,7 @@ const Login = () => {
       ...inputs,
       [name]: value,
     });
+    console.log(inputs);
   };
 
   // 조건 1. 이메일 검사 (이메일 형식으로 했는지 검사해주기)
@@ -36,14 +44,35 @@ const Login = () => {
   const getIsActive = isValidEmail && isValidInput === true;
 
   const handleSubmit = () => {
+    console.log(".", inputs);
     if (!isValidEmail) {
       alert("이메일 형식으로 입력해 주세요.");
     } else if (!isValidInput) {
       alert("모든 내용을 입력해 주세요.");
     }
     if (getIsActive) {
-      login(inputs);
-      goToMain();
+      axios({
+        url: "https://j7c103.p.ssafy.io:8080/api/auth/user/login",
+        method: "post",
+        data: inputs,
+      })
+        .then((res) => {
+          console.log("b");
+          const response = res.data.data;
+          // console.log(response);
+          alert(res.data.message);
+          const accessToken = response.accessToken;
+          const refreshToken = response.refreshToken;
+          console.log(accessToken);
+          console.log(refreshToken);
+          setRefreshToken(refreshToken);
+          dispatch(SET_TOKEN(accessToken));
+          navigate("/");
+        })
+        .catch((err) => {
+          console.log(err);
+          alert(err.response.data.message);
+        });
     }
   };
 
@@ -101,18 +130,19 @@ const Login = () => {
       <div className="login-page">
         <p className="social-title">소셜로그인</p>
         <div className="social-btns">
-          <a className="social-btn" href="naver.com">
+          {/* <a className="social-btn" href="naver.com">
             <img src={naver} alt="" />
           </a>
           <a className="social-btn" href="naver.com">
             <img src={kakao} alt="" />
           </a>
-          <a className="social-btn" href="google.com">
+          <Link className="social-btn" to="/google">
             <img src={google} alt="" />
-          </a>
+          </Link> */}
+          <GoogleLogIn />
         </div>
       </div>
-      <div className="bottomback"></div>
+      <div className="bottomBack"></div>
     </div>
   );
 };

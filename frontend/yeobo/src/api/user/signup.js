@@ -2,7 +2,7 @@ import axios from "axios";
 
 export const signUp = async (inputs) => {
   axios({
-    url: "https://j7c103.p.ssafy.io:8080/api/user/signUp",
+    url: "https://j7c103.p.ssafy.io:8080/api/auth/user/signUp",
     method: "post",
     data: inputs,
   })
