@@ -9,10 +9,10 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
+import javax.persistence.EntityNotFoundException;
 import javax.persistence.PersistenceContext;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 @Repository
 @RequiredArgsConstructor
@@ -27,15 +27,15 @@ public class AttractionRepository2 {
     /* 여행지에 점수 매기기 */
     public Score saveScore(ScoreDto scoreDto){
         //attractionId와 userId에 대해 유효성검사를 하여 sql문을 두번이나 더 돌게 만드는게 맞는건지 고민.
-        Score originScore = scoreRepository.findByUserIdAndAttractionId(scoreDto.getUserId(),scoreDto.getAttractionId());
+        User user = em.find(User.class,scoreDto.getUserId());
+        Attraction attraction = em.find(Attraction.class,scoreDto.getAttractionId());
+        if(user == null) throw new EntityNotFoundException(scoreDto.getUserId()+"에 해당하는 사용자 정보가 없습니다");
+        if(attraction == null) throw new EntityNotFoundException(scoreDto.getAttractionId()+"에 해당하는 여행지 정보가 없습니다");
+        Score originScore = scoreRepository.findByUserIdAndAttractionId(user,attraction);
         if(originScore==null){
             System.out.println(">>>새로운 score");
             Score score = new Score();
-
-            User user = em.find(User.class,scoreDto.getUserId());
             score.setUserId(user);
-
-            Attraction attraction = em.find(Attraction.class,scoreDto.getAttractionId());
             score.setAttractionId(attraction);
             score.setScore(scoreDto.getScore());
             em.persist(score);
@@ -44,7 +44,7 @@ public class AttractionRepository2 {
             System.out.println(">>>기존 score");
             Score score = em.find(Score.class,originScore.getId());
             score.setScore(scoreDto.getScore());
-            em.persist(score);
+//            em.persist(score);
             return score;
         }
     }
