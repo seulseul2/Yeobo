@@ -6,6 +6,7 @@ import BoddariSave from "./Boddari/BoddariSave";
 import Main from "./MainPage/Main";
 import Signup from "./MainPage/User/Signup";
 import Login from "./MainPage/User/Login";
+import GoogleLogin from "./MainPage/User/GoogleLogin";
 import Mypage from "./MyPage/Mypage";
 import Search from "./Search/Search";
 import DestinationDetail from "./Destination/DestinationDetail";
@@ -37,6 +38,7 @@ function App() {
             element={<DestinationDetail />}
           ></Route>
           <Route path="/testapi" element={<TestAPI />}></Route>
+          <Route path="/Google" element={<GoogleLogin />}></Route>
           <Route
             path="*"
             element={

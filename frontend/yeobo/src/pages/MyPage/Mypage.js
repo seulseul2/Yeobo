@@ -23,9 +23,12 @@ import IconButton from "@mui/material/IconButton";
 import Tooltip from "@mui/material/Tooltip";
 
 const Mypage = () => {
-  // git test
+  // store에 저장된 Access Token 정보를 받아 온다
+  const accessToken = useSelector((state) => state.authToken.accessToken);
+
   // 임시 유저 아이디 15 = 6, 20 = 7
   const userId = 20;
+
   // 유저 닉네임, 나이, 성별 프레젠트
   const [userNick, setUserNick] = useState();
   const [userAge, setUserAge] = useState();
@@ -33,8 +36,14 @@ const Mypage = () => {
   // const { email, password } = inputs;
   useEffect(() => {
     console.log("rendering~");
-    axios
-      .get(`https://j7c103.p.ssafy.io:8080/api/user/${userId}`)
+    console.log(accessToken);
+    axios({
+      url: `https://j7c103.p.ssafy.io:8080/api/user/${userId}`,
+      method: "get",
+      headers: {
+        "X-AUTH-TOKEN": accessToken,
+      },
+    })
       .then((res) => {
         const response = res.data;
         // alert(response.message);
@@ -90,9 +99,7 @@ const Mypage = () => {
               로그아웃
             </div>
             <Tooltip title="Delete">
-              <IconButton>
-                {/* <DeleteIcon /> */}
-              </IconButton>
+              <IconButton>{/* <DeleteIcon /> */}</IconButton>
             </Tooltip>
           </div>
           <div className="mypage-profile-img-wrapper">
@@ -138,9 +145,7 @@ const Mypage = () => {
         </div>
         <VisitedBox />
       </div>
-      <div className="adminBox">
-        <AdminModule />
-      </div>
+      <div className="adminBox">{/* <AdminModule /> */}</div>
       <div className="bottomback"></div>
     </div>
   );
