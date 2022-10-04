@@ -11,13 +11,19 @@
       <change beforePath="$PROJECT_DIR$/.gradle/7.5/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.5/fileHashes/fileHashes.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/7.5/fileHashes/resourceHashesCache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.5/fileHashes/resourceHashesCache.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/jagi/yeobo/domain/repository/AttractionRepository2.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/jagi/yeobo/domain/repository/AttractionRepository2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/jagi/yeobo/domain/repository/ScoreRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/jagi/yeobo/domain/repository/ScoreRepository.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/jagi/yeobo/configuration/WebMvcConfig.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/jagi/yeobo/configuration/WebMvcConfig.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/jagi/yeobo/controller/AttractionController.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/jagi/yeobo/controller/AttractionController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/jagi/yeobo/controller/BagController.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/jagi/yeobo/controller/BagController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/jagi/yeobo/controller/UserController.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/jagi/yeobo/controller/UserController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/libs/app.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/application.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/previous-compilation-data.bin" beforeDir="false" afterPath="$PROJECT_DIR$/build/tmp/compileJava/previous-compilation-data.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/jagi/yeobo/domain/repository/AttractionRepository2.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/jagi/yeobo/domain/repository/AttractionRepository2.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/jagi/yeobo/domain/repository/ScoreRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/jagi/yeobo/domain/repository/ScoreRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/jagi/yeobo/configuration/WebMvcConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/jagi/yeobo/configuration/WebMvcConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/jagi/yeobo/controller/AttractionController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/jagi/yeobo/controller/AttractionController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/jagi/yeobo/controller/BagController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/jagi/yeobo/controller/BagController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/jagi/yeobo/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/jagi/yeobo/controller/UserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -141,6 +147,48 @@
     </option>
   </component>
   <component name="RunManager" selected="Gradle.backend [bootJar]">
+    <configuration name="C:/Users/multicampus/Desktop/honey/S07P22C103/backend/yeobo/yeobo [bootJar]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$/yeobo/yeobo" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="bootJar" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <method v="2" />
+    </configuration>
+    <configuration name="backend [bootJarMainClassName]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="bootJarMainClassName" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <method v="2" />
+    </configuration>
     <configuration name="backend [bootJar]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -185,7 +233,8 @@
     <recent_temporary>
       <list>
         <item itemvalue="Gradle.backend [bootJar]" />
-        <item itemvalue="Spring Boot.YeoboApplication (1)" />
+        <item itemvalue="Gradle.backend [bootJarMainClassName]" />
+        <item itemvalue="Gradle.C:/Users/multicampus/Desktop/honey/S07P22C103/backend/yeobo/yeobo [bootJar]" />
       </list>
     </recent_temporary>
   </component>
