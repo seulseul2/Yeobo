@@ -113,7 +113,7 @@ public class BagController {
     }
 
     @ApiOperation(value = "보따리를 검색 조회한다.",notes = "보따리의 이름을 입력하여 보따리를 검색한다.")
-    @GetMapping("api/bag/{name}/{userId}")
+    @GetMapping("api/temp/bag/{name}/{userId}")
     public ResponseEntity<?> searchBagByName(@PathVariable("name") String name, @PathVariable("userId") long userId){
         Message message = new Message();
         HttpHeaders headers= new HttpHeaders();
