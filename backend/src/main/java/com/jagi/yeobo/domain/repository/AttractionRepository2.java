@@ -26,6 +26,7 @@ public class AttractionRepository2 {
 
     /* 여행지에 점수 매기기 */
     public Score saveScore(ScoreDto scoreDto){
+        //attractionId와 userId에 대해 유효성검사를 하여 sql문을 두번이나 더 돌게 만드는게 맞는건지 고민.
         Score originScore = scoreRepository.findByUserIdAndAttractionId(scoreDto.getUserId(),scoreDto.getAttractionId());
         if(originScore==null){
             System.out.println(">>>새로운 score");
