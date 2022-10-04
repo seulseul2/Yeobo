@@ -52,7 +52,7 @@ public class AttractionController {
 
 
     @ApiOperation(value = "여행지 이름으로 리스트 조회",notes = "검색어를 포함하는 여행지 리스트를 조회한다.")
-    @GetMapping("api/attraction/search/{name}") // /{page}
+    @GetMapping("api/temp/attraction/search/{name}") // /{page}
     public ResponseEntity<?> searchAttractionListByName(@PathVariable("name") String name,@RequestParam("userId")long userId){
         Message message = new Message();
         HttpHeaders headers= new HttpHeaders();
