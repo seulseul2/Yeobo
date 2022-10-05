@@ -9,7 +9,7 @@ const MainRecom = () => {
   const userId = 2;
   useEffect(() => {
     axios({
-      url: `https://j7c103.p.ssafy.io:443/django/MainPage/RecentHighScoreBasedRecommend/${userId}`,
+      url: `https://j7c103.p.ssafy.io:443/django/MainPage/RecentHighScoreBasedRecommend/${userId}/`,
       method: "get",
     })
       .then((res) => {

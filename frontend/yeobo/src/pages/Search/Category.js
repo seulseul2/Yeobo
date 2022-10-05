@@ -2,7 +2,6 @@ const Category = () => {
   return (
     <div className='Category'>
 
-    
     </div>
   )
 }

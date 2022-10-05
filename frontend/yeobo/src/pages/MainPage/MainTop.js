@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import './MainTop.scss';
+import { useNavigate } from 'react-router-dom';
 
 const MainTop = () => {
+  const navigate = useNavigate();
 
   const [text, setText] = useState('');
   const onChange = (e) => {
@@ -10,6 +12,22 @@ const MainTop = () => {
   };
   const onReset = () => {
     setText('')
+    console.log(text);
+  }
+  const searchHandler = () => {
+    console.log('search click')
+    // navigate('/Search')
+    navigate('/Search', {state: {text: text}})
+  }
+  const onClick = () => {
+    console.log('search click')
+    // navigate('/Search')
+    navigate('/Search', {state: {text: text}})
+  } 
+  const textEnter = (e) => {
+    if (e.key === 'Enter') {
+      onClick();
+    }
   }
 
   return <div className="maintop">
@@ -19,12 +37,12 @@ const MainTop = () => {
     내 소중한 추억을 더 가치있게</p>
     </div>
     <div className='searchBar'>
-      <svg className='searchIcon searchItem' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill="none" d="M0 0h24v24H0z"/><path d="M18.031 16.617l4.283 4.282-1.415 1.415-4.282-4.283A8.96 8.96 0 0 1 11 20c-4.968 0-9-4.032-9-9s4.032-9 9-9 9 4.032 9 9a8.96 8.96 0 0 1-1.969 5.617zm-2.006-.742A6.977 6.977 0 0 0 18 11c0-3.868-3.133-7-7-7-3.868 0-7 3.132-7 7 0 3.867 3.132 7 7 7a6.977 6.977 0 0 0 4.875-1.975l.15-.15z" fill="rgba(69,69,69,1)"/></svg>
-      <input className='searchText searchItem' onChange={onChange} value={text} placeholder="여행지, 보따리, 사용자를 검색해 보세요." />
+      <svg onClick={searchHandler} className='searchIcon searchItem' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill="none" d="M0 0h24v24H0z"/><path d="M18.031 16.617l4.283 4.282-1.415 1.415-4.282-4.283A8.96 8.96 0 0 1 11 20c-4.968 0-9-4.032-9-9s4.032-9 9-9 9 4.032 9 9a8.96 8.96 0 0 1-1.969 5.617zm-2.006-.742A6.977 6.977 0 0 0 18 11c0-3.868-3.133-7-7-7-3.868 0-7 3.132-7 7 0 3.867 3.132 7 7 7a6.977 6.977 0 0 0 4.875-1.975l.15-.15z" fill="rgba(69,69,69,1)"/></svg>
+      <input onKeyPress={textEnter} className='searchText searchItem' onChange={onChange} value={text} placeholder="여행지, 보따리, 사용자를 검색해 보세요." />
       <svg onClick={onReset} className='searchDelete searchItem' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill="none" d="M0 0h24v24H0z"/><path d="M12 10.586l4.95-4.95 1.414 1.414-4.95 4.95 4.95 4.95-1.414 1.414-4.95-4.95-4.95 4.95-1.414-1.414 4.95-4.95-4.95-4.95L7.05 5.636z" fill="rgba(69,69,69,1)"/></svg>
     </div>
-    <p className='popularSearchTermsTitle'>인기 검색어</p>
-    <div className='popularSearchTerms'>
+    {/* <p className='popularSearchTermsTitle'>인기 검색어</p> */}
+    {/* <div className='popularSearchTerms'>
       <div className='rankIndex'>
         <p>1위</p>
         <p>2위</p>
@@ -39,7 +57,7 @@ const MainTop = () => {
         <p>부산 감천마을</p>
         <p>부산 감천마을</p>
       </div>
-    </div>
+    </div> */}
   </div>
 }
 export default MainTop;

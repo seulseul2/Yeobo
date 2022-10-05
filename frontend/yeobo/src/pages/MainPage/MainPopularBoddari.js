@@ -97,7 +97,7 @@ function BoddariRankComponent() {
   const [ranks, setRanks] = useState([]);
   useEffect(() => {
     axios({
-      url: "https://j7c103.p.ssafy.io:8080/api/bag/list/popular",
+      url: "https://j7c103.p.ssafy.io:8080/api/temp/bag/list/popular",
       method: "get",
       headers: {
         "X-AUTH-TOKEN": accessToken,
