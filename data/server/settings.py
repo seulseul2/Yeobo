@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-3-sej&qwwa(^1zrq!slv52je_4!gh+!1oou6idg6lb7x-)cb$l
 DEBUG = True
 
 # ALLOWED_HOSTS = ['j7c103.p.ssafy.io', '127.0.0.1']
-# ALLOWED_HOSTS = ['j7c103.p.ssafy.io']
+ALLOWED_HOSTS = ['j7c103.p.ssafy.io']
 
 # Application definition
 
@@ -38,11 +38,11 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'corsheaders', # *
+    # 'corsheaders', # *
 ]
 
 MIDDLEWARE = [
-    'corsheaders.middleware.CorsMiddleware', # *
+    # 'corsheaders.middleware.CorsMiddleware', # *
     'django.middleware.common.CommonMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -139,10 +139,10 @@ STATIC_URL = 'static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-CORS_ORIGIN_WHITELIST = (
-    "https://j7c103.p.ssafy.io",
-    )
+# CORS_ORIGIN_WHITELIST = (
+#     "https://j7c103.p.ssafy.io",
+#     )
 
-CORS_ALLOW_CREDENTIALS = True # *
+# CORS_ALLOW_CREDENTIALS = True # *
 
 # CORS_ORIGIN_ALLOW_ALL = True # *
