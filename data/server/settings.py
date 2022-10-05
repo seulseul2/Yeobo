@@ -38,11 +38,11 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    # 'corsheaders', # *
+    'corsheaders', # *
 ]
 
 MIDDLEWARE = [
-    # 'corsheaders.middleware.CorsMiddleware', # *
+    'corsheaders.middleware.CorsMiddleware', # *
     'django.middleware.common.CommonMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -143,6 +143,6 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 #     "https://j7c103.p.ssafy.io",
 #     )
 
-# CORS_ALLOW_CREDENTIALS = True # *
+CORS_ALLOW_CREDENTIALS = True # *
 
-# CORS_ORIGIN_ALLOW_ALL = True # *
+CORS_ORIGIN_ALLOW_ALL = True # *
