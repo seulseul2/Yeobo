@@ -8,10 +8,11 @@ import Signup from './MainPage/User/Signup';
 import Login from './MainPage/User/Login';
 import Mypage from './MyPage/Mypage';
 import Search from './Search/Search';
-import DestinationDetail from './Destination/DestinationDetail';
+import Detail from '../pages/component/Detail';
 import TestAPI from './TestAPI';
 import '../assets/styles/App.scss';
 import BottomNavBar from './BottomNavBar';
+import BoddariDetail from './Boddari/BoddariDetail';
 
 function App() {
   return (
@@ -31,8 +32,9 @@ function App() {
           <Route path="/Mypage" element={<Mypage />}></Route>
           <Route path="/SaveBoddari" element={<BoddariSave/>}></Route>
           <Route path='/Search' element={<Search/>}></Route>
-          <Route path='/DestinationDetail' element={<DestinationDetail/>}></Route>
+          <Route path='/Detail/:attractionId' element={<Detail/>}></Route>
           <Route path='/testapi' element={<TestAPI/>}></Route>
+          <Route path='/Betail/:BoddariId'element={<BoddariDetail/>}></Route>
         </Routes>
       </div>
       {/* <div style="height: 80px;">.</div> */}

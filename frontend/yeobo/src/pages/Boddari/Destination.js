@@ -6,9 +6,20 @@ import {useState} from 'react';
 const Destination = () => {
   const [text, setText] = useState("담기");
   const [active, setActive] = useState('active');
-  function changeText() {
-   setText(prev => prev === "담기"? "빼기":"담기");
-   setActive(prev => prev === "active"? "":"active");
+  const [addList, setAddList] = useState([]);
+
+  const add = (attractionId) => {
+    setAddList([
+      ...addList,
+      attractionId
+    ])
+  }
+  const del = (attractionId) => {
+    setAddList(addList.filter((attractionId) => addList.attractionId !== attractionId))
+  }
+  function changeText(attractionId) {
+    setText(prev => prev === "담기"? "빼기":"담기"); // 
+    setActive(prev => prev === "active"? "":"active");
   }
 
   return (
