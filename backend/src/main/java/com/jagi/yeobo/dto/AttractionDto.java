@@ -15,4 +15,7 @@ public class AttractionDto {
 
     @ApiParam(value="여행지 이름", type = "String")
     private String name;
+
+    @ApiParam(value="여행지 사진", type = "String")
+    private String img;
 }
