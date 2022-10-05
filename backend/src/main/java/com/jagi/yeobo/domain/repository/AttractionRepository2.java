@@ -7,6 +7,7 @@ import com.jagi.yeobo.dto.AttractionResponseDto;
 import com.jagi.yeobo.dto.ScoreDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
@@ -72,7 +73,7 @@ public class AttractionRepository2 {
     }
 
     /* 여행지 리스트 조회 */
-    public List<AttractionResponseDto> searchAttractionList(String name, long userId, Pageable pageable){ // score 다시 가져오기
+    public List<AttractionResponseDto> searchAttractionList(String name, long userId){ // score 다시 가져오기
         String sql = "SELECT a.attraction_id,a.name,s.score,a.image FROM attraction a left join score s on s.user_id = :userId and a.attraction_id = s.attraction_id where a.name LIKE :name "+
                 "ORDER BY CASE WHEN a.name = :name0 THEN 0" +
                 " WHEN a.name LIKE :name1 THEN 1 " +

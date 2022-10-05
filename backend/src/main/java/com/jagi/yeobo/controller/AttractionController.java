@@ -54,13 +54,13 @@ public class AttractionController {
 
 
     @ApiOperation(value = "여행지 이름으로 리스트 조회",notes = "검색어를 포함하는 여행지 리스트를 조회한다.")
-    @GetMapping("api/temp/user/attraction/search/{name}") // /{page}
-    public ResponseEntity<?> searchAttractionListByName(@PathVariable("name") String name,@RequestParam("userId")long userId, @PageableDefault(size = 20, sort="id") Pageable pageable){
+    @GetMapping("api/temp/attraction/search/{name}") // /{page}
+    public ResponseEntity<?> searchAttractionListByName(@PathVariable("name") String name,@RequestParam("userId")long userId){
         Message message = new Message();
         HttpHeaders headers= new HttpHeaders();
         headers.setContentType(new MediaType("application", "json", Charset.forName("UTF-8")));
         try {
-            List<AttractionResponseDto> attraction = attractionService.findAllByName(name,userId,pageable);
+            List<AttractionResponseDto> attraction = attractionService.findAllByName(name,userId);
             if(!attraction.isEmpty()){
                 message.setStatus(StatusEnum.OK);
                 message.setMessage("여행지 세부 정보 조회 성공");
