@@ -98,4 +98,36 @@ public class AttractionRepository2 {
 
         return attractionList;
     }
+
+
+
+    /* 여행지 리스트 로그인 없이 조회 */
+    public List<AttractionResponseDto> searchAttractionListWithoutLogin(String name){
+        String sql = "SELECT a.attraction_id,a.name,a.image FROM attraction a where a.name LIKE :name "+
+                "ORDER BY CASE WHEN a.name = :name0 THEN 0" +
+                " WHEN a.name LIKE :name1 THEN 1 " +
+                " WHEN a.name LIKE :name2 THEN 2" +
+                " WHEN a.name LIKE :name3 THEN 3 " +
+                "ELSE 4 " +
+                "END";
+        List<Object[]> attractions = em.createNativeQuery(sql)
+                .setParameter("name","%"+name+"%")
+                .setParameter("name0",name)
+                .setParameter("name1",name+"%")
+                .setParameter("name2","%"+name+"%")
+                .setParameter("name3","%"+name)
+                .getResultList();
+
+        List<AttractionResponseDto> attractionList = new ArrayList<>();
+        for (Object[] a:attractions) {
+            AttractionResponseDto attractionDto = AttractionResponseDto.builder()
+                    .id(Long.valueOf(String.valueOf(a[0])))
+                    .name(String.valueOf(a[1]))
+                    .img(String.valueOf(a[2]==null?"X":a[2]))
+                    .build();
+            attractionList.add(attractionDto);
+        }
+
+        return attractionList;
+    }
 }

@@ -34,6 +34,12 @@ public class AttractionService {
     }
 
     @Transactional
+    public List<AttractionResponseDto> findAllByNameWithoutLogin(String name){
+        return attractionRepository2.searchAttractionListWithoutLogin(name);
+//        return attractionRepository.findAllByName(name);
+    }
+
+    @Transactional
     public Score createScore(ScoreDto scoreDto){
         return attractionRepository2.saveScore(scoreDto);
 //        return scoreRepository.save(scoreDto);
