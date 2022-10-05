@@ -4,6 +4,7 @@ import com.jagi.yeobo.domain.Bag;
 import com.jagi.yeobo.domain.repository.BagRepository;
 import com.jagi.yeobo.dto.*;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
