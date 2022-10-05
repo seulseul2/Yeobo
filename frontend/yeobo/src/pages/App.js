@@ -16,6 +16,7 @@ import "../assets/styles/App.scss";
 import BottomNavBar from "./BottomNavBar";
 import BoddariDetail from './Boddari/BoddariDetail';
 import Page404 from "./Page404";
+import Category from "./Boddari/Category";
 
 function App() {
   return (
@@ -30,6 +31,7 @@ function App() {
           {/* 비로그인 */}
           <Route path="/Login" element={<Login />}></Route>
           <Route path="/Signup" element={<Signup />}></Route>
+          <Route path="/category" element={<Category/>}></Route>
           <Route
             path="/Detail"
             element={<Detail />}
