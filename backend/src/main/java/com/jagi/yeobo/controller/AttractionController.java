@@ -25,7 +25,7 @@ public class AttractionController {
     private final AttractionService attractionService;
 
     @ApiOperation(value = "여행지 id로 세부정보 조회",notes = "여행지의 세부 정보를 id로 조회한다.")
-    @GetMapping("api/attraction/detail/{attractionId}") // /{page}
+    @GetMapping("api/temp/attraction/detail/{attractionId}") // /{page}
     public ResponseEntity<?> searchAttractionById(@PathVariable("attractionId") Long  attractionId){
         Message message = new Message();
         HttpHeaders headers= new HttpHeaders();

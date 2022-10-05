@@ -18,4 +18,15 @@ public class UserLoginDto {
 
     @ApiModelProperty(example="발급받은 refresh token")
     String refreshToken;
+
+    long id;
+
+    int age;
+
+    String gender;
+
+    String nickname;
+
+    String profile_path;
+
 }

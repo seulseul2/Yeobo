@@ -171,10 +171,16 @@ public class BagRepository {
      }
 
      public int likeBagCancel(long userId, long bagId){
-         return em.createQuery("DELETE FROM Pick as p WHERE p.userId.id = :userId and p.bagId.id = :bagId")
+
+         Bag bag = em.find(Bag.class, bagId);
+         int current = bag.getLikeCnt() - 1;
+         bag.setLikeCnt(current);
+
+         return  em.createQuery("DELETE FROM Pick as p WHERE p.userId.id = :userId and p.bagId.id = :bagId")
                  .setParameter("userId", userId)
                  .setParameter("bagId", bagId)
                  .executeUpdate();
+
      }
 
      public Bag createBag(long userId, BagResponseDto bagResponseDto){
