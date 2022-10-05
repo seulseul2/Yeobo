@@ -3,7 +3,7 @@
 // createSlice로 간단하게 redux 액션 생성자와 전체 슬라이스에 대한 reducer을 선언하여 사용 가능
 import { createSlice } from "@reduxjs/toolkit";
 
-export const TOKEN_TIME_OUT = 600 * 1000;
+export const TOKEN_TIME_OUT = 60 * 60 * 1000;
 
 export const tokenSlice = createSlice({
   name: "authToken",
@@ -17,6 +17,7 @@ export const tokenSlice = createSlice({
     age: null,
     gender: null,
     google: false,
+    userId: null,
   },
   reducers: {
     // 액세스 토큰 정보 저장
@@ -30,6 +31,7 @@ export const tokenSlice = createSlice({
       state.age = action.payload.age;
       state.gender = action.payload.gender;
       state.google = action.payload.google;
+      state.userId = action.payload.userId
       console.log(state);
     },
     //  값을 모두 초기화하여 액세스 토큰에 대한 정보도 삭제함
@@ -43,6 +45,7 @@ export const tokenSlice = createSlice({
       state.age = null;
       state.gender = null;
       state.google = false;
+      state.userId = null;
     },
   },
 });

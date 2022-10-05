@@ -15,7 +15,7 @@ const UserSearch = (props) => {
       if (searchText !== '')
       { 
       const response = await axios({
-        url: `https://j7c103.p.ssafy.io:8080/api/user/search/${searchText}`,
+        url: `https://j7c103.p.ssafy.io:8080/api/temp/user/search/${searchText}`,
         method: 'get',
       })
       setUserList(response.data.data)

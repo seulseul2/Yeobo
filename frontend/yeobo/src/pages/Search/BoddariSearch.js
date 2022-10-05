@@ -17,7 +17,7 @@ const BoddariSearch = (props) => {
       if (searchText !== '')
       { 
       const response = await axios({
-       url: `https://j7c103.p.ssafy.io:8080/api/bag/${searchText}/${userId}`,
+       url: `https://j7c103.p.ssafy.io:8080/api/temp/bag/${searchText}/${userId}`,
        method: 'get'
       })
       setbagList(response.data.data)
