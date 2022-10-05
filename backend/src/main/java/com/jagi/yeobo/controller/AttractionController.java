@@ -143,5 +143,37 @@ public class AttractionController {
         }
     }
 
+    @ApiOperation(value = "여행지 이름으로 리스트 조회-로그인없이",notes = "검색어를 포함하는 여행지 리스트를 조회한다.")
+    @GetMapping("api/temp/attraction/search/{name}") // /{page}
+    public ResponseEntity<?> searchAttractionListByNameWithoutLogin(@PathVariable("name") String name){
+        Message message = new Message();
+        HttpHeaders headers= new HttpHeaders();
+        headers.setContentType(new MediaType("application", "json", Charset.forName("UTF-8")));
+        try {
+            List<AttractionResponseDto> attraction = attractionService.findAllByNameWithoutLogin(name);
+            if(!attraction.isEmpty()){
+                message.setStatus(StatusEnum.OK);
+                message.setMessage("여행지 세부 정보 조회 성공");
+                message.setData(attraction);
+                return new ResponseEntity<>(message, headers, HttpStatus.OK);
+            }else{
+                message.setStatus(StatusEnum.BAD_REQUEST);
+                message.setMessage("여행지 정보가 없습니다.");
+                return new ResponseEntity<>(message, headers, HttpStatus.BAD_REQUEST);
+            }
+
+
+        } catch (IllegalArgumentException | IllegalStateException e){
+            e.printStackTrace();
+            message.setStatus(StatusEnum.BAD_REQUEST);
+            message.setMessage("여행지 정보 혹은 사용자 정보가 없습니다.");
+            return new ResponseEntity<>(message, headers, HttpStatus.BAD_REQUEST);
+        } catch (Exception e){
+            e.printStackTrace();
+            message.setStatus(StatusEnum.INTERNAL_SERVER_ERROR);
+            message.setMessage("서버 에러 발생");
+            return new ResponseEntity<>(message, headers,  HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
 
 }

@@ -39,6 +39,8 @@ public class Attraction {
     @Column(nullable = true)
     private double score;
 
+    private int cnt; //이 여행지에 대해 평가한 개수
+
     private int readCount;
 
     @OneToMany(orphanRemoval = true, mappedBy = "attractionId" , cascade = CascadeType.ALL)
