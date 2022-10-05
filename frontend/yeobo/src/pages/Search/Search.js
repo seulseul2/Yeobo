@@ -6,6 +6,7 @@ import './Search.scss';
 import axios from 'axios'
 import { useLocation } from 'react-router-dom';
 import { useEffect } from 'react';
+import { useSelector } from 'react-redux';
 
 const Search = () => {
   const [ActiveTab, setActiveTab] = useState(0);
@@ -22,6 +23,7 @@ const Search = () => {
     // const { state } = location.state();
     // console.log('state', state)
   }, [])
+  const isLogin = useSelector((state) => state.authToken.authenticated);
 
   const onChange = (e) => {
     setsearchText(e.target.value)
@@ -42,21 +44,39 @@ const Search = () => {
     }
   }
   const onClick = () => {
-    axios({
-      url: `https://j7c103.p.ssafy.io:8080/api/temp/attraction/search/${payload.name}`,
-      method: 'get',
-      params: {
-        userId: payload.userId
-      }
-    })
-      .then((res) => {
-        setattrList(res.data.data);
-        console.log(res.data.data)
+    if (isLogin === true){
+      axios({
+        url: `https://j7c103.p.ssafy.io:8080/api/temp/user/attraction/search/${payload.name}`,
+        method: 'get',
+        params: {
+          userId: payload.userId
+        }
       })
-      .catch((err) => {
-        console.log(err);
-        setattrList(null)
+        .then((res) => {
+          setattrList(res.data.data);
+          console.log(res)
+        })
+        .catch((err) => {
+          console.log(err);
+          setattrList(null)
+        })
+    } else {
+      axios({
+        url: `https://j7c103.p.ssafy.io:8080/api/temp/attraction/search/${payload.name}`,
+        method: 'get',
+        // params: {
+        //   userId: payload.userId
+        // }
       })
+        .then((res) => {
+          setattrList(res.data.data);
+          console.log(res)
+        })
+        .catch((err) => {
+          console.log(err);
+          setattrList(null)
+        })
+    }
   }
   const tabs = [
     {

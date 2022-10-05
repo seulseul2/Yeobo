@@ -3,10 +3,12 @@ import Rating from '@mui/material/Rating';
 import { useState } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom'
-import {useSelector} from 'react-redux';
+import { useSelector } from 'react-redux';
 
 const DestinationSearch = (props) => {
   const accessToken = useSelector((state) => state.authToken.accessToken);
+  const isLogin = useSelector((state) => state.authToken.authenticated);
+
   const [value, setValue] = useState(0);
   const attrList = props.attrList;
   const userId = 1;
@@ -18,19 +20,19 @@ const DestinationSearch = (props) => {
       headers: {
         'X-AUTH-TOKEN': accessToken
       },
-      data:{
+      data: {
         attractionId: attractionId,
         score: score,
         userId: userId,
       }
     })
-    .then((res) => {
-      console.log(res.data.data)
-      setValue(res.data.data.score)
-    })
-    .catch((err) => {
-      console.log(err)
-    })
+      .then((res) => {
+        console.log(res.data.data)
+        setValue(res.data.data.score)
+      })
+      .catch((err) => {
+        console.log(err)
+      })
   }
   const detail = (attractionId) => {
     axios({
@@ -41,7 +43,7 @@ const DestinationSearch = (props) => {
       .then((res) => {
         console.log(res);
       })
-      .catch((err) => { 
+      .catch((err) => {
         console.log(err);
       })
   }
@@ -49,28 +51,71 @@ const DestinationSearch = (props) => {
   return (
     <div className='DestinationSearch'>
       <div className='attrResult'>
-        {attrList ? (
+        {isLogin ? (<div>
+          {attrList ? (
+            attrList.map((el, index) => {
+              return (
+                <div className='attrResult_item' key={index}>
+                  <div className='attrResult_item1'>
+                    <Link to={'/Detail/' + el.id}><img className='attrResult_item_img' src={el.img} /></Link>
+                  </div>
+                  <div className='rating'>
+                    <p className='attrResult_item_name'>{el.name.split('(')[0]}</p>
+                    <Rating
+                      name="simple-controlled"
+                      value={el.score}
+                      onChange={(event, newValue) => {
+                        rating(el.id, userId, newValue);
+                        console.log('별점 수정');
+                        el.score = newValue;
+                      }} />
+                  </div>
+                </div>
+              )
+            })
+          ) : (
+            <p className='No_attrResult'>검색 내역이 없습니다.</p>
+          )}
+        </div>) : (<div>{attrList ? (
           attrList.map((el, index) => {
             return (
               <div className='attrResult_item' key={index}>
-                <Link to={'/Detail/'+el.id}><img className='attrResult_item_img' src={el.img}/></Link>
-                <p className='attrResult_item_name'>{el.name.split('(')[0]}</p>
+                <div className='attrResult_item1'>
+                  <Link to={'/Detail/' + el.id}><img className='attrResult_item_img' src={el.img} /></Link>
+                </div>
                 <div className='rating'>
-                <Rating
-                  name="simple-controlled"
-                  value={el.score}
-                  onChange={(event, newValue) => {
-                    rating(el.id, userId, newValue);
-                    console.log('별점 수정');
-                    el.score = newValue;
-                  }} />
+                  <p className='attrResult_item_name'>{el.name.split('(')[0]}</p>
                 </div>
               </div>
             )
           })
         ) : (
           <p className='No_attrResult'>검색 내역이 없습니다.</p>
-        )}
+        )}</div>)}
+        {/* {attrList ? (
+          attrList.map((el, index) => {
+            return (
+              <div className='attrResult_item' key={index}>
+                <div className='attrResult_item1'>
+                  <Link to={'/Detail/' + el.id}><img className='attrResult_item_img' src={el.img} /></Link>
+                </div>
+                <div className='rating'>
+                  <p className='attrResult_item_name'>{el.name.split('(')[0]}</p>
+                  <Rating
+                    name="simple-controlled"
+                    value={el.score}
+                    onChange={(event, newValue) => {
+                      rating(el.id, userId, newValue);
+                      console.log('별점 수정');
+                      el.score = newValue;
+                    }} />
+                </div>
+              </div>
+            )
+          })
+        ) : (
+          <p className='No_attrResult'>검색 내역이 없습니다.</p>
+        )} */}
       </div>
 
     </div>

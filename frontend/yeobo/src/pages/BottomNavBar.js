@@ -54,7 +54,7 @@ const BottomNavBar = () => {
           </Link>
         </div>
         <div className="iconTab">
-          <Link to="/Boddari">
+          <Link to="/MakeBoddari">
             <img className="homeIcon" src={bag} alt="" />
             <p className="iconText">만들기</p>
           </Link>

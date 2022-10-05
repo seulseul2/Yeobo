@@ -39,13 +39,12 @@ const UserSearch = (props) => {
 
   return (
     <div className='userSearch'>
-      <div className='userResult'>
       {loading ? <Loading/> : null}
         {userList ? (
           userList.map((el, index) => {
             return (
               <div className='userList_item' key={index}>
-                {/* <img className='userList_item_img' src={el.img} /> */}
+                <img className='userList_item_img' src={el.img} />
                 <p className='userList_item_name'>{el.nickname}</p>
               </div>
             )
@@ -53,7 +52,6 @@ const UserSearch = (props) => {
         ) : (
           <p className='No_userList'>검색 내역이 없습니다.</p>
         )}
-      </div>
     </div>
   )
 }
