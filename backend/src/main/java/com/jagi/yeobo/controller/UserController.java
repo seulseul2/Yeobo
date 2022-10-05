@@ -77,14 +77,14 @@ public class UserController {
         }
     }
 
-    @ApiOperation(value = "로그아웃을 요청한다.",notes = "로그아웃을 요청한다.") //리프레쉬토큰으로
+    @ApiOperation(value = "로그아웃을 요청한다.",notes = "refresh 토큰으로 로그아웃을 요청한다.") //리프레쉬토큰으로
     @GetMapping("/api/logout")
-    public ResponseEntity<?> logout() { //@RequestHeader(value="REFRESH-TOKEN") String refreshToken
+    public ResponseEntity<?> logout(@RequestHeader(value="REFRESH-TOKEN") String refreshToken) {
         Message message = new Message();
         HttpHeaders headers= new HttpHeaders();
         headers.setContentType(new MediaType("application", "json", Charset.forName("UTF-8")));
         try {
-//            memberService.logoutMember(refreshToken);
+            userService.logout(refreshToken);
             message.setStatus(StatusEnum.OK);
             message.setMessage("로그아웃 성공");
             return new ResponseEntity<>(message, headers, HttpStatus.OK);
@@ -223,7 +223,7 @@ public class UserController {
                 String fileOriName = file.getOriginalFilename();
                 String fileName = userId+"_"+fileOriName;
 //                String savePath = System.getProperty("user.home") +"/upload";
-                String savePath = System.getProperty("user.dir") +"upload";
+                String savePath = System.getProperty("user.dir") +"/upload";
 
                 if (!new File(savePath).exists()) {
                     try {

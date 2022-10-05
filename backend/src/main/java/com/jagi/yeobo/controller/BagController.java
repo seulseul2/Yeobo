@@ -6,13 +6,14 @@ import com.jagi.yeobo.service.BagService;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiOperation;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.awt.print.Pageable;
 import java.nio.charset.Charset;
 import java.util.List;
 //@CrossOrigin(originPatterns = "https://localhost:3000, http://localhost:3000")
@@ -36,7 +37,7 @@ public class BagController {
         return new ResponseEntity<>(message, headers, HttpStatus.OK);
     }
 
-    @ApiOperation(value = "보따리 리스트를 조회한다.",notes = "userId에 해당하는 회원의 보따리 리스트를 조횐한다.")
+    @ApiOperation(value = "보따리 리스트를 조회한다.",notes = "userId에 해당하는 회원의 보따리 리스트를 조회한다.")
     @GetMapping("api/bag/list/{userId}")
     public ResponseEntity<?> searchBagList(@PathVariable("userId") long userId){
         Message message = new Message();
@@ -83,13 +84,13 @@ public class BagController {
     }
 
     @ApiOperation(value = "인기 보따리의 리스트를 조회한다.",notes = "상위 4개 좋아요 순의 인기 보따리들의 리스트를 출력한다.")
-    @GetMapping("api/bag/list/popular")
+    @GetMapping("api/temp/bag/list/popular")
     public ResponseEntity<?> searchPopularBagList(){
         Message message = new Message();
         HttpHeaders headers= new HttpHeaders();
         headers.setContentType(new MediaType("application", "json", Charset.forName("UTF-8")));
 
-        List<BagDto> bagDtoList = bagService.searchPopularBagList();
+        List<PopularBagDto> bagDtoList = bagService.searchPopularBagList();
         message.setStatus(StatusEnum.OK);
         message.setMessage("상위 4개 인기 보따리 리스트 조회 성공");
         message.setData(bagDtoList);
@@ -98,7 +99,7 @@ public class BagController {
     }
 
     @ApiOperation(value = "보따리 상세보기를 한다.",notes = "해당 보따리의 이름, 메모, 보따리에 담겨있는 여행지 리스트를 출력한다.")
-    @GetMapping("api/bag/detail/{bagId}")
+    @GetMapping("api/temp/bag/detail/{bagId}")
     public ResponseEntity<?> searchDetailBag(@PathVariable("bagId") long bagId){
         Message message = new Message();
         HttpHeaders headers= new HttpHeaders();

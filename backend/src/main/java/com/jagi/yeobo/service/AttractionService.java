@@ -9,6 +9,7 @@ import com.jagi.yeobo.domain.repository.ScoreRepository;
 import com.jagi.yeobo.dto.AttractionResponseDto;
 import com.jagi.yeobo.dto.ScoreDto;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -28,8 +29,8 @@ public class AttractionService {
     }
 
     @Transactional
-    public List<AttractionResponseDto> findAllByName(String name,long userId){
-        return attractionRepository2.searchAttractionList(name,userId);
+    public List<AttractionResponseDto> findAllByName(String name, long userId, Pageable pageable){
+        return attractionRepository2.searchAttractionList(name,userId, pageable);
 //        return attractionRepository.findAllByName(name);
     }
 

@@ -2,11 +2,9 @@ package com.jagi.yeobo.service;
 
 import com.jagi.yeobo.domain.Bag;
 import com.jagi.yeobo.domain.repository.BagRepository;
-import com.jagi.yeobo.dto.BagDetailDto;
-import com.jagi.yeobo.dto.BagDto;
-import com.jagi.yeobo.dto.BagResponseDto;
-import com.jagi.yeobo.dto.BagSearchDto;
+import com.jagi.yeobo.dto.*;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -39,7 +37,7 @@ public class BagService {
     }
 
     @Transactional
-    public List<BagDto> searchPopularBagList(){
+    public List<PopularBagDto> searchPopularBagList(){
         return bagRepository.searchPopularBagList();
     }
 

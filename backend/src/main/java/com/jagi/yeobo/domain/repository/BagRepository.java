@@ -3,6 +3,7 @@ package com.jagi.yeobo.domain.repository;
 import com.jagi.yeobo.domain.*;
 import com.jagi.yeobo.dto.*;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
@@ -73,21 +74,23 @@ public class BagRepository {
         return bagDtoList;
     }
 
-    public List<BagDto> searchPopularBagList(){
+    public List<PopularBagDto> searchPopularBagList(){
 
         TypedQuery<Bag> query = em.createQuery("SELECT b FROM Bag as b ORDER BY b.likeCnt DESC", Bag.class);
         query.setMaxResults(4);
         List<Bag> bagList = query.getResultList();
 
-        List<BagDto> bagDtoList = new ArrayList<>();
+        List<PopularBagDto> bagDtoList = new ArrayList<>();
 
          if(!bagList.isEmpty()){
              for(Bag b : bagList){
-                 bagDtoList.add(new BagDto(b.getName(), b.getMemo(),b.getBagImage()));
+                 User user = em.find(User.class, b.getUserId().getId());
+                 bagDtoList.add(new PopularBagDto(b.getName(), b.getMemo(),b.getBagImage(), user.getNickname()));
              }
          }
          return bagDtoList;
      }
+
 
      public BagDetailDto searchDetailBag(long bagId){
         BagDetailDto bagDetailDto = new BagDetailDto();
@@ -100,11 +103,11 @@ public class BagRepository {
                 .setParameter("bagId", bagId).getResultList();
 
         List<AttractionDto> list = new ArrayList<>();
-        if(!list.isEmpty()){
+        if(!bagAttractions.isEmpty()){
            for(BagAttraction b : bagAttractions){
               Attraction at = em.createQuery("SELECT k FROM Attraction as k WHERE k.id = :attractionId", Attraction.class)
-                      .setParameter("attractionId", b.getAttractionId()).getSingleResult();
-              AttractionDto attractionDto = new AttractionDto(at.getId(),at.getName());
+                      .setParameter("attractionId", b.getAttractionId().getId()).getSingleResult();
+              AttractionDto attractionDto = new AttractionDto(at.getId(),at.getName(),at.getImage());
               list.add(attractionDto);
            }
         }
@@ -130,8 +133,6 @@ public class BagRepository {
                 .setParameter("name2","%"+name+"%")
                 .setParameter("name3","%"+name)
                 .getResultList();
-
-
 
         List<BagSearchDto> bagList = new ArrayList<>();
         for (Object[] a:attractions) {
@@ -171,10 +172,16 @@ public class BagRepository {
      }
 
      public int likeBagCancel(long userId, long bagId){
-         return em.createQuery("DELETE FROM Pick as p WHERE p.userId.id = :userId and p.bagId.id = :bagId")
+
+         Bag bag = em.find(Bag.class, bagId);
+         int current = bag.getLikeCnt() - 1;
+         bag.setLikeCnt(current);
+
+         return  em.createQuery("DELETE FROM Pick as p WHERE p.userId.id = :userId and p.bagId.id = :bagId")
                  .setParameter("userId", userId)
                  .setParameter("bagId", bagId)
                  .executeUpdate();
+
      }
 
      public Bag createBag(long userId, BagResponseDto bagResponseDto){
