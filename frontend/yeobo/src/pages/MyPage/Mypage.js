@@ -9,6 +9,7 @@ import NickDialog from "./NickDialog";
 import axios from "axios";
 import { getCookieToken, removeCookieToken } from "../../storage/Cookie";
 import { DELETE_TOKEN } from "../../store/Auth";
+import { TOKEN_TIME_OUT } from "../../store/Auth";
 
 // images
 import pink from "../../assets/images/icons/pinkCircle.png";
@@ -32,6 +33,7 @@ const Mypage = () => {
   const navigate = useNavigate();
   // store에 저장된 Access Token 정보를 받아 온다
   const accessToken = useSelector((state) => state.authToken.accessToken);
+  const expireTime = useSelector((state) => state.authToken.expireTime);
   const pictureUrl = useSelector((state) => state.authToken.pictureUrl);
   const nickname = useSelector((state) => state.authToken.nickname);
 
@@ -54,6 +56,23 @@ const Mypage = () => {
       setUserNick(nickname);
     }
     console.log(userNick);
+    // 액세스 토큰이 만료되었는지 확인 (30초 이내로 남았다면 요청)
+    if (TOKEN_TIME_OUT <= 30000) {
+      axios({
+        url: 'https://j7c103.p.ssafy.io/api/refresh',
+        method: 'post',
+        headers: {
+          "X-AUTH-TOKEN": accessToken,
+          'REFRESH-TOKEN': getCookieToken,
+        },
+      })
+      .then((res) => {
+        console.log(res.data)
+      })
+      .catch((err) => {
+        alert(err.response.data.message)
+      })
+    }
     axios({
       url: `https://j7c103.p.ssafy.io:8080/api/user/${userId}`,
       method: "get",
@@ -73,7 +92,7 @@ const Mypage = () => {
         }
       })
       .catch((err) => {
-        console.log(err.response);
+        alert(err.response.data.message)
       });
     if (!profileImg) {
       setProfileImg(profile);
