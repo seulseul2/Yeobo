@@ -7,6 +7,7 @@
     <list default="true" id="762a9a3c-28ef-4d5a-81d7-e18ab351898c" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/jagi/yeobo/controller/AttractionController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/jagi/yeobo/controller/AttractionController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/jagi/yeobo/domain/repository/AttractionRepository2.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/jagi/yeobo/domain/repository/AttractionRepository2.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/jagi/yeobo/service/AttractionService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/jagi/yeobo/service/AttractionService.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
