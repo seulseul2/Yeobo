@@ -1,6 +1,7 @@
 import React from "react";
 import { Route, Routes, Link } from "react-router-dom";
 // import { BrowserView, MobileView } from 'react-device-detect';
+
 import Boddari from "./Boddari/Boddari";
 import BoddariSave from "./Boddari/BoddariSave";
 import Main from "./MainPage/Main";
@@ -9,10 +10,11 @@ import Login from "./MainPage/User/Login";
 import GoogleLogin from "./MainPage/User/GoogleLogin";
 import Mypage from "./MyPage/Mypage";
 import Search from "./Search/Search";
-import DestinationDetail from "./Destination/DestinationDetail";
+import Detail from '../pages/component/Detail';
 import TestAPI from "./TestAPI";
 import "../assets/styles/App.scss";
 import BottomNavBar from "./BottomNavBar";
+import BoddariDetail from './Boddari/BoddariDetail';
 import Page404 from "./Page404";
 
 function App() {
@@ -35,6 +37,11 @@ function App() {
 
           {/* 로그인 */}
           <Route path="/Mypage" element={<Mypage />}></Route>
+          <Route path="/SaveBoddari" element={<BoddariSave/>}></Route>
+          <Route path='/Search' element={<Search/>}></Route>
+          <Route path='/Detail/:attractionId' element={<Detail/>}></Route>
+          <Route path='/testapi' element={<TestAPI/>}></Route>
+          <Route path='/Betail/:BoddariId'element={<BoddariDetail/>}></Route>
           <Route path="/Boddari" element={<Boddari />}></Route>
           <Route path="/SaveBoddari" element={<BoddariSave />}></Route>
           <Route path="/testapi" element={<TestAPI />}></Route>

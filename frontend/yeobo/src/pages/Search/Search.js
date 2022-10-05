@@ -30,7 +30,7 @@ const Search = () => {
   }
   const onClick = () => {
     axios({
-      url: `https://j7c103.p.ssafy.io:8080/api/attraction/search/${payload.name}`,
+      url: `https://j7c103.p.ssafy.io:8080/api/temp/attraction/search/${payload.name}`,
       method: 'get',
       params: {
         userId: payload.userId
@@ -42,6 +42,7 @@ const Search = () => {
       })
       .catch((err) => {
         console.log(err);
+        setattrList(null)
       })
   }
   const tabs = [
