@@ -7,6 +7,8 @@ import com.jagi.yeobo.service.AttractionService;
 import com.jagi.yeobo.service.UserService;
 import io.swagger.annotations.ApiOperation;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -53,12 +55,12 @@ public class AttractionController {
 
     @ApiOperation(value = "여행지 이름으로 리스트 조회",notes = "검색어를 포함하는 여행지 리스트를 조회한다.")
     @GetMapping("api/temp/attraction/search/{name}") // /{page}
-    public ResponseEntity<?> searchAttractionListByName(@PathVariable("name") String name,@RequestParam("userId")long userId){
+    public ResponseEntity<?> searchAttractionListByName(@PathVariable("name") String name,@RequestParam("userId")long userId, @PageableDefault(size = 20, sort="id") Pageable pageable){
         Message message = new Message();
         HttpHeaders headers= new HttpHeaders();
         headers.setContentType(new MediaType("application", "json", Charset.forName("UTF-8")));
         try {
-            List<AttractionResponseDto> attraction = attractionService.findAllByName(name,userId);
+            List<AttractionResponseDto> attraction = attractionService.findAllByName(name,userId,pageable);
             if(!attraction.isEmpty()){
                 message.setStatus(StatusEnum.OK);
                 message.setMessage("여행지 세부 정보 조회 성공");

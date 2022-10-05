@@ -3,6 +3,7 @@ package com.jagi.yeobo.domain.repository;
 import com.jagi.yeobo.domain.*;
 import com.jagi.yeobo.dto.*;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
@@ -132,8 +133,6 @@ public class BagRepository {
                 .setParameter("name2","%"+name+"%")
                 .setParameter("name3","%"+name)
                 .getResultList();
-
-
 
         List<BagSearchDto> bagList = new ArrayList<>();
         for (Object[] a:attractions) {
