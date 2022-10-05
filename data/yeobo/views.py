@@ -65,7 +65,6 @@ def bag_to_attraction(bag_id):
 
 @api_view(['GET'])
 def make_boddari_pick_category(request, category_id):
-    
     result = query_mariaDB_transpose(f"""
         SELECT attraction_id, name, image
             FROM attraction
@@ -73,7 +72,7 @@ def make_boddari_pick_category(request, category_id):
             ORDER BY rand()
             LIMIT 30
         """)
-
+    print(result)
     return Response(result, status=status.HTTP_200_OK)
     
     
