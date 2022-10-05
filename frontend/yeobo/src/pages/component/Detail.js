@@ -35,13 +35,13 @@ const Detail = () => {
         'X-AUTH-TOKEN': accessToken
       },
       data:{
-        attactionId: attractionId,
+        attractionId: attractionId,
         score: score,
         userId: userId,
       }
     })
     .then((res) => {
-      console.log(res.data.data)
+      console.log("별점수정완료",res.data.data)
       setValue(res.data.data.score)
     })
     .catch((err) => {

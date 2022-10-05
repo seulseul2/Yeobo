@@ -1,8 +1,10 @@
 import axios from 'axios';
 import {useState} from 'react'
 import { useNavigate } from 'react-router-dom';
+import './Category.scss';
+
 const Category = () => {
-  const [attractionList, setAttractionList] = useState('')
+  const [attractionList, setAttractionList] = useState(null)
   const navigate = useNavigate();
   const getCategory = async (categoryId) => {
     try {
@@ -10,9 +12,12 @@ const Category = () => {
         url: `https://j7c103.p.ssafy.io/django/MakeBoddari/PickCategory/${categoryId}/`,
         method: 'get',
       })
-      console.log(response);
-      setAttractionList(response.data.data);
-      navigate('/Boddari', {state: attractionList});
+      console.log(response.data);
+      setAttractionList(response.data);
+      const result = response.data
+      setTimeout(() => {
+        navigate('/Boddari', {state: {result: result}});
+      }, 1000)
     } catch (err) {
       console.log(err);
       alert('에러발생! 다시 시도해주세요!')
