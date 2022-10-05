@@ -72,7 +72,6 @@ def make_boddari_pick_category(request, category_id):
             ORDER BY rand()
             LIMIT 30
         """)
-    print(result)
     return Response(result, status=status.HTTP_200_OK)
     
     
