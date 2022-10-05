@@ -236,7 +236,7 @@ public class UserController {
 
                 file.transferTo(new File(fileUrl));
                 System.out.println(">>>>"+fileUrl);
-                userService.saveFile(userId,fileUrl);
+                userService.saveFile(userId,"/upload/"+fileName);
                 return new ResponseEntity<String>("SUCCESS", HttpStatus.OK);
             } else {
                 return new ResponseEntity<String>("CHECK FILE", HttpStatus.BAD_REQUEST);
