@@ -55,6 +55,7 @@ const Login = () => {
       })
         .then((res) => {
           const response = res.data.data;
+          console.log(response)
           // console.log(response);
           alert(res.data.message);
           const accessToken = response.accessToken;
@@ -63,7 +64,7 @@ const Login = () => {
           console.log("refresh", refreshToken);
           setRefreshToken(refreshToken);
           dispatch(
-            SET_TOKEN({ accessToken: accessToken, email: response.email })
+            SET_TOKEN({ accessToken: accessToken, email: response.email, age: response.age, gender: response.gender, nickname: response.nickname, userId: response.id, pictureUrl: response.profile_path,  })
           );
           navigate("/");
         })
@@ -73,6 +74,12 @@ const Login = () => {
         });
     }
   };
+
+  const onKeyDown = (e) => {
+    if (e.key === 'Enter') {
+      handleSubmit();
+    }
+  }
 
   return (
     <div className="user-box">
@@ -109,6 +116,7 @@ const Login = () => {
               placeholder="비밀번호 입력"
               onChange={onChange}
               name="password"
+              onKeyDown={onKeyDown}
             />
           </div>
           <button className="login-button" onClick={handleSubmit}>

@@ -16,6 +16,7 @@ const GoogleLogIn = () => {
 
   async function handleCallbackResponse(res) {
     try {
+      console.log('googleLogin',res)
       console.log("encoded JWT ID Token: " + res.credential);
       var userObject = jwt_decode(res.credential);
       console.log("decode", userObject);
@@ -28,7 +29,7 @@ const GoogleLogIn = () => {
           google: true,
         })
       );
-      alert("회원가입에 성공했습니다!");
+      alert("로그인에 성공했습니다!");
       navigate("/");
     } catch (err) {
       alert(err);

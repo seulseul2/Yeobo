@@ -7,10 +7,37 @@ import homeWhite from "../assets/images/icons/homewhite.png";
 // import homePink from '../assets/images/icons/home-pink.png';
 import search from "../assets/images/icons/searchicon.png";
 import { useSelector } from "react-redux";
+import { useLocation } from "react-router-dom";
+import { useEffect, useState } from "react";
 
 const BottomNavBar = () => {
   const authenticated = useSelector((state) => state.authToken.authenticated);
+  const location = useLocation();
+  const [className, setClassName] = useState('');
 
+    // console.log(location.pathname)
+    // switch (location.pathname) {
+    //   case '/' :
+    //     setClassName('main')
+    //   // break;
+    //   case '/Search' : 
+    //   setClassName('search')
+    //   // break;
+    //   case '/Boddari' :
+    //     setClassName('boddari')
+    //   // break
+    //   case '/Login' :
+    //     setClassName('login')
+    //   // break
+    //   case '/Mypage' :
+    //     setClassName('mypage')
+    //   default:
+    //     setClassName('404')
+    // }
+
+    useEffect(() => {
+      console.log(className)
+    }, [])
   return (
     <div className="bottomnav">
       <div className="bottomBox">
