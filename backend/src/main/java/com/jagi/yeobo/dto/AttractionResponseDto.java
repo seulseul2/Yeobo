@@ -18,6 +18,6 @@ public class AttractionResponseDto {
     @ApiParam(value="사용자가 평가한 여행지 점수", type = "double")
     private double score;
 
-    @ApiParam(value="사용자가 평가한 여행지 점수", type = "String")
+    @ApiParam(value="여행지 이미지", type = "String")
     private String img;
 }
