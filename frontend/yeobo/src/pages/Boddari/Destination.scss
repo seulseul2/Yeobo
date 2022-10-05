@@ -15,13 +15,13 @@
     }
   }
   .Name {
-    width: 50%;
-    padding-top: 60px;
+    padding-top: 45px;
+    width: 200px;
     text-align: center;
-    color: white;
+    color: black;
   }
   .Name h1{
-    font-size: 30px;
+    font-size: 25px;
   }
   .btnactive {
     font-size: 20px;
@@ -29,14 +29,15 @@
     border: 2px solid #f2a3a3;
     width: 55px;
     margin-top: 5px;
-    background-color: white;
     color: #FFc7c7;
   }
   .btn { 
     border-radius: 15px;
-    border: 2px solid white;
+    border: 2px solid black;
     width: 55px;
     margin-top: 5px;
     font-size: 20px;
+    color: black;
+    
   }
 }

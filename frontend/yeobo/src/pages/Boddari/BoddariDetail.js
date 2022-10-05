@@ -14,8 +14,10 @@ const BoddariDetail = () => {
   const [detailData, setDetailData] = useState('');
   const [chkLike, setChkLike] = useState(false);
   const userId = 1
+
+
   // <-- 디테일 정보 가져오기 useEffect 실행 -->
-  const getDetail = async () => {
+  const getDetail = async (params) => {
     try {
       const response = await axios({
         url: `https://j7c103.p.ssafy.io:8080/api/temp/bag/detail/${params}`,
@@ -67,8 +69,9 @@ const BoddariDetail = () => {
     }
   }
   useEffect(() => {
-    getDetail();
+    getDetail(params);
   }, []);
+
   return (
     <div className='bagDetail'>
       <header>
@@ -82,13 +85,15 @@ const BoddariDetail = () => {
             }} />}
       </header>
       <label>보따리 메모<input type='textarea' value={detailData.memo} /></label>
-      {detailData.attraction.map((el, index) => {
+      {detailData.attraction && detailData.attraction.map((el, index) => { // attraction 들 
         return (
           <div>
-            <h1>{el}</h1>
+            <img src={el.img} alt='imgage'/>
+            <h1>{el.name}</h1>
           </div>
         )
       })}
+
     </div>
 
   )

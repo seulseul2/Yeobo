@@ -44,6 +44,7 @@ function App() {
           <Route path='/Detail/:attractionId' element={<Detail/>}></Route>
           <Route path='/testapi' element={<TestAPI/>}></Route>
           <Route path='/Betail/:BoddariId'element={<BoddariDetail/>}></Route>
+          <Route path="/MakeBoddari" element={<Category />}></Route>
           <Route path="/Boddari" element={<Boddari />}></Route>
           <Route path="/SaveBoddari" element={<BoddariSave />}></Route>
           <Route path="/testapi" element={<TestAPI />}></Route>
