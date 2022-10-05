@@ -61,6 +61,12 @@ public class UserService {
                 .email(email)
                 .accessToken(jwtTokenProvider.createToken(email, user.getRoles()))
                 .refreshToken(user.getRefreshToken())
+                .id(user.getId())
+                .age(user.getAge())
+                .gender(user.getGender())
+                .nickname(user.getNickname())
+                .profile_path(user.getProfilePath())
+                .age(user.getAge())
                 .build();
 
         return userDto;
@@ -129,9 +135,23 @@ public class UserService {
                 .email(member.getEmail())
                 .accessToken(jwtTokenProvider.createToken(member.getEmail(), member.getRoles()))
                 .refreshToken(member.getRefreshToken())
+                .id(member.getId())
+                .age(member.getAge())
+                .gender(member.getGender())
+                .nickname(member.getNickname())
+                .profile_path(member.getProfilePath())
+                .age(member.getAge())
                 .build();
 
         return memberDto;
+    }
+
+    @Transactional
+    public void logout(String token) throws IllegalStateException {
+        boolean result = jwtTokenProvider.validateToken(token);
+        if(!result) throw new IllegalStateException("토큰 만료 되었습니다.");
+        User member = userRepository2.findByEmail(jwtTokenProvider.getUserPk(token));
+        member.changeRefreshToken("invalidate");
     }
 
 }
