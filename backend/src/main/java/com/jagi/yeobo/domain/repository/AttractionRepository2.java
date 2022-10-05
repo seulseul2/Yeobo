@@ -48,6 +48,9 @@ public class AttractionRepository2 {
 //            em.persist(score);
             return score;
         }
+
+
+
     }
 
 
