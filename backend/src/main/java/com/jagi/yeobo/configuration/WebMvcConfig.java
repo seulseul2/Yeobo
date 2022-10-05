@@ -27,9 +27,9 @@ public class WebMvcConfig implements WebMvcConfigurer {
                         HttpMethod.DELETE.name());
     }
 
-    @Override
-    public void addResourceHandlers(ResourceHandlerRegistry registry) {
-        registry.addResourceHandler(resourcesUriPath+"/**")
-                .addResourceLocations("file:"+resourcesLocation); //    //지움
-    }
+//    @Override
+//    public void addResourceHandlers(ResourceHandlerRegistry registry) {
+//        registry.addResourceHandler(resourcesUriPath+"/**")
+//                .addResourceLocations("file:"+resourcesLocation); //    //지움
+//    }
 }
