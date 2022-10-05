@@ -21,10 +21,10 @@ public class JwtTokenProvider {
     private String secretKey = "jagiyeobo";
 
 //    한시간
-//    private final long tokenValidTime = 60 * 60 * 1000L;
+    private final long tokenValidTime = 2 * 60 * 60 * 1000L;
 
 //    일분 : test용
-    private final long tokenValidTime = 60 * 1000L;
+//    private final long tokenValidTime = 60 * 1000L;
 
     private final long refreshTokenValidTime = 7 * 24 * 60 * 60 * 1000L;
 
