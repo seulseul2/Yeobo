@@ -8,13 +8,13 @@ input {
 }
 
 .login-title {
-  background-color: #F49B9B;
+  background-color: #f49b9b;
   padding: 30px 40px;
   display: flex;
   margin-bottom: 10px;
   border-radius: 15px;
   color: white;
-  font-family: 'Bazzi';
+  font-family: "Bazzi";
   align-items: center;
   justify-content: space-around;
 
@@ -40,7 +40,7 @@ input {
 }
 
 .login-page {
-  font-family: 'Pretendard-Regular';
+  font-family: "Pretendard-Regular";
   background-color: white;
   border-radius: 15px;
   margin-bottom: 4px;
@@ -93,7 +93,7 @@ input {
       color: blue;
     }
   }
-  
+
   .social-title {
     text-align: center;
     font-weight: 800;
@@ -107,8 +107,6 @@ input {
       padding: 0 12px;
     }
   }
-  
-
 }
 
 .color-red {
@@ -122,4 +120,9 @@ input {
   .first {
     margin-right: 10px;
   }
+}
+
+.bottomBack {
+  height: 70px;
+  background-color: #f5f5f5;
 }

@@ -2,7 +2,7 @@ import axios from "axios";
 
 const getUser = (userId) => {
   axios({
-    url: `http://j7c103.p.ssafy.io:8080/api/user/${userId}`,
+    url: `https://j7c103.p.ssafy.io:8080/api/user/${userId}`,
     method: "get",
   })
     .then((res) => {
