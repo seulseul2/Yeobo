@@ -31,8 +31,8 @@ function App() {
           <Route path="/Login" element={<Login />}></Route>
           <Route path="/Signup" element={<Signup />}></Route>
           <Route
-            path="/DestinationDetail"
-            element={<DestinationDetail />}
+            path="/Detail"
+            element={<Detail />}
           ></Route>
 
           {/* 로그인 */}
