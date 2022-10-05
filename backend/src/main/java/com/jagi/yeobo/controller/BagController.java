@@ -89,7 +89,7 @@ public class BagController {
         HttpHeaders headers= new HttpHeaders();
         headers.setContentType(new MediaType("application", "json", Charset.forName("UTF-8")));
 
-        List<BagDto> bagDtoList = bagService.searchPopularBagList();
+        List<PopularBagDto> bagDtoList = bagService.searchPopularBagList();
         message.setStatus(StatusEnum.OK);
         message.setMessage("상위 4개 인기 보따리 리스트 조회 성공");
         message.setData(bagDtoList);
