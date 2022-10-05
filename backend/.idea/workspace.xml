@@ -6,12 +6,15 @@
   <component name="ChangeListManager">
     <list default="true" id="762a9a3c-28ef-4d5a-81d7-e18ab351898c" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+<<<<<<< HEAD
       <change beforePath="$PROJECT_DIR$/src/main/java/com/jagi/yeobo/controller/AttractionController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/jagi/yeobo/controller/AttractionController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/jagi/yeobo/controller/BagController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/jagi/yeobo/controller/BagController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/jagi/yeobo/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/jagi/yeobo/controller/UserController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/jagi/yeobo/domain/repository/BagRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/jagi/yeobo/domain/repository/BagRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/jagi/yeobo/dto/UserLoginDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/jagi/yeobo/dto/UserLoginDto.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/jagi/yeobo/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/jagi/yeobo/service/UserService.java" afterDir="false" />
+=======
+>>>>>>> d92df2334a5986fdff44aac46d3418641b7a1e32
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -156,6 +159,52 @@
       <DebugAllEnabled>false</DebugAllEnabled>
       <method v="2" />
     </configuration>
+    <configuration name="YeoboApplicationTests.여행지점수매기기" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":test" />
+            <option value="--tests" />
+            <option value="&quot;com.jagi.YeoboApplicationTests.여행지점수매기기&quot;" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <method v="2" />
+    </configuration>
+    <configuration name="YeoboApplicationTests.testByUserIdAndAttractionId" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":test" />
+            <option value="--tests" />
+            <option value="&quot;com.jagi.YeoboApplicationTests.testByUserIdAndAttractionId&quot;" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <method v="2" />
+    </configuration>
     <configuration name="backend [bootJarMainClassName]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -198,19 +247,6 @@
       <DebugAllEnabled>false</DebugAllEnabled>
       <method v="2" />
     </configuration>
-    <configuration name="YeoboApplication (1)" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true">
-      <module name="yeobo.main" />
-      <option name="SPRING_BOOT_MAIN_CLASS" value="com.jagi.YeoboApplication" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.jagi.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="YeoboApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
       <module name="yeobo.main" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="com.jagi.yeobo.yeobo.YeoboApplication" />
@@ -221,6 +257,8 @@
     <recent_temporary>
       <list>
         <item itemvalue="Gradle.backend [bootJar]" />
+        <item itemvalue="Gradle.YeoboApplicationTests.여행지점수매기기" />
+        <item itemvalue="Gradle.YeoboApplicationTests.testByUserIdAndAttractionId" />
         <item itemvalue="Gradle.backend [bootJarMainClassName]" />
         <item itemvalue="Gradle.C:/Users/multicampus/Desktop/honey/S07P22C103/backend/yeobo/yeobo [bootJar]" />
       </list>
