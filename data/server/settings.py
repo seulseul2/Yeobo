@@ -32,13 +32,13 @@ ALLOWED_HOSTS = ['j7c103.p.ssafy.io']
 
 INSTALLED_APPS = [
     'yeobo',
+    'corsheaders', # *
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'corsheaders', # *
 ]
 
 MIDDLEWARE = [
