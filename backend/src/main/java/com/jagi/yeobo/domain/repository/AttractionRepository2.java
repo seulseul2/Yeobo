@@ -44,7 +44,7 @@ public class AttractionRepository2 {
             em.persist(score);
 
             Attraction a = em.find(Attraction.class,scoreDto.getAttractionId());// 평균 = 각점수합 / 개수
-            a.setScore((a.getScore() * a.getCnt() + scoreDto.getScore())/(a.getCnt()+1));
+            a.setScore(((a.getScore()==0?1:a.getScore()) * a.getCnt() + scoreDto.getScore())/(a.getCnt()+1));
             a.setCnt(a.getCnt()+1);
 
             return score;
