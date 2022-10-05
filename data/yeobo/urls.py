@@ -5,8 +5,8 @@ app_name = ''
 urlpatterns = [
     
     # category -> 해당 카테고리의 여행지 30곳을 랜덤으로 반환(언급 횟수 >= 10,000)
-    # https://j7c103.p.ssafy.io/django/MakeBoddari/Recommend/125266/
-    path('MakeBoddari/PickCategory/<int:category>/', views.make_boddari_pick_category),
+    # https://j7c103.p.ssafy.io/django/MakeBoddari/PickCategory/1/
+    path('MakeBoddari/PickCategory/<int:category_id>/', views.make_boddari_pick_category),
     
     # attraction_id -> 동일 지역의 여행지 30곳을 랜덤으로 반환(언급 횟수 >= 10,000)
     # https://j7c103.p.ssafy.io/django/MakeBoddari/AreaCode/125266/
