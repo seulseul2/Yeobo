@@ -83,39 +83,13 @@ public class BagRepository {
 
          if(!bagList.isEmpty()){
              for(Bag b : bagList){
-                 bagDtoList.add(new PopularBagDto(b.getName(), b.getMemo(),b.getBagImage(), b.getUserId().getUsername()));
+                 User user = em.find(User.class, b.getUserId().getId());
+                 bagDtoList.add(new PopularBagDto(b.getName(), b.getMemo(),b.getBagImage(), user.getNickname()));
              }
          }
          return bagDtoList;
      }
 
-//    public List<PopularBagDto> searchPopularBagList(long userId){
-//
-//        String sql = "SELECT b.name, b.memo, b.user_id, b.bag_image, (SELECT pick_id FROM pick WHERE user_id = :userId AND b.bag_id = bag_id) FROM bag b  order BY b.link_cnt desc limit 4";
-//
-//        List<Object[]> bags = em.createNativeQuery(sql)
-//                .setParameter("userId", userId)
-//                .getResultList();
-//
-//        List<PopularBagDto> bagList = new ArrayList<>();
-//        for (Object[] b:bags) {
-//            User user = em.find(User.class, String.valueOf(b[2]));
-//
-//            PopularBagDto bagSearchDto = PopularBagDto.builder()
-//                    .name(String.valueOf(b[0]))
-//                    .memo(String.valueOf(b[1]))
-//                    .userName(user.getNickname())
-//                    .image(String.valueOf(b[3]))
-//                    .check(Boolean.valueOf(String.valueOf(b[4] == null ? false : true)))
-//                    .build();
-//
-//            bagList.add(bagSearchDto);
-//
-//        }
-//
-//        return bagList;
-//
-//    }
 
      public BagDetailDto searchDetailBag(long bagId){
         BagDetailDto bagDetailDto = new BagDetailDto();
