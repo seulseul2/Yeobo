@@ -97,6 +97,11 @@ public class UserService {
                 .email(email)
                 .accessToken(accessToken)
                 .refreshToken(member.getRefreshToken())
+                .id(member.getId())
+                .age(member.getAge())
+                .gender(member.getGender())
+                .nickname(member.getNickname())
+                .profile_path(member.getProfilePath())
                 .build();
 
         return memberDto;

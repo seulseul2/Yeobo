@@ -29,8 +29,8 @@ public class AttractionService {
     }
 
     @Transactional
-    public List<AttractionResponseDto> findAllByName(String name, long userId, Pageable pageable){
-        return attractionRepository2.searchAttractionList(name,userId, pageable);
+    public List<AttractionResponseDto> findAllByName(String name, long userId){
+        return attractionRepository2.searchAttractionList(name,userId);
 //        return attractionRepository.findAllByName(name);
     }
 
