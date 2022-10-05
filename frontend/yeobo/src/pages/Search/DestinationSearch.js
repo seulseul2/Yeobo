@@ -3,20 +3,23 @@ import Rating from '@mui/material/Rating';
 import { useState } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom'
+import {useSelector} from 'react-redux';
+
 const DestinationSearch = (props) => {
+  const accessToken = useSelector((state) => state.authToken.accessToken);
   const [value, setValue] = useState(0);
   const attrList = props.attrList;
   const userId = 1;
   // 평점 주기 부분
   const rating = (attractionId, userId, score) => {
     axios({
-      url: 'https://j7c103.p.ssafy.io:8080/api/attraction/score',
+      url: 'https://j7c103.p.ssafy.io:8080/api/temp/attraction/score',
       method: 'post',
       headers: {
-        'X-AUTH-TOKEN': 'eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJsZ2V1bjEyM0BuYXZlci5jb20iLCJyb2xlcyI6W10sImlhdCI6MTY2NDg0OTIxNywiZXhwIjoxNjY0ODUyODE3fQ.ShUPQOTuXYI_k4KKRrUDpc4O_zr1YIqB-87Ty8j3rUY'
+        'X-AUTH-TOKEN': accessToken
       },
       data:{
-        attactionId: attractionId,
+        attractionId: attractionId,
         score: score,
         userId: userId,
       }
