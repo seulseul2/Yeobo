@@ -4,12 +4,15 @@ import { useDispatch, useSelector } from "react-redux";
 import "./Mypage.scss";
 import { useNavigate } from "react-router";
 import profile from "../../assets/images/bag_image/boddari.png";
-
+import { SET_TOKEN } from "../../store/Auth";
 import NickDialog from "./NickDialog";
 import axios from "axios";
-import { getCookieToken, removeCookieToken } from "../../storage/Cookie";
+import { getCookieToken, removeCookieToken, setRefreshToken } from "../../storage/Cookie";
 import { DELETE_TOKEN } from "../../store/Auth";
 import { TOKEN_TIME_OUT } from "../../store/Auth";
+// import { getCookieToken } from "../../storage/Cookie";
+// import { setRefreshToken } from "../../../storage/Cookie";
+
 
 // images
 import pink from "../../assets/images/icons/pinkCircle.png";
@@ -33,12 +36,10 @@ const Mypage = () => {
   const navigate = useNavigate();
   // store에 저장된 Access Token 정보를 받아 온다
   const accessToken = useSelector((state) => state.authToken.accessToken);
-  const expireTime = useSelector((state) => state.authToken.expireTime);
+  const refreshToken = getCookieToken()
+  const userId = useSelector((state) => state.authToken.userId);
   const pictureUrl = useSelector((state) => state.authToken.pictureUrl);
   const nickname = useSelector((state) => state.authToken.nickname);
-
-  // 임시 유저 아이디 15 = 6, 20 = 7
-  const userId = 20;
 
   // 유저 닉네임, 나이, 성별 프레젠트
   const [userNick, setUserNick] = useState();
@@ -49,34 +50,12 @@ const Mypage = () => {
   useEffect(() => {
     setProfileImg(profile);
     console.log("mypage rendering~");
-    if (pictureUrl !== "") {
-      setProfileImg(pictureUrl);
-    }
-    if (nickname !== "") {
-      setUserNick(nickname);
-    }
-    console.log(userNick);
-    // 액세스 토큰이 만료되었는지 확인 (30초 이내로 남았다면 요청)
-    if (TOKEN_TIME_OUT <= 30000) {
-      axios({
-        url: 'https://j7c103.p.ssafy.io/api/refresh',
-        method: 'post',
-        headers: {
-          "X-AUTH-TOKEN": accessToken,
-          'REFRESH-TOKEN': getCookieToken,
-        },
-      })
-      .then((res) => {
-        console.log(res.data)
-      })
-      .catch((err) => {
-        alert(err.response.data.message)
-      })
-    }
+    console.log(refreshToken)
+    
     axios({
       url: `https://j7c103.p.ssafy.io:8080/api/user/${userId}`,
       method: "get",
-      headers: {
+    headers: {
         "X-AUTH-TOKEN": accessToken,
       },
     })
@@ -92,20 +71,29 @@ const Mypage = () => {
         }
       })
       .catch((err) => {
-        alert(err.response.data.message)
+        console.log('userinfo err', err)
       });
+      
     if (!profileImg) {
       setProfileImg(profile);
+    }
+
+    if (pictureUrl !== "") {
+      setProfileImg(pictureUrl);
+    }
+    if (nickname !== "") {
+      setUserNick(nickname);
     }
   }, []);
 
   const logout = () => {
     console.log("로그아웃 시도");
+    console.log(refreshToken)
     axios({
       url: "https://j7c103.p.ssafy.io:8080/api/logout",
       method: "get",
       headers: {
-        "X-AUTH-TOKEN": accessToken,
+        'REFRESH-TOKEN': refreshToken,
       },
     })
       .then((res) => {
@@ -117,8 +105,8 @@ const Mypage = () => {
         navigate("/"); // 홈으로 이동
       })
       .catch((err) => {
-        console.log(err);
-        alert(err.response.data.message);
+        console.log('logout err', err);
+        alert(err);
       });
   };
 

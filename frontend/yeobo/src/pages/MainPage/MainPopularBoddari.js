@@ -39,59 +39,6 @@ function Like(like) {
   }
 }
 
-const DUMMY_DATA = [
-  {
-    id: 1,
-    title: "보따리 1",
-    image_src:
-      "https://mblogthumb-phinf.pstatic.net/MjAyMDAyMDdfMTYw/MDAxNTgxMDg1NzUxMTUy.eV1iEw2gk2wt_YqPWe5F7SroOCkXJy2KFwmTDNzM0GQg.Z3Kd5MrDh07j86Vlb2OhAtcw0oVmGCMXtTDjoHyem9og.JPEG.7wayjeju/%EB%B0%B0%EC%9A%B0%ED%94%84%EB%A1%9C%ED%95%84%EC%82%AC%EC%A7%84_IMG7117.jpg?type=w800",
-    username: "이지은",
-    link: "/mypage",
-    like: "True",
-    desc: "보따리입니다. 이것은 보따리야. 이것은 보따리야. 이것은 보따리야. 이것은 보따리야. 이것은 보따리야. 이것은 보따리야. 이것은 보따리야. ",
-  },
-  {
-    id: 2,
-    title: "보따리 2",
-    image_src:
-      "https://mblogthumb-phinf.pstatic.net/MjAyMDAyMDdfMTYw/MDAxNTgxMDg1NzUxMTUy.eV1iEw2gk2wt_YqPWe5F7SroOCkXJy2KFwmTDNzM0GQg.Z3Kd5MrDh07j86Vlb2OhAtcw0oVmGCMXtTDjoHyem9og.JPEG.7wayjeju/%EB%B0%B0%EC%9A%B0%ED%94%84%EB%A1%9C%ED%95%84%EC%82%AC%EC%A7%84_IMG7117.jpg?type=w800",
-    username: "조영훈",
-    link: "/mypage",
-    like: "True",
-    desc: "보따리입니다. 이것은 보따리야. 이것은 보따리야. 이것은 보따리야. 이것은 보따리야. 이것은 보따리야. 이것은 보따리야. 이것은 보따리야. ",
-  },
-  {
-    id: 3,
-    title: "보따리 3",
-    image_src:
-      "https://mblogthumb-phinf.pstatic.net/MjAyMDAyMDdfMTYw/MDAxNTgxMDg1NzUxMTUy.eV1iEw2gk2wt_YqPWe5F7SroOCkXJy2KFwmTDNzM0GQg.Z3Kd5MrDh07j86Vlb2OhAtcw0oVmGCMXtTDjoHyem9og.JPEG.7wayjeju/%EB%B0%B0%EC%9A%B0%ED%94%84%EB%A1%9C%ED%95%84%EC%82%AC%EC%A7%84_IMG7117.jpg?type=w800",
-    username: "안다슬",
-    link: "/mypage",
-    like: "False",
-    desc: "보따리입니다. 이것은 보따리야. 이것은 보따리야. 이것은 보따리야. 이것은 보따리야. 이것은 보따리야. 이것은 보따리야. 이것은 보따리야. ",
-  },
-  {
-    id: 4,
-    title: "보따리 4",
-    image_src:
-      "https://mblogthumb-phinf.pstatic.net/MjAyMDAyMDdfMTYw/MDAxNTgxMDg1NzUxMTUy.eV1iEw2gk2wt_YqPWe5F7SroOCkXJy2KFwmTDNzM0GQg.Z3Kd5MrDh07j86Vlb2OhAtcw0oVmGCMXtTDjoHyem9og.JPEG.7wayjeju/%EB%B0%B0%EC%9A%B0%ED%94%84%EB%A1%9C%ED%95%84%EC%82%AC%EC%A7%84_IMG7117.jpg?type=w800",
-    username: "나장엽",
-    link: "/mypage",
-    like: "True",
-    desc: "보따리입니다. 이것은 보따리야. 이것은 보따리야. 이것은 보따리야. 이것은 보따리야. 이것은 보따리야. 이것은 보따리야. 이것은 보따리야. ",
-  },
-  {
-    id: 5,
-    title: "보따리 5",
-    image_src:
-      "https://mblogthumb-phinf.pstatic.net/MjAyMDAyMDdfMTYw/MDAxNTgxMDg1NzUxMTUy.eV1iEw2gk2wt_YqPWe5F7SroOCkXJy2KFwmTDNzM0GQg.Z3Kd5MrDh07j86Vlb2OhAtcw0oVmGCMXtTDjoHyem9og.JPEG.7wayjeju/%EB%B0%B0%EC%9A%B0%ED%94%84%EB%A1%9C%ED%95%84%EC%82%AC%EC%A7%84_IMG7117.jpg?type=w800",
-    username: "이준호",
-    link: "/mypage",
-    like: "False",
-    desc: "보따리입니다. 이것은 보따리야. 이것은 보따리야. 이것은 보따리야. 이것은 보따리야. 이것은 보따리야. 이것은 보따리야. 이것은 보따리야. ",
-  },
-];
-
 function BoddariRankComponent() {
   const accessToken = useSelector((state) => state.authToken.accessToken);
   const [ranks, setRanks] = useState([]);
@@ -132,7 +79,7 @@ function BoddariRankComponent() {
             <div className="boddari-info">
               <div className="boddari-title">
                 <p className="boddari-name">{rank.name}</p>
-                {/* <p className="boddari-username">{data.username}</p> */}
+                <p className="boddari-username">{rank.userName}</p>
               </div>
               <div className="boddari-desc">
                 <p className="boddari-desc-text">{rank.memo}</p>
@@ -156,10 +103,6 @@ const MainPopularBoddari = () => {
         </div>
       </div>
       <BoddariRankComponent />
-      {/* <BoddariRankComponent />
-    <BoddariRankComponent />
-    <BoddariRankComponent />
-    <BoddariRankComponent /> */}
     </div>
   );
 };

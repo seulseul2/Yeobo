@@ -18,7 +18,9 @@ import BoddariDetail from './Boddari/BoddariDetail';
 import Page404 from "./Page404";
 import Category from "./Boddari/Category";
 
+
 function App() {
+  
   return (
     <div className="App">
       <div>

@@ -9,18 +9,7 @@ const SearchTop = () => {
   const [searchText, setsearchText] = useState('');
   const WAITTIME = 2000;
 
-  const location = useLocation();
-  console.log(location);
-  useEffect(() => {
-    console.log(location);
-    // console.log('state', location.state.text);
-    // const { state } = location.state();
-    // console.log('state', state)
-    setsearchText(location.text)
-    return () => {
-      console.log(searchText)
-    }
-  }, [location])
+  
 
   const payload = {
     name: searchText,
