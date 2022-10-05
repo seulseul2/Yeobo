@@ -106,8 +106,8 @@ public class BagRepository {
         if(!list.isEmpty()){
            for(BagAttraction b : bagAttractions){
               Attraction at = em.createQuery("SELECT k FROM Attraction as k WHERE k.id = :attractionId", Attraction.class)
-                      .setParameter("attractionId", b.getAttractionId()).getSingleResult();
-              AttractionDto attractionDto = new AttractionDto(at.getId(),at.getName());
+                      .setParameter("attractionId", b.getAttractionId().getId()).getSingleResult();
+              AttractionDto attractionDto = new AttractionDto(at.getId(),at.getName(),at.getImage());
               list.add(attractionDto);
            }
         }
