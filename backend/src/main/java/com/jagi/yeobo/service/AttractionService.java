@@ -7,6 +7,7 @@ import com.jagi.yeobo.domain.repository.AttractionRepository;
 import com.jagi.yeobo.domain.repository.AttractionRepository2;
 import com.jagi.yeobo.domain.repository.ScoreRepository;
 import com.jagi.yeobo.dto.AttractionResponseDto;
+import com.jagi.yeobo.dto.AttractionScoreDto;
 import com.jagi.yeobo.dto.ScoreDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Pageable;
@@ -46,7 +47,7 @@ public class AttractionService {
 //        return scoreRepository.save(scoreDto);
     }
     @Transactional
-    public List<ScoreDto> findAllScoreByUserId(long userId){
+    public List<AttractionScoreDto> findAllScoreByUserId(long userId){
         return attractionRepository2.findAllByUserId(userId);
     }
 

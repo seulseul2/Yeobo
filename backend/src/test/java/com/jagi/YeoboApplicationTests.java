@@ -5,6 +5,7 @@ import com.jagi.yeobo.domain.Score;
 import com.jagi.yeobo.domain.User;
 import com.jagi.yeobo.domain.repository.AttractionRepository2;
 import com.jagi.yeobo.domain.repository.ScoreRepository;
+import com.jagi.yeobo.dto.AttractionScoreDto;
 import com.jagi.yeobo.dto.ScoreDto;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +13,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import java.util.List;
 import java.util.Optional;
 
 @SpringBootTest
@@ -50,6 +52,12 @@ class YeoboApplicationTests {
 
 		Attraction a = em.find(Attraction.class,scoreDto.getAttractionId());
 		System.out.println(">>>"+a.getId()+" "+a.getScore());
+	}
+
+	@Test
+	public void 사용자평가여행지리스트(){
+		List<AttractionScoreDto> list =  attractionRepository2.findAllByUserId(1);
+		System.out.println(list);
 	}
 
 
