@@ -208,3 +208,19 @@ def main_page_area_based_recommend(request, user_id):
             """)
     
     return Response(result, status=status.HTTP_200_OK)
+
+
+@api_view(['GET'])
+def category_images(request):
+    result = []
+    for i in range(1, 9):
+        result_temp = query_mariaDB_transpose(f"""
+            SELECT image
+                FROM attraction
+                WHERE category = {i} AND read_count >= 60000
+                ORDER BY rand()
+                LIMIT 1
+            """)
+        result.append(result_temp[0]['image'])
+    
+    return Response(result, status=status.HTTP_200_OK)
