@@ -57,11 +57,12 @@ const BoddariSearch = (props) => {
                   />
                 </Link>
               </div>
-            )
-          })
-        ) : (
-          <p className='No_bagResult'> 보따리 검색 내역이 없습니다.</p>
-        )}
+            </div>
+          )
+        })
+      ) : (
+        <p className='No_bagResult'> 보따리 검색 내역이 없습니다.</p>
+      )}
     </div>
   );
 };
