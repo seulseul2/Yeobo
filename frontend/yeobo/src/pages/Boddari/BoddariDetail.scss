@@ -1,0 +1,62 @@
+.bagDetail {
+  font-family: 'Bazzi';
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #F49B9B;
+    color: white;
+    height: 60px;
+    margin-bottom: 20px;
+    h1 {
+      font-size: 25px;
+      padding-left: 25px;
+    }
+    img {
+      margin-right: 25px;
+    }
+  }
+  label {
+    display: block;
+    font-size: 25px;
+
+  }
+  input {
+    width : 300px;
+    height: 150px;
+    border-radius: 15px;
+  }
+}
+.detailContent {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 15px;
+}
+.detailData_item {
+  display: flex;
+  align-items: center;
+  box-shadow: 1px 1px 1px 1px;
+  width: 90%;
+  margin-left: 20px;
+  margin-bottom : 10px;
+  margin-top: 5px;
+  border-radius: 15px;
+  img {
+    border-radius: 15px;
+    width: 50%;
+    margin-left: 15px;
+    padding: 8px;
+  }
+  h1 {
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+.detailData {
+  overflow: auto;
+  height: 560px;
+}

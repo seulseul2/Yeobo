@@ -55,17 +55,25 @@ public class BagController {
 
     @ApiOperation(value = "보따리에 좋아요를 누른다.",notes = "좋아요를 누른 보따리에 좋아요 수를 증가시킨다.")
     @PostMapping("api/bag/like/{userId}/{bagId}")
-    public ResponseEntity<?> likeBag(@PathVariable("userId") long userId, @PathVariable("bagId") int bagId){
+    public ResponseEntity<?> likeBag(@PathVariable("userId") long userId, @PathVariable("bagId") int bagId) throws Exception {
         Message message = new Message();
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(new MediaType("application", "json", Charset.forName("UTF-8")));
 
-        bagService.likeBag(userId, bagId);
+        try {
+            bagService.likeBag(userId, bagId);
 
-        message.setStatus(StatusEnum.OK);
-        message.setMessage("좋아요 성공");
+            message.setStatus(StatusEnum.OK);
+            message.setMessage("좋아요 성공");
+            return new ResponseEntity<>(message, headers, HttpStatus.OK);
+        }catch(Exception e) {
+            e.printStackTrace();
+            message.setStatus(StatusEnum.INTERNAL_SERVER_ERROR);
+            message.setMessage("좋아요 중복 발생");
+            return new ResponseEntity<>(message, headers, HttpStatus.INTERNAL_SERVER_ERROR);
+        }
 
-        return new ResponseEntity<>(message, headers, HttpStatus.OK);
+
     }
 
     @ApiOperation(value = "좋아요한 보따리의 리스트를 조회한다.",notes = "userId에 해당하는 회원이 좋아요를 누른 보따리의 리스트를 출력한다.")
@@ -99,13 +107,13 @@ public class BagController {
     }
 
     @ApiOperation(value = "보따리 상세보기를 한다.",notes = "해당 보따리의 이름, 메모, 보따리에 담겨있는 여행지 리스트를 출력한다.")
-    @GetMapping("api/temp/bag/detail/{bagId}")
-    public ResponseEntity<?> searchDetailBag(@PathVariable("bagId") long bagId){
+    @GetMapping("api/temp/bag/detail/{bagId}/{userId}")
+    public ResponseEntity<?> searchDetailBag(@PathVariable("bagId") long bagId, @PathVariable("userId") long userId){
         Message message = new Message();
         HttpHeaders headers= new HttpHeaders();
         headers.setContentType(new MediaType("application", "json", Charset.forName("UTF-8")));
 
-        BagDetailDto bagDetailDto = bagService.searchDetailBag(bagId);
+        BagDetailDto bagDetailDto = bagService.searchDetailBag(bagId,userId);
         message.setStatus(StatusEnum.OK);
         message.setMessage("보따리 상세보기 성공");
         message.setData(bagDetailDto);

@@ -27,7 +27,7 @@ public class BagService {
     }
 
     @Transactional
-    public void likeBag(long userId, long bagId){
+    public void likeBag(long userId, long bagId) throws Exception {
         bagRepository.likeBag(userId, bagId);
     }
 
@@ -42,8 +42,8 @@ public class BagService {
     }
 
     @Transactional
-    public BagDetailDto searchDetailBag(long bagId){
-        return bagRepository.searchDetailBag(bagId);
+    public BagDetailDto searchDetailBag(long bagId,long userId){
+        return bagRepository.searchDetailBag(bagId,userId);
     }
 
     @Transactional

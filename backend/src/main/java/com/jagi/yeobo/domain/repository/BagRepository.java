@@ -10,8 +10,10 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 import javax.persistence.TypedQuery;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 @RequiredArgsConstructor
@@ -45,18 +47,27 @@ public class BagRepository {
         return bagDtoList;
      }
 
-    public void likeBag(long userId, long bagId){
-        Bag findBag = em.find(Bag.class, bagId);
+    public void likeBag(long userId, long bagId) throws Exception {
 
-        int currentCnt = findBag.getLikeCnt();
-        findBag.setLikeCnt(currentCnt+1);
-        em.persist(findBag);
+        List<Pick> pickCheck = em.createQuery("select p from PICK P where p.userId.id = :userId and p.bagId.id = :bagId", Pick.class)
+                .setParameter("userId", userId)
+                .setParameter("bagId", bagId)
+                .getResultList();
+        if(pickCheck.size() == 0) {
+            Bag findBag = em.find(Bag.class, bagId);
 
-        Pick newPick = new Pick();
-        User findUser = em.find(User.class, userId);
-        newPick.setUserId(findUser);
-        newPick.setBagId(findBag);
-        em.persist(newPick);
+            int currentCnt = findBag.getLikeCnt();
+            findBag.setLikeCnt(currentCnt + 1);
+            em.persist(findBag);
+
+            Pick newPick = new Pick();
+            User findUser = em.find(User.class, userId);
+            newPick.setUserId(findUser);
+            newPick.setBagId(findBag);
+            em.persist(newPick);
+        }else{
+            throw new Exception("이미 좋아요를 눌렀습니다.");
+        }
     }
 
     public List<BagDto> searchLikeBagList(long userId){
@@ -92,27 +103,47 @@ public class BagRepository {
      }
 
 
-     public BagDetailDto searchDetailBag(long bagId){
+     public BagDetailDto searchDetailBag(long bagId, long userId){
         BagDetailDto bagDetailDto = new BagDetailDto();
 
         Bag findBag = em.find(Bag.class, bagId);
         bagDetailDto.setName(findBag.getName());
         bagDetailDto.setMemo(findBag.getMemo());
 
-        List<BagAttraction> bagAttractions = em.createQuery("SELECT a FROM BagAttraction as a WHERE a.bagId.id = :bagId", BagAttraction.class)
-                .setParameter("bagId", bagId).getResultList();
-
+        List<Object[]> attractions = em.createQuery("select a.id,a.name,a.image from BagAttraction ba join Attraction a on ba.attractionId.id = a.id where ba.bagId.id = :bagId")
+                .setParameter("bagId",bagId).getResultList();
+//        List<BagAttraction> bagAttractions = em.createQuery("SELECT a FROM BagAttraction as a WHERE a.bagId.id = :bagId", BagAttraction.class)
+//                .setParameter("bagId", bagId).getResultList();
+//
         List<AttractionDto> list = new ArrayList<>();
-        if(!bagAttractions.isEmpty()){
-           for(BagAttraction b : bagAttractions){
-              Attraction at = em.createQuery("SELECT k FROM Attraction as k WHERE k.id = :attractionId", Attraction.class)
-                      .setParameter("attractionId", b.getAttractionId().getId()).getSingleResult();
-              AttractionDto attractionDto = new AttractionDto(at.getId(),at.getName(),at.getImage());
-              list.add(attractionDto);
-           }
+        if(!attractions.isEmpty()){
+            for (Object[] a : attractions){
+                AttractionDto dto = AttractionDto.builder()
+                        .id(Long.valueOf(String.valueOf(a[0])))
+                        .name(String.valueOf(a[1]))
+                        .img(String.valueOf(a[2]))
+                        .build();
+                list.add(dto);
+            }
         }
+//        if(!bagAttractions.isEmpty()){
+//           for(BagAttraction b : bagAttractions){
+//              Attraction at = em.createQuery("SELECT k FROM Attraction as k WHERE k.id = :attractionId", Attraction.class)
+//                      .setParameter("attractionId", b.getAttractionId().getId()).getSingleResult();
+//              AttractionDto attractionDto = new AttractionDto(at.getId(),at.getName(),at.getImage());
+//              list.add(attractionDto);
+//           }
+//        }
 
         bagDetailDto.setAttraction(list);
+         System.out.println("여기까지 되었니");
+
+        List<Pick> pickId = em.createQuery("select p from Pick as p where p.userId.id = :userId and p.bagId.id = :bagId", Pick.class)
+                .setParameter("userId", userId)
+                .setParameter("bagId", bagId)
+                .getResultList();
+         System.out.println("여기는?");
+        bagDetailDto.setPick(pickId.isEmpty()?false:true);
         return bagDetailDto;
      }
 

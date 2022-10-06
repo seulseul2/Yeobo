@@ -1,0 +1,38 @@
+.dialogBox {
+  padding: 24px;
+  width: 100%;
+}
+.dialog-content {
+  text-align: center;
+
+  .nickTitleWrap {
+    padding: 12px 0;
+    .nickTitle {
+      font-size: 20px;
+      font-weight: 800;
+    }
+  }
+
+  .nickInput {
+    border: 1px solid #555555;
+    border-radius: 8px;
+    background: fixed;
+  }
+
+  .buttonWrap {
+    display: flex;
+    justify-content: center;
+    color: aqua;
+    border: 1px solid #555555;
+
+    .nickButton {
+      color: aqua;
+      border: 1px solid #555555;
+    }
+  }
+}
+
+.css-hlj6pa-MuiDialogActions-root {
+  display: flex;
+  justify-content: center;
+}
