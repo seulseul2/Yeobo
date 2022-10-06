@@ -16,6 +16,7 @@ public class PopularBagDto {
     private String image;
 
     private String userName;
+    private Long id;
 
 
 }
