@@ -4,9 +4,10 @@ import { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 import "./BoddariDetail.scss";
 
+// image
+import back from "../../assets/images/icons/back.png";
+
 // <-- 좋아요 하트 import -->
-import heart from "../../assets/images/icons/heart.png";
-import unlike from "../../assets/images/icons/like.png";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 
@@ -87,9 +88,15 @@ const BoddariDetail = () => {
 
   return (
     <div className="bagDetail">
+      <img
+        className="backBtn"
+        src={back}
+        alt="뒤로가기"
+        onClick={() => navigate(-1)}
+      />
       <header>
-        <div onClick={() => navigate(-1)}>이전</div>
-        <h1>[{detailData.name}] 보따리</h1>
+        <>&nbsp;</>
+        <h1 className="text-center">[{detailData.name}] 보따리</h1>
         <p className="heart" onClick={() => hearted(chkLike)}>
           {chkLike ? <FavoriteIcon /> : <FavoriteBorderIcon />}
         </p>
