@@ -10,6 +10,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 @Repository
@@ -26,6 +27,7 @@ public class UserRepository2 {
             email = email.substring(0,email.indexOf("@"));
             user.setNickname(email);
         }
+        user.setRoles(Collections.singletonList("ROLE_USER"));
         em.persist(user);
     }
 
