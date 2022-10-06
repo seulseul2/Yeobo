@@ -24,7 +24,7 @@ const MainBoddari = () => {
           <button className="mergeBoddari" type="">
             보따리 합치기
           </button>
-        </Link> */}
+        </Link> 
       </div>
     </div>
   );
