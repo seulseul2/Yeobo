@@ -175,6 +175,7 @@ public class BagController {
 
         message.setStatus(StatusEnum.OK);
         message.setMessage("보따리 생성 성공");
+        message.setData("bagId:"+ bag.getId());
         return new ResponseEntity<>(message, headers, HttpStatus.OK);
     }
 
