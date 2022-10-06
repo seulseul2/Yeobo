@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate}  from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import './BoddariDetail.scss';
@@ -9,6 +9,7 @@ import heart from '../../assets/images/icons/heart.png';
 import unlike from '../../assets/images/icons/like.png'
 
 const BoddariDetail = () => {
+  const navigate = useNavigate();
   const accessToken = useSelector((state) => state.authToken.accessToken);
   // const userId = useSelector((state) => state.authToken.userId);
   const params = useParams().BoddariId;
@@ -68,7 +69,11 @@ const BoddariDetail = () => {
       setChkLike(true)
 
     }
+  } 
+  const moveDetail = (id) => {
+    navigate(`/Detail/${id}`)
   }
+  
   useEffect(() => {
     getDetail(params);
   }, []);
@@ -93,7 +98,9 @@ const BoddariDetail = () => {
         {detailData.attraction && detailData.attraction.map((el, index) => { // attraction 들 
           return (
             <div className='detailData_item'>
-              <img src={el.img} alt='imgage' />
+              <img src={el.img} alt='imgage' onClick={() => {
+                moveDetail(el.id);
+              }}/>
               <h1>{el.name}</h1>
             </div>
           )
