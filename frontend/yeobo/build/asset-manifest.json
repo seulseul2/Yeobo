@@ -1,0 +1,19 @@
+{
+  "files": {
+    "main.css": "/static/css/main.9ac69888.css",
+    "main.js": "/static/js/main.e0f33ec6.js",
+    "static/media/daejeon.jpeg": "/static/media/daejeon.837ccd593942a8786427.jpeg",
+    "static/media/Spiner.gif": "/static/media/Spiner.e9e88d444a16625c195d.gif",
+    "static/media/logo-border.png": "/static/media/logo-border.b97c3130c6c2a48c5118.png",
+    "static/media/luggage.png": "/static/media/luggage.1eda9185ce1341647048.png",
+    "static/media/like.png": "/static/media/like.05f7231e3025e5fa9429.png",
+    "static/media/heart.png": "/static/media/heart.556c78a5a9b89d6b2eeb.png",
+    "index.html": "/index.html",
+    "main.9ac69888.css.map": "/static/css/main.9ac69888.css.map",
+    "main.e0f33ec6.js.map": "/static/js/main.e0f33ec6.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.9ac69888.css",
+    "static/js/main.e0f33ec6.js"
+  ]
+}
