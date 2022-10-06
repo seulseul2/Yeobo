@@ -11,7 +11,7 @@ public class UserRequestMapper {
         var attibutes = oAuth2User.getAttributes();
         return UserDto.builder()
                 .email((String)attibutes.get("email"))
-                .nickname((String)attibutes.get("nickname"))
+                .nickname((String)attibutes.get("name"))
                 .build();
     }
 
