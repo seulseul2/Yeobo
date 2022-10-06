@@ -1,12 +1,14 @@
 .header {
+  font-family: 'Bazzi';
   display: flex;
   justify-content: space-around;
   align-items: center;
   background-color: #F49B9B;
   color: white;
-  height: 50px;
+  height: 60px;
+  margin-bottom: 20px;
   p {
-    font-size: 20px;
+    font-size: 25px;
     font-weight: bold;
   }
 }
@@ -25,18 +27,22 @@
 
 }
 .recoList_item2 {
+  background-color: white;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
 .plus {
+  font-family: 'Bazzi';
   color: black;
-  border: 1px solid black;
+  box-shadow: 1px 1px 1px;
+  border-radius: 15px;
   position: absolute;
-  margin-left: 210px;
+  margin-left: 195px;
   margin-top: 60px;
   width: 50px;
+  font-weight: 500;
 }
 // .minus {
 //   color: black;

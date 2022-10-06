@@ -2,6 +2,7 @@ import axios from 'axios';
 import { useParams } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
+import './BoddariDetail.scss';
 
 // <-- 좋아요 하트 import -->
 import heart from '../../assets/images/icons/heart.png';
@@ -75,25 +76,29 @@ const BoddariDetail = () => {
   return (
     <div className='bagDetail'>
       <header>
-        <h1>{detailData.name}</h1>
+        <h1>[{detailData.name}] 보따리</h1>
         {chkLike === false ?
           <img src={unlike} alt='like' width='25px' onClick={() => {
             like(params)
           }} />
           : <img src={heart} alt='unlike' width='25px' onClick={() => {
             dislike(params)
-            }} />}
+          }} />}
       </header>
-      <label>보따리 메모<input type='textarea' value={detailData.memo} /></label>
-      {detailData.attraction && detailData.attraction.map((el, index) => { // attraction 들 
-        return (
-          <div>
-            <img src={el.img} alt='imgage'/>
-            <h1>{el.name}</h1>
-          </div>
-        )
-      })}
-
+      <div className='detailContent'>
+        <label>memo</label>
+        <input type='textarea' value={detailData.memo} />
+      </div>
+      <div className='detailData'>
+        {detailData.attraction && detailData.attraction.map((el, index) => { // attraction 들 
+          return (
+            <div className='detailData_item'>
+              <img src={el.img} alt='imgage' />
+              <h1>{el.name}</h1>
+            </div>
+          )
+        })}
+      </div>
     </div>
 
   )
