@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from "react";
-import luggage from "../../assets/images/luggage.png";
-import "./BoddariSave.scss";
-import { useLocation, Link } from "react-router-dom";
+import luggage from '../../assets/images/luggage.png';
+import './BoddariSave.scss';
+import {useLocation, Link, useNavigate} from 'react-router-dom';
 import axios from "axios";
 import { useSelector } from "react-redux";
 
 function BoddariSave() {
+  const navigate = useNavigate();
   const location = useLocation();
   const attraction = location.state.attraction;
   const [name, setName] = useState("");
@@ -23,19 +24,21 @@ function BoddariSave() {
   const save = async () => {
     try {
       const response = await axios({
-        url: `https://j7c103.p.ssafy.io:8080/api/bag/create/${userId}`,
-        method: "post",
-        headers: {
-          "X-AUTH-TOKEN": accessToken,
-        },
-        data: {
-          attractionId: attraction,
-          memo: memo,
-          name: name,
-        },
-      });
-      console.log(response);
-      alert("저장 성공!");
+         url: `https://j7c103.p.ssafy.io:8080/api/bag/create/${userId}`,
+         method: 'post',
+         headers: {
+           'X-AUTH-TOKEN' : accessToken,
+         },
+         data: {
+           attractionId: attraction,
+           memo: memo,
+           name: name,
+         }
+        })
+      // console.log(response.data.data.split(':',2)[1]);
+      const bagId = response.data.data.split(':',2)[1]
+      alert('보따리 저장 완료')
+      navigate(`/Betail/${bagId}`)
     } catch (err) {
       console.log("save실패", err);
     }

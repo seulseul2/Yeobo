@@ -1,18 +1,24 @@
 import React, { useRef, useState } from "react";
 import { useEffect } from "react";
 import { useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link , useNavigate} from "react-router-dom";
 import axios from "axios";
 import "./BoddariBox.scss";
 
 function MypageList(props) {
+  const navigate = useNavigate();
+  const moveDetail = (id) => {
+    navigate(`/Detail/${id}`)
+  }
   return (
     <li>
       <div className="mypage-img-wrapper">
-        <Link to={`/DestinationDetail/${props.id}`}>
-          <img className="mypage-img" src={props.src} alt="" />
+        {/* <Link to={`/DestinationDetail/${props.id}`}> */}
+          <img className="mypage-img" src={props.src} alt="" onClick={() => {
+            moveDetail(props.id)
+          }}/>
           <p>{props.name}</p>
-        </Link>
+        {/* </Link> */}
       </div>
     </li>
   );
@@ -53,6 +59,7 @@ const Mypage = () => {
                     name={Attrs.name}
                     src={Attrs.img}
                     memo={Attrs.memo}
+                    id={Attrs.attractionId}
                   />
                 );
               })
