@@ -1,5 +1,8 @@
 package com.jagi.yeobo.service;
 
+import com.jagi.yeobo.domain.User;
+import com.jagi.yeobo.domain.repository.UserRepository2;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.oauth2.client.userinfo.DefaultOAuth2UserService;
@@ -14,7 +17,13 @@ import java.util.Collections;
 
 @Slf4j
 @Service
+@RequiredArgsConstructor
 public class CustomOAuth2UserService implements OAuth2UserService<OAuth2UserRequest, OAuth2User> {
+
+    private final UserRepository2 userRepository;
+
+    private final UserService userService;
+
 
     @Override
     public OAuth2User loadUser(OAuth2UserRequest userRequest) throws OAuth2AuthenticationException {
@@ -26,16 +35,28 @@ public class CustomOAuth2UserService implements OAuth2UserService<OAuth2UserRequ
         String registrationId = userRequest.getClientRegistration().getRegistrationId();
         String userNameAttributeName = userRequest.getClientRegistration()
                 .getProviderDetails().getUserInfoEndpoint().getUserNameAttributeName();
-        log.info("registrationId = {}", registrationId);
-        log.info("userNameAttributeName = {}", userNameAttributeName);
+
+        System.out.println("-------------loadUser---------" + registrationId);
+        System.out.println("-------------loadUser---------" + userNameAttributeName);
 
         // Success Handler가 사용할 수 있도록 등록
         OAuth2Attribute oAuth2Attribute =
                 OAuth2Attribute.of(registrationId, userNameAttributeName, oAuth2User.getAttributes());
 
+        //db 저장
+        saveOrUpdate(oAuth2Attribute);
+
         var memberAttribute = oAuth2Attribute.covertToMap();
         // DefaultOAuth2User 객체를 성공 정보를 바탕으로 만듦
         return new DefaultOAuth2User(Collections.singleton(new SimpleGrantedAuthority("USER")),
                 memberAttribute, "email");
+    }
+
+    private void saveOrUpdate(OAuth2Attribute attribute) {
+        if(!userRepository.existsByEmail(attribute.getEmail())){
+            UserDto2 user = UserDto2.builder().email(attribute.getEmail()).name(attribute.getName()).build();
+            System.out.println("input db");
+            userService.joinSocial(user);
+        }
     }
 }
