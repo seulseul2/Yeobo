@@ -1,39 +1,41 @@
 .mainBoddari {
-  background-color: #7470AA;
+  background-color: #7470aa;
   padding: 30px 40px;
   margin-bottom: 10px;
   border-radius: 15px;
 
   .titleModule {
     // font-family: 'Pretendard-Regular';
-    font-family: 'Bazzi';
-    color: #FFEDEC;
+    font-family: "Bazzi";
+    color: #ffedec;
 
-    .mainTitle{
+    .mainTitle {
       font-size: 28px;
       padding-top: 24px;
       font-weight: 800;
-      text-align: center;
+      // text-align: center;
+      text-align: left;
     }
-    .subTitle{
+    .subTitle {
       font-weight: 200;
       padding: 10px 0;
-      color: #FFF7F4;
-      text-align: right;
+      color: #fff7f4;
+      // text-align: right;
+      text-align: left;
       font-size: 14px;
     }
   }
 
   .buttons {
-    font-family: 'Bazzi';
+    font-family: "Bazzi";
     font-size: 22px;
     font-weight: 800;
     padding: 20px;
     display: flex;
     justify-content: space-around;
-    
+
     button {
-      color: #7470AA;
+      color: #7470aa;
       border: 0px;
       border-radius: 50px;
       height: 50px;
@@ -42,12 +44,10 @@
 
     .makeBoddari {
       margin-right: 10px;
-      background-color: #FFEDEC;
+      background-color: #ffedec;
     }
     .mergeBoddari {
-      background-color: #FFF7F4;
-
+      background-color: #fff7f4;
     }
   }
-
 }
