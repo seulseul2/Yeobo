@@ -40,8 +40,11 @@ public class OAuth2SuccessHandler extends SimpleUrlAuthenticationSuccessHandler 
         OAuth2User oAuth2User = (OAuth2User) authentication.getPrincipal();
         UserDto user = userRequestMapper.toDto(oAuth2User);
 
+        System.out.println("before success");
+
         // 최초 로그인한 회원이라면 회원가입 처리를 한다.
         if(!userRepository2.existsByEmail(user.getEmail())){
+            System.out.println("input db");
             userService.joinSocial(user);
         }
 
