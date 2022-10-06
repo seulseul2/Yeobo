@@ -1,9 +1,8 @@
 package com.jagi.yeobo.config.security;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.jagi.yeobo.domain.repository.UserRepository;
 import com.jagi.yeobo.domain.repository.UserRepository2;
-import com.jagi.yeobo.dto.UserDto;
+import com.jagi.yeobo.service.UserDto2;
 import com.jagi.yeobo.service.UserService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -38,7 +37,7 @@ public class OAuth2SuccessHandler extends SimpleUrlAuthenticationSuccessHandler 
     @Override
     public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response, Authentication authentication) throws IOException, ServletException {
         OAuth2User oAuth2User = (OAuth2User) authentication.getPrincipal();
-        UserDto user = userRequestMapper.toDto(oAuth2User);
+        UserDto2 user = userRequestMapper.toDto(oAuth2User);
 
         System.out.println("before success");
 
