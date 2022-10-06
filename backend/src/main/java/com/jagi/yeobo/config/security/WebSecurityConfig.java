@@ -55,6 +55,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
 
+        System.out.println("--------configure--------");
+
         http
                 .httpBasic().disable()   // rest api만을 고려해 기본 설정은 해제
                 .csrf().disable()  // csrf 보안 토큰 disable 처리
