@@ -41,7 +41,7 @@ const DestinationSearch = (props) => {
       method: "get",
     })
       .then((res) => {
-        console.log(res);
+        console.log('detail', res);
       })
       .catch((err) => {
         console.log(err);
