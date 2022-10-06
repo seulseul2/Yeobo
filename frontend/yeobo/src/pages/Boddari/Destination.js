@@ -29,7 +29,7 @@ const Destination = (props) => {
         <img src={recoList.image} alt="destinationImg"/>  
       </div>
       <div className="Name">
-        <h1>{recoList.name}</h1>
+        <h1>{recoList.name.split('(')[0]}</h1>
     </div>
   </div>
   );

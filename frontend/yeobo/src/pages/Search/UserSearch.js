@@ -50,7 +50,7 @@ const UserSearch = (props) => {
             )
           })
         ) : (
-          <p className='No_userList'>검색 내역이 없습니다.</p>
+          <p className='No_userList'>사용자 검색 내역이 없습니다.</p>
         )}
     </div>
   )

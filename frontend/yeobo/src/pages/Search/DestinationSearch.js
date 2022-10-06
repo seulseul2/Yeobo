@@ -75,7 +75,7 @@ const DestinationSearch = (props) => {
               )
             })
           ) : (
-            <p className='No_attrResult'>검색 내역이 없습니다.</p>
+            <p className='No_attrResult'>여행지 검색 내역이 없습니다.</p>
           )}
         </div>) : (<div>{attrList ? (
           attrList.map((el, index) => {
@@ -91,7 +91,7 @@ const DestinationSearch = (props) => {
             )
           })
         ) : (
-          <p className='No_attrResult'>검색 내역이 없습니다.</p>
+          <p className='No_attrResult'>여행지 검색 내역이 없습니다.</p>
         )}</div>)}
         {/* {attrList ? (
           attrList.map((el, index) => {
