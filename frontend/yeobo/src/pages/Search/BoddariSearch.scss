@@ -10,23 +10,32 @@
   margin-top: 50px;
   font-size: 25px;
 }
-.bagResult_item_img {
-  width: 200px;
-  margin: 10px 10px 10px 25px;
-  border-radius: 20px;
-  border: 4px solid white;
-}
 
 .bagResult_item {
-  display: flex;
-  align-items: center;
-  text-align: center;
-
-}
-.item2 {
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  margin-left: 55px;
-  font-size: 1.2em;
+  padding: 12px 24px;
+  .item1 {
+    .item1-link {
+      .bagResult_item_img {
+        width: 100px;
+        border-radius: 10px;
+        float: left;
+      }
+    }
+    .bagInfo {
+      display: flex;
+      // flex-direction: column;
+      justify-content: space-between;
+      // align-content: space-between;
+      .bagName {
+        font-family: "GongGothicMedium";
+        padding: 0 24px;
+      }
+      .bagHeart {
+        display: flex;
+        justify-content: right;
+        color: red;
+        font-size: 40px;
+      }
+    }
+  }
 }
