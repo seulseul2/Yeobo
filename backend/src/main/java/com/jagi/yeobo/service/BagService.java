@@ -42,8 +42,8 @@ public class BagService {
     }
 
     @Transactional
-    public BagDetailDto searchDetailBag(long bagId){
-        return bagRepository.searchDetailBag(bagId);
+    public BagDetailDto searchDetailBag(long bagId,long userId){
+        return bagRepository.searchDetailBag(bagId,userId);
     }
 
     @Transactional

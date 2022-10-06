@@ -107,13 +107,13 @@ public class BagController {
     }
 
     @ApiOperation(value = "보따리 상세보기를 한다.",notes = "해당 보따리의 이름, 메모, 보따리에 담겨있는 여행지 리스트를 출력한다.")
-    @GetMapping("api/temp/bag/detail/{bagId}")
-    public ResponseEntity<?> searchDetailBag(@PathVariable("bagId") long bagId){
+    @GetMapping("api/temp/bag/detail/{bagId}/{userId}")
+    public ResponseEntity<?> searchDetailBag(@PathVariable("bagId") long bagId, @PathVariable("userId") long userId){
         Message message = new Message();
         HttpHeaders headers= new HttpHeaders();
         headers.setContentType(new MediaType("application", "json", Charset.forName("UTF-8")));
 
-        BagDetailDto bagDetailDto = bagService.searchDetailBag(bagId);
+        BagDetailDto bagDetailDto = bagService.searchDetailBag(bagId,userId);
         message.setStatus(StatusEnum.OK);
         message.setMessage("보따리 상세보기 성공");
         message.setData(bagDetailDto);

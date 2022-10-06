@@ -4,8 +4,10 @@ import com.jagi.yeobo.domain.Attraction;
 import com.jagi.yeobo.domain.Score;
 import com.jagi.yeobo.domain.User;
 import com.jagi.yeobo.domain.repository.AttractionRepository2;
+import com.jagi.yeobo.domain.repository.BagRepository;
 import com.jagi.yeobo.domain.repository.ScoreRepository;
 import com.jagi.yeobo.dto.AttractionScoreDto;
+import com.jagi.yeobo.dto.BagDetailDto;
 import com.jagi.yeobo.dto.ScoreDto;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,6 +30,8 @@ class YeoboApplicationTests {
 	@Autowired
 	private AttractionRepository2 attractionRepository2;
 
+	@Autowired
+	private BagRepository bagRepository;
 	@Test
 	void contextLoads() {
 	}
@@ -60,5 +64,11 @@ class YeoboApplicationTests {
 		System.out.println(list);
 	}
 
+	@Test
+	public void 여행지상세보기(){
+		BagDetailDto bag = bagRepository.searchDetailBag(2,2);
+//		BagDetailDto bag = bagRepository.searchDetailBag(10,2);
+		System.out.println(bag.toString());
+	}
 
 }
