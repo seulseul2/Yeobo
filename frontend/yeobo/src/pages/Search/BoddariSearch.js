@@ -3,13 +3,24 @@ import { useEffect, useState } from "react";
 import Loading from "../component/Loading";
 import "./BoddariSearch.scss";
 import { Link } from "react-router-dom";
-import heart from "../../assets/images/icons/heart.png";
-import unlike from "../../assets/images/icons/like.png";
+// import heart from "../../assets/images/icons/heart.png";
+// import unlike from "../../assets/images/icons/like.png";
 import { useSelector } from "react-redux";
+import FavoriteIcon from "@mui/icons-material/Favorite";
+import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
+
+function Like(like) {
+  if (like) {
+    return <FavoriteIcon />;
+  } else if (!like) {
+    return <FavoriteBorderIcon />;
+  }
+}
 
 const BoddariSearch = (props) => {
   // const [value, setValue] = useState(0);
   const searchText = props.searchText;
+  const accessToken = useSelector((state) => state.authToken.accessToken);
   const userId = useSelector((state) => state.authToken.userId);
 
   const [bagList, setbagList] = useState(null);
@@ -40,6 +51,42 @@ const BoddariSearch = (props) => {
   useEffect(() => {
     getResult();
   }, []);
+
+  const hearted = (check, bagId) => {
+    if (check) {
+      console.log(check, bagId, "좋아요눌림");
+      axios({
+        // 좋아요 취소
+        url: `https://j7c103.p.ssafy.io:8080/api/bag/delete/like/${userId}/${bagId}`,
+        method: "delete",
+        headers: {
+          "X-AUTH-TOKEN": accessToken,
+        },
+      })
+        .then((res) => {
+          console.log(res.data);
+        })
+        .catch((err) => {
+          console.log("좋아요 취소 에러", err);
+        });
+    } else if (!check) {
+      console.log(check, bagId, "좋아요X");
+      axios({
+        url: `https://j7c103.p.ssafy.io:8080/api/bag/delete/like/${userId}/${bagId}`,
+        method: "delete",
+        headers: {
+          "X-AUTH-TOKEN": accessToken,
+        },
+      })
+        .then((res) => {
+          console.log(res.data);
+        })
+        .catch((err) => {
+          console.log("좋아요 취소 에러", err);
+        });
+    }
+  };
+
   return (
     <div className="BoddariSearch">
       {loading ? <Loading /> : null}
@@ -48,21 +95,29 @@ const BoddariSearch = (props) => {
           const check = el.check;
           return (
             <div className="bagResult_item" key={index}>
-                <Link to={"/Betail/" + el.bagId}>
+              <div className="item1">
+                <Link class="item1-link" to={"/Betail/" + el.bagId}>
                   <img
                     className="bagResult_item_img"
                     src={el.image}
                     alt="image"
                   />
+                  <div className="bagInfo">
+                    <p className="bagName">{el.name}</p>
+                    <div
+                      // onClick={() => hearted(el.check, el.bagId)}
+                      className="bagHeart"
+                    >
+                      {Like(el.check)}
+                    </div>
+                  </div>
                 </Link>
-              <div className="item2">
-                <p>{el.name}</p>
               </div>
             </div>
-          )
+          );
         })
       ) : (
-        <p className='No_bagResult'> 보따리 검색 내역이 없습니다.</p>
+        <p className="No_bagResult"> 보따리 검색 내역이 없습니다.</p>
       )}
     </div>
   );
