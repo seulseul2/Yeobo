@@ -12,6 +12,7 @@ import java.util.List;
 @RequiredArgsConstructor
 @Builder
 @AllArgsConstructor
+@ToString
 public class BagDetailDto {
 
     @ApiParam(value = "보따리 이름", type="String")
@@ -22,5 +23,8 @@ public class BagDetailDto {
 
     @ApiParam(value="여행지 리스트", type="List")
     private List<AttractionDto> attraction;
+
+    @ApiParam(value="보따리 좋아요여부", type="boolean")
+    private boolean pick;
 
 }
