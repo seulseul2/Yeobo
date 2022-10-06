@@ -1,0 +1,16 @@
+.Tab {
+  display: flex;
+  justify-content: space-around;
+  background-color: white;
+  height: 65px;
+  align-items: center;
+  margin-top: -15px;
+  button {
+    width: 30%;
+    height: 40px;
+    border-radius: 50px;
+    background-color: white;
+    border: 3px solid #F49B9B;
+    color: #F49B9B;
+  }
+}
