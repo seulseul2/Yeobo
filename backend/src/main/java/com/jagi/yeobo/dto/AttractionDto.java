@@ -8,6 +8,7 @@ import lombok.*;
 @RequiredArgsConstructor
 @Builder
 @AllArgsConstructor
+@ToString
 public class AttractionDto {
 
     @ApiParam(value="여행지 id", type="long")
