@@ -25,8 +25,8 @@ SECRET_KEY = 'django-insecure-3-sej&qwwa(^1zrq!slv52je_4!gh+!1oou6idg6lb7x-)cb$l
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-# ALLOWED_HOSTS = ['j7c103.p.ssafy.io', '127.0.0.1']
-ALLOWED_HOSTS = ['j7c103.p.ssafy.io']
+ALLOWED_HOSTS = ['j7c103.p.ssafy.io', '127.0.0.1']
+# ALLOWED_HOSTS = ['j7c103.p.ssafy.io']
 
 # Application definition
 
@@ -77,24 +77,24 @@ WSGI_APPLICATION = 'server.wsgi.application'
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
 DATABASES = {
-    # 'default': {
-    #     'ENGINE': 'django.db.backends.mysql',
-    #     'NAME': 'yeobo',
-    #     'USER': 'root',
-    #     'PASSWORD': 'yeobo',
-    #     'HOST': 'localhost',
-    #     'PORT': '3307'
-    # }
-
-    # 원격 서버
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'yeobo',
-        'USER': 'yeobo',
-        'PASSWORD': 'seulseul1004',
-        'HOST': 'j7c103.p.ssafy.io',
+        'USER': 'root',
+        'PASSWORD': 'yeobo',
+        'HOST': 'localhost',
         'PORT': '3307'
     }
+
+    # 원격 서버
+    # 'default': {
+    #     'ENGINE': 'django.db.backends.mysql',
+    #     'NAME': 'yeobo',
+    #     'USER': 'yeobo',
+    #     'PASSWORD': 'seulseul1004',
+    #     'HOST': 'j7c103.p.ssafy.io',
+    #     'PORT': '3307'
+    # }
 }
 
 
