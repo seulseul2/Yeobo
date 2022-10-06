@@ -43,8 +43,6 @@ public class CustomOAuth2UserService implements OAuth2UserService<OAuth2UserRequ
         OAuth2Attribute oAuth2Attribute =
                 OAuth2Attribute.of(registrationId, userNameAttributeName, oAuth2User.getAttributes());
 
-        //db 저장
-        saveOrUpdate(oAuth2Attribute);
 
         var memberAttribute = oAuth2Attribute.covertToMap();
         // DefaultOAuth2User 객체를 성공 정보를 바탕으로 만듦
@@ -52,11 +50,4 @@ public class CustomOAuth2UserService implements OAuth2UserService<OAuth2UserRequ
                 memberAttribute, "email");
     }
 
-    private void saveOrUpdate(OAuth2Attribute attribute) {
-        if(!userRepository.existsByEmail(attribute.getEmail())){
-            UserDto2 user = UserDto2.builder().email(attribute.getEmail()).name(attribute.getName()).build();
-            System.out.println("input db");
-            userService.joinSocial(user);
-        }
-    }
 }
