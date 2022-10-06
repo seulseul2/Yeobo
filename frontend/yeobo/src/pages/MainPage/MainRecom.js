@@ -23,7 +23,6 @@ const MainRecom = () => {
       .catch((err) => {
         console.log(err);
       });
-    console.log("s", recommendAttrs);
   }, []);
   return (
     <div className="mainRecom">

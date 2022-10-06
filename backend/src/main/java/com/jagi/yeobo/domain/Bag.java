@@ -34,14 +34,19 @@ public class Bag {
 
     private String memo;
 
+    @Column(name="bag_image")
+    private String bagImage;
+
     @Column(name="link_cnt")
     private int likeCnt;
 
     @OneToMany(orphanRemoval = true, mappedBy = "bagId" , cascade = CascadeType.ALL)
+    @Builder.Default
     @JsonIgnore
     List<Pick> bagPickList = new ArrayList<>();
 
     @OneToMany(orphanRemoval = true, mappedBy = "bagId" , cascade = CascadeType.ALL)
+    @Builder.Default
     @JsonIgnore
     List<BagAttraction> bagAttractionList = new ArrayList<>();
 
@@ -49,5 +54,13 @@ public class Bag {
         this.name = name;
         this.memo = memo;
     }
+
+    public Bag(User user, String name, String memo){
+        this.userId = user;
+        this.name = name;
+        this.memo = memo;
+    }
+
+
 
 }

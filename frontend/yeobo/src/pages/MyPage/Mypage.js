@@ -54,7 +54,6 @@ const Mypage = () => {
     setProfileImg(profile);
     console.log("mypage rendering~");
     console.log(refreshToken);
-
     axios({
       url: `https://j7c103.p.ssafy.io:8080/api/user/${userId}`,
       method: "get",
@@ -76,7 +75,6 @@ const Mypage = () => {
       .catch((err) => {
         console.log("userinfo err", err);
       });
-
     if (!profileImg) {
       setProfileImg(profile);
     }

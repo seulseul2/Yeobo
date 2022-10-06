@@ -7,7 +7,6 @@ import { useEffect } from "react";
 import { useSelector } from "react-redux";
 import { getCookieToken } from "../../storage/Cookie";
 import axios from "axios";
-
 import "./BoddariBox.scss";
 
 function BoddariBoxList(props) {

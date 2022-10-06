@@ -3,23 +3,23 @@ import luggage from '../../assets/images/luggage.png';
 import './BoddariSave.scss';
 import {useLocation, Link, useNavigate} from 'react-router-dom';
 import axios from "axios";
-import { useSelector } from 'react-redux';
+import { useSelector } from "react-redux";
 
 function BoddariSave() {
   const navigate = useNavigate();
   const location = useLocation();
   const attraction = location.state.attraction;
-  const [name, setName] = useState('');
-  const [memo, setMemo] = useState('');
-  const accessToken = useSelector((state) => state.authToken.accessToken)
+  const [name, setName] = useState("");
+  const [memo, setMemo] = useState("");
+  const accessToken = useSelector((state) => state.authToken.accessToken);
   const userId = useSelector((state) => state.authToken.userId);
 
   const onChangeName = (e) => {
-    setName(e.target.value)
-  }
+    setName(e.target.value);
+  };
   const onChangeMemo = (e) => {
-    setMemo(e.target.value)
-  }
+    setMemo(e.target.value);
+  };
 
   const save = async () => {
     try {
@@ -40,24 +40,49 @@ function BoddariSave() {
       alert('보따리 저장 완료')
       navigate(`/Betail/${bagId}`)
     } catch (err) {
-      console.log('save실패', err);
+      console.log("save실패", err);
     }
-  }
+  };
   return (
     <div className="BoddariSave">
       <div className="BoddariSave-top">
-        <img src={luggage} alt='image'/>
+        <img src={luggage} alt="image" />
       </div>
       <div className="BoddariSave-input">
-        <label>보따리 이름<input id="Boddari-name" type='text' placeholder="보따리 이름을 입력하세요." onChange={onChangeName} /></label>
-        <label>메모<input id="Boddari-memo" type='text' placeholder="메모를 입력하세요." name='boddariMemo'onChange={onChangeMemo} /></label>
+        <label>
+          보따리 이름
+          <input
+            id="Boddari-name"
+            type="text"
+            placeholder="보따리 이름을 입력하세요."
+            onChange={onChangeName}
+          />
+        </label>
+        <label>
+          메모
+          <input
+            id="Boddari-memo"
+            type="text"
+            placeholder="메모를 입력하세요."
+            name="boddariMemo"
+            onChange={onChangeMemo}
+          />
+        </label>
       </div>
       <div className="BoddariSave-btn">
-        <button onClick={ () => {save()}}>완료</button>
-        <Link to='/'><button>취소</button></Link>
+        <button
+          onClick={() => {
+            save();
+          }}
+        >
+          완료
+        </button>
+        <Link to="/">
+          <button>취소</button>
+        </Link>
       </div>
     </div>
-  )
+  );
 }
 
 export default BoddariSave;

@@ -55,8 +55,6 @@ const Login = () => {
       })
         .then((res) => {
           const response = res.data.data;
-          console.log(response);
-          // console.log(response);
           alert(res.data.message);
           const accessToken = response.accessToken;
           const refreshToken = response.refreshToken;
@@ -82,7 +80,6 @@ const Login = () => {
         });
     }
   };
-
   const onKeyDown = (e) => {
     if (e.key === "Enter") {
       handleSubmit();
@@ -141,12 +138,10 @@ const Login = () => {
           </p>
         </div>
       </div>
-      {/* <div className="login-page">
-        <p className="social-title">소셜로그인</p>
-        <div className="social-btns">
-          <GoogleLogIn />
-        </div>
-      </div> */}
+      <p className="social-title">소셜로그인</p>
+      <div className="social-btns">
+        <GoogleLogIn />
+      </div>
       <div className="bottomBack"></div>
     </div>
   );

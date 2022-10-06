@@ -1,13 +1,21 @@
 package com.jagi.yeobo.domain.repository;
 
-import com.jagi.yeobo.domain.Attraction;
-import com.jagi.yeobo.domain.Score;
 import com.jagi.yeobo.domain.User;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 
 import java.util.Optional;
 
 public interface UserRepository extends JpaRepository<User,Long> {
 
+    Optional<User> findById(long id);
     Optional<User> findByEmail(String email);
+
+    Optional<User> findByNickname(String name);
+
+    @Query(value = "insert into user(profile_path) value(:profile)",nativeQuery = true)
+    void saveProfilePath(@Param("profile")String profile);
+
+
 }

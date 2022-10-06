@@ -27,6 +27,7 @@ function MypageList(props) {
 const Mypage = () => {
   const accessToken = useSelector((state) => state.authToken.accessToken);
   const userId = useSelector((state) => state.authToken.userId);
+
   const [list, setList] = useState();
   useEffect(() => {
     axios({

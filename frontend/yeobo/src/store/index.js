@@ -2,18 +2,18 @@
 
 import { configureStore } from "@reduxjs/toolkit";
 import tokenReducer from "./Auth";
-import storage from 'redux-persist/lib/storage/session'
-import { persistReducer } from 'redux-persist';
-import { combineReducers } from 'redux'
+import storage from "redux-persist/lib/storage/session";
+import { persistReducer } from "redux-persist";
+import { combineReducers } from "redux";
 
 const rootReducer = combineReducers({
   authToken: tokenReducer,
-})
+});
 
 const persistConfig = {
-  key: 'root',
+  key: "root",
   storage,
-}
+};
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);
 
@@ -24,5 +24,3 @@ export const store = configureStore({
   //   reducer: persistedReducer
   // },
 });
-
-// export default store;

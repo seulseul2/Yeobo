@@ -9,11 +9,13 @@ import lombok.*;
 @Builder
 @AllArgsConstructor
 public class BagDto {
-    private String name;
 
+    private long id;
+    private String name;
     private String memo;
+    private String image;
 
     public Bag toEntity(){
-        return Bag.builder().name(name).memo(memo).build();
+        return Bag.builder().id(id).name(name).memo(memo).bagImage(image).build();
     }
 }

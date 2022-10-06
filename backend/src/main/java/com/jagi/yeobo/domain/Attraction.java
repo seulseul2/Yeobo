@@ -18,16 +18,30 @@ public class Attraction {
     @Column(name = "attraction_id")
     private long id;
 
+    private int category;
     private String name;
 
+    @Column(length = 10000)
     private String description;
 
     private String address;
 
+    private int areaCode;
+
     private String image;
 
+    private String image2;
+
+    private double mapx;
+
+    private double mapy;
+
     @Column(nullable = true)
-    private Double score;
+    private double score;
+
+    private int cnt; //이 여행지에 대해 평가한 개수
+
+    private int readCount;
 
     @OneToMany(orphanRemoval = true, mappedBy = "attractionId" , cascade = CascadeType.ALL)
     @JsonIgnore

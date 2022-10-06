@@ -8,7 +8,7 @@ import javax.persistence.*;
 @Builder
 @Getter
 @Setter
-@NoArgsConstructor(access = AccessLevel.PROTECTED)
+@NoArgsConstructor
 @AllArgsConstructor
 @Table(name = "score")
 public class Score {
@@ -27,4 +27,14 @@ public class Score {
 
     @Column
     private double score;
+
+    @Override
+    public String toString() {
+        return "Score{" +
+                "id=" + id +
+                ", userId=" + userId.getId() +
+                ", attractionId=" + attractionId.getId() +
+                ", score=" + score +
+                '}';
+    }
 }

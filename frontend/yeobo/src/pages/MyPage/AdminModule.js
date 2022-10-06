@@ -72,9 +72,6 @@ const AdminModule = () => {
   return (
     <div>
       <div className="box">
-        {/* <p className="boxIn" onClick={userDeleteClick}>
-          회원 탈퇴하기
-        </p> */}
         <p className="boxIn" onClick={logOutClick}>
           로그아웃
         </p>

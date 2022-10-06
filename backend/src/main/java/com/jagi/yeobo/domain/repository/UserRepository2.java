@@ -2,6 +2,7 @@ package com.jagi.yeobo.domain.repository;
 
 import com.jagi.yeobo.domain.User;
 import com.jagi.yeobo.dto.UserDto;
+import com.jagi.yeobo.dto.UserResponseDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 
@@ -9,6 +10,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 @Repository
@@ -25,6 +27,7 @@ public class UserRepository2 {
             email = email.substring(0,email.indexOf("@"));
             user.setNickname(email);
         }
+        user.setRoles(Collections.singletonList("ROLE_USER"));
         em.persist(user);
     }
 
@@ -42,6 +45,7 @@ public class UserRepository2 {
                 .email(user.getEmail())
 //                .password(user.getPassword())
                 .nickname(user.getNickname())
+                .profilePath(user.getProfilePath())
                 .gender(user.getGender())
                 .age(user.getAge())
                 .build();
@@ -69,29 +73,52 @@ public class UserRepository2 {
         else return 0;//관련된 것도 지워야 하나 자동으로 지워지나
     }
 
-    public List<UserDto> searchByNick(String nickname){ // nickname으로 userId와 nickname 리스트 반환해주면 되나?
-        Query query = em.createQuery("SELECT u.id,u.nickname FROM User as u WHERE u.nickname LIKE :nickname " )//+
-//                        "ORDER BY CASE WHEN u.nickname = :nick0 THEN 0" +
-//                        " WHEN u.nickname = :nick1 THEN 1 " +
-//                        " WHEN u.nickname LIKE :nick2 THEN 2" +
-//                        " WHEN u.nickname LIKE :nick3 THEN 3 " +
-//                        "ELSE 4 " +
-//                        "END)")
-                .setParameter("nickname","%"+nickname+"%");
-//                .setParameter("nick0",nickname)
-//                .setParameter("nick1",nickname+"%")
-//                .setParameter("nick2","%"+nickname+"%")
-//                .setParameter("nick3","%"+nickname);
+    public List<UserResponseDto> searchByNick(String nickname){ // nickname으로 userId와 nickname 리스트 반환해주면 되나?
+        Query query = em.createNativeQuery("SELECT u.user_id,u.nickname FROM user as u WHERE u.nickname LIKE :nickname " +
+                        "ORDER BY CASE WHEN u.nickname = :nick0 THEN 0" +
+                        " WHEN u.nickname LIKE :nick1 THEN 1 " +
+                        " WHEN u.nickname LIKE :nick2 THEN 2" +
+                        " WHEN u.nickname LIKE :nick3 THEN 3 " +
+                        "ELSE 4 " +
+                        "END")
+                .setParameter("nickname","%"+nickname+"%")
+                .setParameter("nick0",nickname)
+                .setParameter("nick1",nickname+"%")
+                .setParameter("nick2","%"+nickname+"%")
+                .setParameter("nick3","%"+nickname);
         List<Object[]> list = query.getResultList();
-        List<UserDto> nickList = new ArrayList<>();
+
+        List<UserResponseDto> nickList = new ArrayList<>();
         for (Object[] l:list) {
-            UserDto userDto = UserDto.builder()
-                    .id((long)l[0])
-                    .nickname((String)l[1]).build();
+            UserResponseDto userDto = UserResponseDto.builder()
+                    .id(Long.valueOf(String.valueOf(l[0])))
+                    .nickname(String.valueOf(l[1])).build();
             nickList.add(userDto);
         }
 
         return nickList;
+    }
+
+    public boolean existsByEmail(String email){
+        System.out.println("UserRepository2.existsByEmail");
+        List<User> userList = em.createQuery("select u from User u where u.email = :email", User.class)
+                .setParameter("email", email)
+                .getResultList();
+        if(userList.size() == 0) return false;
+        return true;
+    }
+
+    public User findByEmail(String email) throws IllegalStateException {
+        List<User> memberList = em.createQuery("select m from User m where m.email = :email", User.class)
+                .setParameter("email", email)
+                .getResultList();
+        if(memberList.size() == 0) throw new IllegalStateException("해당 이메일을 가진 사용자가 없습니다.");
+        return memberList.get(0);
+    }
+    public void socialLogin(String email, String refreshToken){
+        User user = findByEmail(email);
+        user.changeRefreshToken(refreshToken);
+
     }
 
 
