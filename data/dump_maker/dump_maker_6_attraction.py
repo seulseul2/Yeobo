@@ -52,6 +52,6 @@ for i in range(4286):
     print('score_cnt는', score_cnt)
     print('넘어가기')
 
-print(df)
+# print(df)
 
 df.to_csv("attraction_score_4.csv")
