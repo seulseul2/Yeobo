@@ -33,6 +33,7 @@ public class AttractionRepository2 {
         Attraction attraction = em.find(Attraction.class,scoreDto.getAttractionId());
         if(user == null) throw new EntityNotFoundException(scoreDto.getUserId()+"에 해당하는 사용자 정보가 없습니다");
         if(attraction == null) throw new EntityNotFoundException(scoreDto.getAttractionId()+"에 해당하는 여행지 정보가 없습니다");
+
         Score originScore = scoreRepository.findByUserIdAndAttractionId(user,attraction);
 
         if(originScore==null){
@@ -44,20 +45,19 @@ public class AttractionRepository2 {
             em.persist(score);
 
             Attraction a = em.find(Attraction.class,scoreDto.getAttractionId());// 평균 = 각점수합 / 개수
-            a.setScore(((a.getScore()==0?1:a.getScore()) * a.getCnt() + scoreDto.getScore())/(a.getCnt()+1));
+            a.setScore(Math.round(((a.getScore()==0?1:a.getScore()) * a.getCnt() + scoreDto.getScore())/(a.getCnt()+1)));
             a.setCnt(a.getCnt()+1);
 
             return score;
         }else{
             System.out.println(">>>기존 score");
             Score score = em.find(Score.class,originScore.getId());
+            Attraction a = em.find(Attraction.class,scoreDto.getAttractionId());// 평균 = 각점수합 / 개수
+
+            a.setScore(Math.round(((a.getScore()==0?1:a.getScore()) * a.getCnt() - score.getScore() + scoreDto.getScore())/(a.getCnt())));
             score.setScore(scoreDto.getScore());
-//            em.persist(score);
             return score;
         }
-
-
-
     }
 
 
