@@ -102,16 +102,16 @@ const BoddariSearch = (props) => {
                     src={el.image}
                     alt="image"
                   />
-                </Link>
-                <div className="bagInfo">
-                  <p className="bagName">{el.name}</p>
-                  <div
-                    // onClick={() => hearted(el.check, el.bagId)}
-                    className="bagHeart"
-                  >
-                    {Like(el.check)}
+                  <div className="bagInfo">
+                    <p className="bagName">{el.name}</p>
+                    <div
+                      // onClick={() => hearted(el.check, el.bagId)}
+                      className="bagHeart"
+                    >
+                      {Like(el.check)}
+                    </div>
                   </div>
-                </div>
+                </Link>
               </div>
             </div>
           );
