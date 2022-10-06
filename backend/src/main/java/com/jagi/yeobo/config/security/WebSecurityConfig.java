@@ -78,8 +78,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .and() /* OAuth */
                 .cors()
                 .and()
-                .addFilterBefore(new JwtAuthenticationFilter(jwtTokenProvider),
-                        UsernamePasswordAuthenticationFilter.class)
                 .oauth2Login()
                 .successHandler(successHandler)
                 .userInfoEndpoint() // OAuth2 로그인 성공 후에 가져올 설정들
