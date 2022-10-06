@@ -1,0 +1,70 @@
+import React, { useState } from "react";
+// Import Swiper React components
+// import { Swiper, SwiperSlide } from "swiper/react";
+// Import Swiper styles
+import { Link } from "react-router-dom";
+import { useEffect } from "react";
+import { useSelector } from "react-redux";
+import { getCookieToken } from "../../storage/Cookie";
+import axios from 'axios';
+
+import "./BoddariBox.scss";
+
+function BoddariBoxList(props) {
+  return (
+    <li>
+      <div className="mypage-img-wrapper">
+        <Link to="/">
+          <img className="mypage-img" src={props.src} alt="" />
+          <p>{props.name}</p>
+          {/* <p>{props.memo}</p> */}
+        </Link>
+      </div>
+    </li>
+  );
+}
+
+const BoddariBox = () => {
+  const userId = useSelector((state) => state.authToken.userId);
+  const accessToken = useSelector((state) => state.authToken.accessToken);
+  const [boddariList, setBoddariList] = useState([]);
+  
+  useEffect(() => {
+    axios({
+      url: `https://j7c103.p.ssafy.io:8080/api/bag/list/${userId}`,
+      method: "get",
+      headers: {
+        "X-AUTH-TOKEN": accessToken,
+      },
+    })
+      .then((res) => {
+        console.log('보따리야~', res.data.data);
+        setBoddariList(res.data.data)
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
+  return (
+    <div>
+      <div className="box">
+        <div id="tab">
+          <ul>
+            {boddariList.map((boddari, i) => {
+              return(
+                <BoddariBoxList
+                key={i}
+                name={boddari.name}
+                src={boddari.image}
+                memo={boddari.memo}
+            />
+              )
+            })}
+          </ul>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default BoddariBox;

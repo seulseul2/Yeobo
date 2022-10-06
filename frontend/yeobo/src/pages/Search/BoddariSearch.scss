@@ -1,0 +1,33 @@
+.BoddariSearch {
+  font-family: "Bazzi";
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  width: 100%;
+}
+.No_bagResult {
+  text-align: center;
+  margin-top: 50px;
+  font-size: 25px;
+}
+.bagResult_item_img {
+  width: 200px;
+  margin: 10px 10px 10px 25px;
+  border-radius: 20px;
+  border: 4px solid white;
+}
+
+.bagResult_item {
+  display: flex;
+  align-items: center;
+  text-align: center;
+
+}
+.item2 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 55px;
+  color: white;
+  font-size: 1.2em;
+}

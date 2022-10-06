@@ -1,0 +1,60 @@
+.BoddariSave {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: #f9f9f9;
+}
+
+.BoddariSave-top {
+    background-color: #f49b9B;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    height: 250px;
+}
+.BoddariSave-top img {
+    width: 70%;
+    height: 100%;
+}
+.BoddariSave-input {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    margin-top: 30px;
+
+}
+.BoddariSave-input label {
+    font-size: 20px;
+    padding: 20px;
+    color: black;
+    font-weight: bold;
+}
+
+#Boddari-name {
+    width: 100%;
+    height: 2em;
+    border-radius: 15px;
+    text-align: center;
+    border: 1px solid black;
+}
+#Boddari-memo {
+    width: 100%;
+    height: 15em;
+    border-radius: 15px;
+    text-align: center;
+    border: 1px solid black;
+
+}
+button {
+    border: 3px solid black;
+    width: 15%;
+    font-size: 20px;
+    border-radius: 15px;
+    background-color: #ECB2B2;
+    color: black;
+    font-weight: bold;
+}
+.BoddariSave-btn {
+    display: flex;
+    justify-content: space-evenly;
+}
