@@ -3,9 +3,10 @@ import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import Rating from "@mui/material/Rating";
 import { useSelector } from "react-redux";
+
 import "./Detail.scss";
 
-const Detail = () => {
+const Detail = ({history}) => {
   const params = useParams().attractionId;
   const [detailData, setDetailData] = useState("");
   const [value, setValue] = useState(0);
@@ -54,6 +55,9 @@ const Detail = () => {
   return (
     <>
       <div className="attrDetail">
+            <button onClick={( ) => {
+              history.goBack();
+            }}>이전</button>
         <img
           className="attrDetailImg"
           src={detailData.image}

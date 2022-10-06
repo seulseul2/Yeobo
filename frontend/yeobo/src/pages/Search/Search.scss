@@ -38,3 +38,8 @@ button {
   border: none;
   flex-grow: 1;
 }
+.tab {
+  button {
+    border-bottom: 1px solid black;
+  }
+}

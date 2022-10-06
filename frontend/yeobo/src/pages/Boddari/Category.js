@@ -2,11 +2,16 @@ import axios from 'axios';
 import {useState} from 'react'
 import { useNavigate } from 'react-router-dom';
 import './Category.scss';
+import Loading from '../component/Loading';
 
 const Category = () => {
   const [attractionList, setAttractionList] = useState(null)
+  const [loading, setLoading] = useState(false);
+
   const navigate = useNavigate();
   const getCategory = async (categoryId) => {
+    setLoading(true);
+    
     try {
       const response = await axios({
         url: `https://j7c103.p.ssafy.io/django/MakeBoddari/PickCategory/${categoryId}/`,
@@ -15,16 +20,19 @@ const Category = () => {
       console.log(response.data);
       setAttractionList(response.data);
       const result = response.data
+      setLoading(false);
       setTimeout(() => {
         navigate('/Boddari', {state: {result: result}});
       }, 1000)
     } catch (err) {
+      setLoading(false);
       console.log(err);
       alert('에러발생! 다시 시도해주세요!')
     }
   }
   return (
     <div className='category'>
+      {loading ? <Loading /> : null}
        <div className="header">
         <p>보따리 만들기</p>
       </div>
