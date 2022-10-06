@@ -121,7 +121,7 @@ public class AttractionController {
         HttpHeaders headers= new HttpHeaders();
         headers.setContentType(new MediaType("application", "json", Charset.forName("UTF-8")));
         try {
-            List<ScoreDto> attraction = attractionService.findAllScoreByUserId(userId);
+            List<AttractionScoreDto> attraction = attractionService.findAllScoreByUserId(userId);
             if(!attraction.isEmpty()){
                 message.setMessage("사용자가 평점 남긴 여행지 리스트 조회 성공");
             }else{
