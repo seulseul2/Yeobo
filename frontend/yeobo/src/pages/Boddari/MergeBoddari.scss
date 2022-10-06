@@ -1,5 +1,5 @@
 .mergeBoddari {
-  font-family: 'bazzi';
+  font-family: "bazzi";
 }
 .my-item-content {
   display: flex;
@@ -24,7 +24,7 @@
   border: 3px solid black;
 }
 
-.otherName { 
+.otherName {
   text-align: left;
 }
 .myName {
@@ -37,7 +37,7 @@
   align-items: center;
 }
 
-.other{ 
+.other {
   display: flex;
   justify-content: center;
   flex-direction: column;
@@ -45,17 +45,16 @@
 }
 
 .otherBtn {
-  border:  1px solid black;
-    font-size: 15px;
-    width: 60px;
-    border-radius: 15px;
-    font-size: 20px;
-
+  border: 1px solid black;
+  font-size: 15px;
+  width: 60px;
+  border-radius: 15px;
+  font-size: 20px;
 }
 
 .myBtn {
   font-size: 15px;
-  border:  1px solid black;
+  border: 1px solid black;
   border-radius: 15px;
   font-size: 20px;
   width: 60px;
@@ -92,43 +91,48 @@
 }
 
 .mergeTarget {
-  margin-top : 25px;
+  margin-top: 25px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-    h1{
-      font-size: 25px;
-    }
-    button {
-      padding: 10px;
-      font-size: 25px;
-      width: 100px;
-      border-radius: 15px;
-      box-shadow: 1px 1px 1px 1px;
-    }
+  h1 {
+    font-size: 25px;
   }
+  button {
+    padding: 10px;
+    font-size: 25px;
+    width: 100px;
+    border-radius: 15px;
+    box-shadow: 1px 1px 1px 1px;
+  }
+}
 
-  // .addBod {
-  //   width: 250px;
-  //   border: 1px solid black;
-  //   display: flex;
-  //   flex-direction: column;
-  //   align-items: center;
-  //   border-radius: 15px;
-  // }
+// .addBod {
+//   width: 250px;
+//   border: 1px solid black;
+//   display: flex;
+//   flex-direction: column;
+//   align-items: center;
+//   border-radius: 15px;
+// }
 
-  .bagid1 {
-    position: absolute;
-    color: rgba(232, 139, 164, 0.8);
-    margin-left: 250px;
-    margin-top: 15px;
-    font-size: 18px;
-  }
-  .bagid2 {
-    position: absolute;
-    color: rgba(232, 139, 164, 0.8);
-    margin-left: 250px;
-    margin-top: 60px;
-    font-size: 18px;
-  }
+.bagid1 {
+  position: absolute;
+  color: rgba(232, 139, 164, 0.8);
+  margin-left: 250px;
+  margin-top: 15px;
+  font-size: 18px;
+}
+.bagid2 {
+  position: absolute;
+  color: rgba(232, 139, 164, 0.8);
+  margin-left: 250px;
+  margin-top: 60px;
+  font-size: 18px;
+}
+
+.text-center {
+  text-align: center;
+  justify-content: space-between;
+}

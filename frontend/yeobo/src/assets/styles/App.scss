@@ -5,3 +5,20 @@
 body {
   background-color: #f5f5f5;
 }
+
+.backBtn {
+  position: fixed;
+  width: 30px;
+  top: 15px;
+  left: 15px;
+}
+.afterBtn {
+  position: fixed;
+  width: 30px;
+  top: 15px;
+  right: 15px;
+}
+
+.text-center {
+  justify-content: center;
+}
