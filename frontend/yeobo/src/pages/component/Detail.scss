@@ -1,12 +1,19 @@
 .attrDetail {
+  font-family: "Pretendard-Regular";
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 2px 2px 2px #c7c7c7;
   display: flex;
   flex-direction: column;
-  padding: 24px 12px;
+  padding: 24px 24px;
+  margin: 2px;
   p {
     text-align: center;
     // color: black;
   }
   .attrDetailImg {
+    border-radius: 10px;
+    box-shadow: 2px 2px 2px #c7c7c7;
   }
   .attrDetailName {
     padding: 12px 0;
@@ -21,6 +28,8 @@
   }
   .attrDetailDesc {
     padding: 12px 0;
+    line-height: 1.6;
+    text-align: start;
   }
 }
 

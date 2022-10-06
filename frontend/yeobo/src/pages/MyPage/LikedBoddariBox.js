@@ -5,11 +5,6 @@ import axios from "axios";
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
-
-// Import Swiper styles
-import "swiper/css";
-import "swiper/css/pagination";
-
 import "./BoddariBox.scss";
 
 function MypageList(props) {
