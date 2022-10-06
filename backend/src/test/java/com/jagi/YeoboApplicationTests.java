@@ -8,6 +8,7 @@ import com.jagi.yeobo.domain.repository.BagRepository;
 import com.jagi.yeobo.domain.repository.ScoreRepository;
 import com.jagi.yeobo.dto.AttractionScoreDto;
 import com.jagi.yeobo.dto.BagDetailDto;
+import com.jagi.yeobo.dto.PopularBagDto;
 import com.jagi.yeobo.dto.ScoreDto;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -69,6 +70,12 @@ class YeoboApplicationTests {
 		BagDetailDto bag = bagRepository.searchDetailBag(2,2);
 //		BagDetailDto bag = bagRepository.searchDetailBag(10,2);
 		System.out.println(bag.toString());
+	}
+
+	@Test
+	public void 인기보따리조회(){
+		List<PopularBagDto> bag = bagRepository.searchPopularBagList();
+		System.out.println(bag);
 	}
 
 }
