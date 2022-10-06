@@ -94,7 +94,7 @@ public class BagRepository {
          if(!bagList.isEmpty()){
              for(Bag b : bagList){
                  User user = em.find(User.class, b.getUserId().getId());
-                 bagDtoList.add(new PopularBagDto(b.getName(), b.getMemo(),b.getBagImage(), user.getNickname()));
+                 bagDtoList.add(new PopularBagDto(b.getName(), b.getMemo(),b.getBagImage(), user.getNickname(),b.getId()));
              }
          }
          return bagDtoList;
