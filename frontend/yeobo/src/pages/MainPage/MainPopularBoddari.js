@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import "./MainPopularBoddari.scss";
 import axios from "axios";
 import { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { useState } from "react";
 
 function Like(like) {
