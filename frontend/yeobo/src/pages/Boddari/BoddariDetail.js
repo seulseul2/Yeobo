@@ -13,7 +13,7 @@ const BoddariDetail = () => {
   const params = useParams().BoddariId;
   const [detailData, setDetailData] = useState('');
   const [chkLike, setChkLike] = useState(false);
-  const userId = 1
+  const userId = useSelector((state) => state.authToken.userId);
 
 
   // <-- 디테일 정보 가져오기 useEffect 실행 -->
