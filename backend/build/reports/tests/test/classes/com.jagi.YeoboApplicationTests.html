@@ -41,7 +41,7 @@
 </td>
 <td>
 <div class="infoBox" id="duration">
-<div class="counter">0.590s</div>
+<div class="counter">0.920s</div>
 <p>duration</p>
 </div>
 </td>
@@ -78,8 +78,8 @@
 </tr>
 </thead>
 <tr>
-<td class="success">여행지상세보기()</td>
-<td class="success">0.590s</td>
+<td class="success">인기보따리조회()</td>
+<td class="success">0.920s</td>
 <td class="success">passed</td>
 </tr>
 </table>
@@ -87,21 +87,21 @@
 <div id="tab1" class="tab">
 <h2>Standard output</h2>
 <span class="code">
-<pre>00:36:06.686 [Test worker] DEBUG org.springframework.test.context.BootstrapUtils - Instantiating CacheAwareContextLoaderDelegate from class [org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate]
-00:36:06.702 [Test worker] DEBUG org.springframework.test.context.BootstrapUtils - Instantiating BootstrapContext using constructor [public org.springframework.test.context.support.DefaultBootstrapContext(java.lang.Class,org.springframework.test.context.CacheAwareContextLoaderDelegate)]
-00:36:06.752 [Test worker] DEBUG org.springframework.test.context.BootstrapUtils - Instantiating TestContextBootstrapper for test class [com.jagi.YeoboApplicationTests] from class [org.springframework.boot.test.context.SpringBootTestContextBootstrapper]
-00:36:06.770 [Test worker] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper - Neither @ContextConfiguration nor @ContextHierarchy found for test class [com.jagi.YeoboApplicationTests], using SpringBootContextLoader
-00:36:06.777 [Test worker] DEBUG org.springframework.test.context.support.AbstractContextLoader - Did not detect default resource location for test class [com.jagi.YeoboApplicationTests]: class path resource [com/jagi/YeoboApplicationTests-context.xml] does not exist
-00:36:06.778 [Test worker] DEBUG org.springframework.test.context.support.AbstractContextLoader - Did not detect default resource location for test class [com.jagi.YeoboApplicationTests]: class path resource [com/jagi/YeoboApplicationTestsContext.groovy] does not exist
-00:36:06.779 [Test worker] INFO org.springframework.test.context.support.AbstractContextLoader - Could not detect default resource locations for test class [com.jagi.YeoboApplicationTests]: no resource found for suffixes {-context.xml, Context.groovy}.
-00:36:06.780 [Test worker] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils - Could not detect default configuration classes for test class [com.jagi.YeoboApplicationTests]: YeoboApplicationTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
-00:36:06.872 [Test worker] DEBUG org.springframework.test.context.support.ActiveProfilesUtils - Could not find an 'annotation declaring class' for annotation type [org.springframework.test.context.ActiveProfiles] and class [com.jagi.YeoboApplicationTests]
-00:36:07.037 [Test worker] DEBUG org.springframework.context.annotation.ClassPathScanningCandidateComponentProvider - Identified candidate component class: file [C:\Users\user\Yeobo\S07P22C103\backend\build\classes\java\main\com\jagi\YeoboApplication.class]
-00:36:07.039 [Test worker] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper - Found @SpringBootConfiguration com.jagi.YeoboApplication for test class com.jagi.YeoboApplicationTests
-00:36:07.211 [Test worker] DEBUG org.springframework.boot.test.context.SpringBootTestContextBootstrapper - @TestExecutionListeners is not present for class [com.jagi.YeoboApplicationTests]: using defaults.
-00:36:07.212 [Test worker] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper - Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.security.test.context.support.WithSecurityContextTestExecutionListener, org.springframework.security.test.context.support.ReactorContextTestExecutionListener, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener, org.springframework.boot.test.autoconfigure.webservices.client.MockWebServiceServerTestExecutionListener, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener, org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.event.ApplicationEventsTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener, org.springframework.test.context.event.EventPublishingTestExecutionListener]
-00:36:07.259 [Test worker] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper - Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@117632cf, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@2fb68ec6, org.springframework.test.context.event.ApplicationEventsTestExecutionListener@d71adc2, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener@3add81c4, org.springframework.boot.test.autoconfigure.SpringBootDependencyInjectionTestExecutionListener@1a1d3c1a, org.springframework.test.context.support.DirtiesContextTestExecutionListener@1c65121, org.springframework.test.context.transaction.TransactionalTestExecutionListener@159e366, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener@57dc9128, org.springframework.security.test.context.support.WithSecurityContextTestExecutionListener@24528a25, org.springframework.test.context.event.EventPublishingTestExecutionListener@17ae98d7, org.springframework.security.test.context.support.ReactorContextTestExecutionListener@59221b97, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener@6ac4944a, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener@5a772895, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener@39fc6b2c, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener@704b2127, org.springframework.boot.test.autoconfigure.webservices.client.MockWebServiceServerTestExecutionListener@3ee39da0, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener@5d332969]
-00:36:07.266 [Test worker] DEBUG org.springframework.test.context.support.AbstractDirtiesContextTestExecutionListener - Before test class: context [DefaultTestContext@282308c3 testClass = YeoboApplicationTests, testInstance = [null], testMethod = [null], testException = [null], mergedContextConfiguration = [WebMergedContextConfiguration@5dda14d0 testClass = YeoboApplicationTests, locations = '{}', classes = '{class com.jagi.YeoboApplication}', contextInitializerClasses = '[]', activeProfiles = '{}', propertySourceLocations = '{}', propertySourceProperties = '{org.springframework.boot.test.context.SpringBootTestContextBootstrapper=true}', contextCustomizers = set[org.springframework.boot.test.autoconfigure.actuate.metrics.MetricsExportContextCustomizerFactory$DisableMetricExportContextCustomizer@37bd68c3, org.springframework.boot.test.autoconfigure.properties.PropertyMappingContextCustomizer@0, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverContextCustomizerFactory$Customizer@3c435123, org.springframework.boot.test.context.filter.ExcludeFilterContextCustomizer@78a287ed, org.springframework.boot.test.json.DuplicateJsonObjectContextCustomizerFactory$DuplicateJsonObjectContextCustomizer@485a3466, org.springframework.boot.test.mock.mockito.MockitoContextCustomizer@0, org.springframework.boot.test.web.client.TestRestTemplateContextCustomizer@47404bea, org.springframework.boot.test.context.SpringBootTestArgs@1, org.springframework.boot.test.context.SpringBootTestWebEnvironment@5456afaa], resourceBasePath = 'src/main/webapp', contextLoader = 'org.springframework.boot.test.context.SpringBootContextLoader', parent = [null]], attributes = map['org.springframework.test.context.web.ServletTestExecutionListener.activateListener' -&gt; true]], class annotated with @DirtiesContext [false] with mode [null].
+<pre>02:56:52.480 [Test worker] DEBUG org.springframework.test.context.BootstrapUtils - Instantiating CacheAwareContextLoaderDelegate from class [org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate]
+02:56:52.498 [Test worker] DEBUG org.springframework.test.context.BootstrapUtils - Instantiating BootstrapContext using constructor [public org.springframework.test.context.support.DefaultBootstrapContext(java.lang.Class,org.springframework.test.context.CacheAwareContextLoaderDelegate)]
+02:56:52.698 [Test worker] DEBUG org.springframework.test.context.BootstrapUtils - Instantiating TestContextBootstrapper for test class [com.jagi.YeoboApplicationTests] from class [org.springframework.boot.test.context.SpringBootTestContextBootstrapper]
+02:56:52.775 [Test worker] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper - Neither @ContextConfiguration nor @ContextHierarchy found for test class [com.jagi.YeoboApplicationTests], using SpringBootContextLoader
+02:56:52.802 [Test worker] DEBUG org.springframework.test.context.support.AbstractContextLoader - Did not detect default resource location for test class [com.jagi.YeoboApplicationTests]: class path resource [com/jagi/YeoboApplicationTests-context.xml] does not exist
+02:56:52.805 [Test worker] DEBUG org.springframework.test.context.support.AbstractContextLoader - Did not detect default resource location for test class [com.jagi.YeoboApplicationTests]: class path resource [com/jagi/YeoboApplicationTestsContext.groovy] does not exist
+02:56:52.805 [Test worker] INFO org.springframework.test.context.support.AbstractContextLoader - Could not detect default resource locations for test class [com.jagi.YeoboApplicationTests]: no resource found for suffixes {-context.xml, Context.groovy}.
+02:56:52.807 [Test worker] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils - Could not detect default configuration classes for test class [com.jagi.YeoboApplicationTests]: YeoboApplicationTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+02:56:52.952 [Test worker] DEBUG org.springframework.test.context.support.ActiveProfilesUtils - Could not find an 'annotation declaring class' for annotation type [org.springframework.test.context.ActiveProfiles] and class [com.jagi.YeoboApplicationTests]
+02:56:53.157 [Test worker] DEBUG org.springframework.context.annotation.ClassPathScanningCandidateComponentProvider - Identified candidate component class: file [C:\Users\user\Yeobo\S07P22C103\backend\build\classes\java\main\com\jagi\YeoboApplication.class]
+02:56:53.159 [Test worker] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper - Found @SpringBootConfiguration com.jagi.YeoboApplication for test class com.jagi.YeoboApplicationTests
+02:56:53.412 [Test worker] DEBUG org.springframework.boot.test.context.SpringBootTestContextBootstrapper - @TestExecutionListeners is not present for class [com.jagi.YeoboApplicationTests]: using defaults.
+02:56:53.413 [Test worker] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper - Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.security.test.context.support.WithSecurityContextTestExecutionListener, org.springframework.security.test.context.support.ReactorContextTestExecutionListener, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener, org.springframework.boot.test.autoconfigure.webservices.client.MockWebServiceServerTestExecutionListener, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener, org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.event.ApplicationEventsTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener, org.springframework.test.context.event.EventPublishingTestExecutionListener]
+02:56:53.524 [Test worker] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper - Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@d71adc2, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@3add81c4, org.springframework.test.context.event.ApplicationEventsTestExecutionListener@1a1d3c1a, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener@1c65121, org.springframework.boot.test.autoconfigure.SpringBootDependencyInjectionTestExecutionListener@159e366, org.springframework.test.context.support.DirtiesContextTestExecutionListener@57dc9128, org.springframework.test.context.transaction.TransactionalTestExecutionListener@24528a25, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener@17ae98d7, org.springframework.security.test.context.support.WithSecurityContextTestExecutionListener@59221b97, org.springframework.test.context.event.EventPublishingTestExecutionListener@6ac4944a, org.springframework.security.test.context.support.ReactorContextTestExecutionListener@5a772895, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener@39fc6b2c, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener@704b2127, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener@3ee39da0, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener@5d332969, org.springframework.boot.test.autoconfigure.webservices.client.MockWebServiceServerTestExecutionListener@7cc9ce8, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener@2e27d72f]
+02:56:53.541 [Test worker] DEBUG org.springframework.test.context.support.AbstractDirtiesContextTestExecutionListener - Before test class: context [DefaultTestContext@1db0ec27 testClass = YeoboApplicationTests, testInstance = [null], testMethod = [null], testException = [null], mergedContextConfiguration = [WebMergedContextConfiguration@3d9fc57a testClass = YeoboApplicationTests, locations = '{}', classes = '{class com.jagi.YeoboApplication}', contextInitializerClasses = '[]', activeProfiles = '{}', propertySourceLocations = '{}', propertySourceProperties = '{org.springframework.boot.test.context.SpringBootTestContextBootstrapper=true}', contextCustomizers = set[org.springframework.boot.test.autoconfigure.actuate.metrics.MetricsExportContextCustomizerFactory$DisableMetricExportContextCustomizer@11eadcba, org.springframework.boot.test.autoconfigure.properties.PropertyMappingContextCustomizer@0, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverContextCustomizerFactory$Customizer@3a62c01e, org.springframework.boot.test.context.filter.ExcludeFilterContextCustomizer@5357c287, org.springframework.boot.test.json.DuplicateJsonObjectContextCustomizerFactory$DuplicateJsonObjectContextCustomizer@2b43529a, org.springframework.boot.test.mock.mockito.MockitoContextCustomizer@0, org.springframework.boot.test.web.client.TestRestTemplateContextCustomizer@5d018107, org.springframework.boot.test.context.SpringBootTestArgs@1, org.springframework.boot.test.context.SpringBootTestWebEnvironment@6692b6c6], resourceBasePath = 'src/main/webapp', contextLoader = 'org.springframework.boot.test.context.SpringBootContextLoader', parent = [null]], attributes = map['org.springframework.test.context.web.ServletTestExecutionListener.activateListener' -&gt; true]], class annotated with @DirtiesContext [false] with mode [null].
 
   .   ____          _            __ _ _
  /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
@@ -111,67 +111,121 @@
  =========|_|==============|___/=/_/_/_/
  :: Spring Boot ::                (v2.7.3)
 
-2022-10-07 00:36:07.882  INFO 6976 --- [    Test worker] com.jagi.YeoboApplicationTests           : Starting YeoboApplicationTests using Java 11.0.15.1 on DESKTOP-HDQKHVQ with PID 6976 (started by user in C:\Users\user\Yeobo\S07P22C103\backend)
-2022-10-07 00:36:07.885  INFO 6976 --- [    Test worker] com.jagi.YeoboApplicationTests           : The following 1 profile is active: &quot;oauth&quot;
-2022-10-07 00:36:09.794  INFO 6976 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2022-10-07 00:36:09.928  INFO 6976 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 117 ms. Found 3 JPA repository interfaces.
-2022-10-07 00:36:11.469  INFO 6976 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
-2022-10-07 00:36:11.670  INFO 6976 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
-2022-10-07 00:36:11.931  INFO 6976 --- [    Test worker] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
-2022-10-07 00:36:12.060  INFO 6976 --- [    Test worker] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.6.10.Final
-2022-10-07 00:36:12.455  INFO 6976 --- [    Test worker] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
-2022-10-07 00:36:12.763  INFO 6976 --- [    Test worker] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MariaDB103Dialect
-2022-10-07 00:36:14.816  INFO 6976 --- [    Test worker] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
-2022-10-07 00:36:14.829  INFO 6976 --- [    Test worker] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
-2022-10-07 00:36:15.996  WARN 6976 --- [    Test worker] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2022-10-07 02:56:54.424  INFO 15012 --- [    Test worker] com.jagi.YeoboApplicationTests           : Starting YeoboApplicationTests using Java 11.0.15.1 on DESKTOP-HDQKHVQ with PID 15012 (started by user in C:\Users\user\Yeobo\S07P22C103\backend)
+2022-10-07 02:56:54.426  INFO 15012 --- [    Test worker] com.jagi.YeoboApplicationTests           : The following 1 profile is active: &quot;oauth&quot;
+2022-10-07 02:56:56.774  INFO 15012 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2022-10-07 02:56:56.918  INFO 15012 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 126 ms. Found 3 JPA repository interfaces.
+2022-10-07 02:56:58.556  INFO 15012 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2022-10-07 02:56:58.767  INFO 15012 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2022-10-07 02:56:59.012  INFO 15012 --- [    Test worker] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2022-10-07 02:56:59.142  INFO 15012 --- [    Test worker] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.6.10.Final
+2022-10-07 02:56:59.537  INFO 15012 --- [    Test worker] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2022-10-07 02:56:59.812  INFO 15012 --- [    Test worker] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MariaDB103Dialect
+2022-10-07 02:57:01.861  INFO 15012 --- [    Test worker] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2022-10-07 02:57:01.874  INFO 15012 --- [    Test worker] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2022-10-07 02:57:03.216  WARN 15012 --- [    Test worker] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
 --------configure--------
-2022-10-07 00:36:18.164  INFO 6976 --- [    Test worker] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@30eed725, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@1a44ad96, org.springframework.security.web.context.SecurityContextPersistenceFilter@3f213e97, org.springframework.security.web.header.HeaderWriterFilter@6b26839d, org.springframework.web.filter.CorsFilter@6acdca3a, org.springframework.security.web.authentication.logout.LogoutFilter@72364a40, org.springframework.security.oauth2.client.web.OAuth2AuthorizationRequestRedirectFilter@1aaa3406, org.springframework.security.oauth2.client.web.OAuth2LoginAuthenticationFilter@828e2d8, com.jagi.yeobo.config.security.JwtAuthenticationFilter@32ae890, com.jagi.yeobo.config.security.JwtAuthenticationFilter@45bb502f, org.springframework.security.web.authentication.ui.DefaultLoginPageGeneratingFilter@1c61f9bf, org.springframework.security.web.authentication.ui.DefaultLogoutPageGeneratingFilter@7aac6d13, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@175c4ae5, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@205d6f84, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@7e34e466, org.springframework.security.web.session.SessionManagementFilter@157ff8f8, org.springframework.security.web.access.ExceptionTranslationFilter@533165e7, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@6114902c]
-2022-10-07 00:36:18.877  WARN 6976 --- [    Test worker] o.s.b.a.m.MustacheAutoConfiguration      : Cannot find template location: classpath:/templates/ (please add some templates, check your Mustache configuration, or set spring.mustache.check-template-location=false)
-2022-10-07 00:36:19.907  WARN 6976 --- [    Test worker] d.s.r.o.OperationImplicitParameterReader : Unable to interpret the implicit parameter configuration with dataType: long, dataTypeClass: class java.lang.Void
-2022-10-07 00:36:19.959  WARN 6976 --- [    Test worker] d.s.r.o.OperationImplicitParameterReader : Unable to interpret the implicit parameter configuration with dataType: , dataTypeClass: class java.lang.Void
-2022-10-07 00:36:19.959  WARN 6976 --- [    Test worker] d.s.r.o.OperationImplicitParameterReader : Unable to interpret the implicit parameter configuration with dataType: , dataTypeClass: class java.lang.Void
-2022-10-07 00:36:20.008  INFO 6976 --- [    Test worker] s.a.ScheduledAnnotationBeanPostProcessor : No TaskScheduler/ScheduledExecutorService bean found for scheduled processing
-2022-10-07 00:36:20.031  INFO 6976 --- [    Test worker] com.jagi.YeoboApplicationTests           : Started YeoboApplicationTests in 12.706 seconds (JVM running for 15.395)
-2022-10-07 00:36:20.299 DEBUG 6976 --- [    Test worker] org.hibernate.SQL                        : 
+2022-10-07 02:57:05.947  INFO 15012 --- [    Test worker] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@686ee555, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@4fc00158, org.springframework.security.web.context.SecurityContextPersistenceFilter@54151d07, org.springframework.security.web.header.HeaderWriterFilter@533165e7, org.springframework.web.filter.CorsFilter@47483211, org.springframework.security.web.authentication.logout.LogoutFilter@70ed03e4, org.springframework.security.oauth2.client.web.OAuth2AuthorizationRequestRedirectFilter@17fbbf0a, org.springframework.security.oauth2.client.web.OAuth2LoginAuthenticationFilter@d41518b, com.jagi.yeobo.config.security.JwtAuthenticationFilter@8ba7408, com.jagi.yeobo.config.security.JwtAuthenticationFilter@17616c07, org.springframework.security.web.authentication.ui.DefaultLoginPageGeneratingFilter@7d3b4646, org.springframework.security.web.authentication.ui.DefaultLogoutPageGeneratingFilter@58e46572, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@6b26839d, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@67263db7, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@5eba0cc5, org.springframework.security.web.session.SessionManagementFilter@75eca6d8, org.springframework.security.web.access.ExceptionTranslationFilter@394a7390, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@26401eda]
+2022-10-07 02:57:06.795  WARN 15012 --- [    Test worker] o.s.b.a.m.MustacheAutoConfiguration      : Cannot find template location: classpath:/templates/ (please add some templates, check your Mustache configuration, or set spring.mustache.check-template-location=false)
+2022-10-07 02:57:07.939  WARN 15012 --- [    Test worker] d.s.r.o.OperationImplicitParameterReader : Unable to interpret the implicit parameter configuration with dataType: long, dataTypeClass: class java.lang.Void
+2022-10-07 02:57:07.989  WARN 15012 --- [    Test worker] d.s.r.o.OperationImplicitParameterReader : Unable to interpret the implicit parameter configuration with dataType: , dataTypeClass: class java.lang.Void
+2022-10-07 02:57:07.989  WARN 15012 --- [    Test worker] d.s.r.o.OperationImplicitParameterReader : Unable to interpret the implicit parameter configuration with dataType: , dataTypeClass: class java.lang.Void
+2022-10-07 02:57:08.035  INFO 15012 --- [    Test worker] s.a.ScheduledAnnotationBeanPostProcessor : No TaskScheduler/ScheduledExecutorService bean found for scheduled processing
+2022-10-07 02:57:08.053  INFO 15012 --- [    Test worker] com.jagi.YeoboApplicationTests           : Started YeoboApplicationTests in 14.374 seconds (JVM running for 17.707)
+2022-10-07 02:57:08.746 DEBUG 15012 --- [    Test worker] org.hibernate.SQL                        : 
     select
-        bag0_.bag_id as bag_id1_2_0_,
-        bag0_.bag_image as bag_imag2_2_0_,
-        bag0_.create_time as create_t3_2_0_,
-        bag0_.link_cnt as link_cnt4_2_0_,
-        bag0_.memo as memo5_2_0_,
-        bag0_.name as name6_2_0_,
-        bag0_.user_id as user_id7_2_0_ 
+        bag0_.bag_id as bag_id1_2_,
+        bag0_.bag_image as bag_imag2_2_,
+        bag0_.create_time as create_t3_2_,
+        bag0_.link_cnt as link_cnt4_2_,
+        bag0_.memo as memo5_2_,
+        bag0_.name as name6_2_,
+        bag0_.user_id as user_id7_2_ 
     from
         bag bag0_ 
-    where
-        bag0_.bag_id=?
-2022-10-07 00:36:20.578 DEBUG 6976 --- [    Test worker] org.hibernate.SQL                        : 
+    order by
+        bag0_.link_cnt DESC limit ?
+2022-10-07 02:57:08.884 DEBUG 15012 --- [    Test worker] org.hibernate.SQL                        : 
     select
-        attraction1_.attraction_id as col_0_0_,
-        attraction1_.name as col_1_0_,
-        attraction1_.image as col_2_0_ 
+        user0_.user_id as user_id1_7_0_,
+        user0_.age as age2_7_0_,
+        user0_.email as email3_7_0_,
+        user0_.gender as gender4_7_0_,
+        user0_.nickname as nickname5_7_0_,
+        user0_.password as password6_7_0_,
+        user0_.profile_path as profile_7_7_0_,
+        user0_.refresh_token as refresh_8_7_0_,
+        user0_.role as role9_7_0_,
+        roles1_.user_user_id as user_use1_8_1_,
+        roles1_.roles as roles2_8_1_ 
     from
-        bag_attraction bagattract0_ 
-    inner join
-        attraction attraction1_ 
-            on (
-                bagattract0_.attraction_id=attraction1_.attraction_id
-            ) 
+        user user0_ 
+    left outer join
+        user_roles roles1_ 
+            on user0_.user_id=roles1_.user_user_id 
     where
-        bagattract0_.bag_id=?
-여기까지 되었니
-2022-10-07 00:36:20.613 DEBUG 6976 --- [    Test worker] org.hibernate.SQL                        : 
+        user0_.user_id=?
+2022-10-07 02:57:08.933 DEBUG 15012 --- [    Test worker] org.hibernate.SQL                        : 
     select
-        pick0_.pick_id as pick_id1_4_,
-        pick0_.bag_id as bag_id2_4_,
-        pick0_.user_id as user_id3_4_ 
+        user0_.user_id as user_id1_7_0_,
+        user0_.age as age2_7_0_,
+        user0_.email as email3_7_0_,
+        user0_.gender as gender4_7_0_,
+        user0_.nickname as nickname5_7_0_,
+        user0_.password as password6_7_0_,
+        user0_.profile_path as profile_7_7_0_,
+        user0_.refresh_token as refresh_8_7_0_,
+        user0_.role as role9_7_0_,
+        roles1_.user_user_id as user_use1_8_1_,
+        roles1_.roles as roles2_8_1_ 
     from
-        pick pick0_ 
+        user user0_ 
+    left outer join
+        user_roles roles1_ 
+            on user0_.user_id=roles1_.user_user_id 
     where
-        pick0_.user_id=? 
-        and pick0_.bag_id=?
-여기는?
-BagDetailDto(name=테스트, memo=테스트보따리, attraction=[AttractionDto(id=2736392, name=청학 수변공원, img=http://tong.visitkorea.or.kr/cms/resource/12/2736512_image2_1.jpg), AttractionDto(id=125617, name=제왕산/능경봉, img=http://tong.visitkorea.or.kr/cms/resource/83/1841483_image2_1.jpg), AttractionDto(id=125417, name=국립 대관령자연휴양림, img=http://tong.visitkorea.or.kr/cms/resource/96/598296_image2_1.jpg), AttractionDto(id=128118, name=델피노호텔&amp;리조트 오션플레이, img=http://tong.visitkorea.or.kr/cms/resource/99/1335499_image2_1.jpg), AttractionDto(id=782856, name=아프리카미술관, img=http://tong.visitkorea.or.kr/cms/resource/46/1837746_image2_1.jpg)], pick=true)
+        user0_.user_id=?
+2022-10-07 02:57:08.945 DEBUG 15012 --- [    Test worker] org.hibernate.SQL                        : 
+    select
+        user0_.user_id as user_id1_7_0_,
+        user0_.age as age2_7_0_,
+        user0_.email as email3_7_0_,
+        user0_.gender as gender4_7_0_,
+        user0_.nickname as nickname5_7_0_,
+        user0_.password as password6_7_0_,
+        user0_.profile_path as profile_7_7_0_,
+        user0_.refresh_token as refresh_8_7_0_,
+        user0_.role as role9_7_0_,
+        roles1_.user_user_id as user_use1_8_1_,
+        roles1_.roles as roles2_8_1_ 
+    from
+        user user0_ 
+    left outer join
+        user_roles roles1_ 
+            on user0_.user_id=roles1_.user_user_id 
+    where
+        user0_.user_id=?
+2022-10-07 02:57:08.959 DEBUG 15012 --- [    Test worker] org.hibernate.SQL                        : 
+    select
+        user0_.user_id as user_id1_7_0_,
+        user0_.age as age2_7_0_,
+        user0_.email as email3_7_0_,
+        user0_.gender as gender4_7_0_,
+        user0_.nickname as nickname5_7_0_,
+        user0_.password as password6_7_0_,
+        user0_.profile_path as profile_7_7_0_,
+        user0_.refresh_token as refresh_8_7_0_,
+        user0_.role as role9_7_0_,
+        roles1_.user_user_id as user_use1_8_1_,
+        roles1_.roles as roles2_8_1_ 
+    from
+        user user0_ 
+    left outer join
+        user_roles roles1_ 
+            on user0_.user_id=roles1_.user_user_id 
+    where
+        user0_.user_id=?
+[PopularBagDto(name=string, memo=string, image=http://tong.visitkorea.or.kr/cms/resource/69/2795669_image2_1.jpg, userName=sss, id=14), PopularBagDto(name=해수욕장3, memo=test1, image=http://tong.visitkorea.or.kr/cms/resource/21/2657021_image2_1.jpg, userName=sss, id=15), PopularBagDto(name=해수욕장1, memo=test1, image=http://tong.visitkorea.or.kr/cms/resource/21/2657021_image2_1.jpg, userName=sss, id=13), PopularBagDto(name=공원보따리, memo=공원보따리, image=http://tong.visitkorea.or.kr/cms/resource/13/2029513_image2_1.jpg, userName=seulnue, id=66)]
 </pre>
 </span>
 </div>
@@ -183,7 +237,7 @@ BagDetailDto(name=테스트, memo=테스트보따리, attraction=[AttractionDto(
 <input id="line-wrapping-toggle" type="checkbox" autocomplete="off"/>
 </label>
 </div>Generated by 
-<a href="http://www.gradle.org">Gradle 7.5</a> at 2022. 10. 7. 오전 12:36:20</p>
+<a href="http://www.gradle.org">Gradle 7.5</a> at 2022. 10. 7. 오전 2:57:09</p>
 </div>
 </div>
 </body>

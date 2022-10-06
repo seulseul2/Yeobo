@@ -9,6 +9,7 @@ import lombok.*;
 @RequiredArgsConstructor
 @Builder
 @AllArgsConstructor
+@ToString
 public class PopularBagDto {
 
     private String name;
@@ -16,6 +17,7 @@ public class PopularBagDto {
     private String image;
 
     private String userName;
+    private Long id;
 
 
 }
