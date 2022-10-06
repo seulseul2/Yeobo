@@ -1,0 +1,81 @@
+.maintop {
+  background-color: #F49B9B;
+  color: white;
+  padding: 30px 40px;
+  font-family: 'GongGothicMedium';
+  margin-bottom: 10px;
+  border-radius: 15px;
+
+  .titleModule {
+    color: white;
+    .title{
+      font-size: 44px;
+      // padding-top: 24px;
+      font-family: 'Bazzi';
+      text-shadow: #a1a0a0 2px 2px 2px;
+    }
+    .subTitle{
+      // font-family: 'Pretendard-Regular';
+      font-family: 'Bazzi';
+      font-weight: 500;
+      padding: 0 0 24px 0;
+      color: white;
+      text-shadow: #a1a0a0 2px 2px 2px;
+    }
+  }
+  
+  .searchBar {
+    border-radius: 10px;
+    color: #454545;
+    display: flex;
+    background-color: #F5F5F5;
+    height: 42px;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.419);
+    align-items: center;
+  }
+  .searchItem {
+    flex: none;
+    margin: 0 10px;
+  }
+  .searchButton {
+    padding: 0;
+    margin: 0;
+    max-width: 30px;
+  }
+  .searchIcon:hover {
+    cursor: pointer;
+  }
+  .searchDelete {
+    padding-right: 0px;
+  }
+  .searchText {
+    background-color: #F5F5F5;
+    border: none;
+    flex-grow: 1;
+  }
+  .searchText::placeholder {
+    font-size: 12px;
+    color:rgb(135, 128, 128);
+    font-weight: 100;
+  }
+  .popularSearchTermsTitle {
+    padding: 24px 0 12px 0;
+    text-align: center;
+    font-size: 20px;
+  }
+  .popularSearchTerms {
+    padding-bottom: 24px;
+    font-size: 15px;
+    font-family: 'Pretendard-Regular';
+    display: flex;
+    justify-content: center;
+    
+    .rankIndex {
+      color: white;
+      padding-right: 10px;
+    }
+    .rankText {
+      color: #F5F5F5
+    }
+  }
+}
