@@ -45,7 +45,7 @@ public class AttractionRepository2 {
             em.persist(score);
 
             Attraction a = em.find(Attraction.class,scoreDto.getAttractionId());// 평균 = 각점수합 / 개수
-            a.setScore(Math.round(((a.getScore()==0?1:a.getScore()) * a.getCnt() + scoreDto.getScore())/(a.getCnt()+1)));
+            a.setScore(Math.round(((a.getScore()==0?1:a.getScore()) * a.getCnt() + scoreDto.getScore())/(a.getCnt()+1)*10)/10);
             a.setCnt(a.getCnt()+1);
 
             return score;
@@ -54,7 +54,7 @@ public class AttractionRepository2 {
             Score score = em.find(Score.class,originScore.getId());
             Attraction a = em.find(Attraction.class,scoreDto.getAttractionId());// 평균 = 각점수합 / 개수
 
-            a.setScore(Math.round(((a.getScore()==0?1:a.getScore()) * a.getCnt() - score.getScore() + scoreDto.getScore())/(a.getCnt())));
+            a.setScore(Math.round(((a.getScore()==0?1:a.getScore()) * a.getCnt() - score.getScore() + scoreDto.getScore())/(a.getCnt())*10)/10);
             score.setScore(scoreDto.getScore());
             return score;
         }
