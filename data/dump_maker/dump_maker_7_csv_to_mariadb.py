@@ -23,7 +23,6 @@ def mysql_save(lst):
 
 df = pd.read_csv('attraction_score_cnt.csv')
 df = df.drop(columns=['Unnamed: 0'])
-print(df)
 
 attraction_list = df.values.tolist()
 mysql_save(attraction_list)
