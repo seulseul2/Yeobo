@@ -21,7 +21,7 @@ a {
 #tab ul {
   white-space: nowrap;
   overflow-x: auto;
-  text-align: center
+  text-align: center;
 }
 
 #tab ul li {
@@ -33,7 +33,6 @@ a {
   position: relative;
   // overflow: hidden;
   // border-radius: 20px;
-  
 }
 
 #tab ul li img {
@@ -41,10 +40,9 @@ a {
   // vertical-align: middle;
 }
 
-#tab ul li img::after{
+#tab ul li img::after {
   // border-radius: 15px;
   // vertical-align: middle;
-  
 }
 
 #tab ul li p {
@@ -58,7 +56,12 @@ a {
   transform: translate(-50%, -50%);
   // background: rgb(255, 255, 255);
   // background: linear-gradient(180deg, rgba(255, 255, 255, 1) 0%, rgba(0, 0, 0, 0.5) 24%, rgba(0, 0, 0, 0.84404184036896) 100%);
-  width: 100%;
+  width: 150px;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  display: -webkit-box;
+  overflow: hidden;
+  line-height: 1.6;
   // border: solid 1px red;
 }
 
@@ -76,6 +79,6 @@ a {
   object-fit: cover;
 }
 
-.mypage-img:after{
+.mypage-img:after {
   background: linear-gradient(to top, #fff, #fff 10%, transparent);
 }

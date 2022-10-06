@@ -212,10 +212,10 @@ const Signup = () => {
           </p>
         </div>
       </div>
-      <div className="login-page">
+      {/* <div className="login-page">
         <p className="social-title">소셜회원가입</p>
-        <div className="social-btns">
-          {/* <a className="social-btn" href="naver.com">
+        <div className="social-btns"> */}
+      {/* <a className="social-btn" href="naver.com">
             <img src={naver} alt="" />
           </a>
           <a className="social-btn" href="naver.com">
@@ -224,9 +224,9 @@ const Signup = () => {
           <a className="social-btn" href="google.com">
             <img src={google} alt="" />
           </a> */}
-          <GoogleLogIn />
+      {/* <GoogleLogIn />
         </div>
-      </div>
+      </div> */}
       <div className="bottomBack"></div>
     </div>
   );

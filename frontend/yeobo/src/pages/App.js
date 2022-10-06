@@ -10,18 +10,16 @@ import Login from "./MainPage/User/Login";
 import GoogleLogin from "./MainPage/User/GoogleLogin";
 import Mypage from "./MyPage/Mypage";
 import Search from "./Search/Search";
-import Detail from '../pages/component/Detail';
+import Detail from "../pages/component/Detail";
 import TestAPI from "./TestAPI";
 import "../assets/styles/App.scss";
 import BottomNavBar from "./BottomNavBar";
-import BoddariDetail from './Boddari/BoddariDetail';
+import BoddariDetail from "./Boddari/BoddariDetail";
 import Page404 from "./Page404";
 import Category from "./Boddari/Category";
 import MergeBoddari from "./Boddari/MergeBoddari";
 
-
 function App() {
-  
   return (
     <div className="App">
       <div>
@@ -34,19 +32,16 @@ function App() {
           {/* 비로그인 */}
           <Route path="/Login" element={<Login />}></Route>
           <Route path="/Signup" element={<Signup />}></Route>
-          <Route path="/category" element={<Category/>}></Route>
-          <Route
-            path="/Detail"
-            element={<Detail />}
-          ></Route>
+          <Route path="/category" element={<Category />}></Route>
+          <Route path="/Detail" element={<Detail />}></Route>
+          <Route path="/Detail/:attractionId" element={<Detail />}></Route>
 
           {/* 로그인 */}
           <Route path="/Mypage" element={<Mypage />}></Route>
-          <Route path="/SaveBoddari" element={<BoddariSave/>}></Route>
-          <Route path='/Search' element={<Search/>}></Route>
-          <Route path='/Detail/:attractionId' element={<Detail/>}></Route>
-          <Route path='/testapi' element={<TestAPI/>}></Route>
-          <Route path='/Betail/:BoddariId'element={<BoddariDetail/>}></Route>
+          <Route path="/SaveBoddari" element={<BoddariSave />}></Route>
+          <Route path="/Search" element={<Search />}></Route>
+          <Route path="/testapi" element={<TestAPI />}></Route>
+          <Route path="/Betail/:BoddariId" element={<BoddariDetail />}></Route>
           <Route path="/MakeBoddari" element={<Category />}></Route>
           <Route path="/Boddari" element={<Boddari />}></Route>
           <Route path="/SaveBoddari" element={<BoddariSave />}></Route>

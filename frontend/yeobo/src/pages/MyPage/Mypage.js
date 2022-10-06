@@ -7,12 +7,15 @@ import profile from "../../assets/images/bag_image/boddari.png";
 import { SET_TOKEN } from "../../store/Auth";
 import NickDialog from "./NickDialog";
 import axios from "axios";
-import { getCookieToken, removeCookieToken, setRefreshToken } from "../../storage/Cookie";
+import {
+  getCookieToken,
+  removeCookieToken,
+  setRefreshToken,
+} from "../../storage/Cookie";
 import { DELETE_TOKEN } from "../../store/Auth";
 import { TOKEN_TIME_OUT } from "../../store/Auth";
 // import { getCookieToken } from "../../storage/Cookie";
 // import { setRefreshToken } from "../../../storage/Cookie";
-
 
 // images
 import pink from "../../assets/images/icons/pinkCircle.png";
@@ -36,7 +39,7 @@ const Mypage = () => {
   const navigate = useNavigate();
   // store에 저장된 Access Token 정보를 받아 온다
   const accessToken = useSelector((state) => state.authToken.accessToken);
-  const refreshToken = getCookieToken()
+  const refreshToken = getCookieToken();
   const userId = useSelector((state) => state.authToken.userId);
   const pictureUrl = useSelector((state) => state.authToken.pictureUrl);
   const nickname = useSelector((state) => state.authToken.nickname);
@@ -50,12 +53,12 @@ const Mypage = () => {
   useEffect(() => {
     setProfileImg(profile);
     console.log("mypage rendering~");
-    console.log(refreshToken)
-    
+    console.log(refreshToken);
+
     axios({
       url: `https://j7c103.p.ssafy.io:8080/api/user/${userId}`,
       method: "get",
-    headers: {
+      headers: {
         "X-AUTH-TOKEN": accessToken,
       },
     })
@@ -71,9 +74,9 @@ const Mypage = () => {
         }
       })
       .catch((err) => {
-        console.log('userinfo err', err)
+        console.log("userinfo err", err);
       });
-      
+
     if (!profileImg) {
       setProfileImg(profile);
     }
@@ -88,12 +91,12 @@ const Mypage = () => {
 
   const logout = () => {
     console.log("로그아웃 시도");
-    console.log(refreshToken)
+    console.log(refreshToken);
     axios({
       url: "https://j7c103.p.ssafy.io:8080/api/logout",
       method: "get",
       headers: {
-        'REFRESH-TOKEN': refreshToken,
+        "REFRESH-TOKEN": refreshToken,
       },
     })
       .then((res) => {
@@ -105,7 +108,7 @@ const Mypage = () => {
         navigate("/"); // 홈으로 이동
       })
       .catch((err) => {
-        console.log('logout err', err);
+        console.log("logout err", err);
         alert(err);
       });
   };
@@ -140,14 +143,17 @@ const Mypage = () => {
       </div>
       <div className="mypageBox">
         <div className="mypageIcons">
-          <a href="#boddariMade">
+          <a className="mypageIcon" href="#boddariMade">
             <img src={pink} alt="" />
+            <p className="text-center">보따리리스트</p>
           </a>
-          <a href="#boddariLiked">
+          <a className="mypageIcon" href="#boddariLiked">
             <img src={purple} alt="" />
+            <p className="text-center">좋아요한 보따리</p>
           </a>
-          <a href="#placeVisited">
+          <a className="mypageIcon" href="#placeVisited">
             <img src={mint} alt="" />
+            <p className="text-center">방문 여행지</p>
           </a>
         </div>
       </div>

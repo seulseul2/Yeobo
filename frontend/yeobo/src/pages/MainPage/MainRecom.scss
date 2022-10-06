@@ -6,22 +6,23 @@
 
   .titleModule {
     // font-family: 'Pretendard-Regular';
-    font-family: 'Bazzi';
+    font-family: "Bazzi";
     color: #454545;
 
-    .mainTitle{
+    .mainTitle {
       font-size: 24px;
       padding-top: 24px;
       font-weight: 800;
     }
-    .subTitle{
+    .subTitle {
       font-size: 14px;
       font-weight: 200;
       padding: 10px 0;
     }
   }
   .imageRecom {
-    ul, li {
+    ul,
+    li {
       list-style: none;
     }
     .imageLists {
@@ -34,7 +35,7 @@
         position: relative;
         width: calc(50% - 10px);
         margin: 0 0 15px 10px;
-        
+
         .imageAtag {
           border-radius: 10px;
           height: 140px;
@@ -49,25 +50,37 @@
             background-size: cover;
             background-position: 50% 50%;
             background-repeat: no-repeat;
-            transition: all .7s;
+            transition: all 0.7s;
           }
         }
 
         .imageText {
           text-align: center;
-          font-family: 'Pretendard-Regular';
+          font-family: "Pretendard-Regular";
           font-weight: 800;
           padding: 10px 0 20px 0;
         }
       }
     }
-    
   }
-
 }
 
 .no-login {
-  font-family: 'Pretendard-Regular';
+  font-family: "Pretendard-Regular";
   font-size: 14px;
   color: rgb(108, 86, 205);
+}
+.firstImg {
+  border-radius: 10px;
+}
+
+.text {
+  font-family: "GongGothicMedium";
+  font-size: 13px;
+  text-align: center;
+  .text-deco {
+    color: rgb(108, 86, 205);
+    font-weight: 800;
+    font-size: 16px;
+  }
 }

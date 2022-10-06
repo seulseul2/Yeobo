@@ -11,31 +11,35 @@ import nickUpdate from "../../api/user/nickUpdate";
 import { styled } from "@mui/system";
 import { borders } from "@mui/system";
 import "../../assets/styles/Dialog.scss";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import axios from "axios";
+import { SET_TOKEN } from "../../store/Auth";
+import { red } from "@mui/material/colors";
 
 const NickDialog = (props) => {
   const nickname = useSelector((state) => state.authToken.nickname);
   const accessToken = useSelector((state) => state.authToken.accessToken);
-
-  const [userNick, setUserNick] = useState(props.name);
+  const dispatch = useDispatch();
+  const [userNick, setUserNick] = useState(nickname);
 
   const userId = 20;
   const obj = {
     userId: userId,
-    nick: props.name,
+    nick: userNick,
   };
   const onNickChange = (e) => {
-    const { value } = e.target;
+    const value = e.target.value;
+    // console.log(e.target.value);
     setUserNick(value);
+    // console.log(userNick);
   };
 
   useEffect(() => {
-    if (nickname !== "") {
-      setUserNick(nickname);
-    }
-    console.log(nickname);
-    console.log(props.name);
+    // if (nickname !== "") {
+    //   setUserNick(nickname);
+    // }
+    console.log(userNick);
+    // console.log(props.name);
   }, []);
 
   // const [nick, setNick] = useState();
@@ -57,6 +61,7 @@ const NickDialog = (props) => {
         const response = res.data;
         alert(response.message);
         console.log(response);
+        dispatch(SET_TOKEN({ nickname: obj.nickname }));
       })
       .catch((err) => {
         console.log(err);
@@ -94,7 +99,7 @@ const NickDialog = (props) => {
             }}
           >
             <div className="nickTitleWrap">
-              <label className="nickTitle" for="nick">
+              <label className="nickTitle" id="nick">
                 닉네임 변경하기
               </label>
               <br />
@@ -102,10 +107,10 @@ const NickDialog = (props) => {
             <div>
               <input
                 className="nickInput"
-                id="nick"
+                for="nick"
                 type=""
                 name=""
-                value={userNick}
+                placeholder={nickname}
                 onChange={onNickChange}
               />
               <br />
@@ -117,7 +122,12 @@ const NickDialog = (props) => {
             </div>
           </DialogContent>
           <DialogActions>
-            <Button variant="outlined" color="primary" onClick={handleClose}>
+            <Button
+              classname="closeBtn"
+              variant="outlined"
+              color="primary"
+              onClick={handleClose}
+            >
               닫기
             </Button>
           </DialogActions>
