@@ -3,10 +3,11 @@ import { useParams, Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import Rating from "@mui/material/Rating";
 import { useSelector } from "react-redux";
+import { useHistory } from "react-router-dom";
 
 import "./Detail.scss";
 
-const Detail = ({history}) => {
+const Detail = () => {
   const params = useParams().attractionId;
   const [detailData, setDetailData] = useState("");
   const [value, setValue] = useState(0);
@@ -23,7 +24,7 @@ const Detail = ({history}) => {
       });
       setDetailData(response.data.data);
       console.log(response.data.data);
-      setValue(response.data.data.score)
+      setValue(response.data.data.score);
     } catch (err) {
       console.log(err);
     }
@@ -34,7 +35,7 @@ const Detail = ({history}) => {
   return (
     <div>
       <div className="attrDetail">
-            <Link to='/'>이전</Link>
+        <Link to="/">이전</Link>
         <img
           className="attrDetailImg"
           src={detailData.image}
