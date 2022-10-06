@@ -45,7 +45,12 @@ class YeoboApplicationTests {
 	public void 여행지점수매기기(){
 		ScoreDto scoreDto = new ScoreDto(1,127484,5);
 		ScoreDto scoreDto2 = new ScoreDto(1,127484,5);
-		Score score = attractionRepository2.saveScore(scoreDto2);
+		Score score = attractionRepository2.saveScore(scoreDto);
 		System.out.println(score.toString());
+
+		Attraction a = em.find(Attraction.class,scoreDto.getAttractionId());
+		System.out.println(">>>"+a.getId()+" "+a.getScore());
 	}
+
+
 }
