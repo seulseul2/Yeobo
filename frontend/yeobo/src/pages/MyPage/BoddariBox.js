@@ -2,7 +2,7 @@ import React, { useState } from "react";
 // Import Swiper React components
 // import { Swiper, SwiperSlide } from "swiper/react";
 // Import Swiper styles
-import { Link , useNavigate} from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 import { useSelector } from "react-redux";
 import { getCookieToken } from "../../storage/Cookie";
@@ -12,16 +12,19 @@ import "./BoddariBox.scss";
 function BoddariBoxList(props) {
   const navigate = useNavigate();
   const moveDetail = (bagId) => {
-    navigate(`/Betail/${bagId}`)
-  }
+    navigate(`/Betail/${bagId}`);
+  };
   return (
     <li>
-      <div className="mypage-img-wrapper">
-          <img className="mypage-img" src={props.src} alt=""  onClick={() => {
-            moveDetail(props.id)
-          }}/>
-          <p>{props.name}</p>
-          {/* <p>{props.memo}</p> */}
+      <div
+        onClick={() => {
+          moveDetail(props.id);
+        }}
+        className="mypage-img-wrapper"
+      >
+        <img className="mypage-img" src={props.src} alt="" />
+        <p>{props.name}</p>
+        {/* <p>{props.memo}</p> */}
       </div>
     </li>
   );
