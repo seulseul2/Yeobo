@@ -48,7 +48,6 @@ const BoddariSearch = (props) => {
           const check = el.check;
           return (
             <div className="bagResult_item" key={index}>
-              <div className="item1">
                 <Link to={"/Betail/" + el.bagId}>
                   <img
                     className="bagResult_item_img"
@@ -56,6 +55,8 @@ const BoddariSearch = (props) => {
                     alt="image"
                   />
                 </Link>
+              <div className="item2">
+                <p>{el.name}</p>
               </div>
             </div>
           )
