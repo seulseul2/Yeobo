@@ -60,7 +60,7 @@ const BottomNavBar = () => {
           </Link>
         </div>
         <div className="iconTab">
-          <Link to="/Login">
+          <Link to="/MergeBoddari">
             <img className="homeIcon" src={bags} alt="" />
             <p className="iconText">합치기</p>
           </Link>

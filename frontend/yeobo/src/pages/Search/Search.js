@@ -24,6 +24,7 @@ const Search = () => {
     // console.log('state', state)
   }, [])
   const isLogin = useSelector((state) => state.authToken.authenticated);
+  const userId = useSelector((state) => state.authToken.userId);
 
   const onChange = (e) => {
     setsearchText(e.target.value)
@@ -33,11 +34,6 @@ const Search = () => {
   }
   const WAITTIME = 1000;
 
-  const payload = {
-    name: searchText,
-    userId: 1,
-  }
-
   const onKeyPress = (e) => {
     if (e.key === 'Enter') {
       onClick();
@@ -46,10 +42,10 @@ const Search = () => {
   const onClick = () => {
     if (isLogin === true){
       axios({
-        url: `https://j7c103.p.ssafy.io:8080/api/temp/user/attraction/search/${payload.name}`,
+        url: `https://j7c103.p.ssafy.io:8080/api/temp/user/attraction/search/${searchText}`,
         method: 'get',
         params: {
-          userId: payload.userId
+          userId: userId
         }
       })
         .then((res) => {
@@ -62,7 +58,7 @@ const Search = () => {
         })
     } else {
       axios({
-        url: `https://j7c103.p.ssafy.io:8080/api/temp/attraction/search/${payload.name}`,
+        url: `https://j7c103.p.ssafy.io:8080/api/temp/attraction/search/${searchText}`,
         method: 'get',
         // params: {
         //   userId: payload.userId

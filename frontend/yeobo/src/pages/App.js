@@ -17,6 +17,7 @@ import BottomNavBar from "./BottomNavBar";
 import BoddariDetail from './Boddari/BoddariDetail';
 import Page404 from "./Page404";
 import Category from "./Boddari/Category";
+import MergeBoddari from "./Boddari/MergeBoddari";
 
 
 function App() {
@@ -49,6 +50,7 @@ function App() {
           <Route path="/MakeBoddari" element={<Category />}></Route>
           <Route path="/Boddari" element={<Boddari />}></Route>
           <Route path="/SaveBoddari" element={<BoddariSave />}></Route>
+          <Route path="/MergeBoddari" element={<MergeBoddari/>}></Route>
           <Route path="/testapi" element={<TestAPI />}></Route>
 
           {/* 그 외 404 */}

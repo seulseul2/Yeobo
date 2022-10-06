@@ -6,11 +6,12 @@ import './BoddariSearch.scss'
 import { Link } from 'react-router-dom';
 import heart from '../../assets/images/icons/heart.png';
 import unlike from '../../assets/images/icons/like.png'
+import {useSelector} from 'react-redux';
 
 const BoddariSearch = (props) => {
   // const [value, setValue] = useState(0);
   const searchText = props.searchText;
-  const userId = 1; // 나중에 redux되면 지우고 store에서 불러오기
+  const userId = useSelector((state) => state.authToken.userId);
   const [bagList, setbagList] = useState(null);
   const [loading, setLoading] = useState(true);
 

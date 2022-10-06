@@ -11,7 +11,8 @@ const DestinationSearch = (props) => {
 
   const [value, setValue] = useState(0);
   const attrList = props.attrList;
-  const userId = 1;
+  const userId = useSelector((state) => state.authToken.userId);
+
   // 평점 주기 부분
   const rating = (attractionId, userId, score) => {
     axios({

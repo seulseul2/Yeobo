@@ -11,8 +11,7 @@ function BoddariSave() {
   const [name, setName] = useState('');
   const [memo, setMemo] = useState('');
   const accessToken = useSelector((state) => state.authToken.accessToken)
-  // const userId = useSelector((state) => state.authToken.userId);
-  const userId = 1;
+  const userId = useSelector((state) => state.authToken.userId);
 
   const onChangeName = (e) => {
     setName(e.target.value)
@@ -36,7 +35,7 @@ function BoddariSave() {
          }
         })
       console.log(response);
-      alert('저장성공!')
+      alert('저장 성공!')
     } catch (err) {
       console.log('save실패', err);
     }
@@ -44,7 +43,7 @@ function BoddariSave() {
   return (
     <div className="BoddariSave">
       <div className="BoddariSave-top">
-        <image src={luggage} alt='image'/>
+        <img src={luggage} alt='image'/>
       </div>
       <div className="BoddariSave-input">
         <label>보따리 이름<input id="Boddari-name" type='text' placeholder="보따리 이름을 입력하세요." onChange={onChangeName} /></label>
