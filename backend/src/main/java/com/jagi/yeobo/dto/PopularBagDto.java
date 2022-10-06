@@ -9,6 +9,7 @@ import lombok.*;
 @RequiredArgsConstructor
 @Builder
 @AllArgsConstructor
+@ToString
 public class PopularBagDto {
 
     private String name;
