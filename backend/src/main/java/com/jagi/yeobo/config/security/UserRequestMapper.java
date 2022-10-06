@@ -1,17 +1,17 @@
 package com.jagi.yeobo.config.security;
 
-import com.jagi.yeobo.dto.UserDto;
+import com.jagi.yeobo.service.UserDto2;
 import org.springframework.security.oauth2.core.user.OAuth2User;
 import org.springframework.stereotype.Component;
 
 @Component
 public class UserRequestMapper {
 
-    public UserDto toDto(OAuth2User oAuth2User){
+    public UserDto2 toDto(OAuth2User oAuth2User){
         var attibutes = oAuth2User.getAttributes();
-        return UserDto.builder()
+        return UserDto2.builder()
                 .email((String)attibutes.get("email"))
-                .nickname((String)attibutes.get("name"))
+                .name((String)attibutes.get("name"))
                 .build();
     }
 
