@@ -96,4 +96,19 @@ public class User implements UserDetails {
     @ElementCollection(fetch = FetchType.EAGER)
     @Builder.Default
     private List<String> roles = new ArrayList<>();
+
+    public User update(String nickname, String email){
+        this.nickname = nickname;
+        this.email = email;
+
+        return this;
+    }
+
+    @Builder
+    public User(String nickname, String email){
+        this.nickname = nickname;
+        this.email = email;
+    }
+
+
 }
