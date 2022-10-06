@@ -13,31 +13,31 @@ import { useEffect, useState } from "react";
 const BottomNavBar = () => {
   const authenticated = useSelector((state) => state.authToken.authenticated);
   const location = useLocation();
-  const [className, setClassName] = useState('');
+  const [className, setClassName] = useState("");
 
-    // console.log(location.pathname)
-    // switch (location.pathname) {
-    //   case '/' :
-    //     setClassName('main')
-    //   // break;
-    //   case '/Search' : 
-    //   setClassName('search')
-    //   // break;
-    //   case '/Boddari' :
-    //     setClassName('boddari')
-    //   // break
-    //   case '/Login' :
-    //     setClassName('login')
-    //   // break
-    //   case '/Mypage' :
-    //     setClassName('mypage')
-    //   default:
-    //     setClassName('404')
-    // }
+  // console.log(location.pathname)
+  // switch (location.pathname) {
+  //   case '/' :
+  //     setClassName('main')
+  //   // break;
+  //   case '/Search' :
+  //   setClassName('search')
+  //   // break;
+  //   case '/Boddari' :
+  //     setClassName('boddari')
+  //   // break
+  //   case '/Login' :
+  //     setClassName('login')
+  //   // break
+  //   case '/Mypage' :
+  //     setClassName('mypage')
+  //   default:
+  //     setClassName('404')
+  // }
 
-    useEffect(() => {
-      console.log(className)
-    }, [])
+  useEffect(() => {
+    console.log(className);
+  }, []);
   return (
     <div className="bottomnav">
       <div className="bottomBox">
@@ -60,7 +60,7 @@ const BottomNavBar = () => {
           </Link>
         </div>
         <div className="iconTab">
-          <Link to="/Login">
+          <Link to="/MergeBoddari">
             <img className="homeIcon" src={bags} alt="" />
             <p className="iconText">합치기</p>
           </Link>

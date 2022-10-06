@@ -16,15 +16,23 @@
   .nickInput {
     border: 1px solid #555555;
     border-radius: 8px;
+    background: fixed;
   }
 
   .buttonWrap {
     display: flex;
     justify-content: center;
-    
+    color: aqua;
+    border: 1px solid #555555;
+
     .nickButton {
       color: aqua;
+      border: 1px solid #555555;
     }
   }
+}
 
+.css-hlj6pa-MuiDialogActions-root {
+  display: flex;
+  justify-content: center;
 }
