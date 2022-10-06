@@ -39,7 +39,7 @@ public class BagRepository {
 
         if(!bagList.isEmpty()){
             for(Bag b : bagList){
-                bagDtoList.add(new BagDto(b.getName(), b.getMemo(),b.getBagImage()));
+                bagDtoList.add(new BagDto(b.getId(),b.getName(), b.getMemo(),b.getBagImage()));
             }
         }
         return bagDtoList;
@@ -67,7 +67,7 @@ public class BagRepository {
         if(!pickList.isEmpty()){
             for(Pick p : pickList){
                 Bag b = em.find(Bag.class, p.getBagId().getId());
-                bagDtoList.add(new BagDto(b.getName(), b.getMemo(),b.getBagImage()));
+                bagDtoList.add(new BagDto(b.getId(),b.getName(), b.getMemo(),b.getBagImage()));
             }
         }
 
