@@ -9,9 +9,9 @@ const MainBoddari = () => {
       <div className="titleModule">
         <p className="mainTitle">여행 보따리</p>
         <p className="subTitle">
-          나의 취향을 담은 보따리를 만들고,
+          나의 취향을 담은 보따리를 만들어보세요.
           <br />
-          연인 혹은 친구와 함께 여행지를 추천받아보세요.
+          {/* 연인 혹은 친구와 함께 여행지를 추천받아보세요. */}
         </p>
       </div>
       <div className="buttons">
@@ -24,7 +24,7 @@ const MainBoddari = () => {
           <button className="mergeBoddari" type="">
             보따리 합치기
           </button>
-        </Link>
+        </Link> */}
       </div>
     </div>
   );

@@ -1,0 +1,39 @@
+.attrDetail {
+  font-family: "Pretendard-Regular";
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 2px 2px 2px #c7c7c7;
+  display: flex;
+  flex-direction: column;
+  padding: 24px 24px;
+  margin: 2px;
+  p {
+    text-align: center;
+    // color: black;
+  }
+  .attrDetailImg {
+    border-radius: 10px;
+    box-shadow: 2px 2px 2px #c7c7c7;
+  }
+  .attrDetailName {
+    padding: 12px 0;
+    // text-align: center;
+    font-size: 20px;
+  }
+  .attrDetailRate {
+  }
+  .attrDetailAdress {
+    text-align: right;
+    font-size: 12px;
+  }
+  .attrDetailDesc {
+    padding: 12px 0;
+    line-height: 1.6;
+    text-align: start;
+  }
+}
+
+.bottomback {
+  height: 70px;
+  background-color: #f5f5f5;
+}

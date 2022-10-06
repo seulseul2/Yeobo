@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 import { useEffect } from "react";
 import { useSelector } from "react-redux";
 import { getCookieToken } from "../../storage/Cookie";
-import axios from 'axios';
+import axios from "axios";
 
 import "./BoddariBox.scss";
 
@@ -27,8 +27,8 @@ function BoddariBoxList(props) {
 const BoddariBox = () => {
   const userId = useSelector((state) => state.authToken.userId);
   const accessToken = useSelector((state) => state.authToken.accessToken);
-  const [boddariList, setBoddariList] = useState([]);
-  
+  const [boddariList, setBoddariList] = useState();
+
   useEffect(() => {
     axios({
       url: `https://j7c103.p.ssafy.io:8080/api/bag/list/${userId}`,
@@ -38,8 +38,8 @@ const BoddariBox = () => {
       },
     })
       .then((res) => {
-        console.log('보따리야~', res.data.data);
-        setBoddariList(res.data.data)
+        console.log("보따리야~", res.data.data);
+        setBoddariList(res.data.data);
       })
       .catch((err) => {
         console.log(err);
@@ -50,16 +50,20 @@ const BoddariBox = () => {
       <div className="box">
         <div id="tab">
           <ul>
-            {boddariList.map((boddari, i) => {
-              return(
-                <BoddariBoxList
-                key={i}
-                name={boddari.name}
-                src={boddari.image}
-                memo={boddari.memo}
-            />
-              )
-            })}
+            {boddariList ? (
+              boddariList.map((boddari, i) => {
+                return (
+                  <BoddariBoxList
+                    key={i}
+                    name={boddari.name}
+                    src={boddari.image}
+                    memo={boddari.memo}
+                  />
+                );
+              })
+            ) : (
+              <p>보따리를 만들어보세요!</p>
+            )}
           </ul>
         </div>
       </div>
