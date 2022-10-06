@@ -19,6 +19,15 @@ class Attraction(models.Model):
     class Meta:
         # managed = False
         db_table = 'attraction'
+        
+class Attraction_2(models.Model):
+    attraction_id = models.BigAutoField(primary_key=True)
+    score = models.FloatField(blank=True, null=True)
+    cnt = models.IntegerField(null=True)
+    
+    class Meta:
+        # managed = False
+        db_table = 'attraction_2'
 
 class User(models.Model):
     user_id = models.BigAutoField(primary_key=True)
