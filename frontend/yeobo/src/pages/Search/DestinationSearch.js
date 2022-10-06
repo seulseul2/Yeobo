@@ -41,7 +41,7 @@ const DestinationSearch = (props) => {
       method: "get",
     })
       .then((res) => {
-        console.log(res);
+        console.log('detail', res);
       })
       .catch((err) => {
         console.log(err);
@@ -67,8 +67,9 @@ const DestinationSearch = (props) => {
                         {el.name.split("(")[0]}
                       </p>
                       <Rating
-                        name="simple-controlled"
+                        name="half-rating"
                         value={el.score}
+                        precision={0.5}
                         onChange={(event, newValue) => {
                           rating(el.id, userId, newValue);
                           console.log("별점 수정");
