@@ -156,7 +156,7 @@ def main_page_recent_high_score_based_recommend(request, user_id):
             LIMIT 1
         """
         attraction_id = query_mariaDB_transpose(attraction_rand_query)[0]['attraction_id']
-    lst = attraction_sim[attraction_id].sort_values(ascending=False)[1:7].reset_index()
+    lst = attraction_sim[attraction_id].sort_values(ascending=False)[0:7].reset_index()
     result = []
     for i in lst['attraction_id']:
         result.append(query_mariaDB_transpose(f"""
