@@ -30,6 +30,7 @@ const BoddariDetail = () => {
         },
       });
       setDetailData(response.data.data);
+      setChkLike(response.data.data.pick);
       console.log("bagDetail : ", response.data.data);
     } catch (err) {
       console.log("bagDetailErr : ", err);
