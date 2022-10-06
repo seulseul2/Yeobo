@@ -100,6 +100,7 @@ public class UserRepository2 {
     }
 
     public boolean existsByEmail(String email){
+        System.out.println("UserRepository2.existsByEmail");
         List<User> userList = em.createQuery("select u from User u where u.email = :email", User.class)
                 .setParameter("email", email)
                 .getResultList();
