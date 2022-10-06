@@ -3,6 +3,9 @@ from . import views
 
 app_name = ''
 urlpatterns = [
+    # 받는 인자 없음 -> 8개 카테고리 대표 사진 보여준다.
+    # https://j7c103.p.ssafy.io/django/MakeBoddari/PickCategoryOne/
+    path('MakeBoddari/PickCategoryOne/', views.category_images), 
     
     # category -> 해당 카테고리의 여행지 30곳을 랜덤으로 반환(언급 횟수 >= 10,000)
     # https://j7c103.p.ssafy.io/django/MakeBoddari/PickCategory/1/
@@ -29,4 +32,5 @@ urlpatterns = [
     # user_id -> 가장 많이 다녀온 여행지 지역을 기준으로 여행지 6곳 반환(언급 횟수 >= 80,000)
     # https://j7c103.p.ssafy.io/django/MainPage/AreaBasedRecommend/1/
     path('MainPage/AreaBasedRecommend/<int:user_id>/', views.main_page_area_based_recommend),
+    
 ]
