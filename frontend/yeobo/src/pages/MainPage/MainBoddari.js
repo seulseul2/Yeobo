@@ -15,11 +15,16 @@ const MainBoddari = () => {
         </p>
       </div>
       <div className="buttons">
-        <Link to="/Boddari">
+        <Link to="/MakeBoddari">
           <button className="makeBoddari" type="">
             보따리 만들기
           </button>
         </Link>
+        <Link to="/MergeBoddari">
+          <button className="mergeBoddari" type="">
+            보따리 합치기
+          </button>
+        </Link> 
       </div>
     </div>
   );

@@ -3,18 +3,22 @@ import React, { useState } from "react";
 // import { Swiper, SwiperSlide } from "swiper/react";
 import axios from "axios";
 import { useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link , useNavigate} from "react-router-dom";
 import { useSelector } from "react-redux";
 import "./BoddariBox.scss";
 
 function MypageList(props) {
+  const navigate = useNavigate();
+  const moveDetail = (bagId) => {
+    navigate(`/Betail/${bagId}`)
+  }
   return (
     <li>
       <div className="mypage-img-wrapper">
-        <Link to="/">
-          <img className="mypage-img" src={props.src} alt="" />
+          <img className="mypage-img" src={props.src} alt="" onClick={() => {
+            moveDetail(props.id)
+          }}/>
           <p className="img-text">{props.name}</p>
-        </Link>
       </div>
     </li>
   );
@@ -48,7 +52,7 @@ const Mypage = () => {
           <ul>
             {list ? (
               list.map((l, i) => {
-                return <MypageList name={l.name} src={l.image} />;
+                return <MypageList name={l.name} src={l.image}  id={l.id}/>;
               })
             ) : (
               <p>보따리에 좋아요를 눌러보세요!</p>

@@ -77,36 +77,28 @@ const DestinationSearch = (props) => {
                       />
                     </div>
                   </div>
-                );
-              })
-            ) : (
-              <p className="No_attrResult">검색 내역이 없습니다.</p>
-            )}
-          </div>
+                </div>
+              )
+            })
+          ) : (
+            <p className='No_attrResult'>여행지 검색 내역이 없습니다.</p>
+          )}
+        </div>) : (<div>{attrList ? (
+          attrList.map((el, index) => {
+            return (
+              <div className='attrResult_item' key={index}>
+                <div className='attrResult_item1'>
+                  <Link to={'/Detail/' + el.id}><img className='attrResult_item_img' src={el.img} /></Link>
+                </div>
+                <div className='rating'>
+                  <p className='attrResult_item_name'>{el.name.split('(')[0]}</p>
+                </div>
+              </div>
+            )
+          })
         ) : (
-          <div>
-            {attrList ? (
-              attrList.map((el, index) => {
-                return (
-                  <div className="attrResult_item" key={index}>
-                    <div className="attrResult_item1">
-                      <Link to={"/Detail/" + el.id}>
-                        <img className="attrResult_item_img" src={el.img} />
-                      </Link>
-                    </div>
-                    <div className="rating">
-                      <p className="attrResult_item_name">
-                        {el.name.split("(")[0]}
-                      </p>
-                    </div>
-                  </div>
-                );
-              })
-            ) : (
-              <p className="No_attrResult">검색 내역이 없습니다.</p>
-            )}
-          </div>
-        )}
+          <p className='No_attrResult'>여행지 검색 내역이 없습니다.</p>
+        )}</div>)}
         {/* {attrList ? (
           attrList.map((el, index) => {
             return (

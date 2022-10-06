@@ -1,3 +1,6 @@
+.mergeBoddari {
+  font-family: 'bazzi';
+}
 .my-item-content {
   display: flex;
   overflow: auto;
@@ -42,13 +45,20 @@
 }
 
 .otherBtn {
-  font-size: 15px;
-  border: 2px solid black;
+  border:  1px solid black;
+    font-size: 15px;
+    width: 60px;
+    border-radius: 15px;
+    font-size: 20px;
+
 }
 
 .myBtn {
   font-size: 15px;
-  border: 2px solid black;
+  border:  1px solid black;
+  border-radius: 15px;
+  font-size: 20px;
+  width: 60px;
 }
 
 .other-item {
@@ -57,7 +67,6 @@
     font-weight: 500;
     margin-top: 15px;
     margin-bottom: 15px;
-
   }
   border-radius: 15px;
   box-shadow: 1px 1px 1px 1px;
@@ -88,4 +97,38 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+    h1{
+      font-size: 25px;
+    }
+    button {
+      padding: 10px;
+      font-size: 25px;
+      width: 100px;
+      border-radius: 15px;
+      box-shadow: 1px 1px 1px 1px;
+    }
+  }
+
+  // .addBod {
+  //   width: 250px;
+  //   border: 1px solid black;
+  //   display: flex;
+  //   flex-direction: column;
+  //   align-items: center;
+  //   border-radius: 15px;
+  // }
+
+  .bagid1 {
+    position: absolute;
+    color: rgba(232, 139, 164, 0.8);
+    margin-left: 250px;
+    margin-top: 15px;
+    font-size: 18px;
+  }
+  .bagid2 {
+    position: absolute;
+    color: rgba(232, 139, 164, 0.8);
+    margin-left: 250px;
+    margin-top: 60px;
+    font-size: 18px;
   }
