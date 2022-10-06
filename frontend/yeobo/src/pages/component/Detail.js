@@ -4,6 +4,8 @@ import { useState, useEffect } from "react";
 import Rating from "@mui/material/Rating";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
+// image
+import back from "../../assets/images/icons/back.png";
 
 import "./Detail.scss";
 
@@ -36,21 +38,29 @@ const Detail = () => {
   return (
     <div>
       <div className="attrDetail">
-        <div onClick={() => navigate(-1)}>이전</div>
+        <img
+          className="backBtn"
+          src={back}
+          alt="뒤로가기"
+          onClick={() => navigate(-1)}
+        />
+        {/* <div onClick={() => navigate(-1)}>이전</div> */}
         <img
           className="attrDetailImg"
           src={detailData.image}
           alt="detailImage"
         />
-        <p className="attrDetailName">{detailData.name}</p>
-        <Rating
-          className="attrDetailRate"
-          name="simple-controlled"
-          value={value}
-          size="large"
-        />
-        <p className="attrDetailAdress">{detailData.address}</p>
-        <p className="attrDetailDesc">{detailData.description}</p>
+        <div className="attrDetailInfo">
+          <p className="attrDetailName">{detailData.name}</p>
+          <Rating
+            className="attrDetailRate"
+            name="simple-controlled"
+            value={value}
+            size="large"
+          />
+          <p className="attrDetailAdress">{detailData.address}</p>
+          <p className="attrDetailDesc">{detailData.description}</p>
+        </div>
       </div>
       <div className="bottomback"></div>
     </div>
