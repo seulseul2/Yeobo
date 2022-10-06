@@ -41,7 +41,62 @@ const BottomNavBar = () => {
   return (
     <div className="bottomnav">
       <div className="bottomBox">
-        <div className="iconTab">
+        {!authenticated ? (
+          <>
+            <div className="iconTab">
+              <Link to="/">
+                <img className="homeIcon" src={homeWhite} alt="" />
+                <p className="iconText">홈</p>
+              </Link>
+            </div>
+            <div className="iconTab">
+              <Link to="/Search">
+                <img className="homeIcon" src={search} alt="" />
+                <p className="iconText">검색</p>
+              </Link>
+            </div>
+            <div className="iconTab">
+              <Link to="/Login">
+                <img className="homeIcon" src={user} alt="" />
+                <p className="iconText">로그인</p>
+              </Link>
+            </div>
+          </>
+        ) : (
+          <>
+            <div className="iconTab">
+              <Link to="/">
+                <img className="homeIcon" src={homeWhite} alt="" />
+                <p className="iconText">홈</p>
+              </Link>
+            </div>
+            <div className="iconTab">
+              <Link to="/Search">
+                <img className="homeIcon" src={search} alt="" />
+                <p className="iconText">검색</p>
+              </Link>
+            </div>
+            <div className="iconTab">
+              <Link to="/MakeBoddari">
+                <img className="homeIcon" src={bag} alt="" />
+                <p className="iconText">만들기</p>
+              </Link>
+            </div>
+            <div className="iconTab">
+              <Link to="/MergeBoddari">
+                <img className="homeIcon" src={bags} alt="" />
+                <p className="iconText">합치기</p>
+              </Link>
+            </div>
+            <div className="iconTab">
+              <Link to="/Mypage">
+                <img className="homeIcon" src={user} alt="" />
+                <p className="iconText">마이페이지</p>
+              </Link>
+            </div>
+          </>
+        )}
+        {/* <div className="iconTab">
           <Link to="/">
             <img className="homeIcon" src={homeWhite} alt="" />
             <p className="iconText">홈</p>
@@ -78,7 +133,7 @@ const BottomNavBar = () => {
               <p className="iconText">로그인</p>
             </Link>
           )}
-        </div>
+        </div> */}
       </div>
     </div>
   );

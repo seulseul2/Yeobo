@@ -88,6 +88,7 @@ const BoddariDetail = () => {
   return (
     <div className="bagDetail">
       <header>
+        <div onClick={() => navigate(-1)}>이전</div>
         <h1>[{detailData.name}] 보따리</h1>
         <p className="heart" onClick={() => hearted(chkLike)}>
           {chkLike ? <FavoriteIcon /> : <FavoriteBorderIcon />}
