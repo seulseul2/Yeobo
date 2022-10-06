@@ -77,7 +77,6 @@ const DestinationSearch = (props) => {
                       />
                     </div>
                   </div>
-                </div>
               )
             })
           ) : (
