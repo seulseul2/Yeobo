@@ -3,13 +3,11 @@ package com.jagi.yeobo.domain.repository;
 import com.jagi.yeobo.domain.*;
 import com.jagi.yeobo.dto.*;
 import lombok.RequiredArgsConstructor;
+import org.springframework.dao.DuplicateKeyException;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Repository;
 
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
-import javax.persistence.Query;
-import javax.persistence.TypedQuery;
+import javax.persistence.*;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -47,9 +45,9 @@ public class BagRepository {
         return bagDtoList;
      }
 
-    public void likeBag(long userId, long bagId) throws Exception {
+    public void likeBag(long userId, long bagId) {
 
-        List<Pick> pickCheck = em.createQuery("select p from PICK P where p.userId.id = :userId and p.bagId.id = :bagId", Pick.class)
+        List<Pick> pickCheck = em.createQuery("select p from Pick p where p.userId.id = :userId and p.bagId.id = :bagId", Pick.class)
                 .setParameter("userId", userId)
                 .setParameter("bagId", bagId)
                 .getResultList();
@@ -66,7 +64,7 @@ public class BagRepository {
             newPick.setBagId(findBag);
             em.persist(newPick);
         }else{
-            throw new Exception("이미 좋아요를 눌렀습니다.");
+            throw new DuplicateKeyException("데이터가 중복입니다.");
         }
     }
 
