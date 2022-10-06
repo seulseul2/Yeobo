@@ -52,24 +52,30 @@ const Detail = () => {
     detail();
   }, []);
   return (
-    <div className="attrDetail">
-      <img className="attrDetailImg" src={detailData.image} alt="detailImage" />
-      <p className="attrDetailName">{detailData.name}</p>
-      <Rating
-        className="attrDetailRate"
-        name="simple-controlled"
-        value={detailData.score}
-        size="large"
-        onChange={(event, newValue) => {
-          rating(detailData.id, userId, newValue);
-          console.log("별점 수정");
-          detailData.score = newValue;
-        }}
-      />
-      <p className="attrDetailAdress">{detailData.address}</p>
-      <p className="attrDetailDesc">{detailData.description}</p>
+    <>
+      <div className="attrDetail">
+        <img
+          className="attrDetailImg"
+          src={detailData.image}
+          alt="detailImage"
+        />
+        <p className="attrDetailName">{detailData.name}</p>
+        <Rating
+          className="attrDetailRate"
+          name="simple-controlled"
+          value={detailData.score}
+          size="large"
+          onChange={(event, newValue) => {
+            rating(detailData.id, userId, newValue);
+            console.log("별점 수정");
+            detailData.score = newValue;
+          }}
+        />
+        <p className="attrDetailAdress">{detailData.address}</p>
+        <p className="attrDetailDesc">{detailData.description}</p>
+      </div>
       <div className="bottomback"></div>
-    </div>
+    </>
   );
 };
 export default Detail;

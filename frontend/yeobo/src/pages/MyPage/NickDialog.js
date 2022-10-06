@@ -1,72 +1,93 @@
 import React, { useEffect, useState } from "react";
-// import { post } from 'axios';
 import Dialog from "@mui/material/Dialog";
 import DialogActions from "@mui/material/DialogActions";
 import DialogContent from "@mui/material/DialogContent";
 import DialogTitle from "@mui/material/DialogTitle";
-// import TextField from '@mui/material/TextField';
 import Button from "@mui/material/Button";
 import settings from "../../assets/images/icons/settings.png";
 import nickUpdate from "../../api/user/nickUpdate";
-import { styled } from "@mui/system";
-import { borders } from "@mui/system";
 import "../../assets/styles/Dialog.scss";
 import { useSelector, useDispatch } from "react-redux";
 import axios from "axios";
-import { SET_TOKEN } from "../../store/Auth";
-import { red } from "@mui/material/colors";
+import { getCookieToken, removeCookieToken } from "../../storage/Cookie";
+import { DELETE_TOKEN } from "../../store/Auth";
+import { useNavigate } from "react-router";
 
 const NickDialog = (props) => {
-  const nickname = useSelector((state) => state.authToken.nickname);
+  // const nickname = useSelector((state) => state.authToken.nickname);
+  // const accessToken = useSelector((state) => state.authToken.accessToken);
+  // const dispatch = useDispatch();
+  // const [userNick, setUserNick] = useState(nickname);
+
   const accessToken = useSelector((state) => state.authToken.accessToken);
+  const userId = useSelector((state) => state.authToken.userId);
+  const refreshToken = getCookieToken();
+
   const dispatch = useDispatch();
-  const [userNick, setUserNick] = useState(nickname);
+  const navigate = useNavigate();
 
-  const userId = 20;
-  const obj = {
-    userId: userId,
-    nick: userNick,
-  };
-  const onNickChange = (e) => {
-    const value = e.target.value;
-    // console.log(e.target.value);
-    setUserNick(value);
-    // console.log(userNick);
-  };
-
-  useEffect(() => {
-    // if (nickname !== "") {
-    //   setUserNick(nickname);
-    // }
-    console.log(userNick);
-    // console.log(props.name);
-  }, []);
-
-  // const [nick, setNick] = useState();
-
-  function handleUpdateNick(e) {
-    e.preventDefault();
-    // nickUpdate(obj);
-    axios({
-      url: `https://j7c103.p.ssafy.io:8080/api/user/${obj.userId}`,
-      method: "put",
-      params: {
-        nick: obj.nick,
-      },
-      headers: {
-        "X-AUTH-TOKEN": accessToken,
-      },
-    })
-      .then((res) => {
-        const response = res.data;
-        alert(response.message);
-        console.log(response);
-        dispatch(SET_TOKEN({ nickname: obj.nickname }));
+  function userDeleteClick() {
+    if (!!window.confirm("정말?")) {
+      axios({
+        url: `https://j7c103.p.ssafy.io:8080/api/user/${userId}`,
+        method: "delete",
+        data: userId,
+        headers: {
+          "X-AUTH-TOKEN": accessToken,
+        },
       })
-      .catch((err) => {
-        console.log(err);
-      });
+        .then((res) => {
+          dispatch(DELETE_TOKEN()); // store에 저장된 액세스 토큰 삭제
+          removeCookieToken(); // cookie에 저장된 refresh token 삭제
+          const response = res.data;
+          alert("회원 정보가 삭제되었습니다.");
+          console.log(response);
+          navigate("/"); // 홈으로 이동
+        })
+        .catch((err) => {
+          console.log(err);
+          alert(err);
+        });
+    } else {
+      alert("저희 서비스를 이용해주셔서 항상 감사합니다.");
+    }
   }
+  // const userId = 20;
+  // const obj = {
+  //   userId: userId,
+  //   nick: userNick,
+  // };
+  // const onNickChange = (e) => {
+  //   const value = e.target.value;
+  //   setUserNick(value);
+  // };
+
+  // useEffect(() => {
+  //   console.log(userNick);
+  // }, []);
+
+  // function handleUpdateNick(e) {
+  //   e.preventDefault();
+  //   axios({
+  //     url: `https://j7c103.p.ssafy.io:8080/api/user/${obj.userId}`,
+  //     method: "put",
+  //     params: {
+  //       nick: obj.nick,
+  //     },
+  //     headers: {
+  //       "X-AUTH-TOKEN": accessToken,
+  //     },
+  //   })
+  //     .then((res) => {
+  //       const response = res.data;
+  //       alert(response.message);
+  //       console.log(response);
+  //       dispatch(SET_TOKEN({ nickname: obj.nickname }));
+  //     })
+  //     .catch((err) => {
+  //       console.log(err);
+  //     });
+  // }
 
   const [modalIsOpen, setModalIsOpen] = useState(false);
   function handleClickOpen() {
@@ -98,7 +119,12 @@ const NickDialog = (props) => {
               borderColor: "primary.main",
             }}
           >
-            <div className="nickTitleWrap">
+            <div>
+              <p className="boxIn" onClick={userDeleteClick}>
+                회원 탈퇴하기
+              </p>
+            </div>
+            {/* <div className="nickTitleWrap">
               <label className="nickTitle" id="nick">
                 닉네임 변경하기
               </label>
@@ -119,7 +145,7 @@ const NickDialog = (props) => {
               <button className="nickButton" onClick={handleUpdateNick} type="">
                 닉네임 변경
               </button>
-            </div>
+            </div> */}
           </DialogContent>
           <DialogActions>
             <Button

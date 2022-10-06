@@ -27,7 +27,7 @@ function BoddariBoxList(props) {
 const BoddariBox = () => {
   const userId = useSelector((state) => state.authToken.userId);
   const accessToken = useSelector((state) => state.authToken.accessToken);
-  const [boddariList, setBoddariList] = useState([]);
+  const [boddariList, setBoddariList] = useState();
 
   useEffect(() => {
     axios({
