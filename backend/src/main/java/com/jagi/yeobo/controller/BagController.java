@@ -6,6 +6,7 @@ import com.jagi.yeobo.service.BagService;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiOperation;
 import lombok.RequiredArgsConstructor;
+import org.springframework.dao.DuplicateKeyException;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.http.HttpHeaders;
@@ -55,7 +56,7 @@ public class BagController {
 
     @ApiOperation(value = "보따리에 좋아요를 누른다.",notes = "좋아요를 누른 보따리에 좋아요 수를 증가시킨다.")
     @PostMapping("api/bag/like/{userId}/{bagId}")
-    public ResponseEntity<?> likeBag(@PathVariable("userId") long userId, @PathVariable("bagId") int bagId) throws Exception {
+    public ResponseEntity<?> likeBag(@PathVariable("userId") long userId, @PathVariable("bagId") int bagId)  {
         Message message = new Message();
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(new MediaType("application", "json", Charset.forName("UTF-8")));
@@ -66,7 +67,7 @@ public class BagController {
             message.setStatus(StatusEnum.OK);
             message.setMessage("좋아요 성공");
             return new ResponseEntity<>(message, headers, HttpStatus.OK);
-        }catch(Exception e) {
+        }catch(DuplicateKeyException e) {
             e.printStackTrace();
             message.setStatus(StatusEnum.INTERNAL_SERVER_ERROR);
             message.setMessage("좋아요 중복 발생");
