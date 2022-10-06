@@ -55,17 +55,25 @@ public class BagController {
 
     @ApiOperation(value = "보따리에 좋아요를 누른다.",notes = "좋아요를 누른 보따리에 좋아요 수를 증가시킨다.")
     @PostMapping("api/bag/like/{userId}/{bagId}")
-    public ResponseEntity<?> likeBag(@PathVariable("userId") long userId, @PathVariable("bagId") int bagId){
+    public ResponseEntity<?> likeBag(@PathVariable("userId") long userId, @PathVariable("bagId") int bagId) throws Exception {
         Message message = new Message();
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(new MediaType("application", "json", Charset.forName("UTF-8")));
 
-        bagService.likeBag(userId, bagId);
+        try {
+            bagService.likeBag(userId, bagId);
 
-        message.setStatus(StatusEnum.OK);
-        message.setMessage("좋아요 성공");
+            message.setStatus(StatusEnum.OK);
+            message.setMessage("좋아요 성공");
+            return new ResponseEntity<>(message, headers, HttpStatus.OK);
+        }catch(Exception e) {
+            e.printStackTrace();
+            message.setStatus(StatusEnum.INTERNAL_SERVER_ERROR);
+            message.setMessage("좋아요 중복 발생");
+            return new ResponseEntity<>(message, headers, HttpStatus.INTERNAL_SERVER_ERROR);
+        }
 
-        return new ResponseEntity<>(message, headers, HttpStatus.OK);
+
     }
 
     @ApiOperation(value = "좋아요한 보따리의 리스트를 조회한다.",notes = "userId에 해당하는 회원이 좋아요를 누른 보따리의 리스트를 출력한다.")

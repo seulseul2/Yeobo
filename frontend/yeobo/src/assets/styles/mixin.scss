@@ -1,0 +1,29 @@
+$mainColor: #9b78ff;
+$cloudGray: #adadad;
+$cloudLine: #afafaf;
+
+@mixin mobile {
+  @media only screen and (max-width: 500px) {
+    @content;
+  }
+}
+
+// @mixin tablet {
+//   @media only screen and (min-width: 768px) and (max-width: 991px) {
+//     @content;
+//   }
+// }
+
+// @mixin caution {
+//   @media only screen and (min-width: 0px) and (max-width: 992px) {
+//     @content;
+//   }
+// }
+
+
+
+@mixin desktop {
+  @media only screen and (min-width: 500px) {
+    @content;
+  }
+}

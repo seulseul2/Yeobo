@@ -1,0 +1,38 @@
+.attrResult {
+  overflow: scroll;
+}
+.attrResult_item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.2em;
+  text-align: center;
+}
+.attrResult_item_img {
+  width: 200px;
+  margin: 10px;
+  border-radius: 20px;
+  border: 4px solid white;
+}
+.attrResult_item1 {
+  display: flex;
+  flex-direction: row;
+
+}
+.attrResult_item_name {
+  margin-top: 10px;
+  width: 150px;
+}
+.attrResult {
+  height: 500px;
+}
+
+.No_attrResult {
+  text-align: center;
+  font-size: 25px;
+  margin-top: 50px;
+}
+.DestinationSearch {
+  font-family: "Bazzi";
+
+}

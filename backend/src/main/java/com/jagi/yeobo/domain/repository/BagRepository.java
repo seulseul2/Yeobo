@@ -10,6 +10,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 import javax.persistence.TypedQuery;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -46,18 +47,27 @@ public class BagRepository {
         return bagDtoList;
      }
 
-    public void likeBag(long userId, long bagId){
-        Bag findBag = em.find(Bag.class, bagId);
+    public void likeBag(long userId, long bagId) throws Exception {
 
-        int currentCnt = findBag.getLikeCnt();
-        findBag.setLikeCnt(currentCnt+1);
-        em.persist(findBag);
+        List<Pick> pickCheck = em.createQuery("select p from PICK P where p.userId.id = :userId and p.bagId.id = :bagId", Pick.class)
+                .setParameter("userId", userId)
+                .setParameter("bagId", bagId)
+                .getResultList();
+        if(pickCheck.size() == 0) {
+            Bag findBag = em.find(Bag.class, bagId);
 
-        Pick newPick = new Pick();
-        User findUser = em.find(User.class, userId);
-        newPick.setUserId(findUser);
-        newPick.setBagId(findBag);
-        em.persist(newPick);
+            int currentCnt = findBag.getLikeCnt();
+            findBag.setLikeCnt(currentCnt + 1);
+            em.persist(findBag);
+
+            Pick newPick = new Pick();
+            User findUser = em.find(User.class, userId);
+            newPick.setUserId(findUser);
+            newPick.setBagId(findBag);
+            em.persist(newPick);
+        }else{
+            throw new Exception("이미 좋아요를 눌렀습니다.");
+        }
     }
 
     public List<BagDto> searchLikeBagList(long userId){
