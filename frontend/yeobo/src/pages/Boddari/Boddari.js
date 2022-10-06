@@ -54,7 +54,7 @@ const Boddari = () => {
               add(el.attraction_id)
             }}>담기</button>
             {/* <button className='minus' onClick={() => {
-              remove(el.attraction_id)
+              remove()
             }}>빼기</button> */}
           </div>
           )
