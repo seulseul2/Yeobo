@@ -108,7 +108,7 @@ public class UserService {
     }
 
     @Transactional
-    public void joinSocial(UserDto user){
+    public void joinSocial(UserDto2 user){
         User us = new User();
         us.setEmail(user.getEmail());
         us.setNickname(user.getNickname());
