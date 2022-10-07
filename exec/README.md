@@ -109,7 +109,10 @@
 
 **BackEnd**
 
-- 
+- JAVA 11
+- Spring Boot
+- JPA
+- Maria DB
 
 **Data**
 
@@ -134,8 +137,8 @@
 ---
 
 서비스 아키텍처와 같이, Jenkins의 pipeline을 이용하여 자동 배포를 구축하였음.
-Gitlab webhook을 설정하여 Jenkins에 빌드 트리거를 설정했고, 이에 따라 Gitlab에서 master 브랜치에 push하면 자동으로 배포될 수 있도록 구축하여 개발하는 과정에서 배포로 인한 시간 낭비를 줄였습니다.
-또한 프론트엔드인 Vue3는 Nginx와 함께 docker image로 빌드하여 배포하였고, 백엔드 및 redis, openvidu 또한 docker container로 배포하였습니다. 그리고 Nginx와 letsencrypt를 이용하여 ssl 인증서를 적용하였고, 프론트엔드는 443(https)로 프록시로 분기시켰고 백엔드는 /api 경로로 프록시를 걸어줬습니다.
+Gitlab webhook을 설정하여 Jenkins에 빌드 트리거를 설정했고, 이에 따라 Gitlab에서 main 브랜치에 push하면 자동으로 배포될 수 있도록 구축하여 개발하는 과정에서 배포로 인한 시간 낭비를 줄였습니다.
+또한 프론트엔드인 Reace는 Nginx와 함께 docker image로 빌드하여 배포하였고, 백엔드 및 Django 또한 docker container로 배포하였습니다. 그리고 Nginx와 letsencrypt를 이용하여 ssl 인증서를 적용하였고, 프론트엔드는 443(https)로 프록시로 분기시켰고 백엔드는 /api 경로로, 데이터는 /django로 프록시를 걸어줬습니다.
 
 
 
@@ -146,6 +149,7 @@ Gitlab webhook을 설정하여 Jenkins에 빌드 트리거를 설정했고, 이�
 
 
 - **프론트 / 백 / 데이터 모두 작성 요망**
+- 백엔드 : JPA 성능을 향상시키기 위해 for문으로 여러번 select문이 도는 경우에 최대한 JOIN문으로 돌게한다거나, select문으로 조회할 때 엔티티 전체를 조회하는 것을 지양하는 등의 간단한 규칙을 지켰습니다.
 
   
 
