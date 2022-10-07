@@ -14,6 +14,14 @@ import { setRefreshToken } from "../../../storage/Cookie";
 import { SET_TOKEN } from "../../../store/Auth";
 import axios from "axios";
 
+// mui (radio btn)
+// import * as React from "react";
+import Radio from "@mui/material/Radio";
+import RadioGroup from "@mui/material/RadioGroup";
+import FormControlLabel from "@mui/material/FormControlLabel";
+import FormControl from "@mui/material/FormControl";
+import FormLabel from "@mui/material/FormLabel";
+
 const Signup = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -36,6 +44,7 @@ const Signup = () => {
       ...inputs,
       [name]: value,
     });
+    console.log(inputs);
   };
   const onChangeRePassword = (e) => {
     setRePasswordInput({
@@ -93,12 +102,12 @@ const Signup = () => {
           const response = res.data.data;
           // console.log(response);
           alert(res.data.message);
-          const accessToken = response.accessToken;
-          const refreshToken = response.refreshToken;
-          console.log(accessToken);
-          console.log(refreshToken);
-          setRefreshToken(refreshToken);
-          dispatch(SET_TOKEN(accessToken));
+          // const accessToken = response.accessToken;
+          // const refreshToken = response.refreshToken;
+          // console.log(accessToken);
+          // console.log(refreshToken);
+          // setRefreshToken(refreshToken);
+          // dispatch(SET_TOKEN(accessToken));
           navigate("/");
         })
         .catch((err) => {
@@ -183,14 +192,34 @@ const Signup = () => {
               />
             </div>
             <div className="login-input">
-              <p className="login-input-name">성별</p>
+              <FormControl>
+                <p className="login-input-name">성별</p>
+                <RadioGroup
+                  row
+                  name="gender"
+                  onChange={onChange}
+                  defaultValue="female"
+                >
+                  <FormControlLabel
+                    value="FEMALE"
+                    control={<Radio />}
+                    label="여성"
+                  />
+                  <FormControlLabel
+                    value="MALE"
+                    control={<Radio />}
+                    label="남성"
+                  />
+                </RadioGroup>
+              </FormControl>
+              {/* <p className="login-input-name">성별</p>
               <input
                 className="login-input-text"
                 type="text"
                 placeholder="MALE  |  FEMALE"
                 onChange={onChange}
                 name="gender"
-              />
+              /> */}
             </div>
           </div>
           <button

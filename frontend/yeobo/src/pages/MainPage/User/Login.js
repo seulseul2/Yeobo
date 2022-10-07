@@ -138,10 +138,13 @@ const Login = () => {
           </p>
         </div>
       </div>
-      <p className="social-title">소셜로그인</p>
+      {/* <a href="https://i7c103.p.ssafy.io:8080/oauth2/authorization/google?redirect_uri=https://i7c103.p.ssafy.io:443/oauth/redirect">
+        로그인ㄴ
+      </a> */}
+      {/* <p className="social-title">소셜로그인</p>
       <div className="social-btns">
         <GoogleLogIn />
-      </div>
+      </div> */}
       <div className="bottomBack"></div>
     </div>
   );

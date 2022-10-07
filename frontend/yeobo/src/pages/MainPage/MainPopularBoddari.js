@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import "./MainPopularBoddari.scss";
 import axios from "axios";
 import { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { useState } from "react";
 
 function Like(like) {
@@ -64,29 +64,29 @@ function BoddariRankComponent() {
     <div>
       {ranks.map((rank, i) => {
         return (
-          <div key={i} className="boddariRank" key="data.id">
-            <div className="boddari-ranking">
-              <p className="boddari-ranking-p">
-                {i + 1}
-                <span className="boddari-ranking-span">위</span>
-              </p>
-            </div>
-            <div className="profile-img-wrapper">
-              {/* <Link to={data.link}> */}
-              <img className="profile-img" src={rank.image} alt="" />
-              {/* </Link> */}
-            </div>
-            <div className="boddari-info">
-              <div className="boddari-title">
-                <p className="boddari-name">{rank.name}</p>
-                <p className="boddari-username">{rank.userName}</p>
+          <Link to={`/Betail/${rank.id}`}>
+            <div key={i} className="boddariRank" key="data.id">
+              <div className="boddari-ranking">
+                <p className="boddari-ranking-p">
+                  {i + 1}
+                  <span className="boddari-ranking-span">위</span>
+                </p>
               </div>
-              <div className="boddari-desc">
-                <p className="boddari-desc-text">{rank.memo}</p>
+              <div className="profile-img-wrapper">
+                <img className="profile-img" src={rank.image} alt="" />
               </div>
+              <div className="boddari-info">
+                <div className="boddari-title">
+                  <p className="boddari-name">{rank.name}</p>
+                  <p className="boddari-username">{rank.userName}</p>
+                </div>
+                <div className="boddari-desc">
+                  <p className="boddari-desc-text">{rank.memo}</p>
+                </div>
+              </div>
+              {/* <div className="boddari-heart">{Like(data.like)}</div> */}
             </div>
-            {/* <div className="boddari-heart">{Like(data.like)}</div> */}
-          </div>
+          </Link>
         );
       })}
     </div>
@@ -98,8 +98,8 @@ const MainPopularBoddari = () => {
     <div className="MainPopularBoddari">
       <div className="monthSection">
         <div className="titleModule">
-          <p className="mainTitle">어제의 인기 보따리 TOP 5</p>
-          <p className="subTitle">매일 자정 갱신됩니다.</p>
+          <p className="mainTitle">인기 보따리 TOP 4</p>
+          <p className="subTitle">좋아요를 많이 받은 보따리는?</p>
         </div>
       </div>
       <BoddariRankComponent />

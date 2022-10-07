@@ -3,10 +3,14 @@ import { useParams, Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import Rating from "@mui/material/Rating";
 import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
+// image
+import back from "../../assets/images/icons/back.png";
 
 import "./Detail.scss";
 
-const Detail = ({history}) => {
+const Detail = () => {
+  const navigate = useNavigate();
   const params = useParams().attractionId;
   const [detailData, setDetailData] = useState("");
   const [value, setValue] = useState(0);
@@ -23,7 +27,7 @@ const Detail = ({history}) => {
       });
       setDetailData(response.data.data);
       console.log(response.data.data);
-      setValue(response.data.data.score)
+      setValue(response.data.data.score);
     } catch (err) {
       console.log(err);
     }
@@ -34,21 +38,29 @@ const Detail = ({history}) => {
   return (
     <div>
       <div className="attrDetail">
-            <Link to='/'>이전</Link>
+        <img
+          className="backBtn"
+          src={back}
+          alt="뒤로가기"
+          onClick={() => navigate(-1)}
+        />
+        {/* <div onClick={() => navigate(-1)}>이전</div> */}
         <img
           className="attrDetailImg"
           src={detailData.image}
           alt="detailImage"
         />
-        <p className="attrDetailName">{detailData.name}</p>
-        <Rating
-          className="attrDetailRate"
-          name="simple-controlled"
-          value={value}
-          size="large"
-        />
-        <p className="attrDetailAdress">{detailData.address}</p>
-        <p className="attrDetailDesc">{detailData.description}</p>
+        <div className="attrDetailInfo">
+          <p className="attrDetailName">{detailData.name}</p>
+          <Rating
+            className="attrDetailRate"
+            name="simple-controlled"
+            value={value}
+            size="large"
+          />
+          <p className="attrDetailAdress">{detailData.address}</p>
+          <p className="attrDetailDesc">{detailData.description}</p>
+        </div>
       </div>
       <div className="bottomback"></div>
     </div>
