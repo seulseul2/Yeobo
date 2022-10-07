@@ -94,7 +94,7 @@ Toggle device toolbar에서도 비율이 맞지 않다면 Toggle device toolbar�
 | ------------------------------ | ------------------------------------------------------------ |
 | <div align="center">1</div>    | [포팅메뉴얼](https://lab.ssafy.com/s07-bigdata-recom-sub2/S07P22C103/-/tree/main/exec)(http://j7c103.p.ssafy.io) |
 | <div align="center">2</div>    | [발표자료(PPT)](https://github.com/junojam/ssafy_offline/files/9730313/PJT_.1._C103_.pptx) |
-| <div align="center">3</div>    | [시연시나리오(PDF)] (https://github.com/junojam/ssafy_offline/files/9730314/PJT_.1._C103_.pdf)(http://j7c103.p.ssafy.io) |
+| <div align="center">3</div>    | [시연시나리오(PDF)](https://github.com/junojam/ssafy_offline/files/9730314/PJT_.1._C103_.pdf)(http://j7c103.p.ssafy.io) |
 
 <br/>
 
