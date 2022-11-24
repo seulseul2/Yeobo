@@ -471,7 +471,7 @@ Toggle device toolbar에서도 비율이 맞지 않다면 Toggle device toolbar�
 
 서비스 아키텍처와 같이, Jenkins의 pipeline을 이용하여 자동 배포를 구축하였음.
 Gitlab webhook을 설정하여 Jenkins에 빌드 트리거를 설정했고, 이에 따라 Gitlab에서 master 브랜치에 push하면 자동으로 배포될 수 있도록 구축하여 개발하는 과정에서 배포로 인한 시간 낭비를 줄였습니다.
-또한 프론트엔드인 Vue3는 Nginx와 함께 docker image로 빌드하여 배포하였고, 백엔드 및 redis, openvidu 또한 docker container로 배포하였습니다. 그리고 Nginx와 letsencrypt를 이용하여 ssl 인증서를 적용하였고, 프론트엔드는 443(https)로 프록시로 분기시켰고 백엔드는 /api 경로로 프록시를 걸어줬습니다.
+또한 프론트엔드인 React는 Nginx와 함께 docker image로 빌드하여 배포하였고, Springboot & Django 또한 docker container로 배포하였습니다. 그리고 Nginx와 letsencrypt를 이용하여 ssl 인증서를 적용하였고, 프론트엔드는 443(https)로 프록시로 분기시켰고 백엔드는 /api 경로로 프록시를 걸어줬습니다.
 
 
 
